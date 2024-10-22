@@ -1,5 +1,8 @@
 package racingcar
 
 fun main() {
-    // TODO: 프로그램 구현
+    val userInput = UserInput()
+    val guideOutput = GuideOutput()
+    val resultOutput = ResultOutput()
+    RacingCarService(userInput, guideOutput, resultOutput).execute()
 }
