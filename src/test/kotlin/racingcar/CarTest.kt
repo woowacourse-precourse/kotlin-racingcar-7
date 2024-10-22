@@ -18,7 +18,7 @@ class CarTest {
     @Test
     fun `이동 실패 테스트`(){
         car = Car("white")
-        car.tryMove(4)
+        car.tryMove(3)
         val expect = 0
         assertEquals(expect,car.position)
     }
