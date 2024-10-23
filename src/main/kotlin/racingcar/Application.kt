@@ -15,6 +15,10 @@ fun main() {
     val moveCount = getMoveCount()
     val cars = createCars(carNames)
 
+    repeat(moveCount) {
+        moveCars(cars)
+        printCarsStatus(cars)
+    }
 
 }
 
@@ -72,5 +76,12 @@ fun moveCars(cars: List<Car>) {
 fun moveCarIfNeeded(car: Car) {
     if (randomMove()) {
         car.move++
+    }
+}
+
+fun printCarsStatus(cars: List<Car>) {
+    println()
+    cars.forEach { car ->
+        println("${car.name} : ${"-".repeat(car.move)}")
     }
 }
