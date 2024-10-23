@@ -7,7 +7,6 @@ import camp.nextstep.edu.missionutils.Randoms
 data class Car(
     var name: String,
     var move: Int = 0,
-    var rank: Int = 0,
 )
 
 fun main() {
