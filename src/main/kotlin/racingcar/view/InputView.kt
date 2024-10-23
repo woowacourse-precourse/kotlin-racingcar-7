@@ -1,7 +1,7 @@
 package racingcar.view
 
 import camp.nextstep.edu.missionutils.Console
-import racingcar.constants.Messages
+import racingcar.utils.Messages
 
 class InputView {
     fun readCarNames(): List<String> {

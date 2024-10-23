@@ -1,9 +1,10 @@
 package racingcar.controller
 
 import camp.nextstep.edu.missionutils.Randoms.pickNumberInRange
-import racingcar.constants.Messages
+import racingcar.utils.Messages
 import racingcar.model.Car
 import racingcar.utils.Validator
+import racingcar.utils.Values
 import racingcar.view.InputView
 import racingcar.view.OutputView
 
@@ -37,7 +38,11 @@ class RacingController {
 
     private fun raceCars(cars: List<Car>) {
         cars.forEach { car ->
-            if (pickNumberInRange(0, 9) >= 4) car.move()
+            if (pickNumberInRange(
+                    Values.MIN_RANDOM_NUMBER,
+                    Values.MAX_RANDOM_NUMBER
+                ) >= Values.MIN_MOVABLE_NUMBER
+            ) car.move()
             outPutView.printCarMove(car.name, car.movedDistance)
         }
     }

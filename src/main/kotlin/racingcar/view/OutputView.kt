@@ -1,12 +1,14 @@
 package racingcar.view
 
+import racingcar.utils.Messages
+
 class OutputView {
 
     fun printCarMove(carName: String, movedDistance: Int) {
-        println("$carName : ${"-".repeat(movedDistance)}")
+        println("$carName : ${Messages.MOVING_SYMBOL.repeat(movedDistance)}")
     }
 
     fun printWinners(winners: List<String>) {
-        println("최종 우승자 : ${winners.joinToString(", ")}")
+        println("${Messages.FINAL_WINNER} : ${winners.joinToString(", ")}")
     }
 }
