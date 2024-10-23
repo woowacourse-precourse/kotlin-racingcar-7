@@ -49,7 +49,7 @@ fun getMoveCount(): Int {
 }
 
 // 이동횟수 검증하고 숫자로 반환
-fun validateMoveCount(input: String?):Int {
+fun validateMoveCount(input: String?): Int {
     // 입력값이 숫자인지 확인
     if (input.isNullOrBlank() || !input.all { it.isDigit() }) {
         throw IllegalArgumentException("숫자만 입력가능 합니다.")
@@ -58,6 +58,19 @@ fun validateMoveCount(input: String?):Int {
 }
 
 // 랜덤값에 따라 자동차 전진여부 결정
-fun randomMove():Boolean {
-    return Randoms.pickNumberInRange(0,9) >= 4
+fun randomMove(): Boolean {
+    return Randoms.pickNumberInRange(0, 9) >= 4
+}
+
+// 자동차를 전진 시키는 로직
+fun moveCars(cars: List<Car>) {
+    cars.forEach { car ->
+        moveCarIfNeeded(car)
+    }
+}
+
+fun moveCarIfNeeded(car: Car) {
+    if (randomMove()) {
+        car.move++
+    }
 }
