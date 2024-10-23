@@ -11,13 +11,13 @@ import org.junit.jupiter.api.assertThrows
 class ApplicationTest : NsTest() {
     @Test
     fun `기능 테스트`() {
-//        assertRandomNumberInRangeTest(
-//            {
-//                run("pobi,woni", "1")
-//                assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi")
-//            },
-//            MOVING_FORWARD, STOP
-//        )
+        assertRandomNumberInRangeTest(
+            {
+                run("pobi,woni", "1")
+                assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi")
+            },
+            MOVING_FORWARD, STOP, STOP, STOP
+        )
     }
 
     @Test
@@ -35,6 +35,17 @@ class ApplicationTest : NsTest() {
                 test.move()
             }
             assert(test.movedCount == 10000002)
+        }
+    }
+
+    @Test
+    @DisplayName("Dice 객체 기능 테스트")
+    fun `주사위 기능 테스트` () {
+        assertSimpleTest {
+            val dice = Dice()
+            repeat(100000000) {
+                assert(dice.roll() in 0 .. 9)
+            }
         }
     }
 
