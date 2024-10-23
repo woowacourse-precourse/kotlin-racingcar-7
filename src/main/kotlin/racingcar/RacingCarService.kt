@@ -6,17 +6,29 @@ class RacingCarService(
     private val resultOutput: ResultOutput,
 ) {
     fun execute() {
-        guideOutput.guideInputCarsName()
-        val carsName = userInput.getCarsName()
-        guideOutput.guideInputRaceCount()
-        val raceCount = userInput.getRaceCount()
-        guideOutput.guideExecuteResult()
+        val carsName = getCarsName()
+        val raceCount = getRaceCount()
         val cars = CarFactory().buildCars(input = carsName)
         val race = Race(cars)
+        playRace(raceCount, race)
+        resultOutput.printWinners(race.getWinnersName())
+    }
+
+    private fun getCarsName(): String {
+        guideOutput.guideInputCarsName()
+        return userInput.getCarsName()
+    }
+
+    private fun getRaceCount(): Int {
+        guideOutput.guideInputRaceCount()
+        return userInput.getRaceCount()
+    }
+
+    private fun playRace(raceCount: Int, race: Race) {
+        guideOutput.guideExecuteResult()
         repeat(raceCount) {
             race.play()
             resultOutput.printRaceResult(race.cars)
         }
-        resultOutput.printWinners(race.getWinnersName())
     }
 }
