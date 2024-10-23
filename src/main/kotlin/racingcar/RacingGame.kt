@@ -13,6 +13,7 @@ class RacingGame {
     fun gameStart() {
         carMap = inputCarNames()
         tryCount = inputTryCount()
+        multiRace()
         // TODO: 게임 진행 로직 구현
     }
 
@@ -65,7 +66,14 @@ class RacingGame {
         return Messages.PROGRESS_MARK.repeat(distance)
     }
 
+    /**
+     * 경주를 시도횟수 만큼 진행 하고 결과를 출력
+     */
     fun multiRace() {
-        TODO("경주를 여러번 실행하는 코드 작성")
+        println(Messages.GAME_RESULT)
+        for (i in 1..tryCount!!) {
+            singleRace()
+            println()
+        }
     }
 }
