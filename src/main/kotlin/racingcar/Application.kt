@@ -3,6 +3,13 @@ package racingcar
 import camp.nextstep.edu.missionutils.Randoms
 import camp.nextstep.edu.missionutils.Console
 
+fun isValidName(name: String) : Boolean {
+    if (name.length > 5) {
+        return false
+    }
+    return true
+}
+
 fun splitName(names: String): List<String> = names.split(",").map { it }
 
 fun main() {
