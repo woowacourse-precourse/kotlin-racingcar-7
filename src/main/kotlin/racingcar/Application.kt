@@ -10,6 +10,13 @@ fun isValidName(name: String) : Boolean {
     return true
 }
 
+fun isValidRound(round: Int): Boolean {
+    if (round > 0) {
+        return true
+    }
+    return false
+}
+
 fun splitName(names: String): List<String> = names.split(",").map { it }
 
 fun main() {
