@@ -11,7 +11,9 @@ data class Car(
 
 fun main() {
     val carNames = getCarNames()
+    val moveCount = getMoveCount()
     val cars = createCars(carNames)
+
 
 }
 
@@ -36,4 +38,17 @@ fun validateCarName(name: String) {
     if (name.length > 5) {
         throw IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다: $name")
     }
+}
+
+// 이동 횟수를 입력받아 반환
+fun getMoveCount(): Int {
+    println("시도할 횟수는 몇 회인가요?")
+    val input = Console.readLine()
+
+    // 입력값이 숫자인지 확인
+    if (input.isNullOrBlank() || !input.all { it.isDigit() }) {
+        throw IllegalArgumentException("숫자만 입력가능 합니다.")
+    }
+
+    return input.toInt()
 }
