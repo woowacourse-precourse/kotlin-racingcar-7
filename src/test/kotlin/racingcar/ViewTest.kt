@@ -50,6 +50,13 @@ class ViewTest : NsTest() {
         }
     }
 
+    @DisplayName("실행 결과 문구 출력 성공")
+    @Test
+    fun successPrintResultTitle() {
+        printResultTitle()
+        assertTrue(output().contains("실행 결과"))
+    }
+
     override fun runMain() {
     }
 }
