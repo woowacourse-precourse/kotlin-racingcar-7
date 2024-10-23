@@ -2,11 +2,18 @@ package racingcar
 
 import racingcar.resources.Messages
 import camp.nextstep.edu.missionutils.Console.readLine
+import camp.nextstep.edu.missionutils.Randoms
 
 class RacingGame {
-    fun start() {
-        val carNames = inputCarNames()
-        val tryCount = inputTryCount()
+    companion object {
+        private lateinit var carMap: LinkedHashMap<String, Int>
+        private var tryCount: Int? = null
+    }
+
+    fun gameStart() {
+        carMap = inputCarNames()
+        tryCount = inputTryCount()
+        singleRace()
         // TODO: 게임 진행 로직 구현
     }
 
@@ -34,5 +41,13 @@ class RacingGame {
         println(Messages.GAME_INPUT_COUNT)
         val inputCountString = readLine()
         return inputCountString!!.toInt()
+    }
+
+    fun singleRace() {
+        TODO("게임을 1회 진행하는 코드 구현")
+    }
+
+    private fun convertRaceIndicator(distance: Int): String {
+        TODO("숫자만큼 -로 변환하여 거리를 나타내는 코드 구현")
     }
 }

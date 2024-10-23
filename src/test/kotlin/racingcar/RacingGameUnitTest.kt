@@ -1,5 +1,6 @@
 package racingcar
 
+import camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest
 import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
@@ -54,9 +55,38 @@ class RacingGameUnitTest : NsTest() {
         }
     }
 
+    @Test
+    @DisplayName("자동차 경주 1회 실행 검증")
+    fun raceResultTest() {
+        assertRandomNumberInRangeTest(
+            {
+                // given
+                run("pobi,woni,jun", "1")
+
+                // when
+                racingGame.gameStart()
+                racingGame.singleRace()
+
+                // then
+                assertThat(output()).contains(
+                    "pobi : -",
+                    "woni : ",
+                    "jun : -"
+                )
+            },
+            MOVING_FORWARD,  // 4: 전진
+            STOP,           // 3: 정지
+            MOVING_FORWARD  // 4: 전진
+        )
+    }
+
+
     override fun runMain() {}
 
     companion object {
+        private const val MOVING_FORWARD = 4
+        private const val STOP = 3
+
         @JvmStatic
         fun carNameTestCases(): Stream<Arguments> = Stream.of(
             Arguments.of("pobi,woni,jun", 3),
