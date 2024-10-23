@@ -1,5 +1,11 @@
 package racingcar
 
+import racingcar.presenter.RacingCarPresenter
+import racingcar.view.InputViewImpl
+
 fun main() {
-    // TODO: 프로그램 구현
+    val inputView = InputViewImpl()
+    val racingCarPresenter = RacingCarPresenter()
+
+    RacingCarGameApp(inputView, racingCarPresenter).run()
 }
