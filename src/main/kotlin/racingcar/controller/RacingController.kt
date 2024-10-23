@@ -15,7 +15,7 @@ class RacingController {
 
         println("실행 결과")
         repeat(moveCount) {
-            racingCars(cars)
+            raceCars(cars)
             println()
         }
 
@@ -29,7 +29,7 @@ class RacingController {
         return carNames.map { name -> Car(name) }
     }
 
-    private fun racingCars(cars: List<Car>) {
+    private fun raceCars(cars: List<Car>) {
         cars.forEach { car ->
             if (pickNumberInRange(0, 9) >= 4) car.move()
             outPutView.printCarMove(car.name, car.movedDistance)
