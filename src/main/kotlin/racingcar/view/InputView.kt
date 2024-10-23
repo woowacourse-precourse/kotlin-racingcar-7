@@ -9,8 +9,8 @@ class InputView {
         return Console.readLine().split(',')
     }
 
-    fun readMoveCount(): Int {
+    fun readMoveCount(): String {
         println(Messages.INPUT_MOVE_COUNT_PROMPT)
-        return Console.readLine().toInt()
+        return Console.readLine()
     }
 }

@@ -3,6 +3,7 @@ package racingcar.controller
 import camp.nextstep.edu.missionutils.Randoms.pickNumberInRange
 import racingcar.constants.Messages
 import racingcar.model.Car
+import racingcar.utils.Validator
 import racingcar.view.InputView
 import racingcar.view.OutputView
 
@@ -12,7 +13,11 @@ class RacingController {
 
     fun run() {
         val cars = createCars()
-        val moveCount = inputView.readMoveCount()
+        cars.forEach { car -> Validator.isValidCarName(car.name) }
+
+        val input = inputView.readMoveCount()
+        Validator.isValidMoveCount(input)
+        val moveCount = input.toInt()
 
         println(Messages.OUPUT_RESULT)
         repeat(moveCount) {
