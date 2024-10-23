@@ -12,6 +12,7 @@ data class Car(
 fun main() {
     val carNames = getCarNames()
     val cars = createCars(carNames)
+
 }
 
 // 사용자가 입력한 자동차 이름을 ','로 구분하여 리스트로 반환
@@ -25,6 +26,14 @@ fun getCarNames(): List<String> {
 // 자동차 이름 리스트로 Car 객체 리스트를 생성
 fun createCars(carNames: List<String>): List<Car> {
     return carNames.map { name ->
+        validateCarName(name)
         Car(name = name)
+    }
+}
+
+// 자동차 이름 길이 검사
+fun validateCarName(name: String) {
+    if (name.length > 5) {
+        throw IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다: $name")
     }
 }
