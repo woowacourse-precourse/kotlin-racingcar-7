@@ -10,7 +10,7 @@ data class Car(
 
 fun isValidName(name: String) : Boolean {
     if (name.length > 5) {
-        return false
+        throw IllegalArgumentException()
     }
     return true
 }
@@ -19,15 +19,20 @@ fun isValidRound(round: Int): Boolean {
     if (round > 0) {
         return true
     }
-    return false
+    throw IllegalArgumentException()
 }
 
-fun splitName(names: String): List<String> = names.split(",").map { it }
+fun splitName(names: String): List<String> {
+    return names.split(",")
+}
 
 fun createCar(names: List<String>) : Map<String, Car> {
     val cars = mutableMapOf<String, Car>()
     for (name in names) {
-        cars[name] = Car(0, 0)
+        if (isValidName(name)) {
+            cars[name] = Car(0, 0)
+        }
+
     }
     return cars
 }
@@ -48,6 +53,7 @@ fun main() {
     val names = splitName(inputName)
     println("시도할 횟수는 몇 회인가요?")
     val inputRound = Console.readLine().toInt()
+    isValidRound(inputRound)
     val cars = createCar(names)
 
     println("실행 결과")
