@@ -20,6 +20,7 @@ class RacingController {
         }
 
         val winners = getWinners(cars)
+        outPutView.printWinners(winners)
 
     }
 
