@@ -18,6 +18,7 @@ class Organizer {
             throw IllegalArgumentException("경주 횟수는 최소 1회 이상이며, 정수만 입력 가능합니다.")
         }
 
+        println("실행 결과")
         for (i in 0..<raceCount.toInt()) {
             for (j in 0..<raceCars.size) {
                 val randomValue = pickNumberInRange(0, 9)
@@ -25,7 +26,9 @@ class Organizer {
                     val car = raceCars[j]
                     raceCars[j] = car.copy(forward = car.forward + 1)
                 }
+                println("${raceCars[j].name} : ${"-".repeat(raceCars[j].forward)}")
             }
+            println()
         }
     }
 }
