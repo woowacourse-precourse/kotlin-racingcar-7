@@ -64,4 +64,8 @@ class RacingGame {
     private fun convertRaceIndicator(distance: Int): String {
         return Messages.PROGRESS_MARK.repeat(distance)
     }
+
+    fun multiRace() {
+        TODO("경주를 여러번 실행하는 코드 작성")
+    }
 }

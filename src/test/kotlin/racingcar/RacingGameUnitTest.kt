@@ -8,10 +8,8 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.params.ParameterizedTest
-import org.junit.jupiter.params.provider.Arguments
-import org.junit.jupiter.params.provider.MethodSource
+import org.junit.jupiter.params.provider.CsvSource
 import org.junit.jupiter.params.provider.ValueSource
-import java.util.stream.Stream
 
 class RacingGameUnitTest : NsTest() {
     private lateinit var racingGame: RacingGame
@@ -23,7 +21,15 @@ class RacingGameUnitTest : NsTest() {
 
     @ParameterizedTest
     @DisplayName("다양한 개수의 자동차 이름을 입력받아 LinkedHashMap으로 초기화")
-    @MethodSource("carNameTestCases")
+    @CsvSource(
+        value = [
+            "pobi,woni,jun:3",
+            "pobi,woni,jun,meda:4",
+            "pobi:1",
+            "pobi,woni,jun,meda,ndro:5"
+        ],
+        delimiter = ':'
+    )
     fun splitCarNamesWithDifferentSizes(input: String, expectedSize: Int) {
         assertSimpleTest {
             // given
@@ -56,7 +62,7 @@ class RacingGameUnitTest : NsTest() {
     }
 
     @Test
-    @DisplayName("자동차 경주 1회 실행 검증")
+    @DisplayName("자동차 경주 1회 실행하는 메소드 검사")
     fun raceResultTest() {
         assertRandomNumberInRangeTest(
             {
@@ -80,19 +86,41 @@ class RacingGameUnitTest : NsTest() {
         )
     }
 
+    @Test
+    @DisplayName("자동차 경주를 n회 실행하는 메소드 검사")
+    fun multipleRaceResultTest() {
+        assertRandomNumberInRangeTest(
+            {
+                // given
+                run("pobi,woni,jun", "3")
+
+                // when
+                racingGame.gameStart()
+                racingGame.multiRace()
+
+                // then
+                assertThat(output()).contains(
+                    "pobi : -",
+                    "woni : ",
+                    "jun : -",
+                    "pobi : -",
+                    "woni : ",
+                    "jun : --",
+                    "pobi : --",
+                    "woni : -",
+                    "jun : ---"
+                )
+            },
+            MOVING_FORWARD, STOP, MOVING_FORWARD,  // 첫 번째 경기
+            STOP, STOP, MOVING_FORWARD,           // 두 번째 경기
+            MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD  // 세 번째 경기
+        )
+    }
 
     override fun runMain() {}
 
     companion object {
         private const val MOVING_FORWARD = 4
         private const val STOP = 3
-
-        @JvmStatic
-        fun carNameTestCases(): Stream<Arguments> = Stream.of(
-            Arguments.of("pobi,woni,jun", 3),
-            Arguments.of("pobi,woni,jun,meda", 4),
-            Arguments.of("pobi", 1),
-            Arguments.of("pobi,woni,jun,meda,ndro", 5)
-        )
     }
 }
