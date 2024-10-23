@@ -36,6 +36,21 @@ class ApplicationTest : NsTest() {
             }
             assert(test.movedCount == 10000002)
         }
+
+        assertSimpleTest {
+            val test = Car("a")
+
+            assert(test.roundResult == "a : ")
+
+            test.move()
+            assert(test.roundResult == "a : -")
+
+            test.move()
+            assert(test.roundResult == "a : --")
+
+            test.move()
+            assert(test.roundResult == "a : ---")
+        }
     }
 
     @Test
