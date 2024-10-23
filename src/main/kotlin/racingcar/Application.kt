@@ -10,10 +10,32 @@ fun main() {
     println("시도할 횟수는 몇 회인가요?")
     val roundStr: String? = Console.readLine()
 
+    println("\n실행 결과")
+
     val nameListAndRound: Pair<List<String>, Int> = validate(names, roundStr)
     val carList: List<Car> = nameListAndRound.first.map {
         Car(it)
     }
+    val maxRound = nameListAndRound.second
+    val dice = Dice()
+
+    repeat(maxRound) {
+        playRound(carList, dice)
+    }
+}
+
+private fun playRound(cars: List<Car>, dice: Dice) {
+    for (car in cars) {
+        val rollResult = dice.roll()
+
+        if (rollResult >= 4) {
+            car.move()
+        }
+
+        println(car.roundResult)
+    }
+
+    println("\n")
 }
 
 @Throws(IllegalArgumentException::class)
