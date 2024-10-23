@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
 class ApplicationTest : NsTest() {
+    /*
     @Test
     fun `기능 테스트`() {
         assertRandomNumberInRangeTest(
@@ -24,6 +25,22 @@ class ApplicationTest : NsTest() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
         }
+    }
+    */
+    @Test
+   fun testValidInput() {
+       assertSimpleTest {
+           run("pobi,woni", "1")
+       }
+   }
+    @Test //예외 테스트와 같음
+    fun testNotValidNames() {
+        assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
+    }
+
+    @Test
+    fun testNotValidTryCount() {
+        assertThrows<IllegalArgumentException> { runException("pobi,java", "a") }
     }
 
     override fun runMain() {

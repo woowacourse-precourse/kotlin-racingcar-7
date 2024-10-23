@@ -1,4 +1,5 @@
-package racingcar.Model
+package racingcar
 
-class RacingCar {
+class RacingCar(val name: String) {
+    var moveCount = 0
 }
