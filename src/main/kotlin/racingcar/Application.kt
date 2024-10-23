@@ -17,3 +17,9 @@ fun getUserInput(): MutableList<Pair<String,Int>> {
     }
     return carNames.map { Pair(it,0) }.toMutableList()
 }
+
+fun getAttemptCount(): Int {
+    println("시도할 횟수는 몇 회인가요?")
+    return Console.readLine()?.toIntOrNull() ?: throw IllegalArgumentException()
+}
+
