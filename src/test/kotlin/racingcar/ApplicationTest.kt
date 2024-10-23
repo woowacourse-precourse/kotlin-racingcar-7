@@ -55,11 +55,11 @@ class ApplicationTest : NsTest() {
 
     @Test
     @DisplayName("Dice 객체 기능 테스트")
-    fun `주사위 기능 테스트` () {
+    fun `주사위 기능 테스트`() {
         assertSimpleTest {
             val dice = Dice()
             repeat(100000000) {
-                assert(dice.roll() in 0 .. 9)
+                assert(dice.roll() in 0..9)
             }
         }
     }

@@ -18,6 +18,6 @@ class Car(
         }
 
     fun move() {
-        _movedCount ++
+        _movedCount++
     }
 }
