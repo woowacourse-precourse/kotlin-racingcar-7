@@ -33,5 +33,6 @@ class Organizer {
         }
 
         val winnerCarsName = judge.findWinnerName(raceCars)
+        println("최종 우승자 : ${winnerCarsName.joinToString(", ")}")
     }
 }
