@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms.pickNumberInRange
 class Organizer {
     private val input = Input()
     private val rules = Rules()
+    private val judge = Judge()
 
     fun startRace() {
         println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
@@ -30,5 +31,7 @@ class Organizer {
             }
             println()
         }
+
+        val winnerCarsName = judge.findWinnerName(raceCars)
     }
 }
