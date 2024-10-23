@@ -13,7 +13,6 @@ class RacingGame {
     fun gameStart() {
         carMap = inputCarNames()
         tryCount = inputTryCount()
-        singleRace()
         // TODO: 게임 진행 로직 구현
     }
 
@@ -43,11 +42,26 @@ class RacingGame {
         return inputCountString!!.toInt()
     }
 
+    /**
+     * 경주를 한번 진행 하고 결과를 출력
+     */
     fun singleRace() {
-        TODO("게임을 1회 진행하는 코드 구현")
+        carMap.forEach { (name, position) ->
+            val randomVal = Randoms.pickNumberInRange(0, 9)
+            if (randomVal >= 4) {
+                carMap[name] = position + 1
+            }
+            val distanceIndicator = carMap[name]?.let { convertRaceIndicator(it) }
+            println(Messages.PROGRESS_FORMAT.format(name, distanceIndicator))
+        }
     }
 
+    /**
+     * 이동 거리를 기호로 변환하여 시각화
+     * @param distance 기호로 변환할 정수값
+     * @return 기호로 변환된 문자열
+     */
     private fun convertRaceIndicator(distance: Int): String {
-        TODO("숫자만큼 -로 변환하여 거리를 나타내는 코드 구현")
+        return Messages.PROGRESS_MARK.repeat(distance)
     }
 }
