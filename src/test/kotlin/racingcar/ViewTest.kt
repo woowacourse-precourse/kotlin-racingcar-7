@@ -71,6 +71,26 @@ class ViewTest : NsTest() {
         assertTrue(result.contains("${cars[1].name} : --"))
     }
 
+    @DisplayName("최종 우승자 출력 성공 - 1명")
+    @Test
+    fun successPrintWinnerNameWithOne() {
+        val cars = listOf(Car("우테코"))
+        printWinnerName(cars)
+
+        val result = output()
+        assertTrue(result.contains("최종 우승자 : ${cars[0].name}"))
+    }
+
+    @DisplayName("최종 우승자 출력 성공 - 2명")
+    @Test
+    fun successPrintWinnerNameWithTwo() {
+        val cars = listOf(Car("우테코"), Car("사랑"))
+        printWinnerName(cars)
+
+        val result = output()
+        assertTrue(result.contains("최종 우승자 : ${cars[0].name}, ${cars[1].name}"))
+    }
+
     override fun runMain() {
     }
 

@@ -6,7 +6,9 @@ const val CAR_NAME_REQUEST_MESSAGE = "경주할 자동차 이름을 입력하세
 const val TRY_COUNT_REQUEST_MESSAGE = "시도할 횟수는 몇 회인가요?"
 const val RESULT_TITLE_MESSAGE = "실행 결과"
 const val CAR_DRIVING_DISTANCE_MESSAGE_FORMAT = "%s : %s"
+const val WINNER_CAR_NAME_RESULT_MESSAGE = "최종 우승자 : %s"
 const val DASH_SEPARATOR = "-"
+const val RESULT_SEPARATOR = ", "
 
 fun getCarNames(): List<String> {
     println(CAR_NAME_REQUEST_MESSAGE)
@@ -37,6 +39,15 @@ fun printCarDrivingDistance(cars: List<Car>) {
         )
 
         println(message)
-        println()
     }
+
+    println()
+}
+
+fun printWinnerName(cars: List<Car>) {
+    val message = WINNER_CAR_NAME_RESULT_MESSAGE.format(
+        cars.joinToString(RESULT_SEPARATOR) { it.name }
+    )
+
+    println(message)
 }
