@@ -2,9 +2,9 @@ package racingcar
 
 import camp.nextstep.edu.missionutils.Console
 
-class Input {
+class InputView {
 
-    fun inputCars(): List<String> {
+    fun inputCarNames(): List<String> {
         return Console.readLine().split(",")
     }
 
