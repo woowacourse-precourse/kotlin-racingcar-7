@@ -8,7 +8,7 @@ class RacingGame(names: List<String>) {
     fun startOneRound() {
         for (car in cars) {
             val randomNumber = Randoms.pickNumberInRange(0, 9)
-            if (isGo(randomNumber)) {
+            if (isMovable(randomNumber)) {
                 car.plusDrivingDistance()
             }
         }
@@ -31,7 +31,7 @@ class RacingGame(names: List<String>) {
         return leadingCars
     }
 
-    private fun isGo(num: Int): Boolean {
+    private fun isMovable(num: Int): Boolean {
         return num >= FORWARD_REFERENCE_NUMBER
     }
 
