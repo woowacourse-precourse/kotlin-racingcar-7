@@ -6,8 +6,8 @@ class RacingCarModel {
     private val exception = RacingCarException()
 
     fun checkException(stringNameOfCar: String) {
-        if(exception.checkInvalidCharacter(stringNameOfCar) ||
-            exception.checkHeadAndTail(stringNameOfCar)){
+        if(exception.checkInvalidCharacter(stringNameOfCar) &&
+            exception.checkHeadAndTail(stringNameOfCar)) {
             throw IllegalArgumentException(ERROR_MESSAGE)
         }
     }
@@ -22,4 +22,5 @@ class RacingCarModel {
         val infoOfCar = splitString.associateWith { 0 }
         return infoOfCar
     }
+
 }

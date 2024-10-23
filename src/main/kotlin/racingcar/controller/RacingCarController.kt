@@ -6,13 +6,26 @@ import racingcar.view.RacingCarView
 class RacingCarController {
     init {
         RacingCarView.printGetNameOfCar()
-        controller()
+        val infoOfCar = getInfoOfCar()
+        RacingCarView.printCountOfRacing()
+        val countOfGame = getCount()
+        playGame()
     }
 
-    private fun controller(){
+    private fun getInfoOfCar(): Map<String, Int> {
         val model = RacingCarModel()
         val stringNameOfCar = RacingCarView.getNameOfCar()
         model.checkException(stringNameOfCar)
-        model.splitString(stringNameOfCar)
+        val infoOfCar = model.splitString(stringNameOfCar)
+        return infoOfCar
+    }
+
+    private fun getCount(): Int {
+        val getCountOfGame = RacingCarView.getCountOfRacing()
+        return getCountOfGame
+    }
+
+    private fun playGame() {
+
     }
 }
