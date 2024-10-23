@@ -6,6 +6,11 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.DisplayName
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.Arguments
+import org.junit.jupiter.params.provider.MethodSource
+import org.junit.jupiter.params.provider.ValueSource
+import java.util.stream.Stream
 
 class RacingGameUnitTest : NsTest() {
     private lateinit var racingGame: RacingGame
@@ -15,42 +20,49 @@ class RacingGameUnitTest : NsTest() {
         racingGame = RacingGame()
     }
 
-    @Test
-    @DisplayName("자동차 이름을 입력받아 쉼표로 분리하여 LinkedHashMap을 초기화")
-    fun splitCarNames() {
+    @ParameterizedTest
+    @DisplayName("다양한 개수의 자동차 이름을 입력받아 LinkedHashMap으로 초기화")
+    @MethodSource("carNameTestCases")
+    fun splitCarNamesWithDifferentSizes(input: String, expectedSize: Int) {
         assertSimpleTest {
             // given
-            run(CAR_NAMES)
+            run(input)
 
             // when
             val carNames = racingGame.inputCarNames()
 
             // then
-            assertThat(carNames).hasSize(3)
-            assertThat(carNames.keys.toList()).containsExactly("pobi", "woni", "jun")
+            assertThat(carNames).hasSize(expectedSize)
+            assertThat(carNames.keys.toList()).containsExactly(*input.split(",").toTypedArray())
             assertThat(carNames.values).allMatch { it == 0 }
         }
     }
 
-    @Test
-    @DisplayName("경기 시도 횟수를 입력받아 정수형으로 저장")
-    fun setTryCount() {
+    @ParameterizedTest
+    @DisplayName("다양한 경기 시도 횟수를 입력받아 정수형으로 저장")
+    @ValueSource(strings = ["1", "5", "10", "100"])
+    fun setTryCount(input: String) {
         assertSimpleTest {
             // given
-            run(TRY_COUNT)
+            run(input)
 
             // when
             val tryCount = racingGame.inputTryCount()
 
             // then
-            assertThat(tryCount).isEqualTo(5)
+            assertThat(tryCount).isEqualTo(input.toInt())
         }
     }
 
     override fun runMain() {}
 
     companion object {
-        private const val CAR_NAMES = "pobi,woni,jun"
-        private const val TRY_COUNT = "5"
+        @JvmStatic
+        fun carNameTestCases(): Stream<Arguments> = Stream.of(
+            Arguments.of("pobi,woni,jun", 3),
+            Arguments.of("pobi,woni,jun,meda", 4),
+            Arguments.of("pobi", 1),
+            Arguments.of("pobi,woni,jun,meda,ndro", 5)
+        )
     }
 }
