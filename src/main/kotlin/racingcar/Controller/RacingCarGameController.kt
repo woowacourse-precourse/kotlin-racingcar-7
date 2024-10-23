@@ -3,9 +3,16 @@ package racingcar
 import camp.nextstep.edu.missionutils.Console
 
 class RacingCarGameController {
+    private var racingCars: MutableList<RacingCar> = mutableListOf()
+    private var tryCount = 0
 
     fun play() {
         getCarNamesAndTryCounts()
+        for (turn in 1..tryCount) {
+            racingCars.forEach {
+                it.takeTurn()
+            }
+        }
     }
 
     private fun getCarNamesAndTryCounts() {
@@ -14,6 +21,7 @@ class RacingCarGameController {
         val carNames = userInput.split(",")
         checkIfValidNames(carNames)
         getTryCountsInput()
+        makeRacingCar(carNames)
     }
 
     private fun checkIfValidNames(carNames: List<String>) {
@@ -22,10 +30,18 @@ class RacingCarGameController {
         throw IllegalArgumentException()
     }
 
+    private fun makeRacingCar(carNames: List<String>)
+    {
+        carNames.forEach {
+            racingCars.add(RacingCar(it))
+        }
+    }
+
     private fun getTryCountsInput() {
         println("시도할 횟수는 몇 회인가요?")
-        val tryCount = Console.readLine()
-        checkIfValidCount(tryCount)
+        val tryCountInput = Console.readLine()
+        checkIfValidCount(tryCountInput)
+        tryCount = tryCountInput.toInt()
     }
 
     private fun checkIfValidCount(tryCount: String) {

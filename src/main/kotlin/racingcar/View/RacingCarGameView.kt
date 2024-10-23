@@ -1,4 +1,6 @@
 package racingcar
 
-class RacingCarGameView {
+
+class RacingCarGameView(val racingCars: List<RacingCar>) {
+
 }
