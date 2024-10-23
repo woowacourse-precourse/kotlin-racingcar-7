@@ -9,7 +9,9 @@ class Output {
         println(RESULT_MSG)
         for (j in moveCountList.indices) {
             for (i in carNameList.indices) {
-                println(carNameList[i] + COLON + moveCountList[i].take(j + 1).joinToString(""))
+                println(carNameList[i] + COLON + moveCountList[i]
+                    .take(j + 1)
+                    .joinToString(""))
             }
             println()
         }
