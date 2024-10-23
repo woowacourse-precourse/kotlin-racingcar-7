@@ -19,18 +19,27 @@ class RacingController {
             println()
         }
 
+        val winners = getWinners(cars)
+
     }
 
-    private fun createCars() : List<Car> {
+    private fun createCars(): List<Car> {
         val carNames = inputView.readCarNames()
-        return carNames.map {name -> Car(name)}
+        return carNames.map { name -> Car(name) }
     }
 
-    private fun racingCars(cars : List<Car>) {
+    private fun racingCars(cars: List<Car>) {
         cars.forEach { car ->
-            if(pickNumberInRange(0, 9) >= 4) car.move()
+            if (pickNumberInRange(0, 9) >= 4) car.move()
             outPutView.printCarMove(car.name, car.movedDistance)
         }
+    }
+
+    // 우승자는 한 명 이상이다
+    private fun getWinners(cars: List<Car>): List<String> {
+        val maxMove = cars.maxOf { it.movedDistance }
+        return cars.filter { it.movedDistance == maxMove }
+            .map { it.name }
     }
 
 }
