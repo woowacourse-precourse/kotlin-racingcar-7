@@ -25,8 +25,6 @@ class RacingGame(names: List<String>) {
                 top = car.drivingDistance
             } else if (top == car.drivingDistance) {
                 leadingCars.add(car)
-            } else {
-                continue
             }
         }
 
