@@ -71,7 +71,6 @@ class RacingGameUnitTest : NsTest() {
 
                 // when
                 racingGame.gameStart()
-                racingGame.singleRace()
 
                 // then
                 assertThat(output()).contains(
@@ -96,7 +95,6 @@ class RacingGameUnitTest : NsTest() {
 
                 // when
                 racingGame.gameStart()
-                racingGame.multiRace()
 
                 // then
                 assertThat(output()).contains(
@@ -114,6 +112,61 @@ class RacingGameUnitTest : NsTest() {
             MOVING_FORWARD, STOP, MOVING_FORWARD,  // 첫 번째 경기
             STOP, STOP, MOVING_FORWARD,           // 두 번째 경기
             MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD  // 세 번째 경기
+        )
+    }
+
+    @Test
+    @DisplayName("최종 우승자를 한명을 출력하는 메소드 검사")
+    fun finalWinnerTest() {
+        assertRandomNumberInRangeTest(
+            {
+                // given
+                run("pobi,woni,jun", "2")
+
+                // when
+                racingGame.gameStart()
+
+                // then
+                assertThat(output()).contains(
+                    "pobi : -",
+                    "woni : ",
+                    "jun : -",
+                    "pobi : -",
+                    "woni : ",
+                    "jun : --"
+                )
+            },
+            MOVING_FORWARD, STOP, MOVING_FORWARD,  // 첫 번째 경기
+            STOP, STOP, MOVING_FORWARD             // 두 번째 경기
+        )
+    }
+
+    @Test
+    @DisplayName("동점자가 존재시 최종 우승자를 출력하는 메소드 검사")
+    fun finalTieWinnerTest() {
+        assertRandomNumberInRangeTest(
+            {
+                // given
+                run("pobi,woni,jun,meda", "2")
+
+                // when
+                racingGame.gameStart()
+
+                // then
+                assertThat(output()).contains(
+                    "pobi : -",
+                    "woni : ",
+                    "jun : -",
+                    "meda : -",
+                    "pobi : -",
+                    "woni : ",
+                    "jun : -",
+                    "meda : -",
+                    "최종 우승자 : pobi, jun, meda"
+                )
+            },
+            MOVING_FORWARD, STOP, MOVING_FORWARD, MOVING_FORWARD, // 첫 번째 경기
+            STOP, STOP, STOP, STOP                                // 두 번째 경기
         )
     }
 

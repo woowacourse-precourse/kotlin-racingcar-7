@@ -14,7 +14,7 @@ class RacingGame {
         carMap = inputCarNames()
         tryCount = inputTryCount()
         multiRace()
-        // TODO: 게임 진행 로직 구현
+        printFinalWinner()
     }
 
     /**
@@ -46,7 +46,7 @@ class RacingGame {
     /**
      * 경주를 한번 진행 하고 결과를 출력
      */
-    fun singleRace() {
+    private fun singleRace() {
         carMap.forEach { (name, position) ->
             val randomVal = Randoms.pickNumberInRange(0, 9)
             if (randomVal >= 4) {
@@ -75,5 +75,12 @@ class RacingGame {
             singleRace()
             println()
         }
+    }
+
+    /**
+     * 최종 우승자 출력
+     */
+    fun printFinalWinner() {
+        TODO("최종 우승자 출력 코드 구현")
     }
 }
