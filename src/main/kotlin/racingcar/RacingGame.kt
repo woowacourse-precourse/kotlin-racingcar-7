@@ -30,7 +30,7 @@ class RacingGame(names: List<String>) {
             }
         }
 
-        return leadingCars;
+        return leadingCars
     }
 
     private fun isGo(num: Int): Boolean {
@@ -38,6 +38,6 @@ class RacingGame(names: List<String>) {
     }
 
     companion object {
-        const val FORWARD_REFERENCE_NUMBER = 4;
+        const val FORWARD_REFERENCE_NUMBER = 4
     }
 }

@@ -39,6 +39,6 @@ class Car(name: String) {
     }
 
     companion object {
-        const val NAME_MAX_LENGTH = 5;
+        const val NAME_MAX_LENGTH = 5
     }
 }
