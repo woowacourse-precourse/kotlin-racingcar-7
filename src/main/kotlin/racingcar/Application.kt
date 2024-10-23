@@ -1,6 +1,5 @@
 package racingcar
 
-
 fun main() {
 
 }
