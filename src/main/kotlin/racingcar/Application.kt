@@ -1,5 +1,7 @@
 package racingcar
 
+import camp.nextstep.edu.missionutils.Console
+
 // 자동차를 나타내는 클래스, 이름과 이동 거리, 순위를 속성으로 가짐
 data class Car(
     var name: String,
@@ -8,5 +10,13 @@ data class Car(
 )
 
 fun main() {
-    // TODO: 프로그램 구현
+    val carNames = getCarNames()
+}
+
+// 사용자가 입력한 자동차 이름을 ','로 구분하여 리스트로 반환
+fun getCarNames(): List<String> {
+    println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분")
+    val carNameInput = Console.readLine() ?: ""
+
+    return carNameInput.split(",").map { it.trim() }
 }
