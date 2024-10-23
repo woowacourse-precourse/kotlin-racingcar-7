@@ -1,6 +1,7 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Console
+import camp.nextstep.edu.missionutils.Randoms
 
 // 자동차를 나타내는 클래스, 이름과 이동 거리, 순위를 속성으로 가짐
 data class Car(
@@ -54,4 +55,9 @@ fun validateMoveCount(input: String?):Int {
         throw IllegalArgumentException("숫자만 입력가능 합니다.")
     }
     return input.toInt()
+}
+
+// 랜덤값에 따라 자동차 전진여부 결정
+fun randomMove():Boolean {
+    return Randoms.pickNumberInRange(0,9) >= 4
 }
