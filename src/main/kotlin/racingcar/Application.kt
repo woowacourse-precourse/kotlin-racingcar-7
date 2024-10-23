@@ -1,6 +1,7 @@
 package racingcar
 
 fun main() {
-    val racingGame = RacingGame()
+    val outputView = OutputView()
+    val racingGame = RacingGame(outputView)
     racingGame.gameStart()
 }
