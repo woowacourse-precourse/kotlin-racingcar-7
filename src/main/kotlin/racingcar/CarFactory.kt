@@ -1,7 +1,6 @@
 package racingcar
 
 class CarFactory {
-
     private var anonymityCount = INITIAL_ANONYMITY_COUNT
 
     fun buildCars(input: String): List<Car> {

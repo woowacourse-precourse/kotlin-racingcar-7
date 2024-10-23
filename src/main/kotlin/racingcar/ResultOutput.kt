@@ -1,7 +1,6 @@
 package racingcar
 
 class ResultOutput {
-
     fun printRaceResult(cars: List<Car>) {
         cars.forEach { car ->
             println("${car.name} : ${"-".repeat(car.position)}\n")

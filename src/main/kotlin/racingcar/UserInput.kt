@@ -3,7 +3,6 @@ package racingcar
 import camp.nextstep.edu.missionutils.Console
 
 class UserInput {
-
     fun getCarsName() = Console.readLine()
 
     fun getRaceCount(): Int {
