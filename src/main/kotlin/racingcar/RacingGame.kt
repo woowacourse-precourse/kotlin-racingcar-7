@@ -14,6 +14,25 @@ class RacingGame(names: List<String>) {
         }
     }
 
+    fun getLeadingCars(): MutableList<Car> {
+        var top = 0
+        val leadingCars: MutableList<Car> = mutableListOf()
+
+        for (car in cars) {
+            if (top < car.drivingDistance) {
+                leadingCars.clear()
+                leadingCars.add(car)
+                top = car.drivingDistance
+            } else if (top == car.drivingDistance) {
+                leadingCars.add(car)
+            } else {
+                continue
+            }
+        }
+
+        return leadingCars;
+    }
+
     private fun isGo(num: Int): Boolean {
         return num >= FORWARD_REFERENCE_NUMBER
     }

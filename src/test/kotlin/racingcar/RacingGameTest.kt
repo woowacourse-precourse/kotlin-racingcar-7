@@ -57,11 +57,71 @@ class RacingGameTest : NsTest() {
                 game.startOneRound()
                 game.startOneRound()
                 game.startOneRound()
+
                 assertEquals(game.cars[0].drivingDistance, 2)
                 assertEquals(game.cars[1].drivingDistance, 1)
             },
             MOVING_FORWARD, STOP, MOVING_FORWARD, STOP, STOP, MOVING_FORWARD
         )
+    }
+
+    @DisplayName("레이싱 게임 선두 얻기 성공 - 1명")
+    @Test
+    fun successGetLeadingCars() {
+        val names = listOf("감자는", "우테코", "사랑")
+        val game = RacingGame(names)
+
+        assertRandomNumberInRangeTest(
+            {
+                game.startOneRound()
+                game.startOneRound()
+                game.startOneRound()
+
+                val cars = game.getLeadingCars()
+                assertEquals(cars.size, 1)
+                assertEquals(cars[0].name, names[1])
+            },
+            MOVING_FORWARD, MOVING_FORWARD, STOP,
+            STOP, MOVING_FORWARD, MOVING_FORWARD,
+            STOP, MOVING_FORWARD, STOP
+        )
+    }
+
+
+    @DisplayName("레이싱 게임 선두 얻기 성공 - 공동 1등 2명")
+    @Test
+    fun successGetLeadingCarsWithJointFirstPlace() {
+        val names = listOf("감자는", "우테코", "사랑")
+        val game = RacingGame(names)
+
+        assertRandomNumberInRangeTest(
+            {
+                game.startOneRound()
+                game.startOneRound()
+                game.startOneRound()
+
+                val cars = game.getLeadingCars()
+                assertEquals(cars.size, 2)
+                assertEquals(cars[0].name, names[1])
+                assertEquals(cars[1].name, names[2])
+            },
+            STOP, MOVING_FORWARD, MOVING_FORWARD,
+            MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD,
+            STOP, MOVING_FORWARD, MOVING_FORWARD
+        )
+    }
+
+    @DisplayName("레이싱 게임 선두 얻기 성공 - 아무도 달리지 않은 경우")
+    @Test
+    fun successGetLeadingCarsWithZeroGame() {
+        val names = listOf("감자는", "우테코", "사랑")
+        val game = RacingGame(names)
+
+        val cars = game.getLeadingCars()
+        assertEquals(cars.size, 3)
+        assertEquals(cars[0].name, names[0])
+        assertEquals(cars[1].name, names[1])
+        assertEquals(cars[2].name, names[2])
     }
 
     override fun runMain() {
