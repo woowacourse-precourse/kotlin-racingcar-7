@@ -2,16 +2,13 @@ package racingcar
 
 import racingcar.resources.Messages
 import camp.nextstep.edu.missionutils.Console.readLine
-import camp.nextstep.edu.missionutils.Randoms
 
 class RacingGame {
-    companion object {
-        private lateinit var carMap: LinkedHashMap<String, Int>
-        private var tryCount: Int? = null
-    }
+    private var cars: List<Car> = emptyList()
+    private var tryCount: Int = 0
 
     fun gameStart() {
-        carMap = inputCarNames()
+        cars = readCarNames()
         tryCount = inputTryCount()
         multiRace()
         printFinalWinner()
@@ -21,16 +18,17 @@ class RacingGame {
      * 자동차 이름들을 사용자로부터 입력받기
      * @return 자동차 이름들과 0으로 초기화된 LinkedHashMap 값
      */
-    fun inputCarNames(): LinkedHashMap<String, Int> {
+    private fun readCarNames(): List<Car> {
         println(Messages.GAME_START)
         val inputString = readLine()
+
         return splitCarNames(inputString)
     }
 
-    private fun splitCarNames(input: String): LinkedHashMap<String, Int> {
+    private fun splitCarNames(input: String): List<Car> {
         val names = input.split(",")
-        val value = List(names.size) { 0 }
-        return names.zip(value).toMap(LinkedHashMap())
+
+        return names.map { Car(it) }
     }
 
     /**
@@ -40,30 +38,17 @@ class RacingGame {
     fun inputTryCount(): Int {
         println(Messages.GAME_INPUT_COUNT)
         val inputCountString = readLine()
-        return inputCountString!!.toInt()
+        return inputCountString.toInt()
     }
 
     /**
      * 경주를 한번 진행 하고 결과를 출력
      */
     private fun singleRace() {
-        carMap.forEach { (name, position) ->
-            val randomVal = Randoms.pickNumberInRange(0, 9)
-            if (randomVal >= 4) {
-                carMap[name] = position + 1
-            }
-            val distanceIndicator = carMap[name]?.let { convertRaceIndicator(it) }
-            println(Messages.PROGRESS_FORMAT.format(name, distanceIndicator))
+        cars.forEach {
+            it.randomMove()
+            println(it.getNameWithIndicator())
         }
-    }
-
-    /**
-     * 이동 거리를 기호로 변환하여 시각화
-     * @param distance 기호로 변환할 정수값
-     * @return 기호로 변환된 문자열
-     */
-    private fun convertRaceIndicator(distance: Int): String {
-        return Messages.PROGRESS_MARK.repeat(distance)
     }
 
     /**
@@ -72,7 +57,7 @@ class RacingGame {
     private fun multiRace() {
         println()
         println(Messages.GAME_RESULT)
-        for (i in 1..tryCount!!) {
+        for (i in 1..tryCount) {
             singleRace()
             println()
         }
@@ -82,9 +67,9 @@ class RacingGame {
      * 최종 우승자 출력
      */
     private fun printFinalWinner() {
-        val winnerDistance = carMap.values.max()
-        val winners = carMap.filter { it.value == winnerDistance }
-        val winnersName = winners.map { it.key }
+        val winnerDistance = cars.maxOf { it.distance }
+        val winners = cars.filter { it.distance == winnerDistance }
+        val winnersName = winners.map { it.name }
         println(Messages.GAME_WINNER.format(winnersName.joinToString(", ")))
     }
 }

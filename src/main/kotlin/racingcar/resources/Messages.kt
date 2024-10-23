@@ -8,8 +8,4 @@ object Messages {
     // 게임 결과
     const val GAME_RESULT = "실행 결과"
     const val GAME_WINNER = "최종 우승자 : %s"
-
-    // 경주 진행중 상태
-    const val PROGRESS_FORMAT = "%s : %s"
-    const val PROGRESS_MARK = "-"
 }

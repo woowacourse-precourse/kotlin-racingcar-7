@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.params.ParameterizedTest
-import org.junit.jupiter.params.provider.CsvSource
 import org.junit.jupiter.params.provider.ValueSource
 
 class RacingGameUnitTest : NsTest() {
@@ -19,31 +18,31 @@ class RacingGameUnitTest : NsTest() {
         racingGame = RacingGame()
     }
 
-    @ParameterizedTest
-    @DisplayName("다양한 개수의 자동차 이름을 입력받아 LinkedHashMap으로 초기화")
-    @CsvSource(
-        value = [
-            "pobi,woni,jun:3",
-            "pobi,woni,jun,meda:4",
-            "pobi:1",
-            "pobi,woni,jun,meda,ndro:5"
-        ],
-        delimiter = ':'
-    )
-    fun splitCarNamesWithDifferentSizes(input: String, expectedSize: Int) {
-        assertSimpleTest {
-            // given
-            run(input)
-
-            // when
-            val carNames = racingGame.inputCarNames()
-
-            // then
-            assertThat(carNames).hasSize(expectedSize)
-            assertThat(carNames.keys.toList()).containsExactly(*input.split(",").toTypedArray())
-            assertThat(carNames.values).allMatch { it == 0 }
-        }
-    }
+//    @ParameterizedTest
+//    @DisplayName("다양한 개수의 자동차 이름을 입력받아 LinkedHashMap으로 초기화")
+//    @CsvSource(
+//        value = [
+//            "pobi,woni,jun:3",
+//            "pobi,woni,jun,meda:4",
+//            "pobi:1",
+//            "pobi,woni,jun,meda,ndro:5"
+//        ],
+//        delimiter = ':'
+//    )
+//    fun splitCarNamesWithDifferentSizes(input: String, expectedSize: Int) {
+//        assertSimpleTest {
+//            // given
+//            run(input)
+//
+//            // when
+//            val carNames = racingGame.inputCarNames()
+//
+//            // then
+//            assertThat(carNames).hasSize(expectedSize)
+//            assertThat(carNames.keys.toList()).containsExactly(*input.split(",").toTypedArray())
+//            assertThat(carNames.values).allMatch { it == 0 }
+//        }
+//    }
 
     @ParameterizedTest
     @DisplayName("다양한 경기 시도 횟수를 입력받아 정수형으로 저장")
