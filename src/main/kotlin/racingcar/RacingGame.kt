@@ -69,7 +69,8 @@ class RacingGame {
     /**
      * 경주를 시도횟수 만큼 진행 하고 결과를 출력
      */
-    fun multiRace() {
+    private fun multiRace() {
+        println()
         println(Messages.GAME_RESULT)
         for (i in 1..tryCount!!) {
             singleRace()
@@ -80,7 +81,10 @@ class RacingGame {
     /**
      * 최종 우승자 출력
      */
-    fun printFinalWinner() {
-        TODO("최종 우승자 출력 코드 구현")
+    private fun printFinalWinner() {
+        val winnerDistance = carMap.values.max()
+        val winners = carMap.filter { it.value == winnerDistance }
+        val winnersName = winners.map { it.key }
+        println(Messages.GAME_WINNER.format(winnersName.joinToString(", ")))
     }
 }
