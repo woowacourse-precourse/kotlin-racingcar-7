@@ -28,14 +28,7 @@ class Car(name: String) {
     }
 
     fun plusDrivingDistance() {
-        checkDrivingDistanceOverflow()
         drivingDistance++
-    }
-
-    private fun checkDrivingDistanceOverflow() {
-        if (drivingDistance + 1 < drivingDistance) {
-            throw IllegalArgumentException("너무 큰 수가 입력되었습니다.")
-        }
     }
 
     companion object {

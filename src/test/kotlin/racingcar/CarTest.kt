@@ -49,17 +49,4 @@ class CarTest {
 
         assertEquals(car.drivingDistance, round)
     }
-
-    @DisplayName("자동차 거리 증가 실패 - 너무 많은 이동")
-    @Test
-    fun failPlusDrivingDistance() {
-        val name = "감자"
-        val car = Car(name)
-
-        assertThrows<IllegalArgumentException> {
-            for (i in 0..Int.MAX_VALUE) {
-                car.plusDrivingDistance()
-            }
-        }
-    }
 }
