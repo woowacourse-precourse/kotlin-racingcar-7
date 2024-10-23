@@ -3,12 +3,17 @@ package racingcar
 import camp.nextstep.edu.missionutils.Console
 
 fun main() {
+
     println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
-    val names = Console.readLine()
+    val names: String? = Console.readLine()
+
     println("시도할 횟수는 몇 회인가요?")
-    val roundStr = Console.readLine()
+    val roundStr: String? = Console.readLine()
 
     val nameListAndRound: Pair<List<String>, Int> = validate(names, roundStr)
+    val carList: List<Car> = nameListAndRound.first.map {
+        Car(it)
+    }
 }
 
 @Throws(IllegalArgumentException::class)
@@ -19,6 +24,7 @@ private fun validate(names: String?, roundStr: String?): Pair<List<String>, Int>
 
     val nameList: List<String> = names.split(",")
     val round: Int
+
     try {
         round = roundStr.toInt()
     } catch (e: NumberFormatException) {
