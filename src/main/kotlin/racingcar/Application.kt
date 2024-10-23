@@ -20,6 +20,8 @@ fun main() {
         printCarsStatus(cars)
     }
 
+    val winners = winners(cars)
+    println("최종 우승자 : ${winners.joinToString(", ")}")
 }
 
 // 사용자가 입력한 자동차 이름을 ','로 구분하여 리스트로 반환
@@ -84,4 +86,9 @@ fun printCarsStatus(cars: List<Car>) {
     cars.forEach { car ->
         println("${car.name} : ${"-".repeat(car.move)}")
     }
+}
+
+fun winners(cars: List<Car>): List<String> {
+    val maxDistance = cars.maxOf { it.move }
+    return cars.filter { it.move == maxDistance }.map { it.name }
 }
