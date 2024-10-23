@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Console
 class RacingCarGameController {
     private var racingCars: MutableList<RacingCar> = mutableListOf()
     private var tryCount = 0
+    private val racingCarGameView = RacingCarGameView(racingCars)
 
     fun play() {
         getCarNamesAndTryCounts()
@@ -12,6 +13,7 @@ class RacingCarGameController {
             racingCars.forEach {
                 it.takeTurn()
             }
+            racingCarGameView.printTurnResult()
         }
     }
 
