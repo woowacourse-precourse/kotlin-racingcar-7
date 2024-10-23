@@ -57,6 +57,28 @@ class ViewTest : NsTest() {
         assertTrue(output().contains("실행 결과"))
     }
 
+    @DisplayName("자동차 주행 거리 출력 성공")
+    @Test
+    fun successPrintCarDrivingDistance() {
+        val cars = listOf(Car("우테코"), Car("사랑"))
+        carPlusDrivingDistance(cars[0], 3)
+        carPlusDrivingDistance(cars[1], 2)
+
+        printCarDrivingDistance(cars)
+        val result = output()
+
+        assertTrue(result.contains("${cars[0].name} : ---"))
+        assertTrue(result.contains("${cars[1].name} : --"))
+    }
+
     override fun runMain() {
+    }
+
+    companion object {
+        fun carPlusDrivingDistance(car: Car, count: Int) {
+            for (i in 1..count) {
+                car.plusDrivingDistance()
+            }
+        }
     }
 }
