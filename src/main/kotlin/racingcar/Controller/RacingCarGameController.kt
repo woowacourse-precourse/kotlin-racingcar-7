@@ -9,12 +9,8 @@ class RacingCarGameController {
 
     fun play() {
         getCarNamesAndTryCounts()
-        for (turn in 1..tryCount) {
-            racingCars.forEach {
-                it.takeTurn()
-            }
-            racingCarGameView.printTurnResult()
-        }
+        playAllTurns()
+        racingCarGameView.printTotalResult()
     }
 
     private fun getCarNamesAndTryCounts() {
@@ -32,8 +28,7 @@ class RacingCarGameController {
         throw IllegalArgumentException()
     }
 
-    private fun makeRacingCar(carNames: List<String>)
-    {
+    private fun makeRacingCar(carNames: List<String>) {
         carNames.forEach {
             racingCars.add(RacingCar(it))
         }
@@ -51,5 +46,14 @@ class RacingCarGameController {
             return
         }
         throw IllegalArgumentException()
+    }
+
+    private fun playAllTurns() {
+        for (turn in 1..tryCount) {
+            racingCars.forEach {
+                it.takeTurn()
+            }
+            racingCarGameView.printTurnResult()
+        }
     }
 }

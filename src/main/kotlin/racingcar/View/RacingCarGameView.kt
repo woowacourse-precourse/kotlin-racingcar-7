@@ -16,4 +16,11 @@ class RacingCarGameView(private val racingCars: List<RacingCar>) {
         }
         println()
     }
+
+    fun printTotalResult() {
+        val maxMoveCount = racingCars.maxOf { it.moveCount }
+        val winners = racingCars.filter{it.moveCount == maxMoveCount}
+        val winnersName = winners.joinToString(",") { it.name }
+        println("최종 우승자 : $winnersName")
+    }
 }

@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
 class ApplicationTest : NsTest() {
-    /*
+
     @Test
     fun `기능 테스트`() {
         assertRandomNumberInRangeTest(
@@ -26,7 +26,8 @@ class ApplicationTest : NsTest() {
             assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
         }
     }
-    */
+
+
     @Test
    fun testValidInput() {
        assertSimpleTest {
