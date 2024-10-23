@@ -1,6 +1,7 @@
 package racingcar.controller
 
 import camp.nextstep.edu.missionutils.Randoms.pickNumberInRange
+import racingcar.constants.Messages
 import racingcar.model.Car
 import racingcar.view.InputView
 import racingcar.view.OutputView
@@ -13,7 +14,7 @@ class RacingController {
         val cars = createCars()
         val moveCount = inputView.readMoveCount()
 
-        println("실행 결과")
+        println(Messages.OUPUT_RESULT)
         repeat(moveCount) {
             raceCars(cars)
             println()
