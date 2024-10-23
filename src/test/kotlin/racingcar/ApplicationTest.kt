@@ -20,9 +20,23 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
-    fun `예외 테스트`() {
+    fun `자동차 이름이 6자 이상일 경우`() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
+        }
+    }
+
+    @Test
+    fun `구분자가 ','가 아닐 경우`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi.woni", "1") }
+        }
+    }
+
+    @Test
+    fun `전진 횟수가 숫자가 아닐 경우`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,javaji", "a") }
         }
     }
 
