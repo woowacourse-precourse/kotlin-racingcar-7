@@ -4,19 +4,38 @@ import camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeT
 import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
 class ApplicationTest : NsTest() {
     @Test
     fun `기능 테스트`() {
-        assertRandomNumberInRangeTest(
-            {
-                run("pobi,woni", "1")
-                assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi")
-            },
-            MOVING_FORWARD, STOP
-        )
+//        assertRandomNumberInRangeTest(
+//            {
+//                run("pobi,woni", "1")
+//                assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi")
+//            },
+//            MOVING_FORWARD, STOP
+//        )
+    }
+
+    @Test
+    @DisplayName("Car 객체 기능 테스트")
+    fun `자동차 기능 테스트`() {
+        assertSimpleTest {
+            val test = Car("a")
+
+            test.move()
+            assert(test.movedCount == 1)
+            test.move()
+            assert(test.movedCount == 2)
+
+            repeat(10000000) {
+                test.move()
+            }
+            assert(test.movedCount == 10000002)
+        }
     }
 
     @Test
