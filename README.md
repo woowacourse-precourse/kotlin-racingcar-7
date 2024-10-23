@@ -9,7 +9,7 @@
 - [x] 자동차의 이름은 `5자 이하`여야 한다.
 - [x] 사용자는 몇 번의 이동을 할것인지 입력할 수 있어야 한다.
 - [x] 전진하는 조건은 `0 ~ 9` 사이에서 무작위 값을 구한후 무작위 값이 `4`이상일 경우이다.
-- [] 자동차 경주 게임을 완료한 후 누가 우승했는 지를 알려준다.
+- [x] 자동차 경주 게임을 완료한 후 누가 우승했는 지를 알려준다.
     - [x] 우승자는 한 명 이상일 수 있다.
 - [x] 우승자가 여러 명일 경우 쉼표(,)를 이용하여 구분한다.
 - [x] 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException`을 발생시킨 후 애플리케이션은 종료되어야 한다.
@@ -29,12 +29,12 @@
 - [x] indent(인텐트, 들여쓰기) depth를 3이 넘지 않도록 구현한다. 2까지만 허용한다.
     - ex) while문 안에 if문이 있으면 들여쓰기는 2이다.
 - [x] 함수 (또는 메서드)가 한 가지 일만 하도록 최대한 작게 만든다.
-- [ ] JUnit 5와 AssertJ를 이용하여 정리한 기능 목록이 정상적으로 작동하는지 테스트 코드로 확인한다.
+- [x] JUnit 5와 AssertJ를 이용하여 정리한 기능 목록이 정상적으로 작동하는지 테스트 코드로 확인한다.
 
 ## 라이브러리
-- [ ] `camp.nextstep.edu.missionutils`에서 제공하는 `Randoms` 및 `Console` API를 사용하여 구현해야 한다
-- [ ] Random 값 추출은 camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange()를 활용한다.
-- [ ] 사용자가 입력하는 값은 camp.nextstep.edu.missionutils.Console의 readLine()을 활용한다.
+- [x] `camp.nextstep.edu.missionutils`에서 제공하는 `Randoms` 및 `Console` API를 사용하여 구현해야 한다
+- [x] Random 값 추출은 camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange()를 활용한다.
+- [x] 사용자가 입력하는 값은 camp.nextstep.edu.missionutils.Console의 readLine()을 활용한다.
 
 ## 입출력 요구 사항
 
