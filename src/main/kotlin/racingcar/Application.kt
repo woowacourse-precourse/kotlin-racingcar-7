@@ -44,11 +44,14 @@ fun validateCarName(name: String) {
 fun getMoveCount(): Int {
     println("시도할 횟수는 몇 회인가요?")
     val input = Console.readLine()
+    return validateMoveCount(input)
+}
 
+// 이동횟수 검증하고 숫자로 반환
+fun validateMoveCount(input: String?):Int {
     // 입력값이 숫자인지 확인
     if (input.isNullOrBlank() || !input.all { it.isDigit() }) {
         throw IllegalArgumentException("숫자만 입력가능 합니다.")
     }
-
     return input.toInt()
 }
