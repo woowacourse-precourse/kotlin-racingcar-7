@@ -39,8 +39,7 @@ class RacingController {
     // 우승자는 한 명 이상이다
     private fun getWinners(cars: List<Car>): List<String> {
         val maxMove = cars.maxOf { it.movedDistance }
-        return cars.filter { it.movedDistance == maxMove }
-            .map { it.name }
+        return cars.filter { it.movedDistance == maxMove }.map { it.name }
     }
 
 }
