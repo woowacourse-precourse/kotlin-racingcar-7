@@ -1,5 +1,16 @@
 package racingcar
 
 fun main() {
-    // TODO: 프로그램 구현
+    val names = getCarNames()
+    val racingGame = RacingGame(names)
+    val tryCount = getTryCount()
+
+    println()
+    printResultTitle()
+    for (i in 1..tryCount) {
+        racingGame.startOneRound()
+        printCarDrivingDistance(racingGame.cars)
+    }
+
+    printWinnerName(racingGame.getLeadingCars())
 }

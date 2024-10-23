@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeT
 import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
@@ -23,6 +24,31 @@ class ApplicationTest : NsTest() {
     fun `예외 테스트`() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
+        }
+    }
+
+    @DisplayName("게임 0번 진행")
+    @Test
+    fun zeroGame() {
+        run("우테코,화이팅", "0")
+        assertThat(output()).contains("최종 우승자 : 우테코, 화이팅")
+    }
+
+    @DisplayName("너무 긴 이름 입력으로 예외 발생")
+    @Test
+    fun failLongName() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("우테코화이팅") }
+        }
+    }
+
+    @DisplayName("너무 큰 숫자 입력으로 예외 발생")
+    @Test
+    fun failOverTryCount() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> {
+                runException("우테코,화이팅", (Int.MAX_VALUE.toLong() + 1L).toString())
+            }
         }
     }
 
