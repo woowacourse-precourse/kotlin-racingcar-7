@@ -6,6 +6,7 @@ class ResultOutput {
             val positionResult = POSITION_SYMBOL.repeat(car.position)
             println("${car.name}$CAR_RESULT_SEPARATOR$positionResult")
         }
+        println()
     }
 
     fun printWinners(winnersName: List<String>) {
