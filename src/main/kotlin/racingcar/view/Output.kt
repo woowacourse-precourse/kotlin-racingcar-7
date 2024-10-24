@@ -5,11 +5,11 @@ import racingcar.constants.Constants.RESULT_MSG
 import racingcar.constants.Constants.WINNERS_MSG
 
 class Output {
-    fun resultMsg(carNameList: List<String>, moveCountList: List<List<String>>) {
+    fun resultMsg(carNameList: List<String>, moveByNameList: List<List<String>>) {
         println(RESULT_MSG)
-        for (j in moveCountList.indices) {
+        for (j in moveByNameList.indices) {
             for (i in carNameList.indices) {
-                println(carNameList[i] + COLON + moveCountList[i]
+                println(carNameList[i] + COLON + moveByNameList[i]
                     .take(j + 1)
                     .joinToString(""))
             }
