@@ -18,3 +18,5 @@ fun splitCarName(carNames: String): List<String>{
     var splitedCarNames = carNames.split(",")
     return splitedCarNames
 }
+
+data class Car(val name: String, val tryCount: Int)
