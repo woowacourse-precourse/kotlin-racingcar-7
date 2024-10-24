@@ -11,11 +11,11 @@ class Cars(private val validator: Validator) {
         for (i in 0..nameList.lastIndex) {
             resultMap[nameList[i]] = 0
         }
-        val validated = Pair<MutableMap<String, Int>, Int>(resultMap, count)
+        val validated = Pair(resultMap, count)
         return validated
     }
 
-    fun forward(resultMap: MutableMap<String, Int>, count: Int): MutableMap<String, Int> {
+    fun forward(resultMap: MutableMap<String, Int>): MutableMap<String, Int> {
         resultMap.forEach { (key, value) ->
             resultMap.replace(key, isForward(value))
         }
@@ -27,5 +27,20 @@ class Cars(private val validator: Validator) {
             return distance + 1
         }
         return distance
+    }
+
+    fun findWinner(resultMap: MutableMap<String, Int>): MutableList<String> {
+        val winners = mutableListOf<String>()
+        val sortedList = resultMap.toList().sortedByDescending { it.second }
+        val max = sortedList[0].second
+        for (i in 0..sortedList.lastIndex) {
+            if (!compareValues(max, sortedList[i].second)) break
+            winners.add(sortedList[i].first)
+        }
+        return winners
+    }
+
+    private fun compareValues(max: Int, value: Int): Boolean {
+        return max == value
     }
 }

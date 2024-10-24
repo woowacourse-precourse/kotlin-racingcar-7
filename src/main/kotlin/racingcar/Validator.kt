@@ -35,7 +35,7 @@ open class Validator {
     }
 
     private fun isNumber(string: String): Int {
-        var count: Int
+        val count: Int
         try {
             count = string.toInt()
         } catch (e: Exception) {

@@ -16,10 +16,11 @@ class Race(private val cars: Cars) {
         var resultMap = mutableMapOf<String, Int>()
         println("실행 결과")
         for (i in 1..validated.second) {
-            resultMap = cars.forward(validated.first, validated.second)
+            resultMap = cars.forward(validated.first)
             printResult(resultMap)
             println()
         }
+        println("최종 우승자 : ${cars.findWinner(resultMap).joinToString(", ")}")
     }
 
     private fun printResult(resultMap: MutableMap<String, Int>) {
