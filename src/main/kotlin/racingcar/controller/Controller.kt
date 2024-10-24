@@ -19,8 +19,11 @@ class Controller (
 
         outputView.showPrompt("시도할 횟수는 몇 회인가요?")
         val round = inputView.getInput()
-        racingGame.isValidNaturalNumber(round)
+        if (!racingGame.isValidNaturalNumber(round)) {
+            throw IllegalArgumentException()
+        }
 
+        racingGame.createCars()
 
         outputView.showPrompt("실행 결과")
         repeat(round.toInt()) {

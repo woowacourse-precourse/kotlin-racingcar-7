@@ -26,4 +26,8 @@ class RacingGame {
         if (round.toInt() == 0) return false
         return true
     }
+
+    fun createCars() {
+        names.forEach { name -> cars[name] = Car() }
+    }
 }

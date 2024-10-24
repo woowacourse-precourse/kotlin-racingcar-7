@@ -1,25 +1,5 @@
 package racingcar
 
-import racingcar.model.Car
-
-fun isValidRound(round: Int): Boolean {
-    if (round > 0) {
-        return true
-    }
-    throw IllegalArgumentException()
-}
-
-fun createCar(names: List<String>) : Map<String, Car> {
-    val cars = mutableMapOf<String, Car>()
-    for (name in names) {
-        if (isValidName(name)) {
-            cars[name] = Car(0, 0)
-        }
-
-    }
-    return cars
-}
-
 fun main() {
     repeat(inputRound) {
         for (car in cars) {
