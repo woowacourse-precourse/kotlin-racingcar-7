@@ -8,7 +8,7 @@ class Validation() {
     }
 
     fun isDigit(string: String) {
-        string.map {
+        string.forEach {
             if (!it.isDigit()) {
                 throw IllegalArgumentException()
             }
