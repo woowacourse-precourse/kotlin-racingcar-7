@@ -1,5 +1,11 @@
 package racingcar
 
+import racingcar.domain.Car
+import racingcar.ui.Ui
+
 fun main() {
-    // TODO: 프로그램 구현
+    val ui = Ui()
+
+    val carNames = ui.requestCarNames()
+    val cars = carNames.map(::Car)
 }
