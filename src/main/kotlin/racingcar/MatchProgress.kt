@@ -19,7 +19,7 @@ class Racing {
 
     private fun roundInProgress(cars: List<Result>) {
         cars.map { it.roundResult.add(decideRacingCarMoving()) }
-        IOHandler().printRoundResult(cars)
+        OutputHandler().printRoundResult(cars)
     }
 
     private fun decideRacingCarMoving(): Int {
@@ -40,7 +40,7 @@ class Rewarding(private val cars: List<Result>) {
     fun awardWinner() {
         val winner = findWinner()
 
-        IOHandler().printWinner(winner)
+        OutputHandler().printWinner(winner)
     }
 
     private fun findWinner(): List<Result> {

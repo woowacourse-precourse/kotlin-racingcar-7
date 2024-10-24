@@ -1,7 +1,7 @@
 package racingcar
 
 fun main() {
-    val start = IOHandler().startMatch()
+    val start = InputHandler().startMatch()
     val matchProgress = Racing()
     matchProgress.registaration = start
     val cars = matchProgress.racing()
