@@ -9,7 +9,7 @@ class Exeption {
 
 
     /*fun moveCountExeption(moveCount: ) {
-
+        // 숫자가 아닐 때
     }*/
 
     companion object {
