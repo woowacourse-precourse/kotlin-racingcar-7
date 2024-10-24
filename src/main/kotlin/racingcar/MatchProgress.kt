@@ -39,6 +39,8 @@ class Racing {
 class Rewarding(private val cars: List<Result>) {
     fun awardWinner() {
         val winner = findWinner()
+
+        IOHandler().printWinner(winner)
     }
 
     private fun findWinner(): List<Result> {

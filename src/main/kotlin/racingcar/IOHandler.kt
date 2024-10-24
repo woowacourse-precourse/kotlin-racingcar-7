@@ -22,6 +22,18 @@ class IOHandler {
         println()
     }
 
+    fun printWinner(winnerList: List<Result>) {
+        val winner = StringBuilder("최종 우승자 : ")
+
+        winnerList.forEachIndexed { index, winnerInfo ->
+            if (index != 0) {
+                winner.append(", ")
+            }
+            winner.append(winnerInfo.carName)
+        }
+        println(winner.toString())
+    }
+
     private fun registerCars(): String {
         println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
 
