@@ -1,6 +1,7 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Console
+import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
     // TODO: 프로그램 구현
@@ -22,4 +23,13 @@ fun getAttemptCount(): Int {
     println("시도할 횟수는 몇 회인가요?")
     return Console.readLine()?.toIntOrNull() ?: throw IllegalArgumentException()
 }
+
+fun updateCarPosition(cars : MutableList<Pair<String,Int>>){
+    cars.forEachIndexed { index, car ->
+        if(Randoms.pickNumberInRange(0,9) >= 4){
+            cars[index] = car.copy(second = car.second + 1)
+        }
+    }
+}
+
 
