@@ -10,8 +10,6 @@ fun main() {
     println("시도할 횟수는 몇 회인가요?")
     val roundStr: String? = Console.readLine()
 
-    println("\n실행 결과")
-
     val nameListAndRound: Pair<List<String>, Int> = validate(names, roundStr)
     val carList: List<Car> = nameListAndRound.first.map {
         Car(it)
@@ -19,9 +17,35 @@ fun main() {
     val maxRound = nameListAndRound.second
     val dice = Dice()
 
+    println("\n실행 결과")
+
+    listOf(1, 2, 3).sum()
+
     repeat(maxRound) {
         playRound(carList, dice)
     }
+
+    val winners = findWinners(carList)
+
+    println("최종 우승자 : ${winners.joinToString(", ") { it.name }}")
+}
+
+private fun findWinners(cars: List<Car>): List<Car> {
+    var maxMove = 0
+    val winnerList = arrayListOf<Car>()
+
+    for (car in cars) {
+        if (car.movedCount > maxMove) {
+            maxMove = car.movedCount
+            winnerList.clear()
+            winnerList.add(car)
+
+        } else if (car.movedCount == maxMove) {
+            winnerList.add(car)
+        }
+    }
+
+    return winnerList
 }
 
 private fun playRound(cars: List<Car>, dice: Dice) {
@@ -35,12 +59,12 @@ private fun playRound(cars: List<Car>, dice: Dice) {
         println(car.roundResult)
     }
 
-    println("\n")
+    println()
 }
 
 @Throws(IllegalArgumentException::class)
 private fun validate(names: String?, roundStr: String?): Pair<List<String>, Int> {
-    if (names == null || roundStr == null) {
+    if (names.isNullOrBlank() || roundStr.isNullOrBlank()) {
         throw IllegalArgumentException("유효하지 않은 입력값입니다. (입력값 null)")
     }
 
