@@ -8,18 +8,42 @@ class Organizer {
     private val judge = Judge()
 
     fun prepareRace() {
+        val appliedCars = inputCarNames()
+        val raceCount = inputRaceCount()
+        val raceCars: List<Car> = appliedCars.map { Car(it, 0) }
+
+        startRace(raceCars, raceCount)
+    }
+
+    private fun inputCarNames(): List<String> {
         outputView.printNotice("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
         val appliedCars: List<String> = inputView.inputCarNames()
 
-        if (judge.isDuplicatedCarNames(appliedCars)) outputView.printErrorMessage("경주에 등록할 자동차 이름은 중복될 수 없습니다.")
-        if (!appliedCars.all { judge.isValidCarName(it) }) outputView.printErrorMessage("경주에 등록할 자동차 이름은 공백을 포함할 수 없으며, 5자 이하여야 합니다.")
+        validateCarNames(appliedCars)
+        return appliedCars
+    }
 
+    private fun validateCarNames(appliedCars: List<String>) {
+        if (judge.isDuplicatedCarNames(appliedCars)) {
+            outputView.printErrorMessage("경주에 등록할 자동차 이름은 중복될 수 없습니다.")
+        }
+        if (!appliedCars.all { judge.isValidCarName(it) }) {
+            outputView.printErrorMessage("경주에 등록할 자동차 이름은 공백을 포함할 수 없으며, 5자 이하여야 합니다.")
+        }
+    }
+
+    private fun inputRaceCount(): String {
         outputView.printNotice("시도할 횟수는 몇 회인가요?")
         val raceCount = inputView.inputRaceCount()
-        if (!judge.isValidRaceCount(raceCount)) outputView.printErrorMessage("경주 횟수는 최소 1회 이상이며, 정수만 입력 가능합니다.")
 
-        val raceCars: List<Car> = appliedCars.map { Car(it, 0) }
-        startRace(raceCars, raceCount)
+        validateRaceCount(raceCount)
+        return raceCount
+    }
+
+    private fun validateRaceCount(raceCount: String) {
+        if (!judge.isValidRaceCount(raceCount)) {
+            outputView.printErrorMessage("경주 횟수는 최소 1회 이상이며, 정수만 입력 가능합니다.")
+        }
     }
 
     private fun startRace(raceCars: List<Car>, raceCount: String) {
