@@ -1,6 +1,6 @@
 package racingcar
 
-class Validation() {
+class Validation {
     fun isNotEmpty(string: String) {
         if (string.isEmpty()) {
             throw IllegalArgumentException()

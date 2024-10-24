@@ -50,8 +50,3 @@ class OutputHandler {
         println(winner.toString())
     }
 }
-
-data class Registaration(
-    val cars: String,
-    val round: Int,
-)

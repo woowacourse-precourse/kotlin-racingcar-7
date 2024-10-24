@@ -69,9 +69,3 @@ class PreProcessing(private var registaration: Registaration) {
     }
 
 }
-
-data class Result(
-    val carName: String,
-    var roundResult: MutableList<Int> = mutableListOf(),
-    var score: Int = 0,
-)
