@@ -10,8 +10,15 @@ fun inputCar(): List<String> {
     return requireNotNull(splitNameList)
 }
 
+fun inputNum(): Int{
+    println("시도할 횟수는 몇 회인가요?")
+    val numOfAttempts = Console.readLine().toInt()
+
+    return requireNotNull(numOfAttempts)
+}
+
 fun main() {
     // TODO: 프로그램 구현
     val nameList = inputCar()
-
+    val attemptNum = inputNum()
 }
