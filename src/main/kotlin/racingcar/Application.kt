@@ -12,32 +12,44 @@ fun main() {
     val tryCount = Console.readLine()
     check.secondInput(tryCount)
 
+    val raceGame = RaceGame()
+    val carMap = raceGame.splitCars(cars)
+
 }
 
 class RaceGame(){
 
+    fun splitCars(cars : String) : MutableMap<String, Int>{
+        val carMap : MutableMap<String,Int> = mutableMapOf()
+        val carList = cars.split(",").map{it.trim()}
+        carList.forEach{
+            carMap[it]=0
+        }
+        return carMap
+    }
+
+    fun play(carMap : MutableMap<String, Int>){
+
+    }
 }
 
 class CheckException(){
 
     fun firstInput(car : String){
-        if(car=="") throw IllegalArgumentException()
-    }
-    fun racer(racers : List<String>){
-        //중복된 자동차 이름이 있는 경우
-        if(racers.size != racers.distinct().size){
+        if(car=="") {
             throw IllegalArgumentException()
         }
-        //빈 문자열(또는 공백)이거나 자동차 이름의 길이가 5자가 넘는 경우
-        for(racer in racers){
-            if(racer.isBlank()){
-                throw IllegalArgumentException()
-            }
-            else if(racer.length>5){
+        val carList = car.split(",").map{it.trim()}
+        if(carList.size != carList.distinct().size){
+            throw IllegalArgumentException()
+        }
+        carList.forEach{
+            if(it.isBlank() || it.length>5){
                 throw IllegalArgumentException()
             }
         }
     }
+
     fun secondInput(count : String){
         val num = count.toIntOrNull()
         if(num==null || num <= 0 ) throw IllegalArgumentException()
