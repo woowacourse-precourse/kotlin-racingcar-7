@@ -44,13 +44,6 @@ fun moveCar(car: Map.Entry<String, Car>) {
 fun stopCar(){ }
 
 fun main() {
-    val names = splitName(inputName)
-
-    isValidRound(inputRound)
-    val cars = createCar(names)
-
-
-
     var randomNumber = 0
     repeat(inputRound) {
         for (car in cars) {
