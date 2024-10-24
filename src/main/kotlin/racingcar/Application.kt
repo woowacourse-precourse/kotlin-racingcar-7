@@ -5,6 +5,17 @@ import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
     // TODO: 프로그램 구현
+    val carNames = getUserInput()
+    val attemptCount = getAttemptCount()
+
+    println("\n실행 결과")
+
+    repeat(attemptCount) {
+        updateCarPosition(carNames)
+        printCarsPosition(carNames)
+    }
+
+    printWinner(carNames)
 }
 
 fun getUserInput(): MutableList<Pair<String,Int>> {
@@ -37,6 +48,12 @@ fun printCarsPosition(cars : MutableList<Pair<String, Int>>){
         println("$name : ${"-".repeat(position)}")
     }
     println()
+}
+
+fun printWinner(cars: MutableList<Pair<String, Int>>){
+    val maxSecond = cars.maxOf { it.second }
+    val winner = cars.filter { it.second == maxSecond }.joinToString(", ") {it.first}
+    println("최종 우승자 : $winner")
 }
 
 
