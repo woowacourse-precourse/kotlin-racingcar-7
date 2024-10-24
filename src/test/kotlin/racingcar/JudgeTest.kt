@@ -82,4 +82,54 @@ class JudgeTest {
             assertFalse(result)
         }
     }
+
+    @Nested
+    @DisplayName("경주 횟수 유효성 검사")
+    inner class RaceCountValidatorTest {
+
+        @Test
+        fun `경주 횟수가 0이상 양의 정수일 경우 true 값을 반환한다`() {
+            val raceCount = "5"
+
+            val result = judge.isValidRaceCount(raceCount)
+
+            assertTrue(result)
+        }
+
+        @Test
+        fun `경주 횟수가 0일 경우 false 값을 반환한다`() {
+            val raceCount = "0"
+
+            val result = judge.isValidRaceCount(raceCount)
+
+            assertFalse(result)
+        }
+
+        @Test
+        fun `경주 횟수가 실수형일 경우 false 값을 반환한다`() {
+            val raceCount = "3.5"
+
+            val result = judge.isValidRaceCount(raceCount)
+
+            assertFalse(result)
+        }
+
+        @Test
+        fun `경주 횟수가 음수일 경우 false 값을 반환한다`() {
+            val raceCount = "-100"
+
+            val result = judge.isValidRaceCount(raceCount)
+
+            assertFalse(result)
+        }
+
+        @Test
+        fun `경주 횟수가 숫자가 아닐 경우 false 값을 반환한다`() {
+            val raceCount = "abc"
+
+            val result = judge.isValidRaceCount(raceCount)
+
+            assertFalse(result)
+        }
+    }
 }
