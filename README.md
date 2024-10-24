@@ -13,5 +13,6 @@
   - 랜덤 숫자 생성 : repeat(자동차 수)
   - 자동차 전진
   - 경주 상황 리턴
+  - \+ 경주 종료 판단
 - Car(Name: String, Position: Int)
   - go 메소드
