@@ -1,10 +1,11 @@
-package racingcar
+package racingcar.controller
 
-import camp.nextstep.edu.missionutils.Console.readLine
 import camp.nextstep.edu.missionutils.Randoms
+import racingcar.view.RacingGameView
+import racingcar.model.Car
 
-class RacingGame(
-    private val outputView: OutputView
+class RacingGameController(
+    private val racingGameView: RacingGameView
 ) {
     private var cars: List<Car> = emptyList()
     private var tryCount: Int = 0
@@ -21,8 +22,8 @@ class RacingGame(
      * @return 자동차 이름들과 0으로 초기화된 LinkedHashMap 값
      */
     private fun readCarNames(): List<Car> {
-        outputView.printGameStart()
-        val inputString = readLine()
+        racingGameView.printGameStart()
+        val inputString = racingGameView.readLine()
 
         return splitCarNames(inputString)
     }
@@ -38,8 +39,9 @@ class RacingGame(
      * @return 자동차 경주 횟수를 나타내는 Int 값
      */
     fun inputTryCount(): Int {
-        outputView.printInputCount()
-        val inputCountString = readLine()
+        racingGameView.printInputCount()
+        val inputCountString = racingGameView.readLine()
+
         return inputCountString.toInt()
     }
 
@@ -52,7 +54,7 @@ class RacingGame(
             if (randomVal >= 4) {
                 it.moveForward()
             }
-            outputView.printCarNameWithIndicator(it, true)
+            racingGameView.printCarNameWithIndicator(it, true)
         }
     }
 
@@ -60,7 +62,7 @@ class RacingGame(
      * 경주를 시도횟수 만큼 진행 하고 결과를 출력
      */
     private fun multiRace() {
-        outputView.printRaceResult(true)
+        racingGameView.printRaceResult(true)
         for (i in 1..tryCount) {
             singleRace()
         }
@@ -73,6 +75,6 @@ class RacingGame(
         val winnerDistance = cars.maxOf { it.distance }
         val winners = cars.filter { it.distance == winnerDistance }
         val winnersName = winners.map { it.name }
-        outputView.printWinners(winnersName)
+        racingGameView.printWinners(winnersName)
     }
 }

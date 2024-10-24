@@ -9,14 +9,16 @@ import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.ValueSource
+import racingcar.controller.RacingGameController
+import racingcar.view.RacingGameView
 
 class RacingGameUnitTest : NsTest() {
-    private lateinit var racingGame: RacingGame
+    private lateinit var racingGameController: RacingGameController
 
     @BeforeEach
     fun setUp() {
-        val outputView = OutputView()
-        racingGame = RacingGame(outputView)
+        val racingGameView = RacingGameView()
+        racingGameController = RacingGameController(racingGameView)
     }
 
     @ParameterizedTest
@@ -28,7 +30,7 @@ class RacingGameUnitTest : NsTest() {
             run(input)
 
             // when
-            val tryCount = racingGame.inputTryCount()
+            val tryCount = racingGameController.inputTryCount()
 
             // then
             assertThat(tryCount).isEqualTo(input.toInt())
@@ -44,7 +46,7 @@ class RacingGameUnitTest : NsTest() {
                 run("pobi,woni,jun", "1")
 
                 // when
-                racingGame.gameStart()
+                racingGameController.gameStart()
 
                 // then
                 assertThat(output()).contains(
@@ -68,7 +70,7 @@ class RacingGameUnitTest : NsTest() {
                 run("pobi,woni,jun", "3")
 
                 // when
-                racingGame.gameStart()
+                racingGameController.gameStart()
 
                 // then
                 assertThat(output()).contains(
@@ -98,7 +100,7 @@ class RacingGameUnitTest : NsTest() {
                 run("pobi,woni,jun", "2")
 
                 // when
-                racingGame.gameStart()
+                racingGameController.gameStart()
 
                 // then
                 assertThat(output()).contains(
@@ -124,7 +126,7 @@ class RacingGameUnitTest : NsTest() {
                 run("pobi,woni,jun,meda", "2")
 
                 // when
-                racingGame.gameStart()
+                racingGameController.gameStart()
 
                 // then
                 assertThat(output()).contains(
