@@ -3,31 +3,29 @@ package racingcar
 import camp.nextstep.edu.missionutils.Randoms
 
 class Cars(private val validator: Validator) {
-    fun validation(names: String, iters: String): Pair<List<String>, Int> {
-        val nameList = validator.splitNames(names)
+    fun validation(nameString: String, iterString: String): Pair<MutableMap<String, Int>, Int> {
+        val nameList = validator.splitNames(nameString)
         validator.nameCheck(nameList)
-        val count = validator.iterCountCheck(iters)
-        val validated = Pair(nameList, count)
+        val count = validator.iterCountCheck(iterString)
+        val resultMap = mutableMapOf<String, Int>()
+        for (i in 0..nameList.lastIndex) {
+            resultMap[nameList[i]] = 0
+        }
+        val validated = Pair<MutableMap<String, Int>, Int>(resultMap, count)
         return validated
     }
 
-    fun forward(validated: Pair<List<String>, Int>): ArrayList<String> {
-        var forwardResult = ArrayList<String>()
-        for (i in 1..validated.first.size) { // forwardResult의 크기를 차의 대수만큼 늘려주기
-            forwardResult.add("")
+    fun forward(resultMap: MutableMap<String, Int>, count: Int): MutableMap<String, Int> {
+        resultMap.forEach { (key, value) ->
+            resultMap.replace(key, isForward(value))
         }
-        forwardResult = singleForward(forwardResult)
-        return forwardResult
+        return resultMap
     }
 
-    private fun singleForward(forwardResult: ArrayList<String>): ArrayList<String> {
-        for (i in 0..forwardResult.lastIndex) {
-            if (isForward()) forwardResult[i] += "-"
+    private fun isForward(distance: Int): Int {
+        if (Randoms.pickNumberInRange(0, 9) > 3) {
+            return distance + 1
         }
-        return forwardResult
-    }
-
-    private fun isForward(): Boolean {
-        return Randoms.pickNumberInRange(0, 9) > 3
+        return distance
     }
 }
