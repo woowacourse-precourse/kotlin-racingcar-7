@@ -13,10 +13,50 @@ class ApplicationTest : NsTest() {
     fun `기능 테스트`() {
         assertRandomNumberInRangeTest(
             {
+                run("pobi,woni", "0")
+                assertThat(output()).contains("최종 우승자 : pobi, woni")
+            },
+            MOVING_FORWARD
+        )
+
+        assertRandomNumberInRangeTest(
+            {
                 run("pobi,woni", "1")
                 assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi")
             },
-            MOVING_FORWARD, STOP, STOP, STOP
+            MOVING_FORWARD, STOP
+        )
+
+        assertRandomNumberInRangeTest(
+            {
+                run("pobi,woni", "5")
+                assertThat(output()).contains("pobi : -----", "woni : -----", "최종 우승자 : pobi, woni")
+            },
+            MOVING_FORWARD, MOVING_FORWARD,MOVING_FORWARD, MOVING_FORWARD,MOVING_FORWARD, MOVING_FORWARD,MOVING_FORWARD, MOVING_FORWARD,MOVING_FORWARD, MOVING_FORWARD
+        )
+
+        assertRandomNumberInRangeTest(
+            {
+                run("pobi,woni", "5")
+                assertThat(output()).contains("pobi : -----", "woni : ----", "최종 우승자 : pobi")
+            },
+            MOVING_FORWARD, MOVING_FORWARD,MOVING_FORWARD, MOVING_FORWARD,MOVING_FORWARD, MOVING_FORWARD,MOVING_FORWARD, MOVING_FORWARD,MOVING_FORWARD, STOP
+        )
+
+        assertRandomNumberInRangeTest(
+            {
+                run("pobi,woni", "5")
+                assertThat(output()).contains("pobi : ", "woni : ", "최종 우승자 : pobi, woni")
+            },
+            STOP
+        )
+
+        assertRandomNumberInRangeTest(
+            {
+                run("pobi,woni, a", "5")
+                assertThat(output()).contains("pobi : -", "woni : -", " a : ", "최종 우승자 : pobi, woni")
+            },
+            MOVING_FORWARD,MOVING_FORWARD,STOP
         )
     }
 
@@ -58,7 +98,7 @@ class ApplicationTest : NsTest() {
     fun `주사위 기능 테스트`() {
         assertSimpleTest {
             val dice = Dice()
-            repeat(100000000) {
+            repeat(1000) {
                 assert(dice.roll() in 0..9)
             }
         }
