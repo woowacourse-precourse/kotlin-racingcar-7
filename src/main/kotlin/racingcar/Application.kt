@@ -13,14 +13,23 @@ fun main() {
     check.secondInput(tryCount)
 
     val raceGame = RaceGame()
-    val carMap = raceGame.splitCars(cars)
-    raceGame.play(carMap, tryCount.toInt())
+    raceGame.play(cars, tryCount.toInt())
 
 }
 
-class RaceGame(){
+class RaceGame{
 
-    fun splitCars(cars : String) : MutableMap<String, Int>{
+    fun play(cars : String, tryCount : Int){
+        var carMap = splitCars(cars)
+
+        println("실행 결과")
+        for(i in 0 until tryCount){
+            carMap = goForward(carMap)
+            result(carMap)
+        }
+        winner(carMap)
+    }
+    private fun splitCars(cars : String) : MutableMap<String, Int>{
         val carMap : MutableMap<String,Int> = mutableMapOf()
         val carList = cars.split(",").map{it.trim()}
         carList.forEach{
@@ -28,18 +37,7 @@ class RaceGame(){
         }
         return carMap
     }
-
-    fun play(carMap : MutableMap<String, Int>, tryCount : Int){
-        var gameScore = carMap
-
-        println("실행 결과")
-        for(i in 0 until tryCount){
-            gameScore = goForward(gameScore)
-            result(gameScore)
-        }
-        winner(gameScore)
-    }
-    fun goForward(carMap : MutableMap<String, Int>) : MutableMap<String,Int>{
+    private fun goForward(carMap : MutableMap<String, Int>) : MutableMap<String,Int>{
         carMap.forEach{(name, score)->
             if(Randoms.pickNumberInRange(0,9)>=4){
                 carMap[name]=score+1
@@ -48,13 +46,13 @@ class RaceGame(){
         return carMap
     }
 
-    fun result(gameScore : MutableMap<String, Int>){
+    private fun result(gameScore : MutableMap<String, Int>){
         gameScore.forEach{
             println("${it.key} : ${"-".repeat(it.value)}")
         }
         println()
     }
-    fun winner(gameScore: MutableMap<String, Int>){
+    private fun winner(gameScore: MutableMap<String, Int>){
         val check = CheckException()
         check.result(gameScore)
 
@@ -69,7 +67,7 @@ class RaceGame(){
     }
 }
 
-class CheckException(){
+class CheckException{
 
     fun firstInput(car : String){
         if(car=="" || !car.contains(",")) {
