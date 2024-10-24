@@ -72,7 +72,7 @@ class RaceGame(){
 class CheckException(){
 
     fun firstInput(car : String){
-        if(car=="") {
+        if(car=="" || !car.contains(",")) {
             throw IllegalArgumentException()
         }
         val carList = car.split(",").map{it.trim()}
