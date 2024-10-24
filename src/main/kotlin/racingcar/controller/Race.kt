@@ -25,19 +25,18 @@ class Race {
         for (i in 1..count) {
             status(infoOfCar)
         }
-        // 최종 우승자 출력 필요
+        winner(infoOfCar)
     }
 
     private fun status(infoOfCar: MutableMap<String, Int>) {
         val move = Move()
-        val presentInfo = move.move(infoOfCar)
-        for ((key, value) in presentInfo) {
-            outputView.printStatusOfName(key)
-            for (i in 1..value) {
-                outputView.printStatusOfMove()
-            }
-            outputView.printLineFeed()
-        }
-        outputView.printLineFeed()
+        val updateInfo = move.move(infoOfCar)
+        outputView.printStatusOfMove(updateInfo)
+    }
+
+    private fun winner(infoOfCar: MutableMap<String, Int>) {
+        val maxMove = infoOfCar.maxOf { it.value }
+        val winnerList = infoOfCar.filter{ it.value == maxMove }.keys.joinToString(", ")
+        outputView.printWinnerMessage(winnerList)
     }
 }

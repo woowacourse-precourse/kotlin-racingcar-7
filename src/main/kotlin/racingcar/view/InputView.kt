@@ -20,7 +20,7 @@ class InputView {
             val count = Console.readLine().toInt()
             require(count > 0) {ERROR_COUNT_SIZE}
             return count
-        } catch (e:NumberFormatException){
+        } catch (e: NumberFormatException){
             throw IllegalArgumentException(ERROR_ONLY_DIGIT)
         }
     }
