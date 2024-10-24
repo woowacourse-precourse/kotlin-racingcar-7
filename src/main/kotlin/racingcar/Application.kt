@@ -1,7 +1,5 @@
 package racingcar
 
-import camp.nextstep.edu.missionutils.Randoms
-
 import racingcar.model.Car
 
 fun isValidName(name: String) : Boolean {
@@ -33,26 +31,9 @@ fun createCar(names: List<String>) : Map<String, Car> {
     return cars
 }
 
-fun getRandomNumber() : Int {
-    return Randoms.pickNumberInRange(0,9)
-}
-
-fun moveCar(car: Map.Entry<String, Car>) {
-    car.value.location += 1
-}
-
-fun stopCar(){ }
-
 fun main() {
-    var randomNumber = 0
     repeat(inputRound) {
         for (car in cars) {
-            randomNumber = getRandomNumber()
-            if (randomNumber >= 4) {
-                moveCar(car)
-            } else {
-                stopCar()
-            }
             val currentlocation: Int = car.value.location
             val line = "-"
             println("${car.key} : ${line.repeat(currentlocation)}")
