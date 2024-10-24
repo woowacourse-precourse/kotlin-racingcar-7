@@ -5,9 +5,8 @@ import racingcar.constants.Constants.MOVE
 
 class Make(private val carNames: String, private val tryCount: Int) {
     private fun randomNumber() = Randoms.pickNumberInRange(0, 9)
-
-    fun carNameList() = carNames.split(',')
-    private val carNameList = carNameList()
+    val carNameList = carNames.split(',')
+    val moveByNameList = moveByNameList()
 
     private fun numberList(): List<Int> {
         val numberList = mutableListOf<Int>()
@@ -21,22 +20,19 @@ class Make(private val carNames: String, private val tryCount: Int) {
 
     fun moveByNameList(): List<List<String>> {
         val moveByNameList = mutableListOf<List<String>>()
-        val numberList = numberList()
 
         repeat(carNameList.size) {
-            moveByNameList.add(Move().moveOrStop(numberList))
+            moveByNameList.add(Move().moveOrStop(numberList()))
         }
 
         return moveByNameList
     }
 
     private fun moveCountList(): List<Int> {
-        val moveByNameList = moveByNameList()
         val moveCountList = mutableListOf<Int>()
-        var moveCount = 0
 
         for (i in moveByNameList.indices) {
-            moveCount = moveByNameList[i].count { it.contains(MOVE) }
+            val moveCount = moveByNameList[i].count { it == MOVE }
             moveCountList.add(moveCount)
         }
 
@@ -45,7 +41,7 @@ class Make(private val carNames: String, private val tryCount: Int) {
 
     fun winnerList(): List<String> {
         val moveCountList = moveCountList()
-        val maxValue = moveCountList.max()
+        val maxValue = moveCountList.maxOrNull()
         val maxIndex = moveCountList.withIndex().filter { it.value == maxValue }.map { it.index }
         val winnerList = mutableListOf<String>()
 
