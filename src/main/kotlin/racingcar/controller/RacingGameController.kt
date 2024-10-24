@@ -3,9 +3,11 @@ package racingcar.controller
 import camp.nextstep.edu.missionutils.Randoms
 import racingcar.view.RacingGameView
 import racingcar.model.Car
+import racingcar.validator.InputValidator
 
 class RacingGameController(
-    private val racingGameView: RacingGameView
+    private val racingGameView: RacingGameView,
+    private val validator: InputValidator
 ) {
     private var cars: List<Car> = emptyList()
     private var tryCount: Int = 0
@@ -24,6 +26,7 @@ class RacingGameController(
     private fun readCarNames(): List<Car> {
         racingGameView.printGameStart()
         val inputString = racingGameView.readLine()
+        validator.carNamesValidate(inputString)
 
         return splitCarNames(inputString)
     }
@@ -41,6 +44,7 @@ class RacingGameController(
     fun inputTryCount(): Int {
         racingGameView.printInputCount()
         val inputCountString = racingGameView.readLine()
+        validator.tryCountValidate(inputCountString)
 
         return inputCountString.toInt()
     }

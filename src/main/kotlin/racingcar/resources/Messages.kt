@@ -10,8 +10,7 @@ object Messages {
     const val GAME_WINNER = "최종 우승자 : %s"
 
     // 에러 메시지
-    const val ERROR_EMPTY_PLAYER = "경기는 최소 1명 이상 참가해야 합니다."
-    const val ERROR_INVALID_NAME = "자동차 이름은 5자 이하만 가능합니다."
-    const val ERROR_INVALID_COUNT = "시도 횟수는 양의 정수만 가능합니다."
+    const val ERROR_NAME_LENGTH = "자동차 이름은 1자 이상 5자 이하만 가능합니다."
     const val ERROR_EMPTY_INPUT = "입력값이 비어있습니다."
+    const val ERROR_NOT_POSITIVE = "시도 횟수는 양의 정수만 입력 가능합니다."
 }
