@@ -1,14 +1,13 @@
 package racingcar
 
 class IOHandler {
-    fun startMatch() {
-        registerCars()
-        decideNumberOfRound()
+    fun startMatch(): Registaration {
+        return Registaration(cars = registerCars(), decideNumberOfRound())
     }
 
-    private fun registerCars(): String? {
+    private fun registerCars(): String {
         println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
-        return readLine()
+        return readLine() ?: throw IllegalArgumentException()
     }
 
     private fun decideNumberOfRound(): Int {
@@ -16,3 +15,8 @@ class IOHandler {
         return readLine()?.toInt() ?: throw IllegalArgumentException()
     }
 }
+
+data class Registaration(
+    val cars: String,
+    val round: Int,
+)
