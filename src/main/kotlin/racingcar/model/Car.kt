@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms
 
 data class Car(
     var location: Int = 0,
-    var randomNumber: Int,
+    var randomNumber: Int = 0,
 ) {
     fun move() {
         randomNumber = Randoms.pickNumberInRange(0, 9)
