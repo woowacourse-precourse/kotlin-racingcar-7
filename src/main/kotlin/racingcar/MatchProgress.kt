@@ -13,7 +13,8 @@ class MatchProgress {
         for (round in 1 .. maxRound) {
             roundInProgress(cars)
         }
-        cars.map { it.score = it.roundResult.sum() }
+        cars.map { it.score = calculateTotalScore(it.roundResult) }
+        println(cars)
     }
 
     private fun roundInProgress(cars: List<Result>) {
@@ -30,7 +31,7 @@ class MatchProgress {
         return randomNumber - 3
     }
 
-    fun calculateTotalScore(score: List<Int>): Int {
+    private fun calculateTotalScore(score: List<Int>): Int {
         return score.sum()
     }
 }
