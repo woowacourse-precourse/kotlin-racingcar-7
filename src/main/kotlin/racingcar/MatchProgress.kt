@@ -1,5 +1,7 @@
 package racingcar
 
+import camp.nextstep.edu.missionutils.Randoms
+
 class MatchProgress {
     lateinit var registaration: Registaration
 
@@ -7,12 +9,36 @@ class MatchProgress {
         val cars = PreProcessing(registaration).preprocess()
         println("\n실행 결과")
     }
+
+    fun racing() {
+        val maxRound = registaration.round
+        val cars = PreProcessing(registaration).preprocess()
+
+        println("\n실행 결과")
+        for (round in 1 .. maxRound) {
+            roundInProgress(cars, round - 1)
+        }
+    }
+
+    private fun roundInProgress(cars: List<Result>, round: Int) {
+        cars.map { it.roundResult.add(decideRacingCarMoving()) }
+
+    }
+
+    private fun decideRacingCarMoving(): Int {
+        val randomNumber = Randoms.pickNumberInRange(0, 9)
+
+        if (randomNumber < 4) {
+            return 0
+        }
+        return randomNumber - 3
+    }
 }
 
 class PreProcessing(private var registaration: Registaration) {
     fun preprocess(): List<Result> {
         val validation = Validation()
-        val cars = emptyList<Result>().toMutableList()
+        val cars = mutableListOf<Result>()
 
         validation.isDelimitersCorrect(registaration)
         splitCars().map {
@@ -31,6 +57,6 @@ class PreProcessing(private var registaration: Registaration) {
 
 data class Result(
     val carName: String,
-    var roundResult: List<Int> = listOf(),
+    var roundResult: MutableList<Int> = mutableListOf(),
     var score: Int = 0,
 )
