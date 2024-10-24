@@ -10,7 +10,7 @@ class Organizer {
     fun prepareRace() {
         val appliedCars = inputCarNames()
         val raceCount = inputRaceCount()
-        val raceCars: List<Car> = appliedCars.map { Car(it, 0) }
+        val raceCars: List<Car> = appliedCars.map { Car.of(it) }
 
         startRace(raceCars, raceCount)
     }
