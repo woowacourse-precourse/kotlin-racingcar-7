@@ -2,10 +2,10 @@ package racingcar
 
 import camp.nextstep.edu.missionutils.Randoms
 
-class MatchProgress {
+class Racing {
     lateinit var registaration: Registaration
 
-    fun racing() {
+    fun racing(): List<Result> {
         val maxRound = registaration.round
         val cars = PreProcessing(registaration).preprocess()
 
@@ -14,7 +14,7 @@ class MatchProgress {
             roundInProgress(cars)
         }
         cars.map { it.score = calculateTotalScore(it.roundResult) }
-        println(cars)
+        return cars
     }
 
     private fun roundInProgress(cars: List<Result>) {
@@ -33,6 +33,18 @@ class MatchProgress {
 
     private fun calculateTotalScore(score: List<Int>): Int {
         return score.sum()
+    }
+}
+
+class Rewarding(private val cars: List<Result>) {
+    fun awardWinner() {
+        val winner = findWinner()
+    }
+
+    private fun findWinner(): List<Result> {
+        val winnerScore = cars.map { it.score }
+
+        return cars.filter { it.score == winnerScore.max() }
     }
 }
 
