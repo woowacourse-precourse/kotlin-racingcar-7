@@ -31,12 +31,15 @@ class RacingGame(
         outputView.printNewLine()
     }
 
-    private fun displayWinners(outputView: OutputView) {
+    private fun findWinners(): String {
         val maxDistance = cars.maxOf { it.currentDistance }
-        val winners = cars
+        return cars
             .filter { it.currentDistance == maxDistance }
             .joinToString(", ") { it.getName() }
+    }
 
-        outputView.printWinners(winners)
+    private fun displayWinners(outputView: OutputView) {
+        val winnerNames = findWinners()
+        outputView.printWinners(winnerNames)
     }
 }
