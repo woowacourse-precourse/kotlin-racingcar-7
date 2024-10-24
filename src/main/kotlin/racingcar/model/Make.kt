@@ -30,23 +30,29 @@ class Make(private val carNames: String, private val tryCount: Int) {
         return moveByNameList
     }
 
-    fun winnerList(): List<String> {
+    private fun moveCountList(): List<Int> {
         val moveByNameList = moveByNameList()
-        val winnerList = mutableListOf<Int>()
+        val moveCountList = mutableListOf<Int>()
         var moveCount = 0
 
         for (i in moveByNameList.indices) {
             moveCount = moveByNameList[i].count { it.contains(MOVE) }
-            winnerList.add(moveCount)
+            moveCountList.add(moveCount)
         }
 
-        val maxValue = winnerList.max()
-        val maxIndex = winnerList.withIndex().filter { it.value == maxValue }.map { it.index }
-        val wList = mutableListOf<String>()
+        return moveCountList
+    }
+
+    fun winnerList(): List<String> {
+        val moveCountList = moveCountList()
+        val maxValue = moveCountList.max()
+        val maxIndex = moveCountList.withIndex().filter { it.value == maxValue }.map { it.index }
+        val winnerList = mutableListOf<String>()
+
         for (i in maxIndex.indices) {
-            wList.add(carNameList[maxIndex[i]])
+            winnerList.add(carNameList[maxIndex[i]])
         }
 
-        return wList
+        return winnerList
     }
 }
