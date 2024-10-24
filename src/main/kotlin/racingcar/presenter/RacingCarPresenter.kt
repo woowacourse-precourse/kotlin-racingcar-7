@@ -1,5 +1,6 @@
 package racingcar.presenter
 
+import racingcar.model.AttemptCount
 import racingcar.model.Car
 
 class RacingCarPresenter {
@@ -9,5 +10,10 @@ class RacingCarPresenter {
             Car(name)
         }
         return cars
+    }
+
+    fun createAttemptCount(number: Int): AttemptCount {
+        val attemptCount = AttemptCount(number)
+        return attemptCount
     }
 }
