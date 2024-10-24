@@ -1,5 +1,7 @@
 package racingcar.model
 
+import racingcar.utils.NumberGenerator
+
 class Car(private val name: String) {
 
     private var distance = 0
@@ -12,6 +14,10 @@ class Car(private val name: String) {
     }
 
     fun getName() = name
+
+    fun canMove(): Boolean {
+        return NumberGenerator.generate() >= 4
+    }
 
     fun moveForward() {
         distance++
