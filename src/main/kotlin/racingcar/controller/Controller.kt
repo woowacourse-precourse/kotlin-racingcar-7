@@ -27,8 +27,13 @@ class Controller (
 
         outputView.showPrompt("실행 결과")
         repeat(round.toInt()) {
-            outputView.displayRacingProgress("", "")
+            racingGame.getNameList().forEach {
+                racingGame.play(it)
+                val score = racingGame.getScore(it)
+                outputView.displayRacingProgress(it, score)
+            }
         }
-        outputView.displayWinner("")
+        val winner = racingGame.getWinner()
+        outputView.displayWinner(winner)
     }
 }

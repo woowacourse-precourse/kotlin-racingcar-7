@@ -1,5 +1,7 @@
 package racingcar.model
 
+import camp.nextstep.edu.missionutils.Randoms
+
 class RacingGame {
     private var cars: MutableMap<String, Car> = mutableMapOf()
     var names: List<String> = listOf()
@@ -10,6 +12,10 @@ class RacingGame {
 
     fun splitToList(input: String) {
         names = input.split(",").toMutableList()
+    }
+
+    fun getNameList(): List<String> {
+        return names
     }
 
     fun isValidName(): Boolean {
@@ -30,4 +36,29 @@ class RacingGame {
     fun createCars() {
         names.forEach { name -> cars[name] = Car() }
     }
+
+    fun play(key: String) {
+        cars[key]!!.move(Randoms.pickNumberInRange(0, 9))
+    }
+
+    fun getScore(key: String): String {
+        val symbol = "-"
+        var score: Int = cars[key]!!.getScore()
+        val scoreSymbol = symbol.repeat(score)
+        return scoreSymbol
+    }
+
+    fun getWinner(): String {
+        var topScore = 0
+        var winner = ""
+        names.forEach {
+            val score = cars[it]!!.getScore()
+            if (score > topScore) {
+                topScore = score
+                winner = it
+            }
+        }
+        return winner
+    }
+
 }
