@@ -22,7 +22,7 @@ class MatchProgress {
 
     private fun roundInProgress(cars: List<Result>, round: Int) {
         cars.map { it.roundResult.add(decideRacingCarMoving()) }
-
+        IOHandler().printRoundResult(cars)
     }
 
     private fun decideRacingCarMoving(): Int {

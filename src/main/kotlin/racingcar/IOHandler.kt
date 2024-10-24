@@ -1,10 +1,25 @@
 package racingcar
 
+import kotlin.math.round
+
 class IOHandler {
-    val validation = Validation()
+    private val validation = Validation()
 
     fun startMatch(): Registaration {
         return Registaration(cars = registerCars(), decideNumberOfRound())
+    }
+
+    fun printRoundResult(roundResult: List<Result>) {
+        val result = StringBuilder()
+
+        for (car in roundResult) {
+            val numberOfMoves = car.roundResult.last()
+
+            result.append(car.carName, " : ", "-".repeat(numberOfMoves))
+            println(result.toString())
+            result.clear()
+        }
+        println()
     }
 
     private fun registerCars(): String {
@@ -21,9 +36,6 @@ class IOHandler {
         val numberOfRound = readLine() ?: throw IllegalArgumentException()
         validation.isNotEmpty(numberOfRound)
         validation.isDigit(numberOfRound)
-//        if (numberOfRound.isNullOrEmpty()) {
-//            throw IllegalArgumentException()
-//        }
         return numberOfRound.toInt()
     }
 }
