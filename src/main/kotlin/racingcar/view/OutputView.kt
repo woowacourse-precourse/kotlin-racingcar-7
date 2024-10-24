@@ -6,6 +6,8 @@ interface OutputView {
 
     fun printNewLine()
 
+    fun printRaceResult()
+
     fun printCarRoundInfo(car: Car)
 
     fun printWinners(names: String)
