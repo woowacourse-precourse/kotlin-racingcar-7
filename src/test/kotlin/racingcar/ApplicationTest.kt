@@ -20,9 +20,35 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
-    fun `예외 테스트`() {
+    fun `기능 테스트(차 이름 공백)`() {
+        assertSimpleTest { run("a, ", "1") }
+    }
+
+    @Test
+    fun `예외 테스트(차 이름 길이)`() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
+        }
+    }
+
+    @Test
+    fun `예외 테스트(차 대수 초과)`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("1,2,3,4,5,6,7,8,9,10", "1") }
+        }
+    }
+
+    @Test
+    fun `예외 테스트(반복 횟수 숫자 변환 불가)`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("a,b,c", "a") }
+        }
+    }
+
+    @Test
+    fun `예외 테스트(차 이름 중복)`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("a,a", "1") }
         }
     }
 

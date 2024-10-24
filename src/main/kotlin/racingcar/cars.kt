@@ -1,3 +1,0 @@
-package racingcar
-
-class cars
