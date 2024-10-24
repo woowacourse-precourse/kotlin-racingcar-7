@@ -14,6 +14,7 @@ fun main() {
 
     val raceGame = RaceGame()
     val carMap = raceGame.splitCars(cars)
+    raceGame.play(carMap, tryCount.toInt())
 
 }
 
@@ -28,8 +29,43 @@ class RaceGame(){
         return carMap
     }
 
-    fun play(carMap : MutableMap<String, Int>){
+    fun play(carMap : MutableMap<String, Int>, tryCount : Int){
+        var gameScore = carMap
 
+        println("실행 결과")
+        for(i in 0 until tryCount){
+            gameScore = goForward(gameScore)
+            result(gameScore)
+        }
+        winner(gameScore)
+    }
+    fun goForward(carMap : MutableMap<String, Int>) : MutableMap<String,Int>{
+        carMap.forEach{(name, score)->
+            if(Randoms.pickNumberInRange(0,9)>=4){
+                carMap[name]=score+1
+            }
+        }
+        return carMap
+    }
+
+    fun result(gameScore : MutableMap<String, Int>){
+        gameScore.forEach{
+            println("${it.key} : ${"-".repeat(it.value)}")
+        }
+        println()
+    }
+    fun winner(gameScore: MutableMap<String, Int>){
+        val check = CheckException()
+        check.result(gameScore)
+
+        val maxScore = gameScore.values.max()
+        val winnerList : MutableList<String> = mutableListOf()
+        gameScore.forEach{(name,score)->
+            if(score == maxScore){
+                winnerList.add(name)
+            }
+        }
+        println("최종 우승자 : ${winnerList.joinToString(", ")}")
     }
 }
 
@@ -54,6 +90,7 @@ class CheckException(){
         val num = count.toIntOrNull()
         if(num==null || num <= 0 ) throw IllegalArgumentException()
     }
+
     fun result(scores : MutableMap<String,Int>){
         var check = 0
         for (score in scores){
