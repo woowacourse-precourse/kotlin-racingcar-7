@@ -13,3 +13,8 @@ fun tryCountInput(promt: String): String{
     println(promt)
     return readLine()
 }
+
+fun splitCarName(carNames: String): List<String>{
+    var splitedCarNames = carNames.split(",")
+    return splitedCarNames
+}
