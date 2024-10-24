@@ -12,8 +12,10 @@ class Validation() {
         return true
     }
 
-    fun isCarNameUnder5(cars: List<String>): Boolean {
-        cars.map { if (it.length > 5) throw IllegalArgumentException() }
+    fun isCarNameUnder5(car: String): Boolean {
+        if (car.length > 5) {
+            throw IllegalArgumentException()
+        }
         return true
     }
 }

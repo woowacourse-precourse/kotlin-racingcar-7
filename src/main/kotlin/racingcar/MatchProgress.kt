@@ -1,17 +1,36 @@
 package racingcar
 
-class MatchProgress(val registaration: Registaration) {
+class MatchProgress {
+    lateinit var registaration: Registaration
+
     fun matchProcess() {
-        preprocess()
+        val cars = PreProcessing(registaration).preprocess()
         println("\n실행 결과")
     }
+}
 
-    fun preprocess(): List<String> {
+class PreProcessing(private var registaration: Registaration) {
+    fun preprocess(): List<Result> {
         val validation = Validation()
+        val cars = emptyList<Result>().toMutableList()
 
         validation.isDelimitersCorrect(registaration)
-        val cars = registaration.cars.split(",")
-        validation.isCarNameUnder5(cars)
+        splitCars().map {
+            if (validation.isCarNameUnder5(it)) {
+                cars.add(Result(carName = it))
+            }
+        }
         return cars
     }
+
+    private fun splitCars(): List<String> {
+        return registaration.cars.split(",")
+    }
+
 }
+
+data class Result(
+    val carName: String,
+    var roundResult: List<Int> = listOf(),
+    var score: Int = 0,
+)
