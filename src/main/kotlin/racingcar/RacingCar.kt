@@ -8,11 +8,12 @@ class RacingCar(
 
     fun execute() {
         output.messageCarNames()
-        input.carNames()
+        val carNames = input.carNames()
+
         output.messageMoveCount()
-        input.moveCount()
+        val moveCount = input.moveCount()
 
-
+        race.start(carNames, moveCount)
     }
 
 }
