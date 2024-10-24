@@ -3,7 +3,7 @@ package racingcar.view
 import camp.nextstep.edu.missionutils.Console
 
 class InputView {
-    fun getNameOfCar(): MutableMap<String, Int> {
+    fun getNameOfCar(): List<String> {
         val input = Console.readLine()
         require(input.isNotEmpty()) {ERROR_EMPTY_STRING}
         val nameList = input.split(",")
@@ -12,7 +12,7 @@ class InputView {
             require(name.all{ it.isLetter() }) {ERROR_INVALID_NAME}
             require(name.length <= 5) {ERROR_NAME_LENGTH}
         }
-        return nameList.associateWith { 0 }.toMutableMap()
+        return nameList
     }
 
     fun getCount(): Int {

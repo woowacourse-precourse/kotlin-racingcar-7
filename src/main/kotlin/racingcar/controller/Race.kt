@@ -10,21 +10,25 @@ class Race {
 
     fun start() {
         outputView.printGetNameOfCar()
-        val name = inputView.getNameOfCar()
+        val infoOfCar = setInfoOfCar(inputView.getNameOfCar())
         outputView.printGetCount()
         val count = inputView.getCount()
-        playGame(name, count)
+        play(infoOfCar, count)
     }
 
-    private fun playGame(name: MutableMap<String, Int>, count: Int) {
+    private fun setInfoOfCar(nameList: List<String>): MutableMap<String, Int> {
+        return nameList.associateWith { 0 }.toMutableMap()
+    }
+
+    private fun play(infoOfCar: MutableMap<String, Int>, count: Int) {
         outputView.printResultMessage()
         for (i in 1..count) {
-            printStatus(name)
+            status(infoOfCar)
         }
         // 최종 우승자 출력 필요
     }
 
-    private fun printStatus(infoOfCar: MutableMap<String, Int>) {
+    private fun status(infoOfCar: MutableMap<String, Int>) {
         val move = Move()
         val presentInfo = move.move(infoOfCar)
         for ((key, value) in presentInfo) {
