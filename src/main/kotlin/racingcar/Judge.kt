@@ -2,10 +2,12 @@ package racingcar
 
 class Judge {
 
-    fun validateCarName(name: String) {
-        if (name.isBlank() || name.length > 5 || name.contains(" ")) {
-            throw IllegalArgumentException("경주에 등록할 자동차 이름은 공백을 포함할 수 없으며, 5자 이하여야 합니다.")
-        }
+    fun isDuplicatedCarNames(appliedCars: List<String>): Boolean {
+        return appliedCars.distinct().count() != appliedCars.count()
+    }
+
+    fun isValidCarName(name: String): Boolean {
+        return (name.isNotBlank() && name.length <= 5 && !name.contains(" "))
     }
 
     fun isValidRaceCount(raceCount: String): Boolean {
