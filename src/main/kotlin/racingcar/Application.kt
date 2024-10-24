@@ -32,4 +32,11 @@ fun updateCarPosition(cars : MutableList<Pair<String,Int>>){
     }
 }
 
+fun printCarsPosition(cars : MutableList<Pair<String, Int>>){
+    cars.forEach { (name, position) ->
+        println("$name : ${"-".repeat(position)}")
+    }
+    println()
+}
+
 
