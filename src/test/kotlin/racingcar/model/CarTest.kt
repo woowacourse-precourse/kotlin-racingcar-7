@@ -10,9 +10,8 @@ class CarTest {
         val car = Car("test")
         car.moveForward()
         car.moveForward()
-        car.stop()
         car.moveForward()
 
-        assertThat(car.getDistance()).isEqualTo("---")
+        assertThat(car.currentDistance).isEqualTo("---")
     }
 }
