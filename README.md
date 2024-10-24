@@ -1,5 +1,4 @@
 # kotlin-racingcar-precourse
-# 기능 요구 사항
 
 # 기능 요구 사항
 
