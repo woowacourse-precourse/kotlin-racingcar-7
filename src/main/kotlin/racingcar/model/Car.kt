@@ -1,17 +1,19 @@
 package racingcar.model
 
 class Car(private val name: String) {
-    private val distance = mutableListOf<String>()
 
-    fun moveForward() {
-        distance.add("-")
-    }
+    private var distance = 0
 
-    fun stop() {
-        distance.add("")
+    val currentDistance: String
+        get() = "-".repeat(distance)
+
+    init {
+        require(name.isNotEmpty() || name.length <= 5)
     }
 
     fun getName() = name
 
-    fun getDistance() = distance.joinToString("")
+    fun moveForward() {
+        distance++
+    }
 }
