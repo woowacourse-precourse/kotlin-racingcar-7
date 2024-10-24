@@ -5,13 +5,13 @@ import camp.nextstep.edu.missionutils.Console
 class InputView {
     fun getNameOfCar(): List<String> {
         val input = Console.readLine()
-        require(input.isNotEmpty()) {ERROR_EMPTY_STRING}
+        require(input.isNotEmpty()) { ERROR_EMPTY_STRING }
         val nameList = input.split(",")
-        require(nameList.size == nameList.distinct().size) {ERROR_SAME_NAME}
+        require(nameList.size == nameList.distinct().size) { ERROR_SAME_NAME }
         for (name in nameList) {
-            require(name.isNotEmpty()) {ERROR_EMPTY_NAME}
-            require(name.all{ it.isLetter() }) {ERROR_INVALID_NAME}
-            require(name.length <= 5) {ERROR_NAME_LENGTH}
+            require(name.isNotEmpty()) { ERROR_EMPTY_NAME }
+            require(name.all{ it.isLetter() }) { ERROR_INVALID_NAME }
+            require(name.length <= 5) { ERROR_NAME_LENGTH }
         }
         return nameList
     }
@@ -19,10 +19,10 @@ class InputView {
     fun getCount(): Int {
         try {
             val count = Console.readLine().toInt()
-            require(count > 0) {ERROR_COUNT_SIZE}
+            require(count > 0) { ERROR_COUNT_SIZE }
             return count
-        } catch (e: NumberFormatException){
-            throw IllegalArgumentException(ERROR_ONLY_DIGIT)
+        } catch (e: NumberFormatException) {
+            throw IllegalArgumentException( ERROR_ONLY_DIGIT )
         }
     }
 
