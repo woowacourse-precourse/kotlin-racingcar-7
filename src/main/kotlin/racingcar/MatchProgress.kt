@@ -5,22 +5,18 @@ import camp.nextstep.edu.missionutils.Randoms
 class MatchProgress {
     lateinit var registaration: Registaration
 
-    fun matchProcess() {
-        val cars = PreProcessing(registaration).preprocess()
-        println("\n실행 결과")
-    }
-
     fun racing() {
         val maxRound = registaration.round
         val cars = PreProcessing(registaration).preprocess()
 
         println("\n실행 결과")
         for (round in 1 .. maxRound) {
-            roundInProgress(cars, round - 1)
+            roundInProgress(cars)
         }
+        cars.map { it.score = it.roundResult.sum() }
     }
 
-    private fun roundInProgress(cars: List<Result>, round: Int) {
+    private fun roundInProgress(cars: List<Result>) {
         cars.map { it.roundResult.add(decideRacingCarMoving()) }
         IOHandler().printRoundResult(cars)
     }
@@ -32,6 +28,10 @@ class MatchProgress {
             return 0
         }
         return randomNumber - 3
+    }
+
+    fun calculateTotalScore(score: List<Int>): Int {
+        return score.sum()
     }
 }
 
