@@ -1,6 +1,7 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Console
+import camp.nextstep.edu.missionutils.Randoms
 
 fun lenCheck(nameList: List<String>): Boolean {
     nameList.forEach {
@@ -25,6 +26,12 @@ fun inputNum(): Int{
     val numOfAttempts = Console.readLine().toInt()
 
     return requireNotNull(numOfAttempts)
+}
+
+fun movementDecision(): Boolean {
+    if (Randoms.pickNumberInRange(0, 9) >= 4)
+        return true
+    return false
 }
 
 fun main() {
