@@ -11,6 +11,29 @@ class JudgeTest {
     private val judge = Judge()
 
     @Nested
+    @DisplayName("자동차 이름 중복 검사")
+    inner class CarNameDuplicatedTest {
+
+        @Test
+        fun `자동차 이름 중에 중복이 없을 경우 false 값을 반환한다`() {
+            val appliedCars = listOf("nana", "bobo", "dudu")
+
+            val result = judge.isDuplicatedCarNames(appliedCars)
+
+            assertFalse(result)
+        }
+
+        @Test
+        fun `자동차 이름 중에 중복이 있을 경우 true 값을 반환한다`() {
+            val appliedCars = listOf("nana", "bobo", "bobo")
+
+            val result = judge.isDuplicatedCarNames(appliedCars)
+
+            assertTrue(result)
+        }
+    }
+
+    @Nested
     @DisplayName("자동차 이름 유효성 검사")
     inner class CarNameValidatorTest {
 
