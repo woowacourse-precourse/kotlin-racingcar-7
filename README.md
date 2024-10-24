@@ -19,11 +19,11 @@
 
 # 프로그래밍 요구사항
 
-- 외부 라이브러리 사용 불가
-- `Kotlin Style Guide` 원칙
-- `indent depth` 2 이하로 구현할 것
+- **`indent depth` 2 이하로 구현할 것**
 - 함수는 한 가지 일만 담당하게끔 구현
 - 위의 기능 목록에 대해 각각을 테스트할 것
+- 외부 라이브러리 사용 불가
+- `Kotlin Style Guide` 원칙
 
 # 라이브러리
 - `camp.nextstep.edu.missionutils`
