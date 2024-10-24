@@ -8,7 +8,7 @@ class Car(private val name: String) {
         get() = "-".repeat(distance)
 
     init {
-        require(name.isNotEmpty() || name.length <= 5)
+        require(name.isNotEmpty() && name.length <= 5)
     }
 
     fun getName() = name
