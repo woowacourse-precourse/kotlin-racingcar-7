@@ -8,5 +8,6 @@ fun main() {
     val race = Race(numberGenerator = randomNumberGenerator, outputView = outputView)
     val raceManager =
         RaceManager(race = race, inputView = inputView, outputView = outputView, inputValidator = inputValidator)
+
     raceManager.runRace()
 }
