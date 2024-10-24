@@ -29,3 +29,20 @@
 - `camp.nextstep.edu.missionutils`
   - `Randoms.pickNumberInRange()`
   - `Console.readLine()`
+
+---
+
+# 슈도 코드 작성
+
+```kotlin
+val carMap: Map<String, Int>
+val attemptNumber: Int
+
+for (attemptNumber) {
+  randomDice(carMap)
+  printRaceResult(carMap)  // carMap의 Int 이용
+}
+
+val winner = getWinner(carMap)  // carMap의 Int 이용 최댓값 추출
+printWinner(winner)  
+```
