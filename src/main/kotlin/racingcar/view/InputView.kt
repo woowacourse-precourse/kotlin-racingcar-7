@@ -6,7 +6,7 @@ class InputView {
     fun getNameOfCar(): List<String> {
         val input = Console.readLine()
         require(input.isNotEmpty()) { ERROR_EMPTY_STRING }
-        val nameList = input.split(",")
+        val nameList = input.split(NAME_DELIMITER)
         require(nameList.size == nameList.distinct().size) { ERROR_SAME_NAME }
         for (name in nameList) {
             require(name.isNotEmpty()) { ERROR_EMPTY_NAME }
@@ -22,7 +22,7 @@ class InputView {
             require(count > 0) { ERROR_COUNT_SIZE }
             return count
         } catch (e: NumberFormatException) {
-            throw IllegalArgumentException( ERROR_ONLY_DIGIT )
+            throw IllegalArgumentException(ERROR_ONLY_DIGIT)
         }
     }
 
@@ -34,5 +34,6 @@ class InputView {
         private const val ERROR_NAME_LENGTH = "[경고] 이름은 5글자를 초과할 수 없습니다."
         private const val ERROR_COUNT_SIZE = "[경고] 1이상이어야 합니다."
         private const val ERROR_ONLY_DIGIT = "[경고] 숫자만 입력 가능합니다."
+        private const val NAME_DELIMITER = ","
     }
 }
