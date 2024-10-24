@@ -132,4 +132,27 @@ class JudgeTest {
             assertFalse(result)
         }
     }
+
+    @Nested
+    @DisplayName("전진 가능에 대한 유효성 검사")
+    inner class ForwardValidatorTest {
+
+        @Test
+        fun `랜덤 값이 4일 경우 true 값을 반환한다`() {
+            val randomValue = 4
+
+            val result = judge.isPossibleForward(randomValue)
+
+            assertTrue(result)
+        }
+
+        @Test
+        fun `랜덤 값이 3일 경우 false 값을 반환한다`() {
+            val randomValue = 3
+
+            val result = judge.isPossibleForward(randomValue)
+
+            assertFalse(result)
+        }
+    }
 }
