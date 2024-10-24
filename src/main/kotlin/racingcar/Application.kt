@@ -1,5 +1,10 @@
 package racingcar
 
+import camp.nextstep.edu.missionutils.Console.readLine
+
 fun main() {
-    // TODO: 프로그램 구현
+}
+fun carNameInput(prompt: String): String{
+    println(prompt)
+    return readLine()
 }
