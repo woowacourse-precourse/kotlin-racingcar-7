@@ -28,9 +28,10 @@ open class Validator {
         if (carName.length > MAX_CAR_LENGTH) throw IllegalArgumentException("차의 이름은 5자를 넘을 수 없습니다.")
     }
 
-    fun iterCountCheck(countString: String) {
+    fun iterCountCheck(countString: String): Int {
         val count = isNumber(countString)
         isPositive(count)
+        return count
     }
 
     private fun isNumber(string: String): Int {
