@@ -58,15 +58,16 @@ class RacingGameController(
             if (randomVal >= 4) {
                 it.moveForward()
             }
-            racingGameView.printCarNameWithIndicator(it, true)
+            racingGameView.printCarNameWithIndicator(it)
         }
+        racingGameView.printBlankLine()
     }
 
     /**
      * 경주를 시도횟수 만큼 진행 하고 결과를 출력
      */
     private fun multiRace() {
-        racingGameView.printRaceResult(true)
+        racingGameView.printRaceResult()
         for (i in 1..tryCount) {
             singleRace()
         }

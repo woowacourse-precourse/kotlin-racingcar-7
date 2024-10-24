@@ -11,6 +11,10 @@ class RacingGameView {
     }
 
     // Output Views
+    fun printBlankLine() {
+        println()
+    }
+
     fun printGameStart() {
         println(Messages.GAME_START)
     }
@@ -19,10 +23,7 @@ class RacingGameView {
         println(Messages.GAME_INPUT_COUNT)
     }
 
-    fun printRaceResult(firstLineBlank: Boolean) {
-        if (firstLineBlank) {
-            println()
-        }
+    fun printRaceResult() {
         println(Messages.GAME_RESULT)
     }
 
@@ -30,10 +31,7 @@ class RacingGameView {
         println(Messages.GAME_WINNER.format(winners.joinToString(", ")))
     }
 
-    fun printCarNameWithIndicator(car: Car, lastLineBlank: Boolean) {
+    fun printCarNameWithIndicator(car: Car) {
         println("${car.name} : ${"-".repeat(car.distance)}")
-        if (lastLineBlank) {
-            println()
-        }
     }
 }
