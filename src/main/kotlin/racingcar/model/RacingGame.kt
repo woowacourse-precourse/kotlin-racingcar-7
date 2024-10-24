@@ -8,10 +8,12 @@ class RacingGame(
 ) {
 
     fun startRacing(outputView: OutputView) {
+        outputView.printRaceResult()
         repeat(attemptCount.getNumber()) {
             playRound(cars)
             displayRoundResult(cars, outputView)
         }
+        displayWinners(outputView)
     }
 
     private fun playRound(cars: List<Car>) {
@@ -27,5 +29,14 @@ class RacingGame(
             outputView.printCarRoundInfo(car)
         }
         outputView.printNewLine()
+    }
+
+    private fun displayWinners(outputView: OutputView) {
+        val maxDistance = cars.maxOf { it.currentDistance }
+        val winners = cars
+            .filter { it.currentDistance == maxDistance }
+            .joinToString(", ") { it.getName() }
+
+        outputView.printWinners(winners)
     }
 }
