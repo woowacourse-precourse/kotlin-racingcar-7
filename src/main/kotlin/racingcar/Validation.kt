@@ -7,12 +7,10 @@ class Validation() {
         }
     }
 
-    fun isDigit(string: String) {
-        string.forEach {
-            if (!it.isDigit()) {
-                throw IllegalArgumentException()
-            }
-        }
+    fun checkNumberOfRound(number: String) {
+        isNotEmpty(number)
+        isDigit(number)
+        isNotZero(number)
     }
 
     // 자동차 이름은 문자, 숫자 모두 허용
@@ -31,5 +29,19 @@ class Validation() {
             throw IllegalArgumentException()
         }
         return true
+    }
+
+    private fun isDigit(string: String) {
+        string.forEach {
+            if (!it.isDigit()) {
+                throw IllegalArgumentException()
+            }
+        }
+    }
+
+    private fun isNotZero(string: String) {
+        if (string == "0") {
+            throw IllegalArgumentException()
+        }
     }
 }

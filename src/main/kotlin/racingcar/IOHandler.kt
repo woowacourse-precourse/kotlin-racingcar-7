@@ -46,8 +46,7 @@ class IOHandler {
         println("시도할 횟수는 몇 회인가요?")
 
         val numberOfRound = readLine() ?: throw IllegalArgumentException()
-        validation.isNotEmpty(numberOfRound)
-        validation.isDigit(numberOfRound)
+        validation.checkNumberOfRound(numberOfRound)
         return numberOfRound.toInt()
     }
 }
