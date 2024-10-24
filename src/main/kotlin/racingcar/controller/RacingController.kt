@@ -3,10 +3,15 @@ package racingcar.controller
 import camp.nextstep.edu.missionutils.Console
 
 class RacingController {
+    private var carState = mutableMapOf<String, Int>()
 
     fun start() {
         printInputCarName()
         val input = Console.readLine().split(",")
+        for (carName in input) {
+            carState[carName] = 0
+        }
+
         printInputRaceCount()
         val raceCount = Console.readLine().toInt()
 
