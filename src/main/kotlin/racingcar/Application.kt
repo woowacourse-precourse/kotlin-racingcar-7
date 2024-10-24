@@ -8,3 +8,8 @@ fun carNameInput(prompt: String): String{
     println(prompt)
     return readLine()
 }
+
+fun tryCountInput(promt: String): String{
+    println(promt)
+    return readLine()
+}
