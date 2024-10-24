@@ -2,22 +2,11 @@ package racingcar
 
 import racingcar.model.Car
 
-fun isValidName(name: String) : Boolean {
-    if (name.length > 5) {
-        throw IllegalArgumentException()
-    }
-    return true
-}
-
 fun isValidRound(round: Int): Boolean {
     if (round > 0) {
         return true
     }
     throw IllegalArgumentException()
-}
-
-fun splitName(names: String): List<String> {
-    return names.split(",")
 }
 
 fun createCar(names: List<String>) : Map<String, Car> {
