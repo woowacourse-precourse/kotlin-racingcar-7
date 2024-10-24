@@ -3,19 +3,25 @@ package racingcar.model
 class Repository {
     var userInput: String = ""
     var execCnt: Int = 0
-    var raceCar: MutableList<String> = mutableListOf()
+    var racingCar: MutableList<String> = mutableListOf()
+    var moveCnt: MutableList<Int> = mutableListOf()
+
+    private fun initMoveCnt() {
+        moveCnt = MutableList(racingCar.size) {0}
+    }
 
     fun separateCarName() {
-        raceCar = userInput.split(",").toMutableList()
-        raceCar.removeAll(listOf(""))
+        racingCar = userInput.split(",").toMutableList()
+        racingCar.removeAll(listOf(""))
         checkException()
+        initMoveCnt()
     }
 
     private fun checkException() {
         var occurException: Boolean = false
 
-        if (raceCar.isEmpty()) occurException = true
-        raceCar.forEach{ str ->
+        if (racingCar.isEmpty()) occurException = true
+        racingCar.forEach{ str ->
             if (str.length > 6) occurException = true
         }
 
