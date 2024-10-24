@@ -15,8 +15,8 @@ class RaceController {
     private fun result(carNames: String, count: String) {
         if (!Error(carNames, count).totalError()) {
             val make = Make(carNames, count.toInt())
-            val result = make.moveByNameList()
-            val carNameList = make.carNameList()
+            val result = make.moveByNameList
+            val carNameList = make.carNameList
 
             output.resultMsg(carNameList, result)
             output.winnerMsg(make.winnerList())
