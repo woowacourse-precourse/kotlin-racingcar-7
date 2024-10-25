@@ -1,6 +1,7 @@
 package racingcar.view
 
 import racingcar.constants.Constants.COLON
+import racingcar.constants.Constants.COMMA
 import racingcar.constants.Constants.RESULT_MSG
 import racingcar.constants.Constants.WINNERS_MSG
 import racingcar.model.Car
@@ -17,7 +18,7 @@ class Output {
     }
 
     fun winnerMsg(winnerList: List<String>) {
-        val winners = winnerList.joinToString(", ")
+        val winners = winnerList.joinToString("$COMMA ")
         println(WINNERS_MSG + winners)
     }
 }

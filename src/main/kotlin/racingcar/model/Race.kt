@@ -1,8 +1,10 @@
 package racingcar.model
 
+import racingcar.constants.Constants.COMMA
+
 
 class Race(carNames: String, private val tryCount: Int) {
-    val carList = carNames.split(',').map { Car(it) }
+    val carList = carNames.split(COMMA).map { Car(it) }
 
     fun start() {
         repeat(tryCount) {
