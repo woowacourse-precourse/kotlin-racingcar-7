@@ -45,7 +45,7 @@ class InputView {
 
     private fun validateTryCount(tryCount: String) {
         val count = tryCount.toIntOrNull()
-        if (count == null || count < 0) {
+        if (count == null || count <= 0) {
             throw IllegalArgumentException(INVALID_INPUT_TRY_COUNT)
         }
     }
