@@ -2,8 +2,15 @@ package racingcar.infrastructure
 
 import racingcar.domain.Car
 
-class ConsoleOutput {
-    fun showRoundResult(cars: List<Car>) {
+class ConsoleOutput (
+    private val cars: List<Car>,
+    private val winners: List<String>
+){
+    fun showMessage() {
+        println(PLAY_RESULT)
+    }
+
+    fun showRoundResult() {
         var result = ""
         for (car in cars) {
             val carName: String = car.name
@@ -13,12 +20,15 @@ class ConsoleOutput {
         println(result)
     }
 
-    fun showWinners(winners: List<String>) {
-        println(winners.joinToString(DELIMITER))
+    fun showWinners() {
+        val result = winners.joinToString(DELIMITER)
+        println(WINNERS + result)
     }
 
     companion object {
-        private const val ONE_STEP = "-"
-        private const val DELIMITER = ","
+        private const val ONE_STEP: String = "-"
+        private const val DELIMITER: String = ","
+        private const val PLAY_RESULT: String = "실행 결과"
+        private const val WINNERS: String = "최종 우승자 : "
     }
 }
