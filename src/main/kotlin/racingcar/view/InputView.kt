@@ -10,7 +10,6 @@ class InputView {
     }
 
     fun getNameOfCar(nameList: List<String>): List<String> {
-        require(nameList.isNotEmpty()) { ERROR_EMPTY_STRING }
         require(nameList.size == nameList.distinct().size) { ERROR_SAME_NAME }
         for (name in nameList) {
             require(name.isNotEmpty()) { ERROR_EMPTY_NAME }
@@ -31,7 +30,6 @@ class InputView {
     }
 
     companion object {
-        private const val ERROR_EMPTY_STRING = "[경고] 이름을 입력해야 합니다."
         private const val ERROR_SAME_NAME = "[경고] 중복된 이름이 있습니다."
         private const val ERROR_EMPTY_NAME = "[경고] 비어있는 이름이 있습니다."
         private const val ERROR_INVALID_NAME = "[경고] 알파벳으로 이뤄진 이름만 입력 가능합니다."
