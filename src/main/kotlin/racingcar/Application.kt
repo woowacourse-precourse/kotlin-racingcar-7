@@ -24,5 +24,4 @@ fun main() {
 }
 
 fun race(names: String, tryNumber: Int) {
-
 }
