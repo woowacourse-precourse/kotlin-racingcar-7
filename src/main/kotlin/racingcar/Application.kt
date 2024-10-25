@@ -12,7 +12,7 @@ fun main() {
     ifCarIsSingle(carList)
 
     val tryCount = tryCountInput("시도할 횟수는 몇 회인가요?").toInt()
-    ifTryCountIsNegative(tryCount)
+    ifTryCountIsZeroOrNegative(tryCount)
     ifTryCountIsntInt(tryCount)
 
     var carRacingResult = initTryCountList(carList.size)
@@ -114,8 +114,8 @@ fun ifCarNameOverFive(carList: List<String>) {
     }
 }
 
-fun ifTryCountIsNegative(tryCount: Int) {
-    if (tryCount < 0) {
+fun ifTryCountIsZeroOrNegative(tryCount: Int) {
+    if (tryCount <= 0) {
         throw IllegalArgumentException("Try Count must not be a negative number.")
     }
 }
