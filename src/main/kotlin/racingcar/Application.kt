@@ -36,4 +36,12 @@ class Race(private val cars: List<Car>, private val roundCount: Int) {
         }
         announceWinner()
     }
+    // 한 라운드의 경주 진행
+    private fun raceOnce() {
+        for (car in cars) {
+            car.move()
+            println("$(car.name} : ${car.move}")
+        }
+        println()
+    }
 }
