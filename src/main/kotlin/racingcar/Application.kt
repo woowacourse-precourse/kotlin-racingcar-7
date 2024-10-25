@@ -8,7 +8,6 @@ fun main() {
     val tryCount = tryCountInput("시도할 횟수는 몇 회인가요?").toInt()
     val tryCountList = initTryCountList(carList.size)
 
-
 }
 fun carNameInput(prompt: String): String{
     println(prompt)
@@ -33,4 +32,14 @@ fun initTryCountList(carListSize: Int): MutableList<Int>{
 fun randomCount(): Int{
     val randomNumber = (0..9).random()
     return randomNumber
+}
+
+fun numberIsOverFour(randomNumber: Int): Boolean{
+    val bool: Boolean
+    if(randomNumber >= 4){
+        bool = true
+    } else{
+      bool = false
+    }
+    return bool
 }
