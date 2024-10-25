@@ -16,6 +16,14 @@ class Cars(input: String) {
 
     private fun isAvailMove(number: Int) = number >= 4
 
+    fun findWinners(): String {
+        val maxPosition = getMaxPosition()
+        val winnersName = registeredCars.filter { it.position == maxPosition }.map { it.name }.joinToString { it }
+        return winnersName
+    }
+
+    private fun getMaxPosition() = registeredCars.maxOf { it.position }
+
     override fun toString(): String {
         return buildString {
             registeredCars.forEach {
@@ -23,4 +31,5 @@ class Cars(input: String) {
             }
         }
     }
+
 }

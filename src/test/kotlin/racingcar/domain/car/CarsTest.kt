@@ -54,6 +54,22 @@ class CarsTest {
         Assertions.assertEquals(expected, cars.toString())
     }
 
+    @Test
+    fun `레이싱 경주의 우승자를 확인할 수 있다`() {
+        // given
+        val carRacers = Cars("lecle,hamil,pobi")
+        val round = 3
+        val expected = "lecle, pobi"
+        // when
+        repeat(round) {
+            carRacers.lap(numberGenerator)
+            numberGenerator.init()
+        }
+
+        //then
+        Assertions.assertEquals(expected, carRacers.findWinners())
+    }
+
 
     // 홀수번째 자동차는 1칸 이동하고, 짝수번째 자동차는 이동하지 않는다.
     private class TestNumberGenerator : NumberGenerator {
