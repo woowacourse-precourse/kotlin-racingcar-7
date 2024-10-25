@@ -15,6 +15,9 @@ class Controller(private val model: Model, private val view: View) {
         } catch (_: Exception) {
             throw IllegalArgumentException("잘못된 시도 횟수 입력입니다.")
         }
+        if (tryNum <= 0) {
+            throw IllegalArgumentException("시도 횟수가 0 이하 입니다.")
+        }
 
         val cars = model.createCars(carNames)
 
