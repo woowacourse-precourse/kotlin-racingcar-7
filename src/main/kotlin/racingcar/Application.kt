@@ -23,6 +23,7 @@ fun main() {
         }
         printResult(cars, movement)
     }
+    print(getWinner(movement))
 }
 
 fun canMove(): Boolean = Randoms.pickNumberInRange(0, 9) >= 4
@@ -32,4 +33,10 @@ fun printResult(cars: List<String>, movement: Map<String, StringBuilder>) {
         println("$car : ${movement[car] ?: ""}")
     }
     println()
+}
+
+fun getWinner(movement: Map<String, StringBuilder>): String {
+    val maxMove = movement.maxOf { it.value.length }
+    val winner = movement.filter { it.value.length == maxMove }
+    return winner.keys.joinToString()
 }
