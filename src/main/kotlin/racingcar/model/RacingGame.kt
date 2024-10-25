@@ -10,4 +10,9 @@ class RacingGame {
     }
 
     fun tryRacingGame() = cars.forEach { car -> car.tryMove() }
+
+    fun getWinners(): List<String> {
+        val maxMoveCount = cars.maxBy { it.moveCount }.moveCount
+        return cars.filter { it.moveCount == maxMoveCount }.map { it.name }
+    }
 }
