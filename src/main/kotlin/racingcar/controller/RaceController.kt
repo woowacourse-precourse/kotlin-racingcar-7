@@ -13,19 +13,20 @@ class RaceController {
     private val output = Output()
     private val errorMsg = ErrorMsg()
 
-    private fun result(carNames: String, count: String) {
-            val make = Make(carNames, count.toInt())
-            val result = make.moveByNameList
-            val carNameList = make.carNameList
+    private fun result(carNames: String, tryCount: String) {
+        val make = Make(carNames, tryCount.toInt())
+        val result = make.moveByNameList
+        val carNameList = make.carNameList
 
-            output.resultMsg(carNameList, result)
-            output.winnerMsg(make.winnerList())
+        output.resultMsg(carNameList, result)
+        output.winnerMsg(make.winnerList())
     }
 
     fun run() {
         input.carNameMsg()
         val carNames = Console.readLine()
         if (carNameError(carNames)) errorMsg.errorMsg()
+
         input.countMsg()
         val tryCount = Console.readLine()
         if (tryCountError(tryCount)) errorMsg.errorMsg()
