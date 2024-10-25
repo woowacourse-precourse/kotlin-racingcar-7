@@ -5,20 +5,20 @@ import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
     // TODO: 프로그램 구현
-    val carNames = getUserInput()
+    val carList = getCarNames()
     val attemptCount = getAttemptCount()
 
     println("\n실행 결과")
 
     repeat(attemptCount) {
-        updateCarPosition(carNames)
-        printCarsPosition(carNames)
+        updateCarsPosition(carList)
+        printCarsPosition(carList)
     }
 
-    printWinner(carNames)
+    printWinner(carList)
 }
 
-fun getUserInput(): MutableList<Pair<String,Int>> {
+fun getCarNames(): MutableList<Pair<String,Int>> {
     println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
     val input = Console.readLine() ?: throw IllegalArgumentException()
     val carNames = input.split(",").map { it.trim() }
@@ -35,7 +35,7 @@ fun getAttemptCount(): Int {
     return Console.readLine()?.toIntOrNull() ?: throw IllegalArgumentException()
 }
 
-fun updateCarPosition(cars : MutableList<Pair<String,Int>>){
+fun updateCarsPosition(cars : MutableList<Pair<String,Int>>){
     cars.forEachIndexed { index, car ->
         if(Randoms.pickNumberInRange(0,9) >= 4){
             cars[index] = car.copy(second = car.second + 1)
