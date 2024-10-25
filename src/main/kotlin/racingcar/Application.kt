@@ -116,7 +116,7 @@ fun ifCarNameOverFive(carList: List<String>) {
 
 fun ifTryCountIsZeroOrNegative(tryCount: Int) {
     if (tryCount <= 0) {
-        throw IllegalArgumentException("Try Count must not be a negative number.")
+        throw IllegalArgumentException("Try Count must not be a zero or negative number.")
     }
 }
 
