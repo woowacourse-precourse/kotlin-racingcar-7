@@ -14,7 +14,7 @@ fun main() {
         printCarRacing(carList, carRacingResult)
         println()
     }
-    println(findFinalWinner(carList, carRacingResult))
+
 }
 
 fun carNameInput(prompt: String): String{
