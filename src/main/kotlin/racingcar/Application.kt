@@ -49,7 +49,7 @@ class Race(private val cars: List<Car>, private val roundCount: Int) {
     private fun raceOnce() {
         for (car in cars) {
             car.move()
-            println("$(car.name} : ${car.move}")
+            println("${car.name} : ${car.move}")
         }
         println()
     }
