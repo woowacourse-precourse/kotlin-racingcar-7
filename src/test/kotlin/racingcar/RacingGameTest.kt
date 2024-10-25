@@ -1,5 +1,7 @@
 package racingcar
 
+import camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.BeforeEach
@@ -16,8 +18,8 @@ class RacingGameTest {
         racingGame = RacingGame()
     }
 
-    @Test
     @DisplayName("자동차 이름 리스트를 입력 받아서 자동차 객체를 생성하는 기능 테스트")
+    @Test
     fun generateCarsTest() {
         val input = listOf("CarA", "CarB", "CarC")
         racingGame.generateCars(input)
@@ -27,6 +29,36 @@ class RacingGameTest {
         assertEquals("CarA", cars[0].name)
         assertEquals("CarB", cars[1].name)
         assertEquals("CarC", cars[2].name)
+    }
+
+    @DisplayName("자동차 전진 성공 기능 테스트")
+    @Test
+    fun tryMoveSuccessTest() {
+        val input = listOf("CarA")
+        racingGame.generateCars(input)
+
+        assertRandomNumberInRangeTest(
+            {
+                racingGame.tryRacingGame()
+                assertThat(racingGame.getCars()[0].moveCount).isEqualTo(1)
+            },
+            5
+        )
+    }
+
+    @DisplayName("자동차 전진 실패 기능 테스트")
+    @Test
+    fun tryMoveFailureTest() {
+        val input = listOf("CarA")
+        racingGame.generateCars(input)
+
+        assertRandomNumberInRangeTest(
+            {
+                racingGame.tryRacingGame()
+                assertThat(racingGame.getCars()[0].moveCount).isEqualTo(0)
+            },
+            2
+        )
     }
 
     @Test
