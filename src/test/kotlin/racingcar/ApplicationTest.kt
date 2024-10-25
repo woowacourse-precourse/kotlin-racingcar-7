@@ -11,6 +11,7 @@ class ApplicationTest : NsTest() {
     @Test
     fun `차 하나만 참여`() {
         assertSimpleTest {
+            val carRacing = CarRacing("pobi")
             assertThat(carRacing.getNamesOfCars()).isEqualTo(listOf("pobi"))
         }
     }
