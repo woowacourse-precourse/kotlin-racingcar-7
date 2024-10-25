@@ -37,7 +37,7 @@ class Race {
         return infoOfCar
     }
 
-    private fun winner(infoOfCar: MutableMap<String, Int>) {
+    fun winner(infoOfCar: MutableMap<String, Int>) {
         val maxMove = infoOfCar.maxOf { it.value }
         val winner = infoOfCar.filter{ it.value == maxMove }.keys
         outputView.printWinnerMessage(winner)
