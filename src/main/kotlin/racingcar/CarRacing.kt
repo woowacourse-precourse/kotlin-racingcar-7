@@ -1,13 +1,13 @@
 package racingcar
 
 class CarRacing(names: String) {
-    val carName: String
+    val cars: List<Car>
 
     init {
-        this.carName = names
+        this.cars = names.split(",").map { Car(it) }
     }
 
     fun getNamesOfCars(): List<String> {
-        return listOf(carName)
+        return cars.map { it.name }
     }
 }
