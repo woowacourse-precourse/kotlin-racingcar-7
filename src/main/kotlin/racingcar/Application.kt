@@ -15,6 +15,7 @@ fun main() {
         println()
     }
 
+    printFinalWinner("최종 우승자 : ", findFinalWinner(carList, carRacingResult))
 }
 
 fun carNameInput(prompt: String): String{
@@ -78,4 +79,8 @@ fun findFinalWinner(carList: List<String>, carRacingResult: MutableList<String>)
         winners.add(carList[i])
     }
     return winners
+}
+
+fun printFinalWinner(promt: String, finalWinners: MutableList<String>) {
+    println(promt+finalWinners)
 }
