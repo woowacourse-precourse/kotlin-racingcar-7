@@ -96,7 +96,7 @@ class ApplicationTest : NsTest() {
         }
     }
 
-    val rewarding: Rewarding = Rewarding(
+    private val rewarding: Rewarding = Rewarding(
         listOf(
             Result("pobi", mutableListOf(MOVING_FORWARD), 4),
             Result("woni", mutableListOf(STOP), 3)
