@@ -20,7 +20,12 @@ class Controller(private val model: Model, private val view: View) {
 
         while (true) {
             model.moveAll(cars)
-            model
+            val gameStatus = model.getStatus(cars)
+            // TODO : Status 출력
+            if (model.isDone(tryNum, gameStatus)) {
+                // TODO : 경주 결과 출력
+                break
+            }
         }
     }
 }
