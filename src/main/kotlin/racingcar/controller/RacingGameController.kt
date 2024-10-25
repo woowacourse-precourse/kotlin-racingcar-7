@@ -1,13 +1,14 @@
 package racingcar.controller
 
-import camp.nextstep.edu.missionutils.Randoms
 import racingcar.view.RacingGameView
 import racingcar.model.Car
-import racingcar.validator.InputValidator
+import racingcar.service.InputValidator
+import racingcar.service.RacingGameService
 
 class RacingGameController(
     private val racingGameView: RacingGameView,
-    private val validator: InputValidator
+    private val validator: InputValidator,
+    private val racingGameService: RacingGameService
 ) {
     private var cars: List<Car> = emptyList()
     private var tryCount: Int = 0
@@ -20,7 +21,7 @@ class RacingGameController(
     }
 
     /**
-     * 자동차 이름들을 사용자로부터 입력받기
+     * 자동차 이름들을 사용자로부터 입력받아 Car객채 초기화
      * @return 자동차 이름들과 0으로 초기화된 LinkedHashMap 값
      */
     private fun readCarNames(): List<Car> {
@@ -28,13 +29,7 @@ class RacingGameController(
         val inputString = racingGameView.readLine()
         validator.carNamesValidate(inputString)
 
-        return splitCarNames(inputString)
-    }
-
-    private fun splitCarNames(input: String): List<Car> {
-        val names = input.split(",")
-
-        return names.map { Car(it) }
+        return racingGameService.generateCarsByInput(inputString)
     }
 
     /**
@@ -54,10 +49,7 @@ class RacingGameController(
      */
     private fun singleRace() {
         cars.forEach {
-            val randomVal = Randoms.pickNumberInRange(0, 9)
-            if (randomVal >= 4) {
-                it.moveForward()
-            }
+            racingGameService.moveCarRandomly(it)
             racingGameView.printCarNameWithIndicator(it)
         }
         racingGameView.printBlankLine()
@@ -77,9 +69,7 @@ class RacingGameController(
      * 최종 우승자 출력
      */
     private fun printFinalWinner() {
-        val winnerDistance = cars.maxOf { it.distance }
-        val winners = cars.filter { it.distance == winnerDistance }
-        val winnersName = winners.map { it.name }
+        val winnersName = racingGameService.findWinnerNames(cars)
         racingGameView.printWinners(winnersName)
     }
 }

@@ -10,7 +10,8 @@ import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.ValueSource
 import racingcar.controller.RacingGameController
-import racingcar.validator.InputValidator
+import racingcar.service.InputValidator
+import racingcar.service.RacingGameService
 import racingcar.view.RacingGameView
 
 class RacingGameUnitTest : NsTest() {
@@ -20,7 +21,8 @@ class RacingGameUnitTest : NsTest() {
     fun setUp() {
         val racingGameView = RacingGameView()
         val inputValidator = InputValidator()
-        racingGameController = RacingGameController(racingGameView, inputValidator)
+        val racingGameService = RacingGameService()
+        racingGameController = RacingGameController(racingGameView, inputValidator, racingGameService)
     }
 
     @ParameterizedTest

@@ -1,4 +1,4 @@
-package racingcar.validator
+package racingcar.service
 
 import racingcar.resources.Messages
 
