@@ -23,6 +23,7 @@ class InputAdapter (
 
             racingCars.add(car)
         }
+        if (racingCars.size == 1) throw IllegalArgumentException(INPUT_ERROR_MSG +CARNAME_ONE_EXCEPTION_MSG)
         return racingCars
     }
 
@@ -54,6 +55,7 @@ class InputAdapter (
         private const val CARNAME_WHITESPACE_EXCEPTION_MSG = "자동차 이름에 공백을 입력했습니다."
         private const val CARNAME_EMPTY_EXCEPTION_MSG = "자동차 이름에 빈 문자을 입력했습니다."
         private const val CARNAME_SAME_CARNAME_EXCEPTION_MSG = "자동차 이름에 동일한 이름을 입력했습니다."
+        private const val CARNAME_ONE_EXCEPTION_MSG: String = "자동차 게임이 진행가능한 자동차 이름이 하나만 있습니다."
 
         private const val MATCHES_NOT_INT_EXCEPTION_MSG: String = "시도 횟수에 정수가 아닌 값을 입력했습니다."
         private const val MATCHES_ZERO_EXCEPTION_MSG: String = "시도 횟수에 0을 입력했습니다."
