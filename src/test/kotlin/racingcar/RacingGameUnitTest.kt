@@ -97,8 +97,8 @@ class RacingGameUnitTest : NsTest() {
                     "jun : --"
                 )
             },
-            MOVING_FORWARD, STOP, MOVING_FORWARD,  // 첫 번째 경기
-            STOP, STOP, MOVING_FORWARD             // 두 번째 경기
+            MOVING_FORWARD, STOP, MOVING_FORWARD,
+            STOP, STOP, MOVING_FORWARD
         )
     }
 
@@ -126,8 +126,8 @@ class RacingGameUnitTest : NsTest() {
                     "최종 우승자 : pobi, jun, meda"
                 )
             },
-            MOVING_FORWARD, STOP, MOVING_FORWARD, MOVING_FORWARD, // 첫 번째 경기
-            STOP, STOP, STOP, STOP                                // 두 번째 경기
+            MOVING_FORWARD, STOP, MOVING_FORWARD, MOVING_FORWARD,
+            STOP, STOP, STOP, STOP
         )
     }
 

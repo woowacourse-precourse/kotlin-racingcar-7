@@ -116,7 +116,7 @@ jun : -----
 - RacingGameUnitTest에서 구현 내용에 관한 단위 테스트를 수행한다
     - 실패하는 테스트를 작성 후 코드를 구현하여 테스트를 통과한다.
     - private 메소드를 직접 테스트하지 않는다 (https://shoulditestprivatemethods.com)
-- RacingGameNomalTest에서 전체 로직에 대한 테스트를 수행한다.
+- RacingGameNormalTest에서 전체 로직에 대한 테스트를 수행한다.
 - RacingGameExceptionTest에서 예외 케이스 검증 테스트 코드를 수행한다.
  
 ## ⚙️ 프로젝트 요구사항
