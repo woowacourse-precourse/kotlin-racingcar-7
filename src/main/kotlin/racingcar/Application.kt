@@ -3,6 +3,11 @@ package racingcar
 import camp.nextstep.edu.missionutils.Console.readLine
 
 fun main() {
+    val cars = carNameInput("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
+    val carList = splitCarName(cars)
+    val tryCount = tryCountInput("시도할 횟수는 몇 회인가요?")
+    var tryCountList: List<Int>
+
 }
 fun carNameInput(prompt: String): String{
     println(prompt)
@@ -15,8 +20,6 @@ fun tryCountInput(promt: String): String{
 }
 
 fun splitCarName(carNames: String): List<String>{
-    var splitedCarNames = carNames.split(",")
+    val splitedCarNames = carNames.split(",")
     return splitedCarNames
 }
-
-data class Car(val name: String, val tryCount: Int)
