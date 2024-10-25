@@ -38,13 +38,15 @@ class RacingController {
 
     private fun raceCars(cars: List<Car>) {
         cars.forEach { car ->
-            if (pickNumberInRange(
+            car.move(
+                pickNumberInRange(
                     Values.MIN_RANDOM_NUMBER,
                     Values.MAX_RANDOM_NUMBER
-                ) >= Values.MIN_MOVABLE_NUMBER
-            ) car.move()
-            outPutView.printCarMove(car.name, car.movedDistance)
+                )
+            )
+            outPutView.printCarMove (car.name, car.movedDistance)
         }
+
     }
 
     // 우승자는 한 명 이상이다

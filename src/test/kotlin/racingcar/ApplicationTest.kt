@@ -14,6 +14,16 @@ import racingcar.utils.Messages
 import racingcar.utils.Validator
 
 class ApplicationTest : NsTest() {
+    @Test
+    fun `우승자 출력하기`() {
+        assertRandomNumberInRangeTest(
+            {
+                run("pobi,woni", "1")
+                assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi")
+            },
+            MOVING_FORWARD, STOP
+        )
+    }
 
     @ParameterizedTest
     @ValueSource(strings = ["carcar", "carcarcarcar"])
@@ -36,13 +46,29 @@ class ApplicationTest : NsTest() {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = ["+", "a", "가"])
-    fun `시도할 횟수는 정수이어야 한다`(moveCount: String) {
+    @ValueSource(strings = ["+", "a", "가", "1.5", "0", "-1"])
+    fun `시도할 횟수는 1이상인 정수이어야 한다`(moveCount: String) {
         assertThatThrownBy {
             run("car,car2,car3", moveCount)
         }
             .isInstanceOf(IllegalArgumentException::class.java)
             .hasMessage(Messages.INVALID_MOVE_COUNT)
+    }
+
+
+    @ParameterizedTest
+    @ValueSource(ints = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
+    fun `무작위 값이 4이상인 경우 자동차는 전진하고 4미만인 경우 정지한다`(randomInt: Int) {
+
+        // given
+        val car = Car("a")
+
+        // when
+        car.move(randomInt)
+
+        // then
+        if (randomInt >= 4) assertThat(car.movedDistance).isEqualTo(1)
+        else assertThat(car.movedDistance).isEqualTo(0)
     }
 
 

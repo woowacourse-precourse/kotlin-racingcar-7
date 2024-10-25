@@ -10,8 +10,9 @@ object Validator {
         if (!regex.matches(carName)) throwInvalidStringException(Messages.INVALID_CAR_NAME)
     }
 
+    // 시도할 횟수는 1이상인 정수여야 한다.
     fun isValidMoveCount(input: String) {
-        val regex = Regex("^\\d+$")
+        val regex = Regex("^[1-9]\\d*$")
         if (!regex.matches(input)) throwInvalidStringException(Messages.INVALID_MOVE_COUNT)
     }
 
