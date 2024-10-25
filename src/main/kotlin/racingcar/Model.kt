@@ -7,6 +7,10 @@ class Model {
         return Randoms.pickNumberInRange(0, 9)
     }
 
+    fun createCars(carNames: List<String>): List<Car> {
+        return carNames.map { Car(it, 0) }
+    }
+
     private fun move(car: Car) {
         if (getRandomNumber() >= 4)
             car.go()
