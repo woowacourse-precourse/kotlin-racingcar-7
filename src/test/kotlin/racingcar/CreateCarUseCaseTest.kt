@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import racingcar.domain.entity.Car
-import racingcar.domain.factory.CarFactory
 import racingcar.domain.usecase.CreateCarUseCase
 
 class CreateCarUseCaseTest {
