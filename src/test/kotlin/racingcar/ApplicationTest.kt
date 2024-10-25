@@ -16,6 +16,14 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `차 두대가 참여`() {
+        assertSimpleTest {
+            val carRacing = CarRacing("pobi,woni")
+            assertThat(carRacing.getNamesOfCars()).isEqualTo(listOf("pobi","woni"))
+        }
+    }
+
     override fun runMain() {
         main()
     }
