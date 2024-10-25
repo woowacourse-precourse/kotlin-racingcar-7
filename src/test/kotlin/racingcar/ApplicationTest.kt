@@ -26,6 +26,56 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `공백 입력 테스트`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("", "1") }
+        }
+    }
+
+    @Test
+    fun `자동차 이름 중복 입력 테스트`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("kim,lee,park,lee", "1") }
+        }
+    }
+
+    @Test
+    fun `자동차 이름 5자 초과 입력 테스트`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("abcdef,abc,ab", "1") }
+        }
+    }
+
+    @Test
+    fun `이동횟수 0 입력 테스트`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("a,b,c", "0") }
+        }
+    }
+
+    @Test
+    fun `이동횟수 음수 입력 테스트`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("a,b,c", "-1") }
+        }
+    }
+
+    @Test
+    fun `이동횟수 다른 타입 입력 테스트`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("a,b,c", "abc") }
+        }
+    }
+
+    @Test
+    fun `자동차 하나 입력 테스트`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("a", "1") }
+        }
+    }
+
+
     override fun runMain() {
         main()
     }
