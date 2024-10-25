@@ -10,7 +10,7 @@ class InputView {
         val input = Console.readLine().trim()
         checkInputIsEmpty(input)
 
-        val carNames = input.split(",")
+        val carNames = input.split(",").map { it.trim() }
         validateCarNameLength(carNames)
         validateCarNameDuplicate(carNames)
 
