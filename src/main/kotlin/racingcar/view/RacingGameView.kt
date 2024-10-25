@@ -1,6 +1,5 @@
 package racingcar.view
 
-import racingcar.model.Car
 import camp.nextstep.edu.missionutils.Console.readLine as readLineAPI
 import racingcar.resources.Messages
 
@@ -11,27 +10,27 @@ class RacingGameView {
     }
 
     // Output Views
-    fun printBlankLine() {
+    fun showBlankLine() {
         println()
     }
 
-    fun printGameStart() {
+    fun showGameStart() {
         println(Messages.GAME_START)
     }
 
-    fun printInputCount() {
+    fun showInputCount() {
         println(Messages.GAME_INPUT_COUNT)
     }
 
-    fun printRaceResult() {
+    fun showRaceResult() {
         println(Messages.GAME_RESULT)
     }
 
-    fun printWinners(winners: List<String>) {
+    fun showWinners(winners: List<String>) {
         println(Messages.GAME_WINNER.format(winners.joinToString(", ")))
     }
 
-    fun printCarNameWithIndicator(name: String, distance: Int) {
+    fun showCarNameWithIndicator(name: String, distance: Int) {
         println("$name : ${"-".repeat(distance)}")
     }
 }

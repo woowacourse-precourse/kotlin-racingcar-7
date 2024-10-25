@@ -17,7 +17,7 @@ class RacingGameController(
         cars = readCarNames()
         tryCount = inputTryCount()
         multiRace()
-        printFinalWinner()
+        announceFinalWinner()
     }
 
     /**
@@ -25,7 +25,7 @@ class RacingGameController(
      * @return 자동차 이름들과 0으로 초기화된 LinkedHashMap 값
      */
     private fun readCarNames(): List<Car> {
-        racingGameView.printGameStart()
+        racingGameView.showGameStart()
         val inputString = racingGameView.readLine()
         validator.carNamesValidate(inputString)
 
@@ -37,7 +37,7 @@ class RacingGameController(
      * @return 자동차 경주 횟수를 나타내는 Int 값
      */
     fun inputTryCount(): Int {
-        racingGameView.printInputCount()
+        racingGameView.showInputCount()
         val inputCountString = racingGameView.readLine()
         validator.tryCountValidate(inputCountString)
 
@@ -50,16 +50,16 @@ class RacingGameController(
     private fun singleRace() {
         cars.forEach {
             racingGameService.moveCarRandomly(it)
-            racingGameView.printCarNameWithIndicator(it.name, it.distance)
+            racingGameView.showCarNameWithIndicator(it.name, it.distance)
         }
-        racingGameView.printBlankLine()
+        racingGameView.showBlankLine()
     }
 
     /**
      * 경주를 시도횟수 만큼 진행 하고 결과를 출력
      */
     private fun multiRace() {
-        racingGameView.printRaceResult()
+        racingGameView.showRaceResult()
         for (i in 1..tryCount) {
             singleRace()
         }
@@ -68,8 +68,8 @@ class RacingGameController(
     /**
      * 최종 우승자 출력
      */
-    private fun printFinalWinner() {
+    private fun announceFinalWinner() {
         val winnersName = racingGameService.findWinnerNames(cars)
-        racingGameView.printWinners(winnersName)
+        racingGameView.showWinners(winnersName)
     }
 }
