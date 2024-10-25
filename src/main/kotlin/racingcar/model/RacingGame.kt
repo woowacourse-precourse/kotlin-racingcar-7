@@ -36,7 +36,8 @@ class RacingGame {
     }
 
     fun play(key: String) {
-        if (Randoms.pickNumberInRange(0, 9) >= 4) {
+        val randomValue = Randoms.pickNumberInRange(0, 9)
+        if (randomValue >= 4) {
             cars[key]!!.move()
         }
     }
