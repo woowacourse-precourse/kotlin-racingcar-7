@@ -21,9 +21,9 @@ class Controller(private val model: Model, private val view: View) {
         while (true) {
             model.moveAll(cars)
             val gameStatus = model.getStatus(cars)
-            // TODO : Status 출력
+            view.showStatus(cars)
             if (model.isDone(tryNum, gameStatus)) {
-                // TODO : 경주 결과 출력
+                view.showWinners(tryNum, cars)
                 break
             }
         }
