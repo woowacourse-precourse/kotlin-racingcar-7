@@ -119,7 +119,6 @@ fun ifTryCountIsZeroOrNegative(tryCount: Int) {
     }
 }
 
-
 fun ifCarIsSingle(carList: List<String>) {
     if (carList.size == 1) {
         throw IllegalArgumentException("Car racing starts when racers are more than two.")
