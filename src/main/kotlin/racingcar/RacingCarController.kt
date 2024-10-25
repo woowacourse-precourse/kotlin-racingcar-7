@@ -1,6 +1,6 @@
 package racingcar
 
-class RacingCarService(
+class RacingCarController(
     private val userInput: UserInput,
     private val guideOutput: GuideOutput,
     private val resultOutput: ResultOutput,

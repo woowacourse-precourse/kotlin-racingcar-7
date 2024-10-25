@@ -4,5 +4,5 @@ fun main() {
     val userInput = UserInput()
     val guideOutput = GuideOutput()
     val resultOutput = ResultOutput()
-    RacingCarService(userInput, guideOutput, resultOutput).execute()
+    RacingCarController(userInput, guideOutput, resultOutput).execute()
 }
