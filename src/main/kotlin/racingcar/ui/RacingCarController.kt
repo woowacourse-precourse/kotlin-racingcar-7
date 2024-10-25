@@ -1,7 +1,7 @@
 package racingcar.ui
 
 import racingcar.domain.entity.Race
-import racingcar.domain.factory.CarFactory
+import racingcar.domain.usecase.CreateCarUseCase
 
 class RacingCarController(
     private val userInput: UserInput,
@@ -11,7 +11,7 @@ class RacingCarController(
     fun execute() {
         val carsName = getCarsName()
         val raceCount = getRaceCount()
-        val cars = CarFactory().buildCars(input = carsName)
+        val cars = CreateCarUseCase().execute(input = carsName)
         val race = Race(cars)
         playRace(raceCount, race)
         resultOutput.printWinners(race.getWinnersName())

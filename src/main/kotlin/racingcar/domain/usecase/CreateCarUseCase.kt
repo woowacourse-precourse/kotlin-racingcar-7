@@ -1,22 +1,22 @@
-package racingcar.domain.factory
+package racingcar.domain.usecase
 
 import racingcar.domain.entity.Car
 
-class CarFactory {
+class CreateCarUseCase {
     private var anonymityCount = INITIAL_ANONYMITY_COUNT
 
-    fun buildCars(input: String): List<Car> {
-        val carsName = input.split(DELIMITER)
-        validateCarsName(carsName)
-        return carsName.map { name -> buildCar(name) }
+    fun execute(input: String): List<Car> {
+        val carNames = input.split(DELIMITER)
+        validateCarNames(carNames)
+        return carNames.map { name -> createCarWithName(name) }
     }
 
-    private fun buildCar(name: String): Car {
-        if (name.trim().isEmpty()) return Car(ANONYMITY + anonymityCount++)
-        return Car(name)
+    private fun createCarWithName(name: String): Car {
+        val processedName = if (name.trim().isEmpty()) "$ANONYMITY${anonymityCount++}" else name
+        return Car(processedName)
     }
 
-    private fun validateCarsName(carsName: List<String>) = carsName.forEach { name ->
+    private fun validateCarNames(carNames: List<String>) = carNames.forEach { name ->
         require(name.length <= NAME_COUNT_LIMIT) { println(OVER_NAME_COUNT_MESSAGE) }
     }
 
