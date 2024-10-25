@@ -46,7 +46,7 @@ fun numberIsOverFour(randomNumber: Int): Boolean{
 }
 
 fun randomCountToCar(carList: List<String>, tryCountList: MutableList<Int>): MutableList<Int>{
-    for(i in 0..<carList.size){
+    for(i in carList.indices){
         val randomNumber = randomCount()
         if(numberIsOverFour(randomNumber)){
             tryCountList[i]++
