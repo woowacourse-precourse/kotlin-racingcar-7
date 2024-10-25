@@ -1,49 +1,63 @@
 package racingcar.view
 
+import camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest
+import camp.nextstep.edu.missionutils.test.NsTest
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
-
-import org.junit.jupiter.api.Assertions.*
-import org.junit.jupiter.api.BeforeEach
+import racingcar.model.Car
 import java.io.ByteArrayOutputStream
 import java.io.PrintStream
 
-class OutputTest {
-    private lateinit var output: Output
-    private lateinit var outContent: ByteArrayOutputStream
+class OutputTest : NsTest() {
 
-    @BeforeEach
-    fun setUp() {
-        output = Output()
-        outContent = ByteArrayOutputStream()
-        System.setOut(PrintStream(outContent))
+    @Test
+    fun `실행결과 출력 테스트`() {
+        assertRandomNumberInRangeTest({
+            val outputStream = ByteArrayOutputStream()
+            System.setOut(PrintStream(outputStream))
+
+            runMain()
+
+            val expectedOutput = """
+                a : -
+                b : 
+                """.trimIndent()
+
+            assertTrue(outputStream.toString().contains(expectedOutput))
+        }, MOVING_FORWARD, STOP)
+    }
+
+    companion object {
+        private const val MOVING_FORWARD: Int = 4
+        private const val STOP: Int = 3
     }
 
     @Test
-    fun resultMsg() {
-        val carNameList = listOf("Car1", "Car2")
-        val moveCountList = listOf(listOf("-", ""), listOf("-", "-"))
-        output.resultMsg(carNameList, moveCountList)
-        val expectedOutput = """
-            실행 결과
-            Car1 : -
-            Car2 : -
-            
-            Car1 : -
-            Car2 : --
-            
+    fun `승자 출력 테스트`() {
+        val outputStream = ByteArrayOutputStream()
+        System.setOut(PrintStream(outputStream))
+
+        val output = Output()
+        output.winnerMsg(listOf("a", "b"))
+
+        val expected = """
+            최종 우승자 : a, b
         """.trimIndent()
 
-        assertEquals(expectedOutput.trim(), outContent.toString().trim())
+        assertEquals(expected, outputStream.toString().trim())
+
+        System.setOut(System.out)
     }
 
-    @Test
-    fun winnerMsg() {
-        val winnerList = listOf("Car1", "Car2")
-        output.winnerMsg(winnerList)
-        val expectedOutput = """
-            최종 우승자 : Car1, Car2
-            """.trimIndent()
+    override fun runMain() {
+        val output = Output()
+        val carA = Car("a")
+        val carB = Car("b")
 
-        assertEquals(expectedOutput.trim(), outContent.toString().trim())
+        carA.moves.add("-")
+        carB.moves.add("")
+
+        output.resultMsg(listOf(carA, carB), 1)
     }
 }
