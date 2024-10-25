@@ -50,7 +50,7 @@ class OutputViewTest {
 
     @DisplayName("우승자 한 명인 경우 출력 테스트")
     @Test
-    fun racingWinnerPrintTest(){
+    fun racingWinnerPrintTest() {
         val input = listOf("일")
         val expected = "최종 우승자 : 일"
 
@@ -63,7 +63,7 @@ class OutputViewTest {
 
     @DisplayName("우승자 다수인 경우 출력 테스트")
     @Test
-    fun racingWinnersPrintTest(){
+    fun racingWinnersPrintTest() {
         val input = listOf("일", "삼", "오")
         val expected = "최종 우승자 : 일, 삼, 오"
 
