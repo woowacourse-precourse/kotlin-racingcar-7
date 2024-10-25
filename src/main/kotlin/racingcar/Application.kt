@@ -6,7 +6,7 @@ fun main() {
     val cars = carNameInput("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
     val carList = splitCarName(cars)
     val tryCount = tryCountInput("시도할 횟수는 몇 회인가요?").toInt()
-    val tryCountList = initTryCountList(tryCount)
+    val tryCountList = initTryCountList(carList.size)
 }
 fun carNameInput(prompt: String): String{
     println(prompt)
@@ -23,7 +23,7 @@ fun splitCarName(carNames: String): List<String>{
     return splitedCarNames
 }
 
-fun initTryCountList(tryCount: Int): MutableList<Int>{
-    val tryCountList = MutableList(tryCount) { 0 }
+fun initTryCountList(carListSize: Int): MutableList<Int>{
+    val tryCountList = MutableList(carListSize) { 0 }
     return tryCountList
 }
