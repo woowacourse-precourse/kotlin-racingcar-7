@@ -1,31 +1,26 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Randoms
-import javax.swing.JToolBar.Separator
+import racingcar.Output.Companion.RACE_START
 
 class Race {
     private val moveProgress = mutableMapOf<String, String>()
     private val maxDistance by lazy { moveProgress.values.max() }
     private val winnerList = mutableListOf<String>()
+    private val output: Output = Output()
 
     fun start(carNames: List<String>, moveCount: Int) {
         
         initMap(carNames)
-
-        println(RACE_START)
-
+        output.raceStart()
         repeat(moveCount) { iterateEachCar() }
 
         for ((carName, moveDistance) in moveProgress) {
-            if (moveDistance == maxDistance) {
-                winnerList.add(carName)
-            }
+            selectWinnerMatch(moveDistance, carName)
         }
 
-
-        println("\n최종 우승자 : ${winnerList.joinToString(separator = ", ")}")
+        output.winnerAnnounce(winnerList)
     }
-
 
     private fun initMap(carNames: List<String>) = carNames.forEach { carName -> moveProgress.put(carName, BLANK) }
 
@@ -33,9 +28,15 @@ class Race {
         for (carName in moveProgress.keys) {
             moveProgress[carName] += moveOrStop()
 
-            println("$carName : ${moveProgress[carName]}")
+            output.flowOfRace(carName, moveProgress)
         }
-        println()
+        output.newLine()
+    }
+
+    private fun selectWinnerMatch(moveDistance: String, carName: String) {
+        if (moveDistance == maxDistance) {
+            winnerList.add(carName)
+        }
     }
 
     private fun randomValue(): Int = Randoms.pickNumberInRange(0, 9)
@@ -48,6 +49,5 @@ class Race {
         const val MOVE = "-"
         const val STOP = ""
         const val BLANK = ""
-        const val RACE_START = "\n실행 결과"
     }
 }
