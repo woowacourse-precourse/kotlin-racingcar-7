@@ -8,8 +8,9 @@ class OutputView {
 
     fun printRacingProgress(racing: List<Pair<String, Int>>) {
         racing.forEach {
-            print("${it.first} : ${"-".repeat(it.second)}\n")
+            println("${it.first} : ${"-".repeat(it.second)}")
         }
+        println()
     }
 
     fun printWinners(winners: List<String>) {
