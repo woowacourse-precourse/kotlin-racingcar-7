@@ -9,20 +9,26 @@ import org.junit.jupiter.api.assertThrows
 
 class ApplicationTest : NsTest() {
     @Test
-    fun `기능 테스트`() {
-        assertRandomNumberInRangeTest(
-            {
-                run("pobi,woni", "1")
-                assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi")
-            },
-            MOVING_FORWARD, STOP
-        )
+    fun `차 하나만 참여`() {
+        assertSimpleTest {
+            val carRacing = CarRacing("pobi")
+            assertThat(carRacing.getNamesOfCars()).isEqualTo(listOf("pobi"))
+        }
     }
 
     @Test
-    fun `예외 테스트`() {
+    fun `차 두대가 참여`() {
         assertSimpleTest {
-            assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
+            val carRacing = CarRacing("pobi,woni")
+            assertThat(carRacing.getNamesOfCars()).isEqualTo(listOf("pobi","woni"))
+        }
+    }
+
+    @Test
+    fun `차 세대가 참여`() {
+        assertSimpleTest {
+            val carRacing = CarRacing("pobi,woni,jun")
+            assertThat(carRacing.getNamesOfCars()).isEqualTo(listOf("pobi","woni","jun"))
         }
     }
 
