@@ -9,7 +9,7 @@ class GetWinnersUseCaseTest {
     @Test
     fun `우승자가 혼자일 경우 테스트`() {
         val cars = listOf(Car("red", _position = 5), Car("blue", _position = 3))
-        val result = GetWinnersUseCase().getWinnersName(cars)
+        val result = GetWinnersUseCase().execute(cars)
         val expect = listOf("red")
         assertEquals(expect, result)
     }
@@ -17,7 +17,7 @@ class GetWinnersUseCaseTest {
     @Test
     fun `우승자가 다수일 경우 테스트`() {
         val cars = listOf(Car("red", 4), Car("blue", 5), Car("white", 5))
-        val result = GetWinnersUseCase().getWinnersName(cars)
+        val result = GetWinnersUseCase().execute(cars)
         val expect = listOf("blue", "white")
         assertEquals(expect, result)
     }
