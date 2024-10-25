@@ -2,7 +2,7 @@ package racingcar.domain.car
 
 private const val MOVE_SIGN = "-"
 
-class Car(private val name: String) {
+class Car(val name: String) {
     var position: Int = 0
         private set
 
