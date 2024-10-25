@@ -8,6 +8,12 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
 class ApplicationTest : NsTest() {
+    @Test
+    fun `차 하나만 참여`() {
+        assertSimpleTest {
+            assertThat(carRacing.getNamesOfCars()).isEqualTo(listOf("pobi"))
+        }
+    }
 
     override fun runMain() {
         main()
