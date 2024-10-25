@@ -82,5 +82,5 @@ fun findFinalWinner(carList: List<String>, carRacingResult: MutableList<String>)
 }
 
 fun printFinalWinner(promt: String, finalWinners: MutableList<String>) {
-    println(promt+finalWinners)
+    println(promt+finalWinners.joinToString(", "))
 }
