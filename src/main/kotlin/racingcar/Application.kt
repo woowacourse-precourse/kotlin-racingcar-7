@@ -15,7 +15,13 @@ class Game {
 }
 // 자동차 클래스
 data class Car(val name: String, val move: String = "") {
+    // 자동차가 움직이는 기능
+    fun move() {
+        if (Randoms.pickNumberInRange(0, 9) >= 4) {
+            this.move += "-"
+        }
+    }
 
-    
+
 
 }
