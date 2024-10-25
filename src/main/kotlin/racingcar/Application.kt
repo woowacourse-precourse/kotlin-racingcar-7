@@ -15,6 +15,12 @@ class Game {
 }
 // 자동차 클래스
 data class Car(val name: String, var move: String = "") {
+    // 자동차 이름 5자 넘을 경우 예외 발생
+    init {
+        if (name.length > 5) {
+            throw IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.")
+        }
+    }
     // 자동차가 움직이는 기능
     fun move() {
         if (Randoms.pickNumberInRange(0, 9) >= 4) {
