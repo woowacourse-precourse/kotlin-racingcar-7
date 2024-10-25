@@ -4,51 +4,30 @@ import camp.nextstep.edu.missionutils.Randoms
 import racingcar.constants.Constants.MOVE
 
 class Make(carNames: String, private val tryCount: Int) {
-    private fun randomNumber() = Randoms.pickNumberInRange(0, 9)
     val carNameList = carNames.split(',')
     val moveByNameList = moveByNameList()
 
+    private fun randomNumber() = Randoms.pickNumberInRange(0, 9)
+
     private fun numberList(): List<Int> {
-        val numberList = mutableListOf<Int>()
 
-        repeat(tryCount) {
-            numberList.add(randomNumber())
-        }
-
-        return numberList
+        return List(tryCount) { randomNumber() }
     }
 
     private fun moveByNameList(): List<List<String>> {
-        val moveByNameList = mutableListOf<List<String>>()
-
-        repeat(carNameList.size) {
-            moveByNameList.add(Move().moveOrStop(numberList()))
-        }
-
-        return moveByNameList
+        return List(carNameList.size) { moveOrStop(numberList()) }
     }
 
     private fun moveCountList(): List<Int> {
-        val moveCountList = mutableListOf<Int>()
-
-        for (i in moveByNameList.indices) {
-            val moveCount = moveByNameList[i].count { it == MOVE }
-            moveCountList.add(moveCount)
-        }
-
-        return moveCountList
+        return moveByNameList.map { it.count { move -> move == MOVE } }
     }
 
     fun winnerList(): List<String> {
-        val moveCountList = moveCountList()
-        val maxValue = moveCountList.maxOrNull()
-        val maxIndex = moveCountList.withIndex().filter { it.value == maxValue }.map { it.index }
-        val winnerList = mutableListOf<String>()
+        val maxValue = moveCountList().max()
 
-        for (i in maxIndex.indices) {
-            winnerList.add(carNameList[maxIndex[i]])
-        }
-
-        return winnerList
+        return moveCountList()
+            .withIndex()
+            .filter { it.value == maxValue }
+            .map { carNameList[it.index] }
     }
 }
