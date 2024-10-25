@@ -63,3 +63,14 @@ fun printCarRacing(carList: List<String>, carRacingResult: MutableList<String>) 
         println(carList[i]+" : "+carRacingResult[i])
     }
 }
+
+fun findFinalWinner(carList: List<String>, carRacingResult: MutableList<String>): MutableList<Int>{
+    val winnerMove = carRacingResult.maxOf { it.length }
+    val winnerIndex = mutableListOf<Int>()
+    for(i in carList.indices){
+        if(carRacingResult[i].length == winnerMove){
+            winnerIndex.add(i)
+        }
+    }
+    return winnerIndex
+}
