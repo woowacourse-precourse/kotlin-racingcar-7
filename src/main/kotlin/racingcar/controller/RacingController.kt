@@ -9,15 +9,17 @@ class RacingController {
     fun start() {
         printInputCarName()
         val input = Console.readLine().split(",")
+        InputValidator.validateCarName(input)
         for (carName in input) {
             carState[carName] = 0
         }
 
         printInputRaceCount()
-        val raceCount = Console.readLine().toInt()
+        val raceCount = Console.readLine()
+        InputValidator.validateRaceCount(raceCount)
 
         printOutputRaceResult()
-        repeat(raceCount) {
+        repeat(raceCount.toInt()) {
             race(carState)
             println()
         }
