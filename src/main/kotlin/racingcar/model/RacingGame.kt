@@ -4,11 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms
 
 class RacingGame {
     private var cars: MutableMap<String, Car> = mutableMapOf()
-    var names: List<String> = listOf()
-
-    fun setInput(input: String) {
-        splitToList(input)
-    }
+    private var names: List<String> = listOf()
 
     fun splitToList(input: String) {
         names = input.split(",").toMutableList()
@@ -18,18 +14,20 @@ class RacingGame {
         return names
     }
 
-    fun isValidName(): Boolean {
+    fun isValidName(input: String): Boolean {
         names.forEach {
             if (it.length > 5) {
                 return false
             }
         }
+        if (!input.contains(",")) return false
         return true
     }
 
     fun isValidNaturalNumber(round: String): Boolean {
         if (round.matches("\\D".toRegex())) return false
-        if (round.toInt() == 0) return false
+        if (round.toIntOrNull() == 0) return false
+        if (round == "") return false
         return true
     }
 
@@ -38,24 +36,27 @@ class RacingGame {
     }
 
     fun play(key: String) {
-        cars[key]!!.move(Randoms.pickNumberInRange(0, 9))
+        if (Randoms.pickNumberInRange(0, 9) >= 4) {
+            cars[key]!!.move()
+        }
     }
 
     fun getScore(key: String): String {
         val symbol = "-"
-        var score: Int = cars[key]!!.score
+        val score: Int = cars[key]!!.score
         val scoreSymbol = symbol.repeat(score)
         return scoreSymbol
     }
 
     fun getWinner(): String {
-        var topScore = 0
+        var topScore = -1
         var winner = ""
-        names.forEach {
-            val score = cars[it]!!.score
-            if (score > topScore) {
-                topScore = score
-                winner = it
+        for ((key, value) in cars) {
+            if (value.score > topScore) {
+                topScore = value.score
+                winner = key
+            } else if (value.score == topScore) {
+                winner += ", $key"
             }
         }
         return winner
