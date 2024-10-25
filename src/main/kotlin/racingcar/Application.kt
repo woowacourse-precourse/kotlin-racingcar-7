@@ -75,7 +75,7 @@ fun findFinalWinner(carList: List<String>, carRacingResult: MutableList<String>)
             winnerIndex.add(i)
         }
     }
-    for(i in winnerIndex.indices){
+    for(i in winnerIndex){
         winners.add(carList[i])
     }
     return winners
