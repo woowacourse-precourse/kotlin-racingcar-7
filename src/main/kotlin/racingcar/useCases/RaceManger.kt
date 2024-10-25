@@ -12,10 +12,9 @@ class RaceManger (
         repeat(matches) {
             readyRacingCars.forEach { readyRacingCar -> readyRacingCar.goOneStep(RandomNumber.pick()) }
         }
-        findWinners()
     }
 
-    private fun findWinners(): RaceResult {
+    fun findWinners(): RaceResult {
         val maxDistance: Int = readyRacingCars.maxOf { it.distance }
         val winners: List<Car> = readyRacingCars.filter { it.distance == maxDistance }
         val winnersName: List<String> = winners.map{ it.name }
