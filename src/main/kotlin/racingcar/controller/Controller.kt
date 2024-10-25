@@ -4,16 +4,16 @@ import racingcar.model.RacingGame
 import racingcar.view.InputView
 import racingcar.view.OutputView
 
-class Controller (
-    val inputView: InputView,
-    val outputView: OutputView,
-    val racingGame: RacingGame,
-) {
+class Controller {
+    private val inputView: InputView = InputView()
+    private val outputView: OutputView = OutputView()
+    private val racingGame: RacingGame = RacingGame()
+
     fun start() {
         outputView.showPrompt("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
         val names = inputView.getInput()
-        racingGame.setInput(names)
-        if (!racingGame.isValidName()) {
+        racingGame.splitToList(names)
+        if (!racingGame.isValidName(names)) {
             throw IllegalArgumentException()
         }
 
