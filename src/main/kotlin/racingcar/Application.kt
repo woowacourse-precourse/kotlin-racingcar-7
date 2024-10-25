@@ -39,8 +39,7 @@ fun randomCount(): Int{
 }
 
 fun numberIsOverFour(randomNumber: Int): Boolean{
-    val bool: Boolean
-    bool = (if(randomNumber >= 4){
+    val bool: Boolean = (if(randomNumber >= 4){
         true
     } else false)
     return bool
