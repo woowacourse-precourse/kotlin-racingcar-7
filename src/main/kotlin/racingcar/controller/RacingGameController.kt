@@ -2,8 +2,8 @@ package racingcar.controller
 
 import racingcar.view.RacingGameView
 import racingcar.model.Car
-import racingcar.service.InputValidator
-import racingcar.service.RacingGameService
+import racingcar.domain.InputValidator
+import racingcar.domain.RacingGameService
 
 class RacingGameController(
     private val racingGameView: RacingGameView,
@@ -36,7 +36,7 @@ class RacingGameController(
      * 자동차 경주 횟수를 사용자로 부터 입력받기
      * @return 자동차 경주 횟수를 나타내는 Int 값
      */
-    fun inputTryCount(): Int {
+    private fun inputTryCount(): Int {
         racingGameView.showInputCount()
         val inputCountString = racingGameView.readLine()
         validator.tryCountValidate(inputCountString)

@@ -1,8 +1,8 @@
 package racingcar
 
 import racingcar.controller.RacingGameController
-import racingcar.service.InputValidator
-import racingcar.service.RacingGameService
+import racingcar.domain.InputValidator
+import racingcar.domain.RacingGameService
 import racingcar.view.RacingGameView
 
 fun main() {

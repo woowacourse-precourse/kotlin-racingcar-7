@@ -1,17 +1,14 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest
-import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.DisplayName
-import org.junit.jupiter.params.ParameterizedTest
-import org.junit.jupiter.params.provider.ValueSource
 import racingcar.controller.RacingGameController
-import racingcar.service.InputValidator
-import racingcar.service.RacingGameService
+import racingcar.domain.InputValidator
+import racingcar.domain.RacingGameService
 import racingcar.view.RacingGameView
 
 class RacingGameUnitTest : NsTest() {
@@ -23,22 +20,6 @@ class RacingGameUnitTest : NsTest() {
         val inputValidator = InputValidator()
         val racingGameService = RacingGameService()
         racingGameController = RacingGameController(racingGameView, inputValidator, racingGameService)
-    }
-
-    @ParameterizedTest
-    @DisplayName("다양한 경기 시도 횟수를 입력받아 정수형으로 저장")
-    @ValueSource(strings = ["1", "5", "10", "100"])
-    fun setTryCount(input: String) {
-        assertSimpleTest {
-            // given
-            run(input)
-
-            // when
-            val tryCount = racingGameController.inputTryCount()
-
-            // then
-            assertThat(tryCount).isEqualTo(input.toInt())
-        }
     }
 
     @Test
