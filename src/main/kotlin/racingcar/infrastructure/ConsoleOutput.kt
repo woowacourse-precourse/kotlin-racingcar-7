@@ -4,11 +4,13 @@ import racingcar.domain.Car
 
 class ConsoleOutput {
     fun showRoundResult(cars: List<Car>) {
+        var result = ""
         for (car in cars) {
             val carName: String = car.name
             val carDistance: String = ONE_STEP.repeat(car.distance)
-            println("$carName : $carDistance")
+            result += "$carName : $carDistance\n"
         }
+        println(result)
     }
 
     fun showWinners(winners: List<String>) {
