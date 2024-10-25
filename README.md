@@ -15,18 +15,18 @@
 
 ## 구현 기능 목록
 
-- 사용자 입력한 문자열이 empty 한지 확인하는 기능 - `checkIsEmpty()`
+- 사용자 입력한 문자열이 empty 한지 확인하는 기능 - `checkIsEmpty()`  
     empty 하다면 -> `IllegalArgumentException` 발생
-- 사용자가 입력한 차 이름의 길이가 5자리를 넘는지 확인하는 기능 - `checkLengthOfCarName()`
+- 사용자가 입력한 차 이름의 길이가 5자리를 넘는지 확인하는 기능 - `checkLengthOfCarName()`  
     5자리를 넘으면 -> `IllegalArgumentException` 발생
-- 램덤 값을 반환하는 함수 - `getRandomNumber()`
+- 램덤 값을 반환하는 함수 - `getRandomNumber()`  
     min(최소값), max(최대값) 설정 가능
-- 차의 이동 거리를 증가시키는 기능
+- 차의 이동 거리를 증가시키는 기능 - `increaseDistance()`  
   `getRandomNumber()`로부터 반환된 값이 4 이상인 경우 이동 거리를 1 증가 시킨다.
-- 자동차 경주를 시작하는 함수 - `startGame()`
-- 자동차의 이동 거리가 가장 많은 차를 반환하는 함수 - `getWinner()`
-- 자동차의 현재 이동 거리를 출력하는 함수 - `printCurrentDistance()`
+- 자동차 경주를 시작하는 함수 - `startGame()`  
+- 자동차의 이동 거리가 가장 많은 차를 반환하는 함수 - `getWinner()`  
+- 자동차의 현재 이동 거리를 출력하는 함수 - `printCurrentDistance()`  
     자동차의 이동거리를 증가시킬 때마다 호출한다.
-- 자동차의 이동 거리가 가장 많은 차들을 출력하는 함수 - `printWinnerCarName()`
+- 자동차의 이동 거리가 가장 많은 차들을 출력하는 함수 - `printWinnerCarName()`  
     단수, 복수 둘 다 가능성이 있어 List<Car>로 반환한다.
 
