@@ -21,4 +21,11 @@ class Validation {
             throw IllegalArgumentException("자동차 이름은 2대 이상 입력해 주세요.")
         }
     }
+
+    fun checkCarNameDuplication(carName: List<Car>) {
+        val carNames = carName.map { it.name }
+        if (carNames.distinct().size != carNames.size) {
+            throw IllegalArgumentException("중복된 이름은 작성할 수 없습니다.")
+        }
+    }
 }
