@@ -20,6 +20,9 @@ data class Car(val name: String, var move: String = "") {
         if (name.length > 5) {
             throw IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.")
         }
+        if (name.isBlank()) {
+            throw IllegalArgumentException("자동차 이름은 공백일 수 없습니다.")
+        }
     }
     // 자동차가 움직이는 기능
     fun move() {
