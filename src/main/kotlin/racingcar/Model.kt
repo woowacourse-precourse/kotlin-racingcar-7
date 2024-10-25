@@ -20,11 +20,11 @@ class Model {
         cars.forEach { move(it) }
     }
 
-    private fun getStatus(cars: List<Car>): List<Int> {
+    fun getStatus(cars: List<Car>): List<Int> {
         return cars.map { it.getPos() }
     }
 
-    private fun isDone(tryNumber: Int, status: List<Int>): Boolean {
+    fun isDone(tryNumber: Int, status: List<Int>): Boolean {
         return status.any { it == tryNumber }
     }
 }
