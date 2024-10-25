@@ -5,17 +5,28 @@ private fun carNameNullError(carNames: String): Boolean {
     return carNames.isEmpty()
 }
 
-fun carNameError(carNames: String): Boolean {
-    if (carNameNullError(carNames)) return true
-
+private fun carNameLengthError(carNames: String): Boolean {
     val carNameList = carNames.split(',')
-    if (carNameList.isEmpty()) return true
 
     for (i in carNameList.indices) {
         if (carNameList[i].length > 5) return true
     }
-
     return false
+}
+
+private fun sameCarNameError(carNames: String): Boolean {
+    val carNameList = carNames.split(',')
+
+    for (i in carNameList.indices) {
+        if (carNameList.count { it == carNameList[i] } > 1) return true
+    }
+    return false
+}
+
+fun carNameError(carNames: String): Boolean {
+
+    return carNameNullError(carNames) || carNameLengthError(carNames)
+            || sameCarNameError(carNames)
 }
 
 private fun notNumberError(tryCount: String): Boolean {
