@@ -14,6 +14,7 @@ fun main() {
         printCarRacing(carList, carRacingResult)
         println()
     }
+
 }
 
 fun carNameInput(prompt: String): String{
@@ -67,10 +68,14 @@ fun printCarRacing(carList: List<String>, carRacingResult: MutableList<String>) 
 fun findFinalWinner(carList: List<String>, carRacingResult: MutableList<String>): MutableList<Int>{
     val winnerMove = carRacingResult.maxOf { it.length }
     val winnerIndex = mutableListOf<Int>()
+    val winners = mutableListOf<String>()
     for(i in carList.indices){
         if(carRacingResult[i].length == winnerMove){
             winnerIndex.add(i)
         }
+    }
+    for(i in winnerIndex.indices){
+        winners.add(carList[i])
     }
     return winnerIndex
 }
