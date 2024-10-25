@@ -25,7 +25,15 @@ data class Car(val name: String, val move: String = "") {
     fun getMoveDistance(): Int {
         return this.move.length
     }
+}
 
-
-
+// 경주 관리 클래스
+class Race(private val cars: List<Car>, private val roundCount: Int) {
+    // 경주 시작
+    fun runStart() {
+        repeat(roundCount) {
+            raceOnce()
+        }
+        announceWinner()
+    }
 }
