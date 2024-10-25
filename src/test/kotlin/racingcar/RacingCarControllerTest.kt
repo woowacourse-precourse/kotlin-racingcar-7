@@ -2,6 +2,7 @@ package racingcar
 
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
 import racingcar.controller.RacingCarController
 
 class RacingCarControllerTest {
@@ -24,5 +25,16 @@ class RacingCarControllerTest {
         racingCars.forEach { car ->
             assertEquals(0, car.movementDistance)
         }
+    }
+
+    @Test
+    fun `입력한 이름이 동일할 경우`() {
+        val input = "pobi,pobi"
+
+        val exception = assertThrows<IllegalArgumentException> {
+            controller.createRacingCars(input)
+        }
+        assertEquals("자동차 이름은 중복될 수 없습니다.", exception.message)
+
     }
 }
