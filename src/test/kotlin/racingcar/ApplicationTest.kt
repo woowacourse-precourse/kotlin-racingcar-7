@@ -62,13 +62,6 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
-    fun `이동횟수 다른 타입 입력 테스트`() {
-        assertSimpleTest {
-            assertThrows<IllegalArgumentException> { runException("a,b,c", "abc") }
-        }
-    }
-
-    @Test
     fun `자동차 하나 입력 테스트`() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("a", "1") }

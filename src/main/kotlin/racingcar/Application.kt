@@ -13,7 +13,6 @@ fun main() {
 
     val tryCount = tryCountInput("시도할 횟수는 몇 회인가요?").toInt()
     ifTryCountIsZeroOrNegative(tryCount)
-    ifTryCountIsntInt(tryCount)
 
     var carRacingResult = initTryCountList(carList.size)
 
@@ -120,11 +119,6 @@ fun ifTryCountIsZeroOrNegative(tryCount: Int) {
     }
 }
 
-fun ifTryCountIsntInt(tryCount: Any) {
-    if (tryCount !is Int) {
-        throw IllegalArgumentException("Try Count must be Integer Type.")
-    }
-}
 
 fun ifCarIsSingle(carList: List<String>) {
     if (carList.size == 1) {
