@@ -51,3 +51,7 @@ class Race(private val cars: List<Car>, private val roundCount: Int) {
         println("최종 우승자 : ${winner.joinToString(", ")}")
     }
 }
+
+fun main() {
+    Game().start()
+}
