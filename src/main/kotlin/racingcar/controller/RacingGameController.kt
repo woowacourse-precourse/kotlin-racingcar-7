@@ -59,7 +59,8 @@ class RacingGameController(
      * 경주를 시도횟수 만큼 진행 하고 결과를 출력
      */
     private fun multiRace() {
-        racingGameView.showRaceResult()
+        racingGameView.showBlankLine()
+        racingGameView.showRaceResultHeader()
         for (i in 1..tryCount) {
             singleRace()
         }

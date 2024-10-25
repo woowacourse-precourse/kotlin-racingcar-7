@@ -22,8 +22,8 @@ class RacingGameView {
         println(Messages.GAME_INPUT_COUNT)
     }
 
-    fun showRaceResult() {
-        println(Messages.GAME_RESULT)
+    fun showRaceResultHeader() {
+        println(Messages.GAME_RESULT_HEADER)
     }
 
     fun showWinners(winners: List<String>) {
