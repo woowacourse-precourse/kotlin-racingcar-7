@@ -2,6 +2,9 @@ package racingcar
 
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
+import racingcar.domain.entity.Car
+import racingcar.domain.entity.Race
+import racingcar.domain.generator.NumbersGenerator
 
 class RaceTest {
 

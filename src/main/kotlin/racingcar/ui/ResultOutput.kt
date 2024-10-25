@@ -1,4 +1,6 @@
-package racingcar
+package racingcar.ui
+
+import racingcar.domain.entity.Car
 
 class ResultOutput {
     fun printRaceResult(cars: List<Car>) {

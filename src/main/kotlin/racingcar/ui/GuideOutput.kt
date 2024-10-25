@@ -1,4 +1,4 @@
-package racingcar
+package racingcar.ui
 
 class GuideOutput {
     fun guideInputCarsName() = println(GUIDE_INPUT_CARS_NAME_MESSAGE)

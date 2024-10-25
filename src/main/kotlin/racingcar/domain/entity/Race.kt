@@ -1,4 +1,7 @@
-package racingcar
+package racingcar.domain.entity
+
+import racingcar.domain.generator.NumberGenerator
+import racingcar.domain.generator.RaceRandomGenerator
 
 class Race(
     val cars: List<Car>,

@@ -1,4 +1,6 @@
-package racingcar
+package racingcar.domain.factory
+
+import racingcar.domain.entity.Car
 
 class CarFactory {
     private var anonymityCount = INITIAL_ANONYMITY_COUNT

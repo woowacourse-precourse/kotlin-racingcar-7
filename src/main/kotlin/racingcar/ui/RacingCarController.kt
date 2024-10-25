@@ -1,4 +1,7 @@
-package racingcar
+package racingcar.ui
+
+import racingcar.domain.entity.Race
+import racingcar.domain.factory.CarFactory
 
 class RacingCarController(
     private val userInput: UserInput,

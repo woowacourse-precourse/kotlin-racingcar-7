@@ -1,4 +1,4 @@
-package racingcar
+package racingcar.domain.entity
 
 data class Car(
     val name: String,
