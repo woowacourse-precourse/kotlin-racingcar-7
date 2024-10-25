@@ -8,11 +8,12 @@ fun main() {
     val tryCount = tryCountInput("시도할 횟수는 몇 회인가요?").toInt()
     var carRacingResult = initTryCountList(carList.size)
 
+    println("실행 결과")
     for(i in 0..<tryCount){
         carRacingResult = randomCountToCar(carList, carRacingResult)
+        printCarRacing(carList, carRacingResult)
+        println()
     }
-
-
 }
 
 fun carNameInput(prompt: String): String{
@@ -30,8 +31,8 @@ fun splitCarName(carNames: String): List<String>{
     return splitedCarNames
 }
 
-fun initTryCountList(carListSize: Int): MutableList<Int>{
-    val tryCountList = MutableList(carListSize) { 0 }
+fun initTryCountList(carListSize: Int): MutableList<String>{
+    val tryCountList = MutableList(carListSize) { "" }
     return tryCountList
 }
 
@@ -47,12 +48,18 @@ fun numberIsOverFour(randomNumber: Int): Boolean{
     return bool
 }
 
-fun randomCountToCar(carList: List<String>, carRacingResult: MutableList<Int>): MutableList<Int>{
+fun randomCountToCar(carList: List<String>, carRacingResult: MutableList<String>): MutableList<String>{
     for(i in carList.indices){
         val randomNumber = randomCount()
         if(numberIsOverFour(randomNumber)){
-            carRacingResult[i]++
+            carRacingResult[i] += "-"
         }
     }
     return carRacingResult
+}
+
+fun printCarRacing(carList: List<String>, carRacingResult: MutableList<String>) {
+    for(i in carList.indices){
+        println(carList[i]+" : "+carRacingResult[i])
+    }
 }
