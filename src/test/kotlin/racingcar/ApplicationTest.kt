@@ -32,6 +32,36 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `자동차 움직일지 여부`() {
+        assertSimpleTest {
+            val carMovingForward = Car("pobi")
+            assertThat(carMovingForward.position).isEqualTo(0)
+            carMovingForward.move(4)
+            assertThat(carMovingForward.position).isEqualTo(1)
+            carMovingForward.move(5)
+            assertThat(carMovingForward.position).isEqualTo(2)
+            carMovingForward.move(6)
+            assertThat(carMovingForward.position).isEqualTo(3)
+            carMovingForward.move(7)
+            assertThat(carMovingForward.position).isEqualTo(4)
+            carMovingForward.move(8)
+            assertThat(carMovingForward.position).isEqualTo(5)
+            carMovingForward.move(9)
+            assertThat(carMovingForward.position).isEqualTo(6)
+
+            val carStopped = Car("jun")
+            carStopped.move(0)
+            assertThat(carStopped.position).isEqualTo(0)
+            carStopped.move(1)
+            assertThat(carStopped.position).isEqualTo(0)
+            carStopped.move(2)
+            assertThat(carStopped.position).isEqualTo(0)
+            carStopped.move(3)
+            assertThat(carStopped.position).isEqualTo(0)
+        }
+    }
+
     override fun runMain() {
         main()
     }
