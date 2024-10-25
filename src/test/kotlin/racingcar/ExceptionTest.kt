@@ -9,7 +9,7 @@ class ExceptionTest {
 
     @Test
     fun `입력이 비어있는 경우`() {
-        assertThrows<IllegalArgumentException>("[경고] 이름을 입력해야 합니다.") {
+        assertThrows<IllegalArgumentException>("[경고] 비어있는 이름이 있습니다.") {
             inputView.getNameOfCar("".split(","))
         }
     }
@@ -40,5 +40,15 @@ class ExceptionTest {
         assertThrows<IllegalArgumentException>("[경고] 중복된 이름이 있습니다.") {
             inputView.getNameOfCar("pobi,woni,jun,jun".split(","))
         }
+    }
+
+    @Test
+    fun `횟수 입력이 비어있는 경우`() {
+
+    }
+
+    @Test
+    fun `숫자 외의 문자가 들어올 경우`() {
+
     }
 }
