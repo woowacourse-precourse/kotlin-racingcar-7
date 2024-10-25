@@ -3,7 +3,7 @@ import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
 class Game {
-    //게임 시작
+    // 게임 시작
     fun start() {
         println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
         val carNames = Console.readLine().split(",").map {Car(it.trim())}
@@ -12,4 +12,10 @@ class Game {
         val race= Race(carNames, roundCount)
         race.runStart()
     }
+}
+// 자동차 클래스
+data class Car(val name: String, val move: String = "") {
+
+    
+
 }
