@@ -12,7 +12,7 @@ class InputAdapter (
     }
 
     fun validateCarName(cars: List<String>): List<String> {
-        var racingCars = mutableListOf<String>()
+        val racingCars = mutableListOf<String>()
         for (car in cars) {
             when {
                 car.length > 5 -> throw IllegalArgumentException(INPUT_ERROR_MSG + CARNAME_LESS_THAN_5_EXCEPTION_MSG)
@@ -32,6 +32,7 @@ class InputAdapter (
     }
 
     fun changeTypeOfMatches(): Int {
+        validateMatches()
         return matches.toInt()
     }
 
