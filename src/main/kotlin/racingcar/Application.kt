@@ -7,6 +7,8 @@ fun main() {
     val carList = splitCarName(cars)
     val tryCount = tryCountInput("시도할 횟수는 몇 회인가요?").toInt()
     val tryCountList = initTryCountList(carList.size)
+
+
 }
 fun carNameInput(prompt: String): String{
     println(prompt)
@@ -26,4 +28,9 @@ fun splitCarName(carNames: String): List<String>{
 fun initTryCountList(carListSize: Int): MutableList<Int>{
     val tryCountList = MutableList(carListSize) { 0 }
     return tryCountList
+}
+
+fun randomCount(): Int{
+    val randomNumber = (0..9).random()
+    return randomNumber
 }
