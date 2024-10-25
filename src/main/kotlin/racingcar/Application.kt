@@ -24,6 +24,7 @@ fun splitCarNames(input: String) {
     checkEmptyNames(carNames)
     checkDuplicateNames(carNames)
     checkNameLength(carNames)
+    checkNameNumber(carNames)
 
     makeCarKey(carNames)
 }
@@ -54,3 +55,9 @@ fun checkNameLength(carNames: List<String>) {
     }
 }
 
+// 자동차 이름이 숫자로만 이루어졌는지 확인
+fun checkNameNumber(carNames: List<String>) {
+    if (carNames.any { it.all { char -> char.isDigit() } }) {
+        throw IllegalArgumentException("자동차 이름은 숫자로만 이루어질 수 없습니다.")
+    }
+}
