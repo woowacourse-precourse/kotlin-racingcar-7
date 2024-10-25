@@ -19,11 +19,16 @@ class InputView {
         return nameList
     }
 
-    fun getCount(): Int {
+    fun inputCount(): Int {
+        val count = Console.readLine()
+        return getCount(count)
+    }
+
+    fun getCount(count: String): Int {
         try {
-            val count = Console.readLine().toInt()
-            require(count > 0) { ERROR_COUNT_SIZE }
-            return count
+            val convertCount = count.toInt()
+            require(convertCount > 0) { ERROR_COUNT_SIZE }
+            return convertCount
         } catch (e: NumberFormatException) {
             throw IllegalArgumentException(ERROR_ONLY_DIGIT)
         }

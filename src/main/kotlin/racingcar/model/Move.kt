@@ -6,11 +6,11 @@ class Move {
     fun moveCar(
         infoOfCar: MutableMap<String, Int>,
         name: String,
-        move: Int,
+        nowStep: Int,
         number: Int,
     ): MutableMap<String, Int> {
         if (number >= 4) {
-            infoOfCar[name] = move + 1
+            infoOfCar[name] = nowStep + 1
         }
         return infoOfCar
     }

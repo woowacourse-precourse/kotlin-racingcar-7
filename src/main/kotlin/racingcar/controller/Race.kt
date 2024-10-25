@@ -7,13 +7,12 @@ import racingcar.view.OutputView
 class Race {
     private val inputView = InputView()
     private val outputView = OutputView()
-    private val move = Move()
 
     fun start() {
         outputView.printGetNameOfCar()
         val infoOfCar = inputView.inputName().associateWith { 0 }.toMutableMap()
         outputView.printGetCount()
-        val count = inputView.getCount()
+        val count = inputView.inputCount()
         play(infoOfCar, count)
     }
 
@@ -31,8 +30,9 @@ class Race {
     }
 
     private fun step(infoOfCar: MutableMap<String, Int>): MutableMap<String, Int> {
-        for ((name, step) in infoOfCar) {
-            move.moveCar(infoOfCar, name, step, move.getRandomNumber())
+        val move = Move()
+        for ((name, nowStep) in infoOfCar) {
+            move.moveCar(infoOfCar, name, nowStep, move.getRandomNumber())
         }
         return infoOfCar
     }
