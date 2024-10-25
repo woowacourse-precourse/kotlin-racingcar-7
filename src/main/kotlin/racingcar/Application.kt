@@ -10,6 +10,8 @@ fun main() {
 
     val attemptCount = InputValidator().readAttemptCount()  // attemptCount 입력 및 유효성 검사
     Racetrack.setAttemptCount(attemptCount)  // Racetrack의 attemptCount 지정
+
+    Racetrack.startRace() // 경주 시작
 }
 
 
