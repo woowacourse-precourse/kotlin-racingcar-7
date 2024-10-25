@@ -33,33 +33,34 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
-    fun `자동차 움직일지 여부`() {
-        assertSimpleTest {
-            val carMovingForward = Car("pobi")
-            assertThat(carMovingForward.position).isEqualTo(0)
-            carMovingForward.move(4)
-            assertThat(carMovingForward.position).isEqualTo(1)
-            carMovingForward.move(5)
-            assertThat(carMovingForward.position).isEqualTo(2)
-            carMovingForward.move(6)
-            assertThat(carMovingForward.position).isEqualTo(3)
-            carMovingForward.move(7)
-            assertThat(carMovingForward.position).isEqualTo(4)
-            carMovingForward.move(8)
-            assertThat(carMovingForward.position).isEqualTo(5)
-            carMovingForward.move(9)
-            assertThat(carMovingForward.position).isEqualTo(6)
-
-            val carStopped = Car("jun")
-            carStopped.move(0)
-            assertThat(carStopped.position).isEqualTo(0)
-            carStopped.move(1)
-            assertThat(carStopped.position).isEqualTo(0)
-            carStopped.move(2)
-            assertThat(carStopped.position).isEqualTo(0)
-            carStopped.move(3)
-            assertThat(carStopped.position).isEqualTo(0)
+    fun `움직이는 차의 위치`() {
+        val movingCar = Car("pobi")
+        var position = 0
+        for (index in 4..9) {
+            position = checkMovingCar(movingCar, position, index)
         }
+    }
+
+    fun checkMovingCar(car: Car, position: Int, point: Int): Int {
+        val newPosition = position + 1
+        assertThat(car.position).isEqualTo(position)
+        car.move(point)
+        assertThat(car.position).isEqualTo(newPosition)
+        return newPosition
+    }
+
+    @Test
+    fun `안움직이는 차의 위치`() {
+        val stoppedCar = Car("jun")
+        for (index in 0..3) {
+            checkStopedCar(stoppedCar, index)
+        }
+    }
+
+    fun checkStopedCar(car: Car, point: Int) {
+        assertThat(car.position).isEqualTo(0)
+        car.move(point)
+        assertThat(car.position).isEqualTo(0)
     }
 
     override fun runMain() {
