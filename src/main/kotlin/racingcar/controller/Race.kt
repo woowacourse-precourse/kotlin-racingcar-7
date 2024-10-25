@@ -10,7 +10,7 @@ class Race {
 
     fun start() {
         outputView.printGetNameOfCar()
-        val infoOfCar = setInfoOfCar(inputView.getNameOfCar())
+        val infoOfCar = setInfoOfCar(inputView.inputName())
         outputView.printGetCount()
         val count = inputView.getCount()
         play(infoOfCar, count)

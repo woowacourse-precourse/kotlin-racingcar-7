@@ -3,10 +3,14 @@ package racingcar.view
 import camp.nextstep.edu.missionutils.Console
 
 class InputView {
-    fun getNameOfCar(): List<String> {
+    fun inputName(): List<String> {
         val input = Console.readLine()
-        require(input.isNotEmpty()) { ERROR_EMPTY_STRING }
         val nameList = input.split(NAME_DELIMITER)
+        return getNameOfCar(nameList)
+    }
+
+    fun getNameOfCar(nameList: List<String>): List<String> {
+        require(nameList.isNotEmpty()) { ERROR_EMPTY_STRING }
         require(nameList.size == nameList.distinct().size) { ERROR_SAME_NAME }
         for (name in nameList) {
             require(name.isNotEmpty()) { ERROR_EMPTY_NAME }
