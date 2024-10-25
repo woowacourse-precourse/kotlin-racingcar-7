@@ -11,6 +11,8 @@ fun main() {
 
     println("시도할 횟수는 몇 회인가요?")
     val num = Console.readLine()
+
+    checkNum(num)
 }
 
 fun splitCarNames(input: String) {
@@ -59,5 +61,26 @@ fun checkNameLength(carNames: List<String>) {
 fun checkNameNumber(carNames: List<String>) {
     if (carNames.any { it.all { char -> char.isDigit() } }) {
         throw IllegalArgumentException("자동차 이름은 숫자로만 이루어질 수 없습니다.")
+    }
+}
+
+// num에 대한 예외처리
+fun checkNum(num: String) {
+    checkIfNotNumeric(num)
+    checkIfPositive(num)
+}
+
+// num이 비어있거나 숫자가 아닌 값이 포함된 경우 검사
+fun checkIfNotNumeric(num: String) {
+    if (num.isBlank() || num.any { !it.isDigit() }) {
+        throw IllegalArgumentException("시도 횟수는 숫자로만 이루어져야 합니다.")
+    }
+}
+
+// num이 0 이하인 경우 검사
+fun checkIfPositive(num: String) {
+    val numValue = num.toInt()
+    if (numValue <= 0) {
+        throw IllegalArgumentException("시도 횟수는 1 이상의 숫자여야 합니다.")
     }
 }
