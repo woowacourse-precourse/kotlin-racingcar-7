@@ -10,8 +10,8 @@ private fun carNameNullError(carNames: String): Boolean {
 private fun carNameLengthError(carNames: String): Boolean {
     val carNameList = carNames.split(COMMA)
 
-    for (i in carNameList.indices) {
-        if (carNameList[i].length > 5) return true
+    carNameList.forEach { carName ->
+        if (carName.length > 5) return true
     }
     return false
 }
@@ -19,8 +19,8 @@ private fun carNameLengthError(carNames: String): Boolean {
 private fun sameCarNameError(carNames: String): Boolean {
     val carNameList = carNames.split(COMMA)
 
-    for (i in carNameList.indices) {
-        if (carNameList.count { it == carNameList[i] } > 1) return true
+    carNameList.forEach { carName ->
+        if (carNameList.count { it == carName } > 1) return true
     }
     return false
 }
