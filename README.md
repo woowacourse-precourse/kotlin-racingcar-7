@@ -12,10 +12,10 @@
 
 ### RacingCar
 
-- [ ] 각 자동차는 이름을 가지고 있다.
-- [ ] 전진 또는 멈출 수 있다.
-    - [ ] 전진하는 조건은 0에서 9사이에서 무작위 값을 구한 후 무작위 값이 4 이상일 경우이다.
-        - [ ] Random 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용해야 한다.
+- [x] 각 자동차는 이름을 가지고 있다.
+- [x] 전진 또는 멈출 수 있다.
+    - [x] 전진하는 조건은 0에서 9사이에서 무작위 값을 구한 후 무작위 값이 4 이상일 경우이다.
+        - [x] Random 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용해야 한다.
 
 ### RacingGame
 
