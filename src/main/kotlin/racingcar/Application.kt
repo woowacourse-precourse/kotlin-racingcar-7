@@ -21,6 +21,10 @@ data class Car(val name: String, val move: String = "") {
             this.move += "-"
         }
     }
+    // 자동차가 이동한 거리를 반환
+    fun getMoveDistance(): Int {
+        return this.move.length
+    }
 
 
 
