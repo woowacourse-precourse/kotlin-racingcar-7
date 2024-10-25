@@ -15,4 +15,10 @@ class Validation {
             throw IllegalArgumentException("자동차 이름이 공백일 수 없습니다.")
         }
     }
+
+    fun checkOnlyOneCar(carName: List<Car>) {
+        if (carName.isEmpty()) {
+            throw IllegalArgumentException("자동차 이름은 2대 이상 입력해 주세요.")
+        }
+    }
 }
