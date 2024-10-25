@@ -43,7 +43,7 @@ class RacingGame {
 
     fun getScore(key: String): String {
         val symbol = "-"
-        var score: Int = cars[key]!!.getScore()
+        var score: Int = cars[key]!!.score
         val scoreSymbol = symbol.repeat(score)
         return scoreSymbol
     }
@@ -52,7 +52,7 @@ class RacingGame {
         var topScore = 0
         var winner = ""
         names.forEach {
-            val score = cars[it]!!.getScore()
+            val score = cars[it]!!.score
             if (score > topScore) {
                 topScore = score
                 winner = it
