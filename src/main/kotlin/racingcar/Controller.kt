@@ -8,6 +8,9 @@ class Controller(private val model: Model, private val view: View) {
         } catch (_: Exception) {
             throw IllegalArgumentException("잘못된 자동차 입력입니다.")
         }
+        if (carNames.any { it.length > 5 }) {
+            throw IllegalArgumentException("자동차 이름은 5글자 이하여야 합니다.")
+        }
 
         val inputTryNum = view.getTryNumber()
         val tryNum = try {
