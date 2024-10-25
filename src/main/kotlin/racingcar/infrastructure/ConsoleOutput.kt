@@ -2,15 +2,13 @@ package racingcar.infrastructure
 
 import racingcar.domain.Car
 
-class ConsoleOutput (
-    private val cars: List<Car>,
-    private val winners: List<String>
-){
-    fun showMessage() {
+class ConsoleOutput : Output
+{
+    override fun showMessage() {
         println(PLAY_RESULT)
     }
 
-    fun showRoundResult() {
+    override fun showRoundResult(cars: List<Car>) {
         var result = ""
         for (car in cars) {
             val carName: String = car.name
@@ -20,7 +18,7 @@ class ConsoleOutput (
         println(result)
     }
 
-    fun showWinners() {
+    override fun showWinners(winners: List<String>) {
         val result = winners.joinToString(DELIMITER)
         println(WINNERS + result)
     }
