@@ -19,13 +19,32 @@ fun splitCarNames(input: String) {
     }
 
     val carNames = input.split(",").map { it.trim() } // 공백 제거
+
+    // carNames에 대한 예외처리
+    checkEmptyNames(carNames)
+    checkDuplicateNames(carNames)
     checkNameLength(carNames)
+
     makeCarKey(carNames)
 }
 
 // 각 자동차 이름을 Pair<String, Int>로 변환, Int는 0으로 설정
 fun makeCarKey(carNames: List<String>): List<Pair<String, Int>> {
     return carNames.map { name -> Pair(name, 0) }
+}
+
+// 자동차 이름이 비어있는지 확인
+fun checkEmptyNames(carNames: List<String>) {
+    if (carNames.any { it.isEmpty() }) {
+        throw IllegalArgumentException("자동차 이름이 공백일 수 없습니다.")
+    }
+}
+
+// 중복된 이름이 있는지 확인
+fun checkDuplicateNames(carNames: List<String>) {
+    if (carNames.size != carNames.distinct().size) {
+        throw IllegalArgumentException("중복된 이름이 포함되어 있습니다.")
+    }
 }
 
 // 자동차 이름의 길이가 5자를 넘는지 확인
