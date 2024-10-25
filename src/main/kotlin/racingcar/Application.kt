@@ -1,6 +1,7 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Console.readLine
+import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
     val cars = carNameInput("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
@@ -47,7 +48,7 @@ fun initTryCountList(carListSize: Int): MutableList<String> {
 }
 
 fun randomCount(): Int {
-    val randomNumber = (0..9).random()
+    val randomNumber = Randoms.pickNumberInRange(0, 9)
     return randomNumber
 }
 
