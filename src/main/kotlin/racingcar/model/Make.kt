@@ -3,7 +3,7 @@ package racingcar.model
 import camp.nextstep.edu.missionutils.Randoms
 import racingcar.constants.Constants.MOVE
 
-class Make(private val carNames: String, private val tryCount: Int) {
+class Make(carNames: String, private val tryCount: Int) {
     private fun randomNumber() = Randoms.pickNumberInRange(0, 9)
     val carNameList = carNames.split(',')
     val moveByNameList = moveByNameList()
@@ -18,7 +18,7 @@ class Make(private val carNames: String, private val tryCount: Int) {
         return numberList
     }
 
-    fun moveByNameList(): List<List<String>> {
+    private fun moveByNameList(): List<List<String>> {
         val moveByNameList = mutableListOf<List<String>>()
 
         repeat(carNameList.size) {
