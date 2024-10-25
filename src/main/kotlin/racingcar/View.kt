@@ -12,4 +12,19 @@ class View {
         println("시도할 횟수는 몇 회인가요?")
         return Console.readLine()
     }
+
+    fun showStatus(cars: List<Car>) {
+        cars.forEach {
+            println("${it.name} : ${"-".repeat(it.getPos())}") // pos만큼 -를 반복
+        }
+    }
+
+    fun showWinners(tryNum: Int, cars: List<Car>) {
+        val winners = cars.filter { it.getPos() == tryNum }
+        print("최종 우승자 : ")
+        for (i in 0 until winners.size - 1) {
+            print("${winners[i]}, ")
+        }
+        print("${winners.last()}")
+    }
 }
