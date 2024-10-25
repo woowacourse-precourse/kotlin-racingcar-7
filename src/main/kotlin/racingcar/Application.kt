@@ -3,7 +3,7 @@ package racingcar
 
 fun main() {
 
-    val carNames = InputValidator().checkCarNames()  // carName 입력 및 유효성 검사
+    val carNames = InputValidator().readCarNames()  // carName 입력 및 유효성 검사
     carNames.forEach { name ->
         Racetrack.addCar(Car(name))  // Racetrack에 Car 인스턴스 리스트 저장
     }
