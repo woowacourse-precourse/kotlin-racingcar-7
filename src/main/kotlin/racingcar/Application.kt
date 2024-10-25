@@ -35,7 +35,7 @@ fun randomCount(): Int{
 }
 
 fun randomCountToCar(carList: List<String>, tryCountList: MutableList<Int>): List<Int>{
-    for(i in 0..carList.size){
+    for(i in 0..carList.size-1){
         val randomNumber = randomCount()
         if(numberIsOverFour(randomNumber)){
             tryCountList[i]++
