@@ -22,12 +22,15 @@ class RacingController {
             println()
         }
 
+        val winner = getWinner(carState)
+        printOutputWinner(winner)
     }
 
     private fun printInputCarName() = println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
     private fun printInputRaceCount() = println("시도할 횟수는 몇 회인가요?")
 
     private fun printOutputRaceResult() = println("\n실행 결과")
+    private fun printOutputWinner(winner: List<String>) = println("최종 우승자 : ${winner.joinToString(", ")}")
 
     private fun race(carState: MutableMap<String, Int>) {
         for (car in carState.keys) {
@@ -42,5 +45,10 @@ class RacingController {
 
     private fun checkForward(): Boolean {
         return Randoms.pickNumberInRange(0, 9) >= 4
+    }
+
+    private fun getWinner(carState: MutableMap<String, Int>): List<String> {
+        val maxMove = carState.maxOf { it.value }
+        return carState.filter { it.value == maxMove }.keys.toList()
     }
 }
