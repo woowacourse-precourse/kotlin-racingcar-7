@@ -22,7 +22,7 @@ class Racing {
         OutputHandler().printRoundResult(cars)
     }
 
-    private fun decideRacingCarMoving(): Int {
+    fun decideRacingCarMoving(): Int {
         val randomNumber = Randoms.pickNumberInRange(0, 9)
 
         if (randomNumber < 4) {
@@ -31,7 +31,7 @@ class Racing {
         return randomNumber - 3
     }
 
-    private fun calculateTotalScore(score: List<Int>): Int {
+    fun calculateTotalScore(score: List<Int>): Int {
         return score.sum()
     }
 }
@@ -43,7 +43,7 @@ class Rewarding(private val cars: List<Result>) {
         OutputHandler().printWinner(winner)
     }
 
-    private fun findWinner(): List<Result> {
+    fun findWinner(): List<Result> {
         val winnerScore = cars.map { it.score }
 
         return cars.filter { it.score == winnerScore.max() }
