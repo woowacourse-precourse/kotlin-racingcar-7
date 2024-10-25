@@ -13,6 +13,23 @@ fun main() {
     } catch (e: Exception) {
         throw IllegalArgumentException()
     }
+
+    val movement = mutableMapOf<String, StringBuilder>()
+    repeat(times) {
+        cars.forEach { car ->
+            movement[car] = (movement[car] ?: StringBuilder()).apply {
+                if (canMove()) append("-")
+            }
+        }
+        printResult(cars, movement)
+    }
 }
 
 fun canMove(): Boolean = Randoms.pickNumberInRange(0, 9) >= 4
+
+fun printResult(cars: List<String>, movement: Map<String, StringBuilder>) {
+    cars.forEach { car ->
+        println("$car : ${movement[car] ?: ""}")
+    }
+    println()
+}
