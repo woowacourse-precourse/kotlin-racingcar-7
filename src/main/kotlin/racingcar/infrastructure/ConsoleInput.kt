@@ -2,24 +2,16 @@ package racingcar.infrastructure
 
 import camp.nextstep.edu.missionutils.Console
 
-class ConsoleInput {
+class ConsoleInput : Input {
 
-    fun getCarNames(): String {
+    fun getCarNames(): String{
         println(REQUEST_CARNAME_MESSAGE)
-
-        val input = Console.readLine()
-        Console.close()
-
-        return input
+        return getInput()
     }
 
     fun getMatches(): String {
         println(REQUEST_MATCHES_MESSAGE)
-
-        val input = Console.readLine()
-        Console.close()
-
-        return input
+        return getInput()
     }
 
     companion object {
