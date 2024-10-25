@@ -34,7 +34,7 @@
 ### 4. Infrastructure 
 - [X] 랜덤 숫자 뽑는 로직
   - 0에서 9 사이의 랜덤 숫자를 뽑는다.
-- [ ] console input(UI)
+- [X] console input(UI)
   - 사용자에게 자동차 이름 입력을 안내하는 메시지를 출력한다.
   - 사용자에게 이동 횟수 입력을 안내하는 메시지를 출력한다.
 - [ ] console output(UI)
