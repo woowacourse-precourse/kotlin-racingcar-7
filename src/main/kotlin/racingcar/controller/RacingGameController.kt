@@ -50,7 +50,7 @@ class RacingGameController(
     private fun singleRace() {
         cars.forEach {
             racingGameService.moveCarRandomly(it)
-            racingGameView.printCarNameWithIndicator(it)
+            racingGameView.printCarNameWithIndicator(it.name, it.distance)
         }
         racingGameView.printBlankLine()
     }

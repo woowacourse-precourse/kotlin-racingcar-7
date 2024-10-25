@@ -4,9 +4,14 @@ import camp.nextstep.edu.missionutils.Randoms
 import racingcar.model.Car
 
 class RacingGameService {
+    companion object {
+        private const val FORWARD_THRESHOLD = 4
+        private const val MAX_RANDOM = 9
+    }
+
     fun moveCarRandomly(car: Car) {
-        val randomVal = Randoms.pickNumberInRange(0, 9)
-        if (randomVal >= 4) {
+        val randomVal = Randoms.pickNumberInRange(0, MAX_RANDOM)
+        if (randomVal >= FORWARD_THRESHOLD) {
             car.moveForward()
         }
     }

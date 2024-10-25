@@ -31,7 +31,7 @@ class RacingGameView {
         println(Messages.GAME_WINNER.format(winners.joinToString(", ")))
     }
 
-    fun printCarNameWithIndicator(car: Car) {
-        println("${car.name} : ${"-".repeat(car.distance)}")
+    fun printCarNameWithIndicator(name: String, distance: Int) {
+        println("$name : ${"-".repeat(distance)}")
     }
 }
