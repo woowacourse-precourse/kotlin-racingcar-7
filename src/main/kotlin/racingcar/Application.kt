@@ -21,11 +21,20 @@ fun inputCar(): List<String> {
         throw IllegalArgumentException()
 }
 
-fun inputNum(): Int{
+fun inputNum(): Int {
     println("시도할 횟수는 몇 회인가요?")
     val numOfAttempts = Console.readLine().toInt()
 
     return requireNotNull(numOfAttempts)
+}
+
+fun printResult(record: MutableMap<String, Int>) {
+    record.forEach {
+        print("${it.key} : ")
+        println("-".repeat(it.value))
+    }
+    println("")
+
 }
 
 fun movementDecision(): Boolean {
@@ -34,13 +43,13 @@ fun movementDecision(): Boolean {
     return false
 }
 
-fun raceRun(record: MutableMap<String, Int>, atmpNum: Int){
+fun raceRun(record: MutableMap<String, Int>, atmpNum: Int) {
     for (i: Int in 1..atmpNum) {
         for (car in record.keys)
            if (movementDecision())
                record[car] = record[car]!!.plus(1)
+        printResult(record)
     }
-    println(record)
 }
 
 fun main() {
