@@ -4,10 +4,12 @@ import racingcar.view.ErrorView
 import racingcar.view.InputView
 import racingcar.model.Car
 import racingcar.utils.RandomUtils
+import racingcar.view.OutputView
 
 class RacingCarController {
     private val inputView = InputView
     private val errorView = ErrorView
+    private val outputView = OutputView
     private val cars = mutableListOf<Car>()
 
     fun start() {
@@ -49,6 +51,7 @@ class RacingCarController {
         repeat(attempts) {
             cars.forEach { car -> car.move(RandomUtils.canMove())
             }
+            outputView.displayCarStatus(cars)
         }
     }
 }
