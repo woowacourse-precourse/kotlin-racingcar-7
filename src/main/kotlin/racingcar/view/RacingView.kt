@@ -14,11 +14,17 @@ class RacingView{
 
     private fun startGame(){
         inputPlayerNames()
+        inputPlayCount()
     }
 
     private fun inputPlayerNames() {
         val userNames = getUserInput(MESSAGE_GUIDE_FOR_USER_NAME)
         val intent = EnterPlayerNameState(userNames)
+    }
+
+    private fun inputPlayCount() {
+        val playCount = getUserInput(MESSAGE_GUIDE_FOR_INPUT_COUNT)
+        val intent = EnterPlayCountState(playCount)
     }
 
     private fun getUserInput(msg: String): String{
