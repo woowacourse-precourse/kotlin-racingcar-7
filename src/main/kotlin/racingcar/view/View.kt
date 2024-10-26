@@ -1,8 +1,8 @@
 package racingcar.view
 
 interface View {
-    fun requestCarNames(): String
-    fun requestRoundCount(): Int
+    fun requestCarNames()
+    fun requestRoundCount()
     fun showMatchProcess()
     fun showWinner()
 }
