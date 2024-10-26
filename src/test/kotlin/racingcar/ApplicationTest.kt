@@ -27,13 +27,13 @@ class ApplicationTest : NsTest() {
         }
     }
 
-
     @Test
-   fun testValidInput() {
-       assertSimpleTest {
-           run("pobi,woni", "1")
-       }
-   }
+    fun testValidInput() {
+        assertSimpleTest {
+            run("pobi,woni", "1")
+        }
+    }
+
     @Test //예외 테스트와 같음
     fun testNotValidNames() {
         assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
@@ -42,6 +42,17 @@ class ApplicationTest : NsTest() {
     @Test
     fun testNotValidTryCount() {
         assertThrows<IllegalArgumentException> { runException("pobi,java", "a") }
+    }
+
+    @Test
+    fun testJointWinner() {
+        assertRandomNumberInRangeTest(
+            {
+                run("pobi,woni", "2")
+                assertThat(output()).contains("pobi : --", "woni : --", "최종 우승자 : pobi, woni")
+            },
+            MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD
+        )
     }
 
     override fun runMain() {
