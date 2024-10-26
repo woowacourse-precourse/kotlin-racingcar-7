@@ -8,7 +8,7 @@ class InputView {
     fun printInputCarName(): List<String> {
         println(INPUT_CAR_NAME_MESSAGE)
 
-        val input = Console.readLine().split(",")
+        val input = Console.readLine().split(",").map { it.trim() }
         InputValidator.validateCarName(input)
 
         return input
