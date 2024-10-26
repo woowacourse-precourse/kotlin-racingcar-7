@@ -6,7 +6,7 @@ import racingcar.utils.Constants
 class Input {
     fun getCars():List<String>{
         println(Constants().INSERT_CAR_NAMES)
-        return Console.readLine().split(",")
+        return Console.readLine().split(Constants().COMMA)
     }
 
     fun getCount():Int{
