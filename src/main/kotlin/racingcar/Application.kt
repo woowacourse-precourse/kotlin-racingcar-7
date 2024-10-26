@@ -21,6 +21,10 @@ class Game {
 data class Car(val name: String, var move: String = "") {
     // 자동차 이름 5자 넘을 경우 예외 발생
     init {
+        nameError()
+    }
+    // 이름 예외 발생 메서드
+    private fun nameError() {
         if (name.length > 5) {
             throw IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.")
         }
