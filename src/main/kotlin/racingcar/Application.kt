@@ -52,6 +52,11 @@ fun raceRun(record: MutableMap<String, Int>, atmpNum: Int) {
     }
 }
 
+fun compareScores(record: MutableMap<String, Int>) {
+    val maxValue = record.values.max()
+    val result = record.filterValues { it == maxValue }
+}
+
 fun main() {
     // TODO: 프로그램 구현
     val nameList = inputCar()
@@ -60,4 +65,5 @@ fun main() {
     var distanceRecord: MutableMap<String, Int> = nameList.map { it to 0 }.toMap().toMutableMap()
 
     raceRun(distanceRecord, attemptNum)
+    compareScores(distanceRecord)
 }
