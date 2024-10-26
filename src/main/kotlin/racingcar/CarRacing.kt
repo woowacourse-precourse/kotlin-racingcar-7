@@ -10,4 +10,16 @@ class CarRacing(names: String) {
     fun getNamesOfCars(): List<String> {
         return cars.map { it.name }
     }
+
+    fun moveCars() {
+        for (car in cars) {
+            car.moveForwardRandomly()
+        }
+    }
+
+    fun racing(count: Int) {
+        repeat(count) {
+            moveCars()
+        }
+    }
 }
