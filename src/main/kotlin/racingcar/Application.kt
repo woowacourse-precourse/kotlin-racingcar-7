@@ -8,4 +8,6 @@ fun main() {
 
     val carNames = ui.requestCarNames()
     val cars = carNames.map(::Car)
+
+    val tryNumber = ui.requestTryNumber()
 }
