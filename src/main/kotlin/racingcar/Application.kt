@@ -15,7 +15,7 @@ fun inputCar(): List<String> {
     println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
     val nameList = Console.readLine()
     val splitNameList = nameList.split(",")
-    if (lenCheck(splitNameList)){
+    if (lenCheck(splitNameList)) {
         return splitNameList
     } else
         throw IllegalArgumentException()
@@ -47,14 +47,10 @@ fun movementDecision(): Boolean {
     return false
 }
 
-fun raceRun(record: MutableMap<String, Int>, atmpNum: Int) {
-    println("\n실행 결과")
-    for (i: Int in 1..atmpNum) {
-        for (car in record.keys)
-           if (movementDecision())
-               record[car] = record[car]!!.plus(1)
-        printResult(record)
-    }
+fun raceRun(record: MutableMap<String, Int>) {
+    for (car in record.keys)
+        if (movementDecision())
+            record[car] = record[car]!!.plus(1)
 }
 
 fun compareScores(record: MutableMap<String, Int>) {
@@ -71,7 +67,10 @@ fun main() {
 
     var distanceRecord: MutableMap<String, Int> = nameList.map { it to 0 }.toMap().toMutableMap()
 
-    raceRun(distanceRecord, attemptNum)
+    println("\n실행 결과")
+    for (i: Int in 1..attemptNum) {
+        raceRun(distanceRecord)
+        printResult(distanceRecord)
+    }
     compareScores(distanceRecord)
-
 }
