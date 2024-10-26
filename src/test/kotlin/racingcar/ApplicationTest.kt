@@ -81,10 +81,10 @@ class ApplicationTest : NsTest() {
             }
         }
 
-        @Test
+        /*@Test
         fun `전진 횟수가 일정 범위를 벗어날 경우`() {
             assertThat(2).
-        }
+        }*/
     }
 
 
