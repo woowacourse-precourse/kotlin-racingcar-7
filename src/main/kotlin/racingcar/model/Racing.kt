@@ -12,7 +12,12 @@ class Racing {
         return cars
     }
 
-    fun racing(count:Int){
-
+    fun racing(count:Int,cars:List<Car>){
+        repeat(count){
+            for (car in cars){
+                if (Random().randomGenerator())
+                    car.go()
+            }
+        }
     }
 }
