@@ -2,10 +2,8 @@ package racingcar.domain.car
 
 import racingcar.domain.numbergenerator.NumberGenerator
 
-class Cars(input: String) {
-    private val registeredCars: List<Car> = registerAll(input)
-
-    private fun registerAll(input: String) = input.split(",").map { Car(it) }.toList()
+class Cars(cars: List<Car>) {
+    private val registeredCars: List<Car> = cars
 
     fun lap(numberGenerator: NumberGenerator) {
         registeredCars.forEach { car ->
@@ -15,7 +13,11 @@ class Cars(input: String) {
 
     fun findWinners(): String {
         val maxPosition = getMaxPosition()
-        val winnersName = registeredCars.filter { it.position == maxPosition }.map { it.name }.joinToString { it }
+        val winnersName =
+            registeredCars
+                .filter { car -> car.position == maxPosition }
+                .map { car -> car.name }
+                .joinToString { carName -> carName }
         return winnersName
     }
 
