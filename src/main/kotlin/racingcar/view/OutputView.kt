@@ -9,4 +9,8 @@ object OutputView{
         }
         println()
     }
+
+    fun displayWinners(winners: List<String>) {
+        println("최종 우승자 : ${winners.joinToString(", ")}")
+    }
 }
