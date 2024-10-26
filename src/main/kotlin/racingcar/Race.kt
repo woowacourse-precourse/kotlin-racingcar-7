@@ -1,16 +1,15 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Randoms
-import racingcar.Output.Companion.RACE_START
 
 class Race {
-    private val moveProgress = mutableMapOf<String, String>()
     private val maxDistance by lazy { moveProgress.values.max() }
+    private val moveProgress = mutableMapOf<String, String>()
     private val winnerList = mutableListOf<String>()
     private val output: Output = Output()
 
     fun start(carNames: List<String>, moveCount: Int) {
-        
+
         initMap(carNames)
         output.raceStart()
         repeat(moveCount) { iterateEachCar() }
@@ -42,7 +41,7 @@ class Race {
     private fun randomValue(): Int = Randoms.pickNumberInRange(0, 9)
 
     private fun moveOrStop(): String {
-        if (randomValue() >= 4) return MOVE else return STOP
+        return if (randomValue() >= 4) MOVE else STOP
     }
 
     private companion object {

@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeT
 import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
@@ -20,8 +19,7 @@ class ApplicationTest : NsTest() {
                 {
                     run("pobi,woni", "1")
                     assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi")
-                },
-                MOVING_FORWARD, STOP
+                }, MOVING_FORWARD, STOP
             )
         }
 
@@ -31,8 +29,7 @@ class ApplicationTest : NsTest() {
                 {
                     run("안녕하세요,반갑습니다", "3")
                     assertThat(output()).contains("안녕하세요 : -", "반갑습니다 : ", "최종 우승자 : 안녕하세요")
-                },
-                MOVING_FORWARD, STOP
+                }, MOVING_FORWARD, STOP
             )
         }
 
@@ -42,8 +39,7 @@ class ApplicationTest : NsTest() {
                 {
                     run("k.u.h,y.y.y", "3")
                     assertThat(output()).contains("k.u.h : -", "y.y.y : ", "최종 우승자 : k.u.h")
-                },
-                MOVING_FORWARD, STOP
+                }, MOVING_FORWARD, STOP
             )
         }
     }
