@@ -2,10 +2,11 @@ package racingcar
 
 import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
+import racingcar.model.Car
 
 fun main() {
-    val cars = Console.readLine().split(",").map { it.trim() }
-    if (cars.any { it.length > 5 }) throw IllegalArgumentException()
+    val cars = Console.readLine().split(",").map { Car(it.trim(), StringBuilder()) }
+    if (cars.any { it.name.length > 5 }) throw IllegalArgumentException()
 
     val times: Int
     try {
@@ -14,29 +15,28 @@ fun main() {
         throw IllegalArgumentException()
     }
 
-    val movement = mutableMapOf<String, StringBuilder>()
     repeat(times) {
         cars.forEach { car ->
-            movement[car] = (movement[car] ?: StringBuilder()).apply {
-                if (canMove()) append("-")
+            if (canMove()) {
+                car.move.append("-")
             }
         }
-        printResult(cars, movement)
+        printResult(cars)
     }
-    print(getWinner(movement))
+    print(getWinner(cars))
 }
 
 fun canMove(): Boolean = Randoms.pickNumberInRange(0, 9) >= 4
 
-fun printResult(cars: List<String>, movement: Map<String, StringBuilder>) {
+fun printResult(cars: List<Car>) {
     cars.forEach { car ->
-        println("$car : ${movement[car] ?: ""}")
+        println("${car.name} : ${car.move}")
     }
     println()
 }
 
-fun getWinner(movement: Map<String, StringBuilder>): String {
-    val maxMove = movement.maxOf { it.value.length }
-    val winner = movement.filter { it.value.length == maxMove }
-    return winner.keys.joinToString()
+fun getWinner(car: List<Car>): String {
+    val maxMove = car.maxOf { it.move.length }
+    val winner = car.filter { it.move.length == maxMove }.map { it.name }
+    return winner.joinToString()
 }
