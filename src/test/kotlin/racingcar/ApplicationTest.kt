@@ -33,6 +33,13 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `시도 횟수 0회 이하 입력`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,woni","0") }
+        }
+    }
+
     override fun runMain() {
         main()
     }
