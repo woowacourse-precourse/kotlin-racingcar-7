@@ -17,7 +17,7 @@ fun argumentChecker(carName:String) {
 	}
 }
 
-fun getCarNames():List<String> {
+fun getCarNames() {
 	println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
 	carNames = camp.nextstep.edu.missionutils.Console.readLine().split(',')
 
@@ -25,20 +25,15 @@ fun getCarNames():List<String> {
 		argumentChecker(carName)
 		moveCounts.add(0)
 	}
-
-	return carNames
 }
 
-fun getTryCounts():Int? {
+fun getTryCounts() {
 	try {
 		println("시도할 횟수는 몇 회인가요?")
 		tryCounts = camp.nextstep.edu.missionutils.Console.readLine().toInt()
 	} catch (exception:NumberFormatException) {
 		throw IllegalArgumentException("숫자를 입력해주세요")
 	}
-
-	return tryCounts
-
 }
 
 fun move(idx:Int) {
@@ -50,6 +45,16 @@ fun move(idx:Int) {
 	}
 }
 
+fun display(idx:Int, carName:String) {
+	print("$carName : ")
+
+	for (i in 0 until moveCounts[idx]) {
+		print("-")
+
+	}
+	print("\n")
+}
+
 
 fun main() {
 	// TODO: 프로그램 구현
@@ -58,5 +63,9 @@ fun main() {
 
 	for (idx in 0 until moveCounts.size) {
 		move(idx)
+	}
+
+	for ((idx, carName) in carNames.withIndex()) {
+		display(idx, carName)
 	}
 }
