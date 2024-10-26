@@ -7,9 +7,10 @@ class RacingGame {
 
     fun init() {
         println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
-        carList = Console.readLine().split(",").map { Car(it) }
+        carList =
+            Console.readLine().split(",").map { if (it.length <= 5) Car(it) else throw IllegalArgumentException() }
         println("시도할 횟수는 몇 회인가요?")
-        val moveCount = Console.readLine().toInt()
+        val moveCount = Console.readLine().toIntOrNull() ?: throw IllegalArgumentException()
         racing(moveCount)
     }
 

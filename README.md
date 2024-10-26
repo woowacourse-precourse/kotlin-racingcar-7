@@ -7,6 +7,7 @@
 - [X] Car 구현
   - [X] 정지와 이동을 결정하는 carMove()
   - [X] 현재 위치를 return하는 getPosition()
+- [X] 에외처리
 
 # 구현 과정
 ## 1. init()
@@ -78,4 +79,33 @@ fun carMove() {
 ```
 위와 같이 구현
 
-또한 getPosition은 단순히 postion값을 리턴하는 메소드로 positon값을 return해준다. 
+또한 getPosition은 단순히 postion값을 리턴하는 메소드로 positon값을 return해준다.
+
+## 5.예외처리
++ 쉼표 기준으로 이름은 5자 이하
++ 시도 횟수가 정수가 아닐 경우
+
+사용자가 잘못된 값을 입력할 경우 IllegalArgumentException을 발생시킨 후 애플리케이션은 종료되어야 한다.
+
+라는 조건이 있으므로 위의 두 잘못 입력된 경우에 IllegalArgumentException을 발생시키도록 수정해준다.
+
+```
+fun init() {
+        println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
+        carList =
+            Console.readLine().split(",").map { if (it.length <= 5) Car(it) else throw IllegalArgumentException() }
+        println("시도할 횟수는 몇 회인가요?")
+        val moveCount = Console.readLine().toIntOrNull() ?: throw IllegalArgumentException()
+        racing(moveCount)
+}
+```
+
+![img.png](img.png)
+
+![img_1.png](img_1.png)
+
+테스트도 잘 돌아가고 결과도 제대로 출력된다.
+
+![img_2.png](img_2.png)
+
+예외처리도 정상적으로 작동된다.
