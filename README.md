@@ -17,6 +17,15 @@
 - [X] 테스트 코드 작성
 - [X] 요구사항 정리
 - [X] 구현할 클래스 정의
+- [ ] Race
+    - [ ] field 정의
+    - [ ] ready
+    - [ ] start
+    - [ ] end
+- [ ] Car
+    - [ ] field 정의
+    - [ ] move
+    - [ ] printResult
 - [ ] 리펙토링
 
 ## 추가 정보
