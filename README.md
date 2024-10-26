@@ -4,9 +4,9 @@
     - [X] 자동차의 이름과 시도 횟수를 입력받아 경주를 시작하는 init() 
     - [X] 입력받은 시도 횟수를 반복하며 자동차의 이동을 담당하는 racing()
     - [X] 시도 횟수가 다 진행된 후 최종 집계를 하는 result()
-- [ ] Car 구현
-  - [ ] 정지와 이동을 결정하는 carMove()
-  - [ ] 현재 위치를 return하는 getPosition()
+- [X] Car 구현
+  - [X] 정지와 이동을 결정하는 carMove()
+  - [X] 현재 위치를 return하는 getPosition()
 
 # 구현 과정
 ## 1. init()
@@ -55,10 +55,27 @@ private fun result() {
             it.getPosition() == carList.maxByOrNull { car ->
                 car.getPosition()
             }!!.getPosition()
-        }.joinToString(", "))
+        }.joinToString(", ") { it.name } )
 }
 ```
 
 maxByOrNull을 통해 max값을 찾고 filter를 사용하여 carList에서 max값을 갖는 모든 자동차를 찾는다.
 
 이후 코틀린에서 지원하는 API를 활용하라는 피드백을 참고하여 joinToString()을 통해 결과를 출력한다.
+
+## 4.Car
++ Car는 랜덤한 값을 이용하여 이동 여부를 결정한다.
+
+```Randoms.pickNumberInRange(0, 9)```
+을 통해 랜덤 정수를 반환하여 이것이 4 이상이면 이동하기 위해 
+```
+fun carMove() {
+        if (Randoms.pickNumberInRange(0, 9) > 3) {
+            position++
+        }
+        println("$name : " + "-".repeat(position))
+}
+```
+위와 같이 구현
+
+또한 getPosition은 단순히 postion값을 리턴하는 메소드로 positon값을 return해준다. 

@@ -27,6 +27,6 @@ class RacingGame {
             it.getPosition() == carList.maxByOrNull { car ->
                 car.getPosition()
             }!!.getPosition()
-        }.joinToString(", "))
+        }.joinToString(", ") { it.name })
     }
 }
