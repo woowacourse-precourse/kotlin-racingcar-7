@@ -1,10 +1,17 @@
 package racingcar.view
 
+import camp.nextstep.edu.missionutils.Console
 import racingcar.utils.Constants
 
 class Input {
     fun getCars():List<String>{
         println(Constants().INSERT_CAR_NAMES)
-        return camp.nextstep.edu.missionutils.Console.readLine().split(",")
+        return Console.readLine().split(",")
     }
+
+    fun getCount():Int{
+        println(Constants().INSERT_COUNT)
+        return Console.readLine().toInt()
+    }
+
 }
