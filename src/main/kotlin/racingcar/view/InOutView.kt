@@ -29,4 +29,10 @@ class InOutView(private val repo: Repository) {
         val position = "-".repeat(repo.racingCars[index].moveCnt)
         println("$carName : $position")
     }
+
+    fun printWinner() {
+        val winners = repo.winner.joinToString(", ")
+
+        println("최종 우승자 : $winners")
+    }
 }

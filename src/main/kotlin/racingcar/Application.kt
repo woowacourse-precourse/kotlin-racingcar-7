@@ -11,4 +11,5 @@ fun main() {
 
     inOutView.input()
     racing.startRacing()
+    inOutView.printWinner()
 }
