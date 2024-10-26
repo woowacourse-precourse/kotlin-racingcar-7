@@ -1,5 +1,7 @@
 package racingcar.domain
 
+import racingcar.domain.RacingCar.Companion.START_POSITION
+
 class RacingCars(
     val racingCars: List<RacingCar>,
 ) {
@@ -15,6 +17,10 @@ class RacingCars(
 
     fun getWinners(): List<String> {
         val maxPosition = racingCars.maxOf { it.position }
+        if (maxPosition == START_POSITION) {
+            return emptyList()
+        }
+
         return racingCars.filter { it.position == maxPosition }.map { it.name }
     }
 }
