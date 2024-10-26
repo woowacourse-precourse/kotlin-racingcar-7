@@ -2,6 +2,7 @@ package racingcar.controller
 
 import camp.nextstep.edu.missionutils.Randoms
 import racingcar.model.Car
+import racingcar.utils.Validator
 import racingcar.view.InputView
 
 class RaceController {
@@ -9,6 +10,6 @@ class RaceController {
 
     fun startRace() {
         val carNames = InputView.getCarNames()
+        Validator.validateCarName(carNames)
     }
-
 }
