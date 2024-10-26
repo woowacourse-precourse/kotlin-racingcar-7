@@ -17,6 +17,7 @@ class RacingView(
     init {
         startGame()
         val result = viewModel.onCompleteValidationCheck()
+        closeGame(result)
     }
 
     private fun startGame(){
@@ -41,4 +42,8 @@ class RacingView(
         return readLine().trim()
     }
 
+    private fun closeGame(state: PlayResultState) {
+        state.printWinner()
+        close()
+    }
 }

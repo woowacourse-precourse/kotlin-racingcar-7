@@ -3,12 +3,15 @@ package racingcar.viewModel
 import racingcar.constans.Constants.SEPARATOR
 import racingcar.delegate.ValidationDelegator
 import racingcar.intent.UserInputIntent
-import racingcar.intent.UserInputIntent.EnterPlayCountState
+import racingcar.PlayGround
 import racingcar.intent.UserInputIntent.EnterPlayerNameState
+import racingcar.intent.UserInputIntent.EnterPlayCountState
 import racingcar.model.CarRacingState.PlayerState
+import racingcar.model.CarRacingState.PlayResultState
 
 class RacingViewModel(
-    private val validationDelegator: ValidationDelegator
+    private val validationDelegator: ValidationDelegator,
+    private val playGround: PlayGround,
 ) {
     private val state = mutableListOf<PlayerState>()
     private var playCount: Int = 0
@@ -34,6 +37,10 @@ class RacingViewModel(
         validationDelegator.checkPlayCountIsValidNumeric(playCount)
         validationDelegator.handlePlayCountInput(playCount.toInt())
         readyForPlayCount(playCount.toInt())
+    }
+
+    fun onCompleteValidationCheck(): PlayResultState {
+        return playGround.play(state, playCount)
     }
 
     private fun readyForPlayers(separatedNames: List<String>) {
