@@ -7,6 +7,7 @@ import racingcar.constans.Constants.MIN_RANDOM_NUMBER
 import racingcar.model.CarRacingState.PlayerState
 import racingcar.model.CarRacingState.PlayResultState
 import racingcar.reducer.PlayerStateReducer
+import racingcar.sam.MoveCountFactory
 
 class PlayGround(private val playerStateReducer: PlayerStateReducer) {
 
@@ -23,8 +24,12 @@ class PlayGround(private val playerStateReducer: PlayerStateReducer) {
     }
 
     private fun reduceState(players: List<PlayerState>): List<PlayerState> {
+        val factory = MoveCountFactory {
+            Randoms.pickNumberInRange(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER)
+        }
+
         return players.map { player ->
-            val moveCount = createMoveCount()
+            val moveCount = factory.create()
             playerStateReducer(moveCount, player)
         }
     }
@@ -32,9 +37,5 @@ class PlayGround(private val playerStateReducer: PlayerStateReducer) {
     private fun printExecutionByPhase(players: List<PlayerState>) {
         players.map { it.printExecutionByPhase() }
         println()
-    }
-
-    private fun createMoveCount(): Int {
-        return Randoms.pickNumberInRange(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER)
     }
 }
