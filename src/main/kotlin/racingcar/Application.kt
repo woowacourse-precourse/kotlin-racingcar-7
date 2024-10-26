@@ -24,7 +24,7 @@ class Game {
             throw IllegalArgumentException("자동차 이름은 중복될 수 없습니다.")
         }
     }
-    // 시도할 횟수 입력
+    // 시도할 횟수 입력 및 예외 발생
     private fun inputRoundCount(): Int {
         println("시도할 횟수는 몇 회인가요?")
         return Console.readLine().toIntOrNull() ?: throw IllegalArgumentException("잘못된 입력입니다.")
