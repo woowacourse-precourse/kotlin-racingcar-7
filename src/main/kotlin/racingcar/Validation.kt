@@ -9,6 +9,11 @@ class Validation {
         checkCarNameDuplication(carName)
     }
 
+    fun validateRoundCount(inputRoundCount: String) {
+        checkRoundCountNotNumber(inputRoundCount)
+        checkRoundCountNegativeInteger(inputRoundCount)
+    }
+
     fun checkCarNameLength(carName: List<Car>) {
         carName.forEach {
             if (it.name.length > 5) {
