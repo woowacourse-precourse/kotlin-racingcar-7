@@ -1,5 +1,9 @@
 package racingcar
 
+import Controller.RacingGameController
+import Model.RandomMoveStrategy
+
 fun main() {
-    // TODO: 프로그램 구현
+    RacingGameController(RandomMoveStrategy()).playGame()
 }
+
