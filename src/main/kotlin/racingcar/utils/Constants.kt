@@ -7,6 +7,7 @@ class Constants {
     val WINNER = "최종 우승자 : "
     val DASH = "-"
     val COMMA = ","
+    val COLON = " : "
 
     val ERROR_NAME_LENGTH = "자동차 이름은 5자 이하입니다."
 }

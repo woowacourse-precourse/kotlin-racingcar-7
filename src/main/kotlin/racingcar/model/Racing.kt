@@ -1,6 +1,7 @@
 package racingcar.model
 
 import racingcar.utils.Validation
+import racingcar.view.Output
 
 class Racing {
     fun readyToRace(carNames:List<String>):List<Car>{
@@ -12,12 +13,19 @@ class Racing {
         return cars
     }
 
+    fun eachRacing(cars:List<Car>):List<Car>{
+        for (car in cars){
+            if (Random().randomGenerator())
+                car.go()
+            Output().printEachRacingResult(car)
+        }
+        return cars
+    }
     fun racing(count:Int,cars:List<Car>){
+        var racingCars = cars
+        Output().printResultMessage()
         repeat(count){
-            for (car in cars){
-                if (Random().randomGenerator())
-                    car.go()
-            }
+            racingCars = eachRacing(cars)
         }
     }
 }
