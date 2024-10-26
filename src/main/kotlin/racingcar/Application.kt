@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms
 
 fun lenCheck(nameList: List<String>): Boolean {
     nameList.forEach {
-        if (it.length > 6)
+        if (it.length >= 6)
             return false
     }
     return true
@@ -16,7 +16,7 @@ fun inputCar(): List<String> {
     val nameList = Console.readLine()
     val splitNameList = nameList.split(",")
     if (lenCheck(splitNameList)){
-        return requireNotNull(splitNameList)
+        return splitNameList
     } else
         throw IllegalArgumentException()
 }
