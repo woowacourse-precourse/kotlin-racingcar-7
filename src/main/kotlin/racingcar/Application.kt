@@ -15,7 +15,11 @@ fun main() {
     // 자동차 경주 시작
     print("\n실행 결과")
     val cars = makeCarKey(carNames)
-    race(cars, num.toInt())
+    val finalPositions = race(cars, num.toInt())
+
+    val winners = findWinners(finalPositions)
+    println("\n최종 우승자 : ${winners.joinToString(", ")}")
+
 }
 
 fun splitCarNames(input: String): List<String> {
@@ -41,7 +45,7 @@ fun makeCarKey(carNames: List<String>): List<Pair<String, Int>> {
     return carNames.map { name -> Pair(name, 0) }
 }
 
-fun race(cars: List<Pair<String, Int>>, attempts: Int) {
+fun race(cars: List<Pair<String, Int>>, attempts: Int): List<Pair<String, Int>> {
     var carPositions = cars
 
     for (round in 1..attempts) {
@@ -54,6 +58,14 @@ fun race(cars: List<Pair<String, Int>>, attempts: Int) {
             name to newPosition
         }.toMutableList() // List를 MutableList로 변환
     }
+    return carPositions
+}
+
+fun findWinners(carPositions: List<Pair<String, Int>>): List<String> {
+    // 최종 위치 중 가장 큰 값을 찾음
+    val maxPosition = carPositions.maxOf { it.second }
+    // 최대 위치에 도달한 자동차 이름들을 리스트로 반환
+    return carPositions.filter { it.second == maxPosition }.map { it.first }
 }
 
 
