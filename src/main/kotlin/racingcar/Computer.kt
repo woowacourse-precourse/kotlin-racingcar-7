@@ -9,5 +9,6 @@ class Computer {
 
     fun inputRoundCount(): String = Console.readLine()
 
-    fun generate() = Randoms.pickNumberInRange(1, 9)
+    fun generate() = Randoms.pickNumberInRange(0, 9)
+
 }
