@@ -10,4 +10,8 @@ object Validator {
             inputSplitTrim
                 .all { it.length <= 5 }) { IllegalArgumentException("이름은 5이하의 문자만이 가능합니다") }
     }
+
+    fun validateInputRound(input: String) {
+        require(input.all { it.isDigit() }) { IllegalArgumentException("정수를 입력해 주십시오") }
+    }
 }
