@@ -6,4 +6,5 @@ object PrintMessage {
     val RACE_RESULT = "실행 결과"
     val FINAL_WINNER = "최종 우승자 : "
     val MOVE_SYMBOL = "-"
+    val BLANK = ""
 }
