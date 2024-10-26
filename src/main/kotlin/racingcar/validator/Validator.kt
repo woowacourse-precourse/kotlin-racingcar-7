@@ -8,4 +8,19 @@ object Validator {
             throw IllegalArgumentException()
         }
     }
+
+    fun validateTryCount(tryCount: String) {
+        try {
+            val count = tryCount.toInt()
+            checkNegative(count)
+        } catch (e: NumberFormatException) {
+            throw IllegalArgumentException()
+        }
+    }
+
+    private fun checkNegative(count: Int) {
+        if (count < 0) {
+            throw IllegalArgumentException()
+        }
+    }
 }

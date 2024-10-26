@@ -41,4 +41,49 @@ class ValidatorTest {
             }
         }
     }
+
+    @Test
+    fun `시도 횟수는 숫자이어야 한다`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> {
+                Validator.validateTryCount("apple")
+            }
+        }
+    }
+
+    @Test
+    fun `시도 횟수는 0 이거나 양의 정수이어야 한다`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> {
+                Validator.validateTryCount("-1")
+            }
+        }
+    }
+
+    @Test
+    fun `시도 횟수는 0 이거나 양의 정수이어야 한다 2`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> {
+                Validator.validateTryCount("1.1")
+            }
+        }
+    }
+
+    @Test
+    fun `시도 횟수는 빈 문자열이 아니어야 한다`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> {
+                Validator.validateTryCount("")
+            }
+        }
+    }
+
+    @Test
+    fun `시도 횟수는 MAX_VALUE 이하여야 한다`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> {
+                Validator.validateTryCount("${Int.MAX_VALUE + 1}")
+            }
+        }
+    }
 }
