@@ -18,6 +18,10 @@ class RacingCarController {
         val attemptCount = convertToAttemptCount(attemptCountInput)
 
         printRaceResult(racingCars, attemptCount)
+
+        val finalWinners = getFinalWinner(racingCars)
+
+        outputView.printFinalWinner(finalWinners)
     }
 
     fun createRacingCars(input: String): List<RacingCar> {
@@ -68,7 +72,7 @@ class RacingCarController {
 
     private fun createRandomNumber() = Randoms.pickNumberInRange(0, 9)
 
-    fun moveForward(racingCars: List<RacingCar>) {
+    private fun moveForward(racingCars: List<RacingCar>) {
         racingCars.forEach { car->
             val randomNumber = createRandomNumber()
             if (isMoveForwardPossible(randomNumber)) {
@@ -79,7 +83,7 @@ class RacingCarController {
 
     private fun isMoveForwardPossible(number: Int) = number >= 4
 
-    fun printRaceResult(racingCars: List<RacingCar>, attemptCount: Int) {
+    private fun printRaceResult(racingCars: List<RacingCar>, attemptCount: Int) {
         outputView.printRaceResult()
         repeat(attemptCount) {
             moveForward(racingCars)
@@ -90,9 +94,19 @@ class RacingCarController {
         }
     }
 
-    fun printRacingCarMovementDistance(racingCar: RacingCar) {
-        println("${racingCar.racingCarName} : ${PrintMessage.MOVE_SYMBOL.repeat(racingCar.movementDistance)}")
+    private fun printRacingCarMovementDistance(racingCar: RacingCar) {
+        val movementDistance = racingCar.movementDistance
+        println("${racingCar.racingCarName} : ${PrintMessage.MOVE_SYMBOL.repeat(movementDistance)}")
     }
 
+    private fun getFinalWinner(racingCars: List<RacingCar>): List<String> {
+        val maxMovementDistance = getMaxMovementDistance(racingCars)
+        return racingCars
+            .filter { it.movementDistance == maxMovementDistance }
+            .map { it.racingCarName }
+
+    }
+
+    private fun getMaxMovementDistance(racingCars: List<RacingCar>) = racingCars.maxOf { it.movementDistance }
 
 }
