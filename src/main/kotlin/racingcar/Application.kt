@@ -2,7 +2,7 @@ package racingcar
 
 var carNames:List<String> = mutableListOf<String>()
 var moveCounts:MutableList<Int> = mutableListOf<Int>()
-var tryCounts:Int? = 0
+var tryCounts:Int = 0
 
 
 fun argumentChecker(carName:String) {
@@ -36,16 +36,14 @@ fun getTryCounts() {
 	}
 }
 
-fun move(idx:Int) {
-	//전진하는 조건은 0에서 9 사이에서 무작위 값을 구한 후 무작위 값이 4 이상일 경우이다.
+
+fun move(idx:Int, carName:String) {
 	var randNum = camp.nextstep.edu.missionutils.Randoms.pickNumberInRange(0, 9)
 
 	if (randNum >= 4) {
 		moveCounts[idx] += 1
 	}
-}
 
-fun display(idx:Int, carName:String) {
 	print("$carName : ")
 
 	for (i in 0 until moveCounts[idx]) {
@@ -55,17 +53,23 @@ fun display(idx:Int, carName:String) {
 	print("\n")
 }
 
+fun display() {
+	for ((idx, carName) in carNames.withIndex()) {
+		move(idx, carName)
+	}
+	print("\n")
+
+}
+
+
 
 fun main() {
 	// TODO: 프로그램 구현
 	getCarNames()
 	getTryCounts()
 
-	for (idx in 0 until moveCounts.size) {
-		move(idx)
-	}
-
-	for ((idx, carName) in carNames.withIndex()) {
-		display(idx, carName)
+	for (i in 0 until tryCounts) {
+		display()
+		print("\n")
 	}
 }
