@@ -26,6 +26,13 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `입력 공백 테스트`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,,woni") }
+        }
+    }
+
     override fun runMain() {
         main()
     }
