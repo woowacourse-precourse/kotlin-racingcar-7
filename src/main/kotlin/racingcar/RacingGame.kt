@@ -24,6 +24,13 @@ class RacingGame {
         return inputRoundCount.toInt()
     }
 
+    private fun playGame(roundCount: Int, cars: List<Car>) {
+        println("\\n실행 결과")
+        repeat(roundCount) {
+
+        }
+    }
+
     private fun splitCarName(carName: String): List<Car> {
         return carName.split(",").map { Car(it) }
     }
