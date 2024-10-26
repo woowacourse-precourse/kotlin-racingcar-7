@@ -37,4 +37,6 @@ fun race(names: String, tryNumber: Int) {
             println("잘못된 값이 입력되었습니다: ")
         }
     }
+
+    val position = finalParticipants.associateWith { 0 }.toMutableMap()
 }
