@@ -4,20 +4,22 @@ import camp.nextstep.edu.missionutils.Console
 
 fun main() {
 
-    var input = Console.readLine()
-    var inputList = splitCar(input)
-    var CarList = makeCar(inputList)
-    for(Car in CarList){
-        Car.CarName()
-    }
-    // TODO: 프로그램 구현
+    val input = Console.readLine()
+    val inputList = splitCar(input)
+    val CarList = makeCar(inputList)
+    val number = Console.readLine().toIntOrNull() ?: throw IllegalArgumentException("숫자가 아닙니다.")
+    val race = Race(CarList,number)
+    race.runRace()
 }
 
 fun splitCar(input:String):List<String>{
-    var carList = input.split(",")
+    val carList = input.split(",")
     for (car in carList){
         if (car.length>5){
             throw IllegalArgumentException("5자 이상의 이름은 입력할 수 없습니다.")
+        }
+        else if(car.isEmpty()){
+            throw IllegalArgumentException("이름을 빈칸으로 사용할 수 없습니다.")
         }
     }
     return carList
@@ -25,7 +27,7 @@ fun splitCar(input:String):List<String>{
 
 
 fun makeCar(carList:List<String>):MutableList<Car>{
-    var returnList = mutableListOf<Car>()
+    val returnList = mutableListOf<Car>()
     for(car in carList){
         returnList.add(Car(car))
     }

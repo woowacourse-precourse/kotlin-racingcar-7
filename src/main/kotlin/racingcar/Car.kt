@@ -1,7 +1,7 @@
 package racingcar
 
-class Car(name:String){
-    var name = name
+class Car(var name:String){
+    var now=0
     fun CarName(){
         println("Car $name")
     }

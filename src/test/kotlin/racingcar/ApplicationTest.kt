@@ -33,10 +33,25 @@ class ApplicationTest : NsTest() {
             assertThat(output()).contains("Car a", "Car b", "Car c","Car d")
         }
     }
+
     @Test
     fun `입력 오류`() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
+        }
+    }
+
+    @Test
+    fun `레이스 하기`() {
+        assertSimpleTest {
+            run("a,b,c,d","5")
+            assertThat(output()).contains("a","b","c","d")
+        }
+    }
+    @Test
+    fun `레이스 오류`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,javaji", "a") }
         }
     }
 
