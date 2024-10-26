@@ -17,8 +17,11 @@ class RacingGame {
         return carName
     }
 
-    private fun initRound() {
+    private fun initRound(): Int {
         println("시도할 횟수는 몇 회인가요?")
+        val inputRoundCount = computer.inputRoundCount()
+        validation.validateRoundCount(inputRoundCount)
+        return inputRoundCount.toInt()
     }
 
     private fun splitCarName(carName: String): List<Car> {
