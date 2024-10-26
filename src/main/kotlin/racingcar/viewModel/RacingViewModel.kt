@@ -16,14 +16,14 @@ class RacingViewModel(
     private val state = mutableListOf<PlayerState>()
     private var playCount: Int = 0
 
-    fun onCompleteInput(intent: UserInputIntent){
-        when(intent){
+    fun onCompleteInput(intent: UserInputIntent) {
+        when (intent) {
             is EnterPlayerNameState -> onCompleteInputPlayerNames(intent)
             is EnterPlayCountState -> onCompleteInputPlayCount(intent)
         }
     }
 
-    private fun onCompleteInputPlayerNames(intent: EnterPlayerNameState){
+    private fun onCompleteInputPlayerNames(intent: EnterPlayerNameState) {
         val userNames = intent.userNames
         validationDelegator.handleUserNameInput(userNames)
         val separatedNames = userNames

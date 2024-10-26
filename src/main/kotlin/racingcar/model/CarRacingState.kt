@@ -3,11 +3,12 @@ package racingcar.model
 import racingcar.constans.Constants.MESSAGE_LAST_WINNER
 
 sealed class CarRacingState {
-    data class PlayerState(val playerName: String, var position: Int) : CarRacingState(){
+    data class PlayerState(val playerName: String, var position: Int) : CarRacingState() {
         fun printExecutionByPhase() {
             println("$playerName : ${"-".repeat(position)}")
         }
     }
+
     data class PlayResultState(val result: List<PlayerState>) : CarRacingState() {
         fun printWinner() {
             val maxScore = result.maxOf { it.position }

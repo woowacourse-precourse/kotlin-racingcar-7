@@ -11,7 +11,7 @@ import racingcar.model.CarRacingState.PlayResultState
 
 class RacingView(
     dependencyInjector: DependencyInjector
-){
+) {
     private val viewModel = dependencyInjector.injectViewModel()
 
     init {
@@ -20,7 +20,7 @@ class RacingView(
         closeGame(result)
     }
 
-    private fun startGame(){
+    private fun startGame() {
         inputPlayerNames()
         inputPlayCount()
     }
@@ -37,7 +37,7 @@ class RacingView(
         viewModel.onCompleteInput(intent)
     }
 
-    private fun getUserInput(msg: String): String{
+    private fun getUserInput(msg: String): String {
         println(msg)
         return readLine().trim()
     }

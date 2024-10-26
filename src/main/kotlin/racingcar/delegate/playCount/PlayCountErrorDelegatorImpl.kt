@@ -9,7 +9,7 @@ import racingcar.ext.isFloat
 import racingcar.ext.isNegativeNumber
 import racingcar.ext.isNotNumeric
 
-class PlayCountErrorDelegatorImpl: PlayCountErrorDelegator {
+class PlayCountErrorDelegatorImpl : PlayCountErrorDelegator {
     override fun checkPlayCountIsEmpty(playCount: String) {
         if (playCount.trim().isEmpty()) {
             throw IllegalArgumentException(errorMessageForEmptyPlayCount)
@@ -17,7 +17,9 @@ class PlayCountErrorDelegatorImpl: PlayCountErrorDelegator {
     }
 
     override fun checkForChangeableToLong(playCount: String) {
-        playCount.toLongOrNull() ?: throw IllegalArgumentException(errorMessageForExceededMaxPlayCount)
+        playCount.toLongOrNull() ?: throw IllegalArgumentException(
+            errorMessageForExceededMaxPlayCount
+        )
     }
 
     override fun checkForExceededMaxInt(playCount: Long) {
@@ -27,13 +29,13 @@ class PlayCountErrorDelegatorImpl: PlayCountErrorDelegator {
     }
 
     override fun checkInvalidPlayCountFormat(playCount: String) {
-        if (playCount.isNotNumeric()){
+        if (playCount.isNotNumeric()) {
             throw IllegalArgumentException(errorMessageForInValidPlayCount)
         }
     }
 
     override fun checkInvalidPlayCountRange(playCount: String) {
-        if (playCount.isNegativeNumber() || playCount.isFloat()){
+        if (playCount.isNegativeNumber() || playCount.isFloat()) {
             throw IllegalArgumentException(errorMessageForInValidPlayCount)
         }
     }
