@@ -8,6 +8,12 @@ class RacingGame {
         val cars = initCar()
         val roundCounts = initRound()
         playGame(cars, roundCounts)
+        val winner = determinedWinners(cars)
+    }
+
+    private fun determinedWinners(cars: List<Car>): List<Car> {
+        val winnerPosition = cars.maxOf { it.position }
+        return cars.filter { it.position == winnerPosition }
     }
 
     private fun initCar(): List<Car> {
