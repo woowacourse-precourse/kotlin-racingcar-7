@@ -28,4 +28,11 @@ class Validation {
             throw IllegalArgumentException("중복된 이름은 작성할 수 없습니다.")
         }
     }
+
+    fun validateCarName(carName: List<Car>) {
+        checkCarNameLength(carName)
+        checkCarNameBlank(carName)
+        checkOnlyOneCar(carName)
+        checkCarNameDuplication(carName)
+    }
 }
