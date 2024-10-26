@@ -9,11 +9,13 @@ fun main() {
     val carNames = Console.readLine().split(",") ?: emptyList()
 
     println("시도할 횟수는 몇 회인가요?")
+
     val times = readln().toInt() ?: 0
+    val distance = MutableList(carNames.size) { 0 }
 
-    val distance = MutableList(carNames.size) {0}
-
-    move(distance)
+    repeat(times) {
+        move(distance)
+    }
 
 }
 
