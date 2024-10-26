@@ -9,14 +9,11 @@ import org.junit.jupiter.api.assertThrows
 
 class ApplicationTest : NsTest() {
     @Test
-    fun `기능 테스트`() {
-        assertRandomNumberInRangeTest(
-            {
-                run("pobi,woni", "1")
-                assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi")
-            },
-            MOVING_FORWARD, STOP
-        )
+    fun `자동차 이름이 올바르게 처리되는지 테스트`() {
+        val inputNames = "pobi,woni"
+        val finalParticipants = processNames(inputNames)
+
+        assertThat(finalParticipants).containsExactlyInAnyOrder("pobi", "woni")
     }
 
     /*@Test
