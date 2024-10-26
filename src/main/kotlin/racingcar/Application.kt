@@ -4,13 +4,29 @@ import camp.nextstep.edu.missionutils.Randoms
 import camp.nextstep.edu.missionutils.Console
 
 
-class OutputView {
-    fun gameResult(carName:String, movingCount: Int){
-        println("$carName : ${"-".repeat(movingCount)}")
+class InputView{
+    fun inputCars(){
+        println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
+    }
+
+    fun inputCount(){
+        println("시도할 횟수는 몇 회인가요?")
     }
 }
 
+class OutputView {
+    fun outputPrint(){
+        println("실행 결과")
+    }
+    fun gameResult(carName:String, movingCount: Int){
+        println("$carName : ${"-".repeat(movingCount)}")
+    }
 
+    fun winnerPrint(winners : List<String>){
+        println("최종 우승자 : ${winners.joinToString(", ")}")
+
+    }
+}
 
 fun isCanMove(): Boolean {
     return Randoms.pickNumberInRange(0,9) >= 4
@@ -55,22 +71,21 @@ fun getWinnerIndex(carsMoving : Array<Int>): MutableList<Int> {
 
 fun main() {
     val outputView = OutputView()
+    val inputView = InputView()
 
-    println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
+    inputView.inputCars()
     val inputCar = Console.readLine()
     val cars = inputCar.split(',')
 
-
-    println("시도할 횟수는 몇 회인가요?")
+    inputView.inputCount()
     val inputCount = Console.readLine()
     val count = inputCount.toInt()
 
-    println("실행 결과")
-
     val carsMovingArray = Array(cars.count()) { 0 }
 
+    outputView.outputPrint()
     game(cars, carsMovingArray, outputView, count)
 
-    val result = getWinnerIndex(carsMovingArray).map { cars[it] }
-    println("최종 우승자 : ${result.joinToString(", ")}")
+    val winners = getWinnerIndex(carsMovingArray).map { cars[it] }
+    outputView.winnerPrint(winners)
 }
