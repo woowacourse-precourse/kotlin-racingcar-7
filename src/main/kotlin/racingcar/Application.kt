@@ -2,26 +2,25 @@ package racingcar
 
 import camp.nextstep.edu.missionutils.Console
 
-
-fun checkRacerName(name: String): Boolean {
+fun checkRacerName(name: String): Pair<Boolean, List<String>> {
     val racerNames = name.split(",")
 
     if (racerNames.size <= 1) {
         throw IllegalArgumentException("레이서는 최소 2명 이어야 합니다.")
     }
-    if (racerNames.any { it.length >= 2 }) {
+    if (racerNames.any { it.length >= 6 }) {
         throw IllegalArgumentException("레이서의 이름은 5자 이하 이어야 합니다.")
     }
-    return true
+    return Pair(true, racerNames)
 }
 
-fun checkRaceAttempts(attempts: String): Boolean {
-    val attemptsTypeCheck = try {
+fun checkRaceAttempts(attempts: String): Int {
+    val attemptCount = try {
         attempts.toInt()
     } catch (e: NumberFormatException) {
-        throw IllegalArgumentException("시도 횟수는 숫자여야 합니다.")
+        throw IllegalArgumentException("시도 횟수는 숫자 여야 합니다.")
     }
-    return attemptsTypeCheck > 1
+    return attemptCount
 }
 
 fun main() {
@@ -31,7 +30,10 @@ fun main() {
     println("시도할 횟수는 몇 회인가요?")
     val attempts = Console.readLine()
 
-    if (checkRacerName(name) && checkRaceAttempts(attempts)) {
+    val (isRacerNameValid, racerName) = checkRacerName(name)
+    val maxAttemptCount = checkRaceAttempts(attempts)
+
+    if (isRacerNameValid) {
         println("자동차 경주를 시작합니다.")
     }
 }
