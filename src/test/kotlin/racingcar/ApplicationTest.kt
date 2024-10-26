@@ -86,18 +86,22 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
-    fun `이름 한 명 예외 테스트`() {
-        assertSimpleTest {
-            assertThrows<IllegalArgumentException> { runException("pobi", "1") }
-        }
-    }
-
-    @Test
     fun `동명 테스트`() {
         assertRandomNumberInRangeTest(
             {
                 run("pobi,pobi,woni", "1")
                 assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi")
+            },
+            MOVING_FORWARD, STOP
+        )
+    }
+
+    @Test
+    fun `한 명 테스트`() {
+        assertRandomNumberInRangeTest(
+            {
+                run("pobi", "1")
+                assertThat(output()).contains("pobi : -", "최종 우승자 : pobi")
             },
             MOVING_FORWARD, STOP
         )
