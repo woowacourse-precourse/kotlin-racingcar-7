@@ -63,15 +63,27 @@ class ApplicationTest : NsTest() {
         @Test
         fun `전진 횟수가 숫자가 아닐 경우`() {
             assertSimpleTest {
-                assertThrows<IllegalArgumentException> { runException("pobi,javaji", "a") }
+                assertThrows<IllegalArgumentException> { runException("pobi,abc", "a") }
             }
         }
 
         @Test
         fun `전진 횟수가 int형 범위를 벗어날 경우`() {
             assertSimpleTest {
-                assertThrows<IllegalArgumentException> { runException("pobi,javaji", "2200000000") }
+                assertThrows<IllegalArgumentException> { runException("pobi,abc", "2200000000") }
             }
+        }
+
+        @Test
+        fun `전진 횟수가 음수일 경우`() {
+            assertSimpleTest {
+                assertThrows<IllegalArgumentException> { runException("pobi,abc", "-5") }
+            }
+        }
+
+        @Test
+        fun `전진 횟수가 일정 범위를 벗어날 경우`() {
+            assertThat(2).
         }
     }
 
