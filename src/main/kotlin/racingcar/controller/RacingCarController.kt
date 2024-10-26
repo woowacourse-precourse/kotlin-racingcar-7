@@ -26,10 +26,28 @@ class RacingCarController {
 
     private fun hasDuplicateNames(names: List<String>) = names.size != names.distinct().size
 
-    private fun isNameEmpty(names: List<String>) = names.any { name ->
-        name.isEmpty() }
+    private fun isNameEmpty(names: List<String>) = names.any { name -> name.isEmpty() }
 
-    private fun isOverMaxLength(names: List<String>) = names.any { name ->
-        name.length > 5
+    private fun isOverMaxLength(names: List<String>) = names.any { name -> name.length > 5 }
+
+    fun convertToAttemptCount(input: String): Int {
+        if (validateAttemptCount(input)) {
+            return input.toInt()
+        }
+        throw IllegalArgumentException("입력하신 시도 횟수가 검증에 실패하였습니다.")
     }
+
+    fun validateAttemptCount(attemptCount: String): Boolean  {
+        return when {
+            isNotNumber(attemptCount) -> throw IllegalArgumentException("입력하신 횟수는 숫자가 아닙니다.")
+            isNonPositiveNumber(attemptCount) -> throw IllegalArgumentException("입력하신 숫자는 양수가 아닙니다.")
+            else -> true
+        }
+    }
+
+    private fun isNotNumber(input: String) = input.toIntOrNull() == null
+
+    private fun isNonPositiveNumber(input: String) = input.toInt() <= 0
+
+
 }
