@@ -1,5 +1,8 @@
 # kotlin-racingcar-precourse
 
+### main
+- 경주 실행 (12)
+
 ### model
 - 자동차의 상태를 나타내는 Car 모델 클래스 추가 (1)
 
