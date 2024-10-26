@@ -11,4 +11,7 @@ class Computer {
 
     fun generate() = Randoms.pickNumberInRange(0, 9)
 
+    fun printCarPosition(car: Car) {
+        println(car.getStatus())
+    }
 }
