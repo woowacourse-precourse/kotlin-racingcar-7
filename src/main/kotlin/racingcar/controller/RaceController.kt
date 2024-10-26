@@ -12,6 +12,8 @@ class RaceController {
         val carNames = InputView.getCarNames()
         Validator.validateCarName(carNames)
         createCars(carNames)
+
+        val moveCount = InputView.getMoveCount()
     }
 
     private fun createCars(carNames: List<String>) {
