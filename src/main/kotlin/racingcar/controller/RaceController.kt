@@ -18,6 +18,7 @@ class RaceController {
         moveCars(moveCount)
 
         OutputView.displayCarPositions(cars)
+        val winners = getWinners()
     }
 
     private fun createCars(carNames: List<String>) {
@@ -36,5 +37,11 @@ class RaceController {
                 car.move()
             }
         }
+    }
+
+    private fun getWinners(): String {
+        val maxPosition = cars.maxOf { it.position }
+        val winnerList = cars.filter { it.position == maxPosition }
+        return winnerList.joinToString(", ") { it.name }
     }
 }
