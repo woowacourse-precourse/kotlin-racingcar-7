@@ -8,10 +8,12 @@ import racingcar.intent.UserInputIntent.EnterPlayerNameState
 import racingcar.intent.UserInputIntent.EnterPlayCountState
 import racingcar.model.CarRacingState.PlayerState
 import racingcar.model.CarRacingState.PlayResultState
+import racingcar.sam.MoveCountFactory
 
 class RacingViewModel(
     private val validationDelegator: ValidationDelegator,
     private val playGround: PlayGround,
+    private val moveCountFactory: MoveCountFactory
 ) {
     private val state = mutableListOf<PlayerState>()
     private var playCount: Int = 0

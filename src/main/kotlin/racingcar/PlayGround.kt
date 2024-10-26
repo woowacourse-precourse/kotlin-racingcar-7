@@ -1,15 +1,15 @@
 package racingcar
 
-import camp.nextstep.edu.missionutils.Randoms
-import racingcar.constans.Constants.MAX_RANDOM_NUMBER
 import racingcar.constans.Constants.MESSAGE_RESULT
-import racingcar.constans.Constants.MIN_RANDOM_NUMBER
-import racingcar.model.CarRacingState.PlayerState
 import racingcar.model.CarRacingState.PlayResultState
+import racingcar.model.CarRacingState.PlayerState
 import racingcar.reducer.PlayerStateReducer
 import racingcar.sam.MoveCountFactory
 
-class PlayGround(private val playerStateReducer: PlayerStateReducer) {
+class PlayGround(
+    private val playerStateReducer: PlayerStateReducer,
+    private val factory: MoveCountFactory
+) {
 
     fun play(players: List<PlayerState>, playCount: Int): PlayResultState {
         var state = players
@@ -24,10 +24,6 @@ class PlayGround(private val playerStateReducer: PlayerStateReducer) {
     }
 
     private fun reduceState(players: List<PlayerState>): List<PlayerState> {
-        val factory = MoveCountFactory {
-            Randoms.pickNumberInRange(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER)
-        }
-
         return players.map { player ->
             val moveCount = factory.create()
             playerStateReducer(moveCount, player)
