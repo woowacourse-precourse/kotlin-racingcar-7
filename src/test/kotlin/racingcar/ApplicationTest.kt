@@ -40,6 +40,13 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `콤마 아닌 문자 입력`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi.woni") }
+        }
+    }
+
     override fun runMain() {
         main()
     }
