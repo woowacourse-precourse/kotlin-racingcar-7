@@ -1,4 +1,5 @@
 package racingcar
+import camp.nextstep.edu.missionutils.Console.readLine
 
 class CarRacing(names: String) {
     val cars: List<Car>
@@ -9,5 +10,24 @@ class CarRacing(names: String) {
 
     fun getNamesOfCars(): List<String> {
         return cars.map { it.name }
+    }
+
+    fun moveCars() {
+        for (car in cars) {
+            car.moveForwardRandomly()
+        }
+    }
+
+    fun moveCarsRepeat(count: Int) {
+        repeat(count) {
+            moveCars()
+        }
+    }
+
+    fun racing() {
+        print("시도할 횟수는 몇 회인가요?\n")
+        val inputRepeatCount = readLine()
+        val repeatCount = inputRepeatCount.toInt()
+        moveCarsRepeat(repeatCount)
     }
 }
