@@ -6,24 +6,24 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import org.mockito.Mockito.mockStatic
 
-class CarTest {
+class RacingCarTest {
     @Test
     fun `자동차 이름 길이 비정상 테스트`() {
-        assertThrows<IllegalArgumentException> { Car("") }
-        assertThrows<IllegalArgumentException> { Car("javaji") }
+        assertThrows<IllegalArgumentException> { RacingCar("") }
+        assertThrows<IllegalArgumentException> { RacingCar("javaji") }
     }
 
     @Test
     fun `값 이상이면 전진한다`() {
         mockStatic(Randoms::class.java).use { mockedStatic ->
             // given
-            val car = Car("pobi")
+            val racingCar = RacingCar("pobi")
             mockedStatic
                 .`when`<Int> { Randoms.pickNumberInRange(0, 9) }
                 .thenReturn(4)
 
             // when
-            val result = car.isMove()
+            val result = racingCar.isMove()
 
             // then
             assertThat(result).isTrue()
@@ -34,13 +34,13 @@ class CarTest {
     fun `값 이하면 전진하지 않는다`() {
         mockStatic(Randoms::class.java).use { mockedStatic ->
             // given
-            val car = Car("pobi")
+            val racingCar = RacingCar("pobi")
             mockedStatic
                 .`when`<Int> { Randoms.pickNumberInRange(0, 9) }
                 .thenReturn(3)
 
             // when
-            val result = car.isMove()
+            val result = racingCar.isMove()
 
             // then
             assertThat(result).isFalse()
@@ -50,14 +50,14 @@ class CarTest {
     @Test
     fun `자동차 이동 테스트`() {
         mockStatic(Randoms::class.java).use { mockedStatic ->
-            val car = Car("pobi")
+            val racingCar = RacingCar("pobi")
             mockedStatic
                 .`when`<Int> { Randoms.pickNumberInRange(0, 9) }
                 .thenReturn(8)
 
-            val movedCar = car.play()
+            val movedCar = racingCar.play()
 
-            assert(car.position + 1 == movedCar.position)
+            assert(racingCar.position + 1 == movedCar.position)
         }
     }
 }

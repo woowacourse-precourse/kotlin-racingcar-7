@@ -1,4 +1,8 @@
-package racingcar
+package racingcar.controller
+
+import racingcar.service.RacingGame
+import racingcar.view.InputView
+import racingcar.view.OutputView
 
 class RacingGameController {
     private val racingGame = RacingGame()

@@ -1,20 +1,19 @@
-package racingcar
+package racingcar.domain
 
 import org.junit.jupiter.api.Test
-import racingcar.domain.Car
 
 class RacingCarsTest {
     @Test
     fun `move 정상 테스트`() {
         // given
-        val cars = listOf(Car("pobi"), Car("woni"))
+        val cars = listOf(RacingCar("pobi"), RacingCar("woni"))
         val racingCars = RacingCars(cars)
 
         // when
         val movedRacingCars = racingCars.move()
 
         // then
-        movedRacingCars.cars.forEach {
+        movedRacingCars.racingCars.forEach {
             println(it)
         }
     }
@@ -22,7 +21,7 @@ class RacingCarsTest {
     @Test
     fun `getWinners 정상 테스트`() {
         // given
-        val cars = listOf(Car("pobi"), Car("woni"))
+        val cars = listOf(RacingCar("pobi"), RacingCar("woni"))
         val racingCars = RacingCars(cars)
 
         // when

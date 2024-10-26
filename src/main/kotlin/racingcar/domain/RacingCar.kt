@@ -2,7 +2,7 @@ package racingcar.domain
 
 import camp.nextstep.edu.missionutils.Randoms
 
-data class Car(
+data class RacingCar(
     val name: String,
     val position: Int = START_POSITION,
 ) {
@@ -14,7 +14,7 @@ data class Car(
 
     fun isMove(): Boolean = rollDice() >= MOVE_CONDITION
 
-    fun play(): Car = copy(position = position + if (isMove()) MOVE_FORWARD else STOP)
+    fun play(): RacingCar = copy(position = position + if (isMove()) MOVE_FORWARD else STOP)
 
     companion object {
         const val START_POSITION = 0

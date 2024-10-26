@@ -1,4 +1,6 @@
-package racingcar
+package racingcar.view
+
+import racingcar.domain.RacingCars
 
 object OutputView {
     private const val PROCESS_MESSAGE = "실행 결과"
@@ -10,7 +12,7 @@ object OutputView {
     fun printProcess() = println(PROCESS_MESSAGE)
 
     fun printMidResult(racingCars: RacingCars) {
-        racingCars.cars.forEach {
+        racingCars.racingCars.forEach {
             println("${it.name}$STEP_MESSAGE${POSITION_INDICATOR.repeat(it.position)}")
         }
         println()
