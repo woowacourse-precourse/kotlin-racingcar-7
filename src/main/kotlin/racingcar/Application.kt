@@ -6,10 +6,9 @@ import racingcar.view.InOutView
 
 fun main() {
     val repo = Repository()
-    val inOutView = InOutView()
-    val racing = RacingController(repo)
+    val inOutView = InOutView(repo)
+    val racing = RacingController(repo, inOutView)
 
-    inOutView.input(repo)
-    repo.separateCarName()
+    inOutView.input()
     racing.startRacing()
 }
