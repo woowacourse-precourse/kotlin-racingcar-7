@@ -19,13 +19,17 @@ class RacingCarController {
         return when {
             hasDuplicateNames(racingCarNames) -> throw IllegalArgumentException("자동차 이름은 중복될 수 없습니다.")
             isNameEmpty(racingCarNames) -> throw IllegalArgumentException("자동차의 이름이 입력되지 않았습니다.")
+            isOverMaxLength(racingCarNames) -> throw IllegalArgumentException("입력하신 이름의 길이가 5글자를 초과하였습니다.")
             else -> true
         }
     }
 
     private fun hasDuplicateNames(names: List<String>) = names.size != names.distinct().size
 
-    private fun isNameEmpty(names: List<String>): Boolean {
-        return names.any { it.isEmpty() }
+    private fun isNameEmpty(names: List<String>) = names.any { name ->
+        name.isEmpty() }
+
+    private fun isOverMaxLength(names: List<String>) = names.any { name ->
+        name.length > 5
     }
 }
