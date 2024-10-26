@@ -37,6 +37,10 @@ fun printResult(record: MutableMap<String, Int>) {
 
 }
 
+fun printWinner(winner: Map<String, Int>) {
+    println("최종 우승자 : ${winner.keys.joinToString(", ")}")
+}
+
 fun movementDecision(): Boolean {
     if (Randoms.pickNumberInRange(0, 9) >= 4)
         return true
@@ -44,6 +48,7 @@ fun movementDecision(): Boolean {
 }
 
 fun raceRun(record: MutableMap<String, Int>, atmpNum: Int) {
+    println("\n실행 결과")
     for (i: Int in 1..atmpNum) {
         for (car in record.keys)
            if (movementDecision())
@@ -55,6 +60,8 @@ fun raceRun(record: MutableMap<String, Int>, atmpNum: Int) {
 fun compareScores(record: MutableMap<String, Int>) {
     val maxValue = record.values.max()
     val result = record.filterValues { it == maxValue }
+
+    printWinner(result)
 }
 
 fun main() {
@@ -66,4 +73,5 @@ fun main() {
 
     raceRun(distanceRecord, attemptNum)
     compareScores(distanceRecord)
+
 }
