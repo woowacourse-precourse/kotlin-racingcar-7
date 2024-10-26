@@ -25,6 +25,7 @@ class RacingCarController {
 
         } catch (e: IllegalArgumentException) {
             errorView.errorMessage(e.message ?: "오류가 발생했습니다.")
+            throw e
         }
     }
 
