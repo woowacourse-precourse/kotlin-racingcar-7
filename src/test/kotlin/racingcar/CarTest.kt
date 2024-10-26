@@ -44,8 +44,9 @@ class CarTest {
 
         val car = Car(name)
 
-        for (i in 1..round)
+        for (i in 1..round) {
             car.plusDrivingDistance()
+        }
 
         assertEquals(car.drivingDistance, round)
     }
