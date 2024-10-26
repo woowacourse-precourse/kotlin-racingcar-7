@@ -11,4 +11,8 @@ class Racing {
         }
         return cars
     }
+
+    fun racing(count:Int){
+
+    }
 }
