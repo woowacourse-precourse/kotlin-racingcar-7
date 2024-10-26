@@ -58,3 +58,11 @@ fun startRacing(carList: MutableList<Car>) {
         }
     }
 }
+
+/* 현재 진행 상황을 출력하는 함수 */
+fun showStatus(carList: MutableList<Car>) {
+    for (car in carList) {
+        println("${car.name} : ${car.status}")
+    }
+    println()
+}
