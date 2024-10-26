@@ -8,12 +8,10 @@ object RacingCarController {
     fun run() {
         val inputNames = InputView.inputNames()
         Validator.validateInputNames(inputNames)
-        val Round = InputView.inputRound()
-        Validator.validateInputRound(Round)
+        val round = InputView.inputRound().toInt()
+        Validator.validateInputRound(round.toString())
 
         inputNames.split(",").map { it.trim() }.map { Model(it) }
-
-
     }
 
 }

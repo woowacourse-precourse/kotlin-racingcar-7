@@ -3,7 +3,7 @@ package racingcar.view
 import racingcar.model.Model
 
 object OutputView {
-    fun raceStart(cars: List<Model>, round: Int) {
+    fun raceStart(cars: List<Model>) {
         println("실행결과")
         for (car in cars) {
             val carName = car.name
