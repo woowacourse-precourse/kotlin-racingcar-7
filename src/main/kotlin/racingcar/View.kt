@@ -14,7 +14,7 @@ fun getCarNames(): List<String> {
     println(CAR_NAME_REQUEST_MESSAGE)
     val input = Console.readLine()
 
-    return input.split(",")
+    return splitComma(input)
 }
 
 fun getTryCount(): Int {
