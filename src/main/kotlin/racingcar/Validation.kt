@@ -2,6 +2,13 @@ package racingcar
 
 class Validation {
 
+    fun validateCarName(carName: List<Car>) {
+        checkCarNameLength(carName)
+        checkCarNameBlank(carName)
+        checkOnlyOneCar(carName)
+        checkCarNameDuplication(carName)
+    }
+
     fun checkCarNameLength(carName: List<Car>) {
         carName.forEach {
             if (it.name.length > 5) {
@@ -29,10 +36,9 @@ class Validation {
         }
     }
 
-    fun validateCarName(carName: List<Car>) {
-        checkCarNameLength(carName)
-        checkCarNameBlank(carName)
-        checkOnlyOneCar(carName)
-        checkCarNameDuplication(carName)
+    fun checkRoundCountNotNumber(inputRoundCount: String) {
+        if (inputRoundCount.toIntOrNull() == null) {
+            throw IllegalArgumentException("숫자가 아닙니다.")
+        }
     }
 }
