@@ -41,4 +41,9 @@ class Validation {
             throw IllegalArgumentException("숫자가 아닙니다.")
         }
     }
+
+    fun checkRoundCountNegativeInteger(inputRoundCount: String) {
+        val roundCount = inputRoundCount.toInt()
+        if (roundCount < 1) throw IllegalArgumentException("1보다 작은 수는 입력할 수 없습니다.")
+    }
 }
