@@ -2,37 +2,31 @@ package racingcar.controller
 
 import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
+import racingcar.view.InputView
+import racingcar.view.OutputView
 
 class RacingController {
     private var carState = mutableMapOf<String, Int>()
+    private val inputView = InputView()
+    private val outputView = OutputView()
 
     fun start() {
-        printInputCarName()
-        val input = Console.readLine().split(",")
-        InputValidator.validateCarName(input)
+        val input = inputView.printInputCarName()
         for (carName in input) {
             carState[carName] = 0
         }
 
-        printInputRaceCount()
-        val raceCount = Console.readLine()
-        InputValidator.validateRaceCount(raceCount)
+        val raceCount = inputView.printInputRaceCount()
 
-        printOutputRaceResult()
-        repeat(raceCount.toInt()) {
+        outputView.printOutputRaceResult()
+        repeat(raceCount) {
             race(carState)
             println()
         }
 
         val winner = getWinner(carState)
-        printOutputWinner(winner)
+        outputView.printOutputWinner(winner)
     }
-
-    private fun printInputCarName() = println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
-    private fun printInputRaceCount() = println("시도할 횟수는 몇 회인가요?")
-
-    private fun printOutputRaceResult() = println("\n실행 결과")
-    private fun printOutputWinner(winner: List<String>) = println("최종 우승자 : ${winner.joinToString(", ")}")
 
     private fun race(carState: MutableMap<String, Int>) {
         for (car in carState.keys) {
