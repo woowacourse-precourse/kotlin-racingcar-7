@@ -1,36 +1,31 @@
-package racingcar
-
 import camp.nextstep.edu.missionutils.Console
+import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
     println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
     val input = Console.readLine()
 
-    // List형태로 spilt 한 값 받아오기
-    splitCarNames(input)
+    // List형태로 split 한 값 받아오기
+    val carNames = splitCarNames(input)
 
     println("시도할 횟수는 몇 회인가요?")
     val num = Console.readLine()
-
     checkNum(num)
+
+    // 자동차 경주 시작
+    print("\n실행 결과")
+    val cars = makeCarKey(carNames)
+    race(cars, num.toInt())
 }
 
-fun splitCarNames(input: String) {
+fun splitCarNames(input: String): List<String> {
     if (!input.contains(",")) {
         throw IllegalArgumentException("쉼표가 아닌 다른 구분자를 사용했습니다.")
     }
 
     val carNames = input.split(",").map { it.trim() } // 공백 제거
-
-    // carNames에 대한 예외처리
     validateCarNames(carNames)
-
-    makeCarKey(carNames)
-}
-
-// 각 자동차 이름을 Pair<String, Int>로 변환, Int는 0으로 설정
-fun makeCarKey(carNames: List<String>): List<Pair<String, Int>> {
-    return carNames.map { name -> Pair(name, 0) }
+    return carNames
 }
 
 // carNames에 대한 모든 예외처리 수행
@@ -40,6 +35,27 @@ fun validateCarNames(carNames: List<String>) {
     checkNameLength(carNames)
     checkNameNumber(carNames)
 }
+
+// 각 자동차 이름을 Pair<String, Int>로 변환, Int는 0으로 설정
+fun makeCarKey(carNames: List<String>): List<Pair<String, Int>> {
+    return carNames.map { name -> Pair(name, 0) }
+}
+
+fun race(cars: List<Pair<String, Int>>, attempts: Int) {
+    var carPositions = cars
+
+    for (round in 1..attempts) {
+        println("")
+        carPositions = carPositions.map { car ->
+            val (name, position) = car
+            val randomValue = Randoms.pickNumberInRange(0, 9)
+            val newPosition = if (randomValue >= 4) position + 1 else position
+            println("$name : ${"-".repeat(newPosition)}")
+            name to newPosition
+        }.toMutableList() // List를 MutableList로 변환
+    }
+}
+
 
 // 자동차 이름이 비어있는지 확인
 fun checkEmptyNames(carNames: List<String>) {
