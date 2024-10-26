@@ -3,15 +3,12 @@ package racingcar
 import camp.nextstep.edu.missionutils.Console
 
 fun main() {
-
     val input = Console.readLine()
     val inputList = splitCar(input)
     val carList = makeCar(inputList)
     val number = Console.readLine().toIntOrNull() ?: throw IllegalArgumentException("숫자가 아닙니다.")
     val race = Race(carList,number)
     race.runRace()
-
-
 }
 
 fun splitCar(input:String):List<String>{

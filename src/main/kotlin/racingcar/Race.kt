@@ -3,6 +3,7 @@ import camp.nextstep.edu.missionutils.Randoms
 
 class Race(var carList: List<Car>,var stageNumber : Int) {
     var winCarList : List<Car> = listOf()
+
     fun runRace(){
         println("실행 결과")
         for(i in 0..<stageNumber){
@@ -12,16 +13,19 @@ class Race(var carList: List<Car>,var stageNumber : Int) {
         winCarList = compareFinal()
         printFinal()
     }
+
     fun stage(){
         for(car in carList){
             runCar(car)
         }
     }
+
     fun runCar(car:Car){
         if(Randoms.pickNumberInRange(0,9)>=4){
             car.now++
         }
     }
+
     fun printNow(){
         for(car in carList){
             print(car.name+" : "+"-".repeat(car.now))
@@ -29,6 +33,7 @@ class Race(var carList: List<Car>,var stageNumber : Int) {
         }
         println()
     }
+
     fun compareFinal():List<Car>{
         var winCarList : List<Car> = listOf()
         for(car in carList){
@@ -36,6 +41,7 @@ class Race(var carList: List<Car>,var stageNumber : Int) {
         }
         return winCarList
     }
+
     fun printFinal(){
         print("최종 우승자 :")
         for(number in winCarList.indices){
@@ -46,6 +52,7 @@ class Race(var carList: List<Car>,var stageNumber : Int) {
             }
         }
     }
+
     fun compare(car:Car, winCar:List<Car>):List<Car>{
         var list : MutableList<Car> = winCar.toMutableList()
         //비어있으면 우승자 리스트에 무조건 넣고
