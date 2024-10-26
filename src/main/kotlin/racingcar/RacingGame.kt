@@ -9,6 +9,7 @@ class RacingGame {
         val roundCounts = initRound()
         playGame(cars, roundCounts)
         val winner = determinedWinners(cars)
+        computer.printWinner(winner)
     }
 
     private fun determinedWinners(cars: List<Car>): List<Car> {
