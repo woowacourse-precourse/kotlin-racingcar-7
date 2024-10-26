@@ -44,7 +44,7 @@ class RacingCarControllerTest {
         val exception = assertThrows<IllegalArgumentException> {
             controller.createRacingCars(input)
         }
-        assertEquals("자동차의 이름이 입력되지 않았습니다.",exception.message)
+        assertEquals("자동차의 이름이 입력되지 않았습니다.", exception.message)
     }
 
     @Test
@@ -54,6 +54,26 @@ class RacingCarControllerTest {
         val exception = assertThrows<IllegalArgumentException> {
             controller.createRacingCars(input)
         }
-        assertEquals("입력하신 이름의 길이가 5글자를 초과하였습니다.",exception.message)
+        assertEquals("입력하신 이름의 길이가 5글자를 초과하였습니다.", exception.message)
+    }
+
+    @Test
+    fun `시도할 횟수의 입력이 숫자가 아닌 경우`() {
+        val input = "@@"
+
+        val exception = assertThrows<IllegalArgumentException> {
+            controller.validateAttemptCount(input)
+        }
+        assertEquals("입력하신 횟수는 숫자가 아닙니다.", exception.message)
+    }
+
+    @Test
+    fun `입력한 숫자가 양수가 아닌 경우`() {
+        val input = "-1"
+
+        val exception = assertThrows<IllegalArgumentException> {
+            controller.validateAttemptCount(input)
+        }
+        assertEquals("입력하신 숫자는 양수가 아닙니다.", exception.message)
     }
 }
