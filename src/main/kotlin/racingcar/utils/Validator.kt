@@ -10,4 +10,10 @@ object Validator {
             }
         }
     }
+
+    fun validateMoveCount(moveCount: Int){
+        if(moveCount <= 0){
+            throw IllegalArgumentException("시도 횟수는 0이 아닌 양의 정수여야합니다.")
+        }
+    }
 }

@@ -15,6 +15,7 @@ class RaceController {
         createCars(carNames)
 
         val moveCount = InputView.getMoveCount()
+        Validator.validateMoveCount(moveCount)
         moveCars(moveCount)
 
         OutputView.displayCarPositions(cars)
