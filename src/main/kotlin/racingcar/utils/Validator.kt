@@ -8,6 +8,9 @@ object Validator {
             } else if(it.isBlank()) {
                 throw IllegalArgumentException("이름에 공백이 포함되어 있습니다.")
             }
+            if (!it.all { it.isLetter() || it == ',' }) {
+                throw IllegalArgumentException("콤마(,)를 제외한 기호는 입력할 수 없습니다.")
+            }
         }
     }
 
