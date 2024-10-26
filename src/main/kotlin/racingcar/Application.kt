@@ -58,7 +58,6 @@ class Race(private val cars: List<Car>, private val roundCount: Int) {
 
 // 각 자동차를 나타냄
 data class Car(val name: String, var move: String = "") {
-    // 자동차 이름 5자 넘을 경우 예외 발생
     init {
         nameError()
     }
@@ -71,7 +70,7 @@ data class Car(val name: String, var move: String = "") {
             throw IllegalArgumentException("자동차 이름은 공백일 수 없습니다.")
         }
     }
-    // 자동차가 움직이는 기능
+    // 자동차 움직이는 기능
     fun move() {
         if (Randoms.pickNumberInRange(0, 9) >= 4) {
             this.move += "-"
