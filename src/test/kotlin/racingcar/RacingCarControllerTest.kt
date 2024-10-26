@@ -35,6 +35,15 @@ class RacingCarControllerTest {
             controller.createRacingCars(input)
         }
         assertEquals("자동차 이름은 중복될 수 없습니다.", exception.message)
+    }
 
+    @Test
+    fun `입력한 이름이 빈 문자열일 경우`() {
+        val input = ""
+
+        val exception = assertThrows<IllegalArgumentException> {
+            controller.createRacingCars(input)
+        }
+        assertEquals("자동차의 이름이 입력되지 않았습니다.",exception.message)
     }
 }
