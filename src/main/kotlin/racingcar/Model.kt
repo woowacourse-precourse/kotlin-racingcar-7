@@ -23,8 +23,4 @@ class Model {
     fun getStatus(cars: List<Car>): List<Int> {
         return cars.map { it.getPos() }
     }
-
-    fun isDone(tryNumber: Int, status: List<Int>): Boolean {
-        return status.any { it == tryNumber }
-    }
 }
