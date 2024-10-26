@@ -27,4 +27,15 @@ object Validator {
 
         throw IllegalArgumentException(error.message)
     }
+
+    fun validateAttemptCount(count: String) {
+        validateDefaultError(count)
+        val error = when {
+            Regex("^[1-9][0-9]*$").containsMatchIn(count).not() -> INVALID_ATTEMPT_COUNT
+            count.toInt() > 10 -> EXCEEDED_ATTEMPT_COUNT
+            else -> return
+        }
+
+        throw IllegalArgumentException(error.message)
+    }
 }
