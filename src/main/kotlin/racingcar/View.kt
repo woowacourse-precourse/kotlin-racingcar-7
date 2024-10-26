@@ -17,12 +17,11 @@ fun getCarNames(): List<String> {
     return splitComma(input)
 }
 
-fun getTryCount(): Int {
+fun getTryCount(): UInt {
     println(TRY_COUNT_REQUEST_MESSAGE)
 
     try {
-        val input = Console.readLine().toInt()
-        validateNegative(input)
+        val input = Console.readLine().toUInt()
 
         return input
     } catch (e: Exception) {

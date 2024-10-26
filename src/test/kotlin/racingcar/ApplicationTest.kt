@@ -47,7 +47,7 @@ class ApplicationTest : NsTest() {
     fun failOverTryCount() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> {
-                runException("우테코,화이팅", (Int.MAX_VALUE.toLong() + 1L).toString())
+                runException("우테코,화이팅", (UInt.MAX_VALUE.toLong() + 1L).toString())
             }
         }
     }

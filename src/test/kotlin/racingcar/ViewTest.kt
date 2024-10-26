@@ -24,7 +24,7 @@ class ViewTest : NsTest() {
     @DisplayName("시도 횟수 가져오기 성공")
     @Test
     fun successGetTryCount() {
-        val value = 5
+        val value = 5U
         run(value.toString())
 
         val result = getTryCount()
@@ -45,7 +45,7 @@ class ViewTest : NsTest() {
     @Test
     fun failGetTryCountWithOverNumber() {
         assertThrows<IllegalArgumentException> {
-            run("${Int.MAX_VALUE.toLong() + 1}")
+            run("${UInt.MAX_VALUE.toLong() + 1}")
             getTryCount()
         }
     }

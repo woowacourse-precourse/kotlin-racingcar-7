@@ -7,7 +7,7 @@ fun main() {
 
     println()
     printResultTitle()
-    for (i in 1..tryCount) {
+    for (i in 1U..tryCount) {
         racingGame.startOneRound()
         printCarDrivingDistance(racingGame.cars)
     }
