@@ -3,12 +3,12 @@ package racingcar.controller
 import racingcar.view.ErrorView
 import racingcar.view.InputView
 import racingcar.model.Car
+import racingcar.utils.RandomUtils
 
 class RacingCarController {
     private val inputView = InputView
     private val errorView = ErrorView
     private val cars = mutableListOf<Car>()
-
 
     fun start() {
         try {
@@ -16,6 +16,7 @@ class RacingCarController {
             val numberOfAttempts = getNumberOfAttempts()
 
             initializeCars(carNames)
+            playRace(numberOfAttempts)
 
         } catch (e: IllegalArgumentException) {
             errorView.errorMessage(e.message ?: "오류가 발생했습니다.")
@@ -42,5 +43,12 @@ class RacingCarController {
 
     private fun initializeCars(carNames: List<String>) {
         carNames.forEach { name -> cars.add(Car(name)) }
+    }
+
+    private fun playRace(attempts: Int) {
+        repeat(attempts) {
+            cars.forEach { car -> car.move(RandomUtils.canMove())
+            }
+        }
     }
 }
