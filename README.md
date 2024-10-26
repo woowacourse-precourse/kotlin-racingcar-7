@@ -12,9 +12,9 @@
 - [x] 경주 시작 전 "실행 결과" 출력
 - [x] 자동차 이름을 전진 시도 횟수만큼 출력
   - [x] "자동차 이름 : -?"
-- [ ] 경주 종료 후 최종 우승자 출력.
-  - [ ] 1명일 때 "최종 우승자 : 자동차 이름"
-  - [ ] 1명 이상 "최종 우승자 : 자동차 이름, 자동차 이름, ..."
+- [x] 경주 종료 후 최종 우승자 출력.
+  - [X] 1명일 때 "최종 우승자 : 자동차 이름"
+  - [X] 1명 이상 "최종 우승자 : 자동차 이름, 자동차 이름, ..."
 
 ### 프로세스
 - [x] `pickNumberInRange()` 함수를 사용해 값이 4 이상 나온 차만 전진
@@ -22,5 +22,6 @@
 
 ### 예외
 - [x] 자동차 이름이 6자 이상일 경우 `IllegalArgumentException` 발생
-- [ ] 자동차 구분이 ','가 아닐 경우 `IllegalArgumentException` 발생
-- [ ] 전진 횟수가 숫자가 아닐 경우 `IllegalArgumentException` 발생
+- [x] 자동차 구분이 ','가 아닐 경우 `IllegalArgumentException` 발생
+- [x] 전진 횟수가 숫자가 아닐 경우 `IllegalArgumentException` 발생
+- [x] 전진 횟수가 너무 클 경우 `IllegalArgumentException` 발생
