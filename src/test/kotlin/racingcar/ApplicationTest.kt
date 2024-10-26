@@ -15,7 +15,20 @@ class ApplicationTest : NsTest() {
                 run("pobi,woni", "1")
                 assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi")
             },
-            MOVING_FORWARD, STOP
+            MOVING_FORWARD,
+            STOP,
+        )
+    }
+
+    @Test
+    fun `두 명의 공동 우승 테스트`() {
+        assertRandomNumberInRangeTest(
+            {
+                run("pobi,woni", "1")
+                assertThat(output()).contains("pobi : -", "woni : -", "최종 우승자 : pobi,woni")
+            },
+            MOVING_FORWARD,
+            MOVING_FORWARD,
         )
     }
 
