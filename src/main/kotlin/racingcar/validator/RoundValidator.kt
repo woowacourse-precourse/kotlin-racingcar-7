@@ -9,7 +9,7 @@ object RoundValidator {
 
     fun validate(numberOfRoundInput: String): Int {
         require(isNumeric(numberOfRoundInput)) { ExceptionMessage.INVALID_NUMERIC_INPUT.message }
-        require(isValidNumberOfRound(numberOfRoundInput)) { ExceptionMessage.INVALID_NUMBER_OF_ROUND }
+        require(isValidNumberOfRound(numberOfRoundInput)) { ExceptionMessage.INVALID_NUMBER_OF_ROUND.message }
 
         return numberOfRoundInput.toInt()
     }
