@@ -6,4 +6,6 @@ class Message {
         val count = "시도할 횟수는 몇 회인가요?"
         val result = "실행 결과"
         val winner = "최종 우승자 : "
+        val forwardString = "-"
+        val nameForwardStringSeparator = " : "
 }
