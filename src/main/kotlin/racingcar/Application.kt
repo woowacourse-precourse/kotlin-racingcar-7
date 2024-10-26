@@ -14,15 +14,23 @@ fun main() {
     val distance = MutableList(carNames.size) { 0 }
 
     repeat(times) {
-        move(distance)
+        isItMove(distance)
+        printRacing(carNames,distance)
     }
 
 }
 
-private fun move (moveDistance: MutableList<Int>) {
+private fun isItMove (moveDistance: MutableList<Int>) {
     moveDistance.indices.forEach { i ->
         if (Randoms.pickNumberInRange(0 ,9) >= 4) {
             moveDistance[i]++
         }
     }
+}
+
+private fun printRacing(carNames: List<String>, moveDistance: List<Int>) {
+    carNames.forEachIndexed { i, name ->
+        println("$name : ${"-".repeat(moveDistance[i])}")
+    }
+    println()
 }
