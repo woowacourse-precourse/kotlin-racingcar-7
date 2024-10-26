@@ -58,6 +58,16 @@ class InputAdapterTest {
     }
 
     @Test
+    @DisplayName("validateCarName 함수는 경기가능한 차량이 한대면 에러를 출력하는지 확인하는 테스트")
+    fun `validateCarName 함수는 경기가능한 차량이 한대면 에러를 출력하는지 확인하는 테스트`() {
+        val inputAdapter = InputAdapter("car2,car2,car3", "3")
+        val exception = assertThrows<IllegalArgumentException>{
+            inputAdapter.validateCarName(listOf("car2"))
+        }
+        assertTrue(exception.message!!.contains("잘못된 입력입니다: 자동차 게임이 진행가능한 자동차 이름이 하나만 있습니다."))
+    }
+
+    @Test
     @DisplayName("changeTypeOfCar 함수는 Car 객체 리스트로 변환하는 지 확인하는 테스트")
     fun `changeTypeOfCar 함수는 Car 객체 리스트로 변환하는 지 확인하는 테스트`() {
         val inputAdapter = InputAdapter("car1,car2,car3", "3")
