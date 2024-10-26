@@ -15,6 +15,7 @@ class InputViewImpl : InputView {
     override fun readAttemptCount(): Int {
         println(ATTEMPT_COUNT_PROMPT)
         val input = Console.readLine()
+        Validator.validateAttemptCount(input)
         return input.toInt()
     }
 
