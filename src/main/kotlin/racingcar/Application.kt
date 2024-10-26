@@ -29,3 +29,9 @@ fun inputName(carList: MutableList<Car>) {
         }
     }
 }
+
+/* 시도할 횟수를 입력 받는 함수 */
+fun inputTimes(): Int {
+    println("시도할 횟수는 몇 회인가요?")
+    return readLine()?.toInt() ?: throw IllegalArgumentException("숫자를 입력해야 합니다.")
+}
