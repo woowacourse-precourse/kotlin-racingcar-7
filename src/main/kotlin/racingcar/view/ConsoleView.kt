@@ -1,6 +1,7 @@
 package racingcar.view
 
 import camp.nextstep.edu.missionutils.Console
+import racingcar.model.CarList
 
 class ConsoleView {
     fun inputCarName(): String {
@@ -13,6 +14,12 @@ class ConsoleView {
         println("시도할 횟수는 몇 회인가요?")
         val raceCount = Console.readLine()
         return raceCount.toInt()
+    }
+
+    fun printRaceProcess(carList: CarList, index: Int) {
+        val car = carList.getCar(index)
+        val moveCount = car.getMoveCount()
+        println("${car.getName()} : ${"-".repeat(moveCount)}")
     }
 
 }

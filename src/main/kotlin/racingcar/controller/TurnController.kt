@@ -22,13 +22,11 @@ class TurnController(
     fun playTurn() {
         for (index in 0 until carList.getSize()) {
             val randomValue = getRandomValue()
-            print(randomValue)
+            //print(randomValue)
             addMoveCount(randomValue, carList, index)
-            println(carList.getCar(index).getName() + carList.getCar(index).getMoveCount())
+            consoleView.printRaceProcess(carList, index)
         }
         println()
     }
-
-
 
 }
