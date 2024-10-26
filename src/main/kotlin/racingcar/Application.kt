@@ -3,7 +3,23 @@ package racingcar
 import kotlin.random.Random
 
 fun main() {
+    racingGame()
+}
 
+/* 자동차 경주 게임을 시작하는 함수 */
+fun racingGame() {
+    val carList = mutableListOf<Car>() //자동차 리스트
+    inputName(carList)
+
+    val gameTimes = inputTimes() //시도할 횟수
+
+    println("\n실행 결과")
+    repeat(gameTimes) {
+        startRacing(carList)
+        showStatus(carList)
+    }
+
+    showWinner(carList)
 }
 
 /* 자동차 데이터 클래스 */
