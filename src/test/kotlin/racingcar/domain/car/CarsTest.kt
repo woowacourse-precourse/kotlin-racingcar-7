@@ -72,7 +72,7 @@ class CarsTest {
 
 
     // 홀수번째 자동차는 1칸 이동하고, 짝수번째 자동차는 이동하지 않는다.
-    private class TestNumberGenerator : NumberGenerator {
+    internal class TestNumberGenerator : NumberGenerator {
         private var counter = 0
         override fun generateNumber(): Int {
             counter += 5

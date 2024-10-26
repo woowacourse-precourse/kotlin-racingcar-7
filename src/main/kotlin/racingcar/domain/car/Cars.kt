@@ -9,12 +9,9 @@ class Cars(input: String) {
 
     fun lap(numberGenerator: NumberGenerator) {
         registeredCars.forEach { car ->
-            val number = numberGenerator.generateNumber()
-            if (isAvailMove(number)) car.move()
+            car.move(numberGenerator)
         }
     }
-
-    private fun isAvailMove(number: Int) = number >= 4
 
     fun findWinners(): String {
         val maxPosition = getMaxPosition()
