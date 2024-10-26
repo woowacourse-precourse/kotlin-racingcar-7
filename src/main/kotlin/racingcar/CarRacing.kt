@@ -12,11 +12,15 @@ class CarRacing(names: String) {
         return cars.map { it.name }
     }
 
-    fun moveCars(count: Int) {
+    fun moveCars() {
+        for (car in cars) {
+            car.moveForwardRandomly()
+        }
+    }
+
+    fun moveCarsRepeat(count: Int) {
         repeat(count) {
-            for (car in cars) {
-                car.moveForwardRandomly()
-            }
+            moveCars()
         }
     }
 
