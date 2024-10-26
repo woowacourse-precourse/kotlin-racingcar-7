@@ -49,3 +49,12 @@ fun isMoving(): Boolean {
         return false
     }
 }
+
+/* 경주를 1회 실행하는 함수 */
+fun startRacing(carList: MutableList<Car>) {
+    for (car in carList) { //자동차 리스트에 있는 모든 자동차 객체들에 대해 전진 결정
+        if (isMoving()) { //전진하면 전진 상황에 '-' 추가
+            car.status += "-"
+        }
+    }
+}
