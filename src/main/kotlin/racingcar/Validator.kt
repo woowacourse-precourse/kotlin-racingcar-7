@@ -1,26 +1,26 @@
 package racingcar
 
-open class Validator {
+class Validator {
 
-    fun splitNames(nameString: String): List<String> {
-        val carList = nameString.split(",")
-        return carList
+    fun splitNames(names: String): List<String> {
+        val cars = names.split(",")
+        return cars
     }
 
-    fun nameCheck(carList: List<String>) {
-        carCountCheck(carList)
-        nameDuplicateCheck(carList)
-        for (car in carList) {
-            nameCountCheck(car)
+    fun nameCheck(cars: List<String>) {
+        carCountCheck(cars)
+        nameDuplicateCheck(cars)
+        for (name in cars) {
+            nameCountCheck(name)
         }
     }
 
-    private fun carCountCheck(carList: List<String>) {
-        if (carList.size > MAX_CAR_COUNT) throw IllegalArgumentException("차는 9대 이하여야 합니다.")
+    private fun carCountCheck(cars: List<String>) {
+        if (cars.size > MAX_CAR_COUNT) throw IllegalArgumentException("차는 9대 이하여야 합니다.")
     }
 
-    private fun nameDuplicateCheck(carList: List<String>) {
-        val maxCount = carList.groupingBy { it }.eachCount().toList().sortedBy { it.second }[0]
+    private fun nameDuplicateCheck(cars: List<String>) {
+        val maxCount = cars.groupingBy { it }.eachCount().toList().sortedBy { it.second }[0]
         if (maxCount.second > 1) throw IllegalArgumentException("차의 이름은 중복될 수 없습니다.")
     }
 
@@ -28,20 +28,20 @@ open class Validator {
         if (carName.length > MAX_CAR_LENGTH) throw IllegalArgumentException("차의 이름은 5자를 넘을 수 없습니다.")
     }
 
-    fun iterCountCheck(countString: String): Int {
-        val count = isNumber(countString)
-        isPositive(count)
-        return count
+    fun iterationCountCheck(countInput: String): Int {
+        val countNumber = isNumber(countInput)
+        isPositive(countNumber)
+        return countNumber
     }
 
-    private fun isNumber(string: String): Int {
-        val count: Int
+    private fun isNumber(countInput: String): Int {
+        val countNumber: Int
         try {
-            count = string.toInt()
+            countNumber = countInput.toInt()
         } catch (e: Exception) {
             throw IllegalArgumentException("반복 횟수는 숫자여야 합니다.")
         }
-        return count
+        return countNumber
     }
 
     private fun isPositive(number: Int) {
