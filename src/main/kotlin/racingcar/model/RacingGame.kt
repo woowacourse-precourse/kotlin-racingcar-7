@@ -35,11 +35,15 @@ class RacingGame(
         val maxDistance = cars.maxOf { it.currentDistance }
         return cars
             .filter { it.currentDistance == maxDistance }
-            .joinToString(", ") { it.getName() }
+            .joinToString(WINNER_SEPARATOR) { it.getName() }
     }
 
     private fun displayWinners(outputView: OutputView) {
         val winnerNames = findWinners()
         outputView.printWinners(winnerNames)
+    }
+
+    companion object {
+        private const val WINNER_SEPARATOR = ", "
     }
 }
