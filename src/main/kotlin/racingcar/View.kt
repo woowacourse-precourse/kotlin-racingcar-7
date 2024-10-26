@@ -20,12 +20,10 @@ class View {
         println()
     }
 
-    fun showWinners(tryNum: Int, cars: List<Car>) {
-        val winners = cars.filter { it.getPos() == tryNum }
-        print("최종 우승자 : ")
-        for (i in 0 until winners.size - 1) {
-            print("${winners[i].name}, ")
-        }
-        print(winners.last().name)
+    fun showWinners(cars: List<Car>) {
+        val maxPos = cars.maxOf { it.getPos() }
+        val winners = cars.filter { it.getPos() == maxPos }
+        val result = winners.joinToString(", ")
+        print("최종 우승자 : $result")
     }
 }
