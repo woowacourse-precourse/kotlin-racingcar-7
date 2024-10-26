@@ -40,11 +40,17 @@ class RacingController {
     }
 
     private fun checkForward(): Boolean {
-        return Randoms.pickNumberInRange(0, 9) >= 4
+        return Randoms.pickNumberInRange(RANDOM_NUMBER_MIN, RANDOM_NUMBER_MAX) >= RANDOM_NUMBER_CONDITION
     }
 
     private fun getWinner(carState: MutableMap<String, Int>): List<String> {
         val maxMove = carState.maxOf { it.value }
         return carState.filter { it.value == maxMove }.keys.toList()
+    }
+
+    companion object {
+        const val RANDOM_NUMBER_MIN = 0
+        const val RANDOM_NUMBER_MAX = 9
+        const val RANDOM_NUMBER_CONDITION = 4
     }
 }
