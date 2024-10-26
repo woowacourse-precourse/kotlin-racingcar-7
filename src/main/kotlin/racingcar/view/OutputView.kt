@@ -8,4 +8,8 @@ object OutputView {
             println("${car.name} : ${"-".repeat(car.position)}")
         }
     }
+
+    fun displayWinners(winners: String) {
+        println("최종 우승자 : $winners")
+    }
 }

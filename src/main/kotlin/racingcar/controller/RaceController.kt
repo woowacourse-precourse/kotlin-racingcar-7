@@ -19,6 +19,7 @@ class RaceController {
 
         OutputView.displayCarPositions(cars)
         val winners = getWinners()
+        OutputView.displayWinners(winners)
     }
 
     private fun createCars(carNames: List<String>) {
