@@ -3,29 +3,29 @@ package racingcar.model
 class Repository {
     var userInput: String = ""
     var execCnt: Int = 0
-    var racingCar: MutableList<String> = mutableListOf()
-    var moveCnt: MutableList<Int> = mutableListOf()
-
-    private fun initMoveCnt() {
-        moveCnt = MutableList(racingCar.size) {0}
-    }
+    var racingCars: MutableList<RacingCar> = mutableListOf()
 
     fun separateCarName() {
-        racingCar = userInput.split(",").toMutableList()
-        racingCar.removeAll(listOf(""))
+        racingCars = userInput.split(",")
+            .map { RacingCar(it) }
+            .toMutableList()
+        racingCars.removeIf { it.carName.isEmpty()}
         checkException()
-        initMoveCnt()
     }
 
     private fun checkException() {
         var occurException: Boolean = false
 
-        if (racingCar.isEmpty()) occurException = true
-        racingCar.forEach{ str ->
-            if (str.length > 6) occurException = true
+        if (racingCars.isEmpty()) occurException = true
+        racingCars.forEach{ car ->
+            if (car.carName.length > 6) occurException = true
         }
 
         if (occurException)
             throw IllegalArgumentException("잘못된 값을 입력하였습니다.")
+    }
+
+    fun increaseMove(idx: Int) {
+        racingCars[idx].moveCnt += 1
     }
 }
