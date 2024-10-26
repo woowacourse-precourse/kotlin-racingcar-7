@@ -27,7 +27,13 @@ class RacingGame {
     private fun playGame(roundCount: Int, cars: List<Car>) {
         println("\\n실행 결과")
         repeat(roundCount) {
+            moveCars(cars)
+        }
+    }
 
+    private fun moveCars(cars: List<Car>) {
+        cars.forEach { car ->
+            car.moving(computer.generate())
         }
     }
 
