@@ -14,10 +14,14 @@ fun main() {
     val distance = MutableList(carNames.size) { 0 }
 
     repeat(times) {
-        isItMove(distance)
-        printRacing(carNames,distance)
+        racingRound(carNames, distance)
     }
 
+}
+
+private fun racingRound(carNames: List<String>, moveDistance: MutableList<Int>) {
+    isItMove(moveDistance)
+    printRacing(carNames, moveDistance)
 }
 
 private fun isItMove (moveDistance: MutableList<Int>) {
