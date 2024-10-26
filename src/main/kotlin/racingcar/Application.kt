@@ -34,8 +34,21 @@ fun movementDecision(): Boolean {
     return false
 }
 
+fun raceRun(record: MutableMap<String, Int>, atmpNum: Int){
+    for (i: Int in 1..atmpNum) {
+        for (car in record.keys)
+           if (movementDecision())
+               record[car] = record[car]!!.plus(1)
+    }
+    println(record)
+}
+
 fun main() {
     // TODO: 프로그램 구현
     val nameList = inputCar()
     val attemptNum = inputNum()
+
+    var distanceRecord: MutableMap<String, Int> = nameList.map { it to 0 }.toMap().toMutableMap()
+
+    raceRun(distanceRecord, attemptNum)
 }
