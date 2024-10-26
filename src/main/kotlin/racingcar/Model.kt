@@ -11,13 +11,8 @@ class Model {
         return carNames.map { Car(it, 0) }
     }
 
-    private fun move(car: Car) {
-        if (getRandomNumber() >= 4)
-            car.go()
-    }
-
     fun moveAll(cars: List<Car>) {
-        cars.forEach { move(it) }
+        cars.forEach { it.move(getRandomNumber()) }
     }
 
     fun getStatus(cars: List<Car>): List<Int> {
