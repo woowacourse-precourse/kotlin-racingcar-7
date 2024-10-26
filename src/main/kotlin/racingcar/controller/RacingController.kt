@@ -11,9 +11,8 @@ class RacingController {
 
     fun start() {
         val input = inputView.printInputCarName()
-        for (carName in input) {
-            carState[carName] = 0
-        }
+
+        initCarState(input)
 
         val raceCount = inputView.printInputRaceCount()
 
@@ -25,6 +24,13 @@ class RacingController {
 
         val winner = getWinner(carState)
         outputView.printOutputWinner(winner)
+    }
+
+    fun initCarState(input: List<String>): MutableMap<String,Int> {
+        for (carName in input) {
+            carState[carName] = 0
+        }
+        return carState
     }
 
     private fun race(carState: MutableMap<String, Int>) {
