@@ -7,7 +7,7 @@ class MainController {
     private val consoleView = ConsoleView()
     private val carList = CarList()
     private val carController = CarController(carList)
-    private val raceController = RaceController(carList)
+    private val raceController = RaceController(carList, consoleView)
 
     fun run() {
         val carNames = consoleView.inputCarName()

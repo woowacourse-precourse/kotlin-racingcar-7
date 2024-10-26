@@ -9,4 +9,8 @@ class Car(private val name: String) {
     fun moveForward() {
         this.moveCount ++
     }
+
+    fun getMoveCount(): Int {
+        return this.moveCount
+    }
 }
