@@ -14,4 +14,12 @@ class Computer {
     fun printCarPosition(car: Car) {
         println(car.getStatus())
     }
+
+    fun printWinner(cars: List<Car>) {
+        var winnerFrontMessage = "최종 우승자 : "
+        cars.forEach {
+            winnerFrontMessage += it.name
+        }
+        println(winnerFrontMessage)
+    }
 }
