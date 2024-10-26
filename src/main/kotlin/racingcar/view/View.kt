@@ -25,3 +25,7 @@ fun printRacingStatus(racingCars: Cars) {
 fun raceWinnerView(racingCars: Cars) {
     println("최종 우승자 : ${racingCars.findWinners()}")
 }
+
+fun cleanUpResource() {
+    Console.close()
+}

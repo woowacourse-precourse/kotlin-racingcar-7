@@ -1,6 +1,7 @@
 package racingcar.validator
 
 import racingcar.exception.ExceptionMessage
+import racingcar.exception.RacingGameException
 
 object CarNameValidator {
 
@@ -8,8 +9,8 @@ object CarNameValidator {
         val replacedInput = replaceBlankByInput(input)
         val candidateCarNames = convertValidateForm(replacedInput)
 
-        require(validateCarNameSize(candidateCarNames)) { ExceptionMessage.INVALID_CAR_NAME_SIZE.message }
-        require(validateDuplicateCarName(candidateCarNames)) { ExceptionMessage.DUPLICATED_CAR_NAME.message }
+        if (!validateCarNameSize(candidateCarNames)) throw RacingGameException(ExceptionMessage.INVALID_CAR_NAME_SIZE)
+        if (!validateDuplicateCarName(candidateCarNames)) throw RacingGameException(ExceptionMessage.DUPLICATED_CAR_NAME)
 
         return candidateCarNames.joinToString(separator = ",") { it }
     }

@@ -19,6 +19,7 @@ class RacingController(
         val rounds = getNumberOfRound()
         val racingCarsStatus = startRace(cars, rounds)
         raceWinnerView(racingCarsStatus)
+        cleanUpResource()
     }
 
     private fun getCars(): List<Car> {
