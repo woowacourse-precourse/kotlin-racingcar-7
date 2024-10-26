@@ -22,6 +22,8 @@ fun main() {
     }
 
     println("실행 결과")
+
+    race(names, tryNumber.toInt())
 }
 
 fun race(names: String, tryNumber: Int) {
@@ -39,4 +41,17 @@ fun race(names: String, tryNumber: Int) {
     }
 
     val position = finalParticipants.associateWith { 0 }.toMutableMap()
+
+    for (trying in 1..tryNumber) {
+        finalParticipants.forEach { name ->
+            val randomValue = Randoms.pickNumberInRange(0, 9)
+            if (randomValue >= 4) {
+                position[name] = position[name]!! + 1
+            }
+
+            val currentPosition = "-".repeat(position[name]!!)
+            println("$name: $currentPosition")
+        }
+        print("\n")
+    }
 }
