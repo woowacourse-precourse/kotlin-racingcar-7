@@ -1,3 +1,3 @@
 package racingcar.model
 
-data class RacingCar(val racingCarName: String, val movementDistance: Int = 0)
+data class RacingCar(val racingCarName: String, var movementDistance: Int = 0)

@@ -10,13 +10,10 @@ class RacingCarControllerTest {
 
     @Test
     fun `쉼표로 구분된 이름들을 RacingCar 리스트가 생성되어야 한다`() {
-        //give
         val input = "pobi,woni,jun"
 
-        //when
         val racingCars = controller.createRacingCars(input)
 
-        //then
         assertEquals(3, racingCars.size)
         assertEquals("pobi", racingCars[0].racingCarName)
         assertEquals("woni", racingCars[1].racingCarName)
@@ -62,7 +59,7 @@ class RacingCarControllerTest {
         val input = "@@"
 
         val exception = assertThrows<IllegalArgumentException> {
-            controller.validateAttemptCount(input)
+            controller.convertToAttemptCount(input)
         }
         assertEquals("입력하신 횟수는 숫자가 아닙니다.", exception.message)
     }
@@ -72,7 +69,7 @@ class RacingCarControllerTest {
         val input = "-1"
 
         val exception = assertThrows<IllegalArgumentException> {
-            controller.validateAttemptCount(input)
+            controller.convertToAttemptCount(input)
         }
         assertEquals("입력하신 숫자는 양수가 아닙니다.", exception.message)
     }

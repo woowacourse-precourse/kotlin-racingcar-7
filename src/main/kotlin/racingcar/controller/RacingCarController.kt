@@ -1,8 +1,21 @@
 package racingcar.controller
 
 import racingcar.model.RacingCar
+import racingcar.view.InputView
+import camp.nextstep.edu.missionutils.Randoms
 
 class RacingCarController {
+    private val inputView = InputView()
+
+    fun run() {
+        val racingCarNameInput = inputView.inputRacingCarName()
+        val attemptCountInput = inputView.inputAttemptCount()
+
+        val racingCars = createRacingCars(racingCarNameInput)
+        val attemptCount = convertToAttemptCount(attemptCountInput)
+        val randomNumber = createRandomNumber()
+    }
+
     fun createRacingCars(input: String): List<RacingCar> {
         val racingCarNames = parseRacingCarNames(input)
         if (validateRacingCarNames(racingCarNames)) {
@@ -37,7 +50,7 @@ class RacingCarController {
         throw IllegalArgumentException("입력하신 시도 횟수가 검증에 실패하였습니다.")
     }
 
-    fun validateAttemptCount(attemptCount: String): Boolean  {
+    private fun validateAttemptCount(attemptCount: String): Boolean  {
         return when {
             isNotNumber(attemptCount) -> throw IllegalArgumentException("입력하신 횟수는 숫자가 아닙니다.")
             isNonPositiveNumber(attemptCount) -> throw IllegalArgumentException("입력하신 숫자는 양수가 아닙니다.")
@@ -49,5 +62,16 @@ class RacingCarController {
 
     private fun isNonPositiveNumber(input: String) = input.toInt() <= 0
 
+    private fun createRandomNumber() = Randoms.pickNumberInRange(0, 9)
+
+    fun moveForward(racingCars: List<RacingCar>, randomNumber: Int) {
+        if (isMoveForwardPossible(randomNumber)) {
+            racingCars.forEach { car->
+                car.movementDistance ++
+            }
+        }
+    }
+
+    private fun isMoveForwardPossible(number: Int) = number >= 4
 
 }
