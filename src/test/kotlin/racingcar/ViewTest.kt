@@ -50,6 +50,15 @@ class ViewTest : NsTest() {
         }
     }
 
+    @DisplayName("시도 횟수 가져오기 실패 - 숫자가 음수인 경우")
+    @Test
+    fun failGetTryCountWithNegativeNumber() {
+        assertThrows<IllegalArgumentException> {
+            run("-1")
+            getTryCount()
+        }
+    }
+
     @DisplayName("실행 결과 문구 출력 성공")
     @Test
     fun successPrintResultTitle() {

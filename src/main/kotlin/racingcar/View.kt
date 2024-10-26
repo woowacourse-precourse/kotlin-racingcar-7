@@ -21,9 +21,12 @@ fun getTryCount(): Int {
     println(TRY_COUNT_REQUEST_MESSAGE)
 
     try {
-        return Console.readLine().toInt()
+        val input = Console.readLine().toInt()
+        validateNegative(input)
+
+        return input
     } catch (e: Exception) {
-        throw IllegalArgumentException("잘못된 숫자가 입력되었습니다. 숫자가 맞는지, 너무 큰 숫자가 아닌지 확인해 주세요.")
+        throw IllegalArgumentException("잘못된 숫자가 입력되었습니다. 숫자가 맞는지, 너무 큰 숫자가 아닌지, 음수인지 확인해 주세요.")
     }
 }
 
