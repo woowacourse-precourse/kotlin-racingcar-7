@@ -1,12 +1,14 @@
 package racingcar.view
 
 import camp.nextstep.edu.missionutils.Console
+import racingcar.utils.Validator
 
 class InputViewImpl : InputView {
 
     override fun readNames(): List<String> {
         println(NAME_PROMPT)
         val input = Console.readLine()
+        Validator.validateName(input)
         return input.split(DEFAULT_DELIMITER)
     }
 
