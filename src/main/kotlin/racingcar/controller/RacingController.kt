@@ -1,6 +1,5 @@
 package racingcar.controller
 
-import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 import racingcar.view.InputView
 import racingcar.view.OutputView
@@ -29,13 +28,12 @@ class RacingController {
     }
 
     private fun race(carState: MutableMap<String, Int>) {
-        for (car in carState.keys) {
+        for (carName in carState.keys) {
             if (checkForward()) {
-                // !!써서 carState[car]!! + 1  or  carState[car]!!.plus(1) 쓸지 얘로 쓸지 고민..
-                carState[car] = carState.getValue(car) + 1
+                carState[carName] = carState.getValue(carName) + 1
             }
 
-            println("$car : " + "-".repeat(carState.getValue(car)))
+            println("$carName : " + "-".repeat(carState.getValue(carName)))
         }
     }
 
