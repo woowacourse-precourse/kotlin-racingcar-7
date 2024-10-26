@@ -26,6 +26,20 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `이름의 길이가 0인 경우`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,,jun", "1") }
+        }
+    }
+
+    @Test
+    fun `사람이 한 명인 경우`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi", "1") }
+        }
+    }
+
     override fun runMain() {
         main()
     }

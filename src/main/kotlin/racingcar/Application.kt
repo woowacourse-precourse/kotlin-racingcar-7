@@ -5,17 +5,24 @@ import camp.nextstep.edu.missionutils.Randoms
 
 fun lenCheck(nameList: List<String>): Boolean {
     nameList.forEach {
-        if (it.length >= 6)
+        if (it.length == 0 || it.length > 5)
             return false
     }
     return true
+}
+
+fun participantsCheck(nameList: List<String>): Boolean{
+    if (nameList.count() >= 2) {
+        return true
+    } else
+        return false
 }
 
 fun inputCar(): List<String> {
     println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
     val nameList = Console.readLine()
     val splitNameList = nameList.split(",")
-    if (lenCheck(splitNameList)) {
+    if (lenCheck(splitNameList) && participantsCheck(splitNameList)) {
         return splitNameList
     } else
         throw IllegalArgumentException()
