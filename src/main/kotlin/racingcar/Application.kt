@@ -10,4 +10,7 @@ fun main() {
     for (i in readLine().split(",")) {
         carMap.put(i, 0)
     }
+
+    println("시도할 횟수는 몇 회인가요?")
+    val attemptNumber = readLine().toInt() // TODO : 위치 변경?
 }
