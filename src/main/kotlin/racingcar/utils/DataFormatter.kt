@@ -22,5 +22,5 @@ class DataFormatter {
 
     private fun List<String>.toCarList(): List<Car> = this.map { Car(it, StringBuilder()) }
 
-    private fun validateCarNames(carNames: List<String>) = carNames.any { it.length <= 5 }
+    private fun validateCarNames(carNames: List<String>) = !carNames.any { it.length > 5 }
 }
