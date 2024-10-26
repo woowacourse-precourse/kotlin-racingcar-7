@@ -1,8 +1,8 @@
 # kotlin-racingcar-precourse
 # 구현할 기능
 - [ ] 경주를 진행하는 RacingGame 구현
-    - [V] 자동차의 이름과 시도 횟수를 입력받아 경주를 시작하는 init() 
-    - [ ] 입력받은 시도 횟수를 반복하며 자동차의 이동을 담당하는 racing()
+    - [X] 자동차의 이름과 시도 횟수를 입력받아 경주를 시작하는 init() 
+    - [X] 입력받은 시도 횟수를 반복하며 자동차의 이동을 담당하는 racing()
     - [ ] 시도 횟수가 다 진행된 후 최종 집계를 하는 result()
 - [ ] Car 구현
   - [ ] 정지와 이동을 결정하는 carMove()
@@ -32,3 +32,16 @@ class RacingGame {
 ```
 1주차 피드백에서 컬렉션 사용을 권장하였기에 자동차의 목록을 관리하는 carList를 List로 구현하였다.
 
+## 2. racing()
+racing의 기능은 각 자동차의 이동을 시도 횟수만큼 진행하는 것
+
+그렇기에 carList의 element들을 각각 이동함수 carMove()를 실행시켜주도록 구현하였다.
+
+```
+private fun racing(moveCount: Int) {
+        repeat(moveCount) {
+            carList.forEach { it.carMove() }
+        }
+        result()
+}
+```

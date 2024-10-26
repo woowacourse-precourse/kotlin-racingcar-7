@@ -14,6 +14,12 @@ class RacingGame {
     }
 
     private fun racing(moveCount: Int) {
+        repeat(moveCount) {
+            carList.forEach { it.carMove() }
+        }
+        result()
+    }
 
+    private fun result() {
     }
 }
