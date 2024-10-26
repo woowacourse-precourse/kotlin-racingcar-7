@@ -11,5 +11,10 @@ class RaceController {
     fun startRace() {
         val carNames = InputView.getCarNames()
         Validator.validateCarName(carNames)
+        createCars(carNames)
+    }
+
+    private fun createCars(carNames: List<String>) {
+        cars.addAll(carNames.map { Car(it) })
     }
 }
