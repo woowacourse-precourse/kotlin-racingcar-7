@@ -7,6 +7,7 @@ class RacingGame {
     fun gameStart() {
         val cars = initCar()
         val roundCounts = initRound()
+        playGame(cars, roundCounts)
     }
 
     private fun initCar(): List<Car> {
@@ -24,16 +25,18 @@ class RacingGame {
         return inputRoundCount.toInt()
     }
 
-    private fun playGame(roundCount: Int, cars: List<Car>) {
-        println("\\n실행 결과")
+    private fun playGame(cars: List<Car>, roundCount: Int) {
+        println("\n실행 결과")
         repeat(roundCount) {
             moveCars(cars)
+            println()
         }
     }
 
     private fun moveCars(cars: List<Car>) {
         cars.forEach { car ->
             car.moving(computer.generate())
+            computer.printCarPosition(car)
         }
     }
 
