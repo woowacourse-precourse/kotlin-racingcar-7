@@ -14,15 +14,6 @@ class CarTest {
     }
 
     @Test
-    fun `자동차 이동 테스트`() {
-        val car = Car("pobi")
-
-        val movedCar = car.move()
-
-        assert(car.position + 1 == movedCar.position)
-    }
-
-    @Test
     fun `값 이상이면 전진한다`() {
         mockStatic(Randoms::class.java).use { mockedStatic ->
             // given
@@ -53,6 +44,20 @@ class CarTest {
 
             // then
             assertThat(result).isFalse()
+        }
+    }
+
+    @Test
+    fun `자동차 이동 테스트`() {
+        mockStatic(Randoms::class.java).use { mockedStatic ->
+            val car = Car("pobi")
+            mockedStatic
+                .`when`<Int> { Randoms.pickNumberInRange(0, 9) }
+                .thenReturn(8)
+
+            val movedCar = car.play()
+
+            assert(car.position + 1 == movedCar.position)
         }
     }
 }
