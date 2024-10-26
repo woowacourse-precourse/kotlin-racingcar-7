@@ -16,9 +16,11 @@ class CarRacing(names: String) {
         for (car in cars) {
             car.moveForwardRandomly()
         }
+        print("\n")
     }
 
     fun moveCarsRepeat(count: Int) {
+        print("실행결과\n")
         repeat(count) {
             moveCars()
         }
