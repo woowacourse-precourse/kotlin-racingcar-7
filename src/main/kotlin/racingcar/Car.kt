@@ -19,5 +19,7 @@ class Car(name: String, position: Int = 0) {
         if (point >= 4) {
             this.position += 1
         }
+        val positionString = "-".repeat(this.position)
+        print("$name : $positionString\n")
     }
 }
