@@ -55,6 +55,13 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `최종 결과`() {
+        assertSimpleTest {
+            run("a,b,c,d","5")
+            assertThat(output()).contains("최종 우승자")
+        }
+    }
 
     override fun runMain() {
         main()
