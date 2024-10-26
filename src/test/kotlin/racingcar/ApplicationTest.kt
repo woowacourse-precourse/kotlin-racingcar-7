@@ -26,6 +26,21 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `입력 받기`() {
+        assertSimpleTest {
+            run("a,b,c,d")
+            assertThat(output()).contains("Car a", "Car b", "Car c","Car d")
+        }
+    }
+    @Test
+    fun `입력 오류`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
+        }
+    }
+
+
     override fun runMain() {
         main()
     }
