@@ -46,4 +46,14 @@ class RacingCarControllerTest {
         }
         assertEquals("자동차의 이름이 입력되지 않았습니다.",exception.message)
     }
+
+    @Test
+    fun `입력한 이름의 길이가 5글자를 초과할 경우`() {
+        val input = "racingCar, pobi"
+
+        val exception = assertThrows<IllegalArgumentException> {
+            controller.createRacingCars(input)
+        }
+        assertEquals("입력하신 이름의 길이가 5글자를 초과하였습니다.",exception.message)
+    }
 }
