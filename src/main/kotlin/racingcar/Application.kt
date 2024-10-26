@@ -69,13 +69,21 @@ fun getWinnerIndex(carsMoving : Array<Int>): MutableList<Int> {
     return winners
 }
 
+
+fun checkCarNameLength(cars : List<String>) {
+    if (!(cars.all { it -> it.count() <= 5 })){
+        throw IllegalArgumentException("자동차 이름은 5자 이하만 가능하다")
+    }
+}
+
 fun main() {
     val outputView = OutputView()
     val inputView = InputView()
 
     inputView.inputCars()
     val inputCar = Console.readLine()
-    val cars = inputCar.split(',')
+    val cars : List<String> = inputCar.split(',')
+    checkCarNameLength(cars)
 
     inputView.inputCount()
     val inputCount = Console.readLine()
