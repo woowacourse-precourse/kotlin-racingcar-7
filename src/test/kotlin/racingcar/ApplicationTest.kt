@@ -23,7 +23,26 @@ class ApplicationTest : NsTest() {
     fun `예외 테스트`() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
+
+            // null or 공백만 있는 경우
+            assertThrows<IllegalArgumentException> { runException(null, "1") }
+            assertThrows<IllegalArgumentException> { runException(" ", "1") }
+            assertThrows<IllegalArgumentException> { runException("", "1") }
+
+            // 6자 이상인 경우
+            assertThrows<IllegalArgumentException> { runException("c,java,kotlin", "1") }
         }
+    }
+
+    @Test
+    fun `공동 우승자`() {
+        assertRandomNumberInRangeTest(
+            {
+                run("pobi,woni,ji", "1")
+                assertThat(output()).contains("pobi : -", "woni : -", "ji : -", "최종 우승자 : pobi,woni,ji")
+            },
+            MOVING_FORWARD, STOP
+        )
     }
 
     override fun runMain() {
