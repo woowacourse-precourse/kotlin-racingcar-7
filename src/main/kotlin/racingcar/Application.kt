@@ -4,11 +4,43 @@ import camp.nextstep.edu.missionutils.Randoms
 import camp.nextstep.edu.missionutils.Console
 
 
-fun getWinnerIndex(carsMovings : Array<Int>): MutableList<Int> {
+class OutputView {
+    fun gameResult(carName:String, movingCount: Int){
+        println("$carName : ${"-".repeat(movingCount)}")
+    }
+}
+
+
+
+fun isCanMove(): Boolean {
+    return Randoms.pickNumberInRange(0,9) >= 4
+}
+
+fun gameOfOneCar(carsMoving : Array<Int>, index : Int) {
+    if(isCanMove()){
+        carsMoving[index] += 1
+    }
+}
+
+fun gameOfTurn(cars : List<String>, carsMovingArray : Array<Int>, outputView : OutputView){
+    for(i in 0 until cars.count()){
+        gameOfOneCar(carsMovingArray, i)
+        outputView.gameResult(cars[i], carsMovingArray[i])
+    }
+    println()
+}
+
+fun game(cars : List<String>, carsMovingArray: Array<Int>, outputView: OutputView, count : Int){
+    for (i in 0 until count){
+        gameOfTurn(cars, carsMovingArray, outputView)
+    }
+}
+
+fun getWinnerIndex(carsMoving : Array<Int>): MutableList<Int> {
     val winners  = mutableListOf<Int>()
     var maxNumber = 0
 
-    carsMovings.forEachIndexed { idx, it ->
+    carsMoving.forEachIndexed { idx, it ->
         if(it == maxNumber){
             winners.addLast(idx)
         }
@@ -18,12 +50,12 @@ fun getWinnerIndex(carsMovings : Array<Int>): MutableList<Int> {
             winners.addLast(idx)
         }
     }
-
     return winners
 }
 
 fun main() {
-    // TODO: 프로그램 구현
+    val outputView = OutputView()
+
     println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
     val inputCar = Console.readLine()
     val cars = inputCar.split(',')
@@ -35,19 +67,10 @@ fun main() {
 
     println("실행 결과")
 
-    val carsMovings = Array(cars.count()) { 0 }
+    val carsMovingArray = Array(cars.count()) { 0 }
 
-    for (i in 0 until count){
-        for(j in 0 until cars.count()){
-            if(Randoms.pickNumberInRange(0,9) >= 4){
-                //이동
-                carsMovings[j] += 1
-            }
-            println("${cars[j]} : ${"-".repeat(carsMovings[j])}")
-        }
-        println()
-    }
+    game(cars, carsMovingArray, outputView, count)
 
-    val result = getWinnerIndex(carsMovings).map { cars[it] }
+    val result = getWinnerIndex(carsMovingArray).map { cars[it] }
     println("최종 우승자 : ${result.joinToString(", ")}")
 }
