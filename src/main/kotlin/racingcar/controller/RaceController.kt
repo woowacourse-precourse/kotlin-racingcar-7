@@ -10,6 +10,9 @@ class RaceController(private val carList: CarList) {
     }
 
     fun race() {
-        // raceCount를 기반으로 경주 로직을 실행
+        for (count in 1 .. raceCount) {
+            TurnController(carList).playTurn()
+        }
     }
+
 }

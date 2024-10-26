@@ -9,4 +9,8 @@ class CarList {
     fun getCar(index: Int): Car {
         return cars[index]
     }
+
+    fun getSize(): Int {
+        return cars.size
+    }
 }
