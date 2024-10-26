@@ -18,4 +18,11 @@ class Output {
         }
         println(status)
     }
+
+    fun printWinner(winners:Map<String,Int>){
+        val winner = StringBuilder()
+        winner.append(Constants().WINNER)
+        winner.append(winners.keys.joinToString { Constants().COMMA })
+        println(winner)
+    }
 }

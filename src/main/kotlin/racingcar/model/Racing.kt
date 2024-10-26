@@ -42,5 +42,6 @@ class Racing {
                 winner.put(car.name,car.getStatus())
             }
         }
+        Output().printWinner(winner)
     }
 }
