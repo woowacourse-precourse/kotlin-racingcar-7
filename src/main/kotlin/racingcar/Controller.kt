@@ -24,14 +24,10 @@ class Controller(private val model: Model, private val view: View) {
 
         val cars = model.createCars(carNames)
 
-        while (true) {
+        repeat (tryNum) {
             model.moveAll(cars)
-            val gameStatus = model.getStatus(cars)
             view.showStatus(cars)
-            if (model.isDone(tryNum, gameStatus)) {
-                view.showWinners(tryNum, cars)
-                break
-            }
         }
+        view.showWinners(cars)
     }
 }
