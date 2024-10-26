@@ -2,6 +2,7 @@ package racingcar
 
 import camp.nextstep.edu.missionutils.Randoms
 import camp.nextstep.edu.missionutils.Console
+import java.lang.NumberFormatException
 
 
 class InputView{
@@ -72,7 +73,15 @@ fun getWinnerIndex(carsMoving : Array<Int>): MutableList<Int> {
 
 fun checkCarNameLength(cars : List<String>) {
     if (!(cars.all { it -> it.count() <= 5 })){
-        throw IllegalArgumentException("자동차 이름은 5자 이하만 가능하다")
+        throw IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다")
+    }
+}
+
+fun checkCountIsNumber(inputCount : String){
+    try {
+        inputCount.toInt()
+    }catch (e: NumberFormatException){
+        throw IllegalArgumentException("정수만 입력가능합니다")
     }
 }
 
@@ -87,6 +96,7 @@ fun main() {
 
     inputView.inputCount()
     val inputCount = Console.readLine()
+    checkCountIsNumber(inputCount)
     val count = inputCount.toInt()
 
     val carsMovingArray = Array(cars.count()) { 0 }
