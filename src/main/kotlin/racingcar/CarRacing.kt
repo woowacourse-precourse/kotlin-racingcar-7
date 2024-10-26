@@ -38,10 +38,14 @@ class CarRacing(names: String) {
     }
 
     fun racing() {
-        print("시도할 횟수는 몇 회인가요?\n")
-        val inputRepeatCount = readLine()
-        val repeatCount = inputRepeatCount.toInt()
+        val repeatCount = inputRepeatCount()
         moveCarsRepeat(repeatCount)
         printNamesOfChampions()
+    }
+
+    private fun inputRepeatCount(): Int {
+        print("시도할 횟수는 몇 회인가요?\n")
+        val repeatCount = readLine()
+        return repeatCount.toInt()
     }
 }
