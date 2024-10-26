@@ -19,7 +19,7 @@
 - `build.gradle.kts` 파일은 변경할 수 없다. 제공된 라이브러리 이외의 외부 라이브러리는 사용하지 않아야 한다.
 - 프로그램 종료 시 `System.exit()` 혹은 `exitProcess()`를 호출하지 않아야 한다.
 - 프로그래밍 요구 사항에서 달리 명시하지 않는 한 `파일`, `패키지` 등의 이름을 바꾸거나 이동하지 않는다.
-- [Kotlin Style Guide](https://kotlinlang.org/docs/coding-conventions.html)
+- 코드 스타일은 [Kotlin Style Guide](https://kotlinlang.org/docs/coding-conventions.html)을 따라야 한다.
 
 ### 요구 사항 2
 
