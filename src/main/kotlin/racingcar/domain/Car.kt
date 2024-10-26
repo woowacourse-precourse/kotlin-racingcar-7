@@ -12,15 +12,16 @@ data class Car(
 
     private fun rollDice(): Int = Randoms.pickNumberInRange(DICE_MIN, DICE_MAX)
 
-    fun move(): Car = copy(position = position + MOVE_FORWARD)
-
     fun isMove(): Boolean = rollDice() >= MOVE_CONDITION
+
+    fun play(): Car = copy(position = position + if (isMove()) MOVE_FORWARD else STOP)
 
     companion object {
         const val START_POSITION = 0
         const val DICE_MAX = 9
         const val DICE_MIN = 0
         const val MOVE_FORWARD = 1
+        const val STOP = 0
         const val MOVE_CONDITION = 4
 
         val NAME_LENGTH_LIMIT: IntRange = 1..5
