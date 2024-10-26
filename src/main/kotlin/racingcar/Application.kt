@@ -14,20 +14,19 @@ class Game {
     // 자동차 이름 입력
     private fun inputCarNames(): List<Car> {
         println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
-        val carNames = Console.readLine().split(",").map {Car(it.trim())}
-        duplicateNameError(carNames)
-        return carNames
-    }
-    // 이름 중복시 예외 발생
-    private fun duplicateNameError(carNames: List<Car>) {
-        if (carNames.size != carNames.toSet().size) {
-            throw IllegalArgumentException("자동차 이름은 중복될 수 없습니다.")
-        }
+        val carNames = Console.readLine().split(",").map{it.trim()}
+        Exceptions.nameLengthError(carNames)
+        Exceptions.blankNameError(carNames)
+        Exceptions.duplicateNameError(carNames)
+        return carNames.map {Car(it)}
+
     }
     // 시도할 횟수 입력 및 예외 발생
     private fun inputRoundCount(): Int {
         println("시도할 횟수는 몇 회인가요?")
-        return Console.readLine().toIntOrNull() ?: throw IllegalArgumentException("잘못된 입력입니다.")
+        val roundCount = Console.readLine().toIntOrNull()
+        Exceptions.validateRoundCount(roundCount)
+        return roundCount!!
     }
 }
 
@@ -58,18 +57,6 @@ class Race(private val cars: List<Car>, private val roundCount: Int) {
 
 // 각 자동차를 나타냄
 data class Car(val name: String, var move: String = "") {
-    init {
-        nameError()
-    }
-    // 이름 예외 발생 메서드
-    private fun nameError() {
-        if (name.length > 5) {
-            throw IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.")
-        }
-        if (name.isBlank()) {
-            throw IllegalArgumentException("자동차 이름은 공백일 수 없습니다.")
-        }
-    }
     // 자동차 움직이는 기능
     fun move() {
         if (Randoms.pickNumberInRange(0, 9) >= 4) {
@@ -79,6 +66,34 @@ data class Car(val name: String, var move: String = "") {
     // 자동차가 이동한 거리를 반환
     fun getMoveDistance(): Int {
         return this.move.length
+    }
+}
+
+// 유효성 검사 후 예외 처리
+object Exceptions {
+    // 자동차 이름 길이 검사
+    fun nameLengthError(carNames: List<String>) {
+        if (carNames.any { it.length > 5 }) {
+            throw IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.")
+        }
+    }
+    // 이름 공백인지 검사
+    fun blankNameError(carNames: List<String>) {
+        if (carNames.any { it.isBlank() }) {
+            throw IllegalArgumentException("자동차 이름은 공백일 수 없습니다.")
+        }
+    }
+    // 중복된 이름 검사
+    fun duplicateNameError(carNames: List<String>) {
+        if (carNames.size != carNames.toSet().size) {
+            throw IllegalArgumentException("자동차 이름은 중복될 수 없습니다.")
+        }
+    }
+    // 시도할 횟수가 양의 정수인지 검사
+    fun validateRoundCount(roundCount: Int?) {
+        if (roundCount == null || roundCount < 1) {
+            throw IllegalArgumentException("잘못된 입력입니다. 1 이상의 정수를 입력하세요.")
+        }
     }
 }
 
