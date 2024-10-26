@@ -5,16 +5,28 @@ import camp.nextstep.edu.missionutils.Randoms
 class Game {
     // 게임 시작
     fun start() {
-        println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
-        val carNames = Console.readLine().split(",").map {Car(it.trim())}
-        if (carNames.size != carNames.toSet().size) {
-            throw IllegalArgumentException("자동차 이름은 중복될 수 없습니다.")
-
-        }
-        println("시도할 횟수는 몇 회인가요?")
-        val roundCount = Console.readLine().toIntOrNull() ?: throw IllegalArgumentException("잘못된 입력입니다.")
+        val carNames = inputCarNames()
+        val roundCount = inputRoundCount()
         val race= Race(carNames, roundCount)
         race.runStart()
+    }
+    // 자동차 이름 입력
+    private fun inputCarNames(): List<Car> {
+        println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
+        val carNames = Console.readLine().split(",").map {Car(it.trim())}
+        duplicateNameError(carNames)
+        return carNames
+    }
+    // 이름 중복시 예외 발생
+    private fun duplicateNameError(carNames: List<Car>) {
+        if (carNames.size != carNames.toSet().size) {
+            throw IllegalArgumentException("자동차 이름은 중복될 수 없습니다.")
+        }
+    }
+    // 시도할 횟수 입력
+    private fun inputRoundCount(): Int {
+        println("시도할 횟수는 몇 회인가요?")
+        return Console.readLine().toIntOrNull() ?: throw IllegalArgumentException("잘못된 입력입니다.")
     }
 }
 // 자동차 클래스
