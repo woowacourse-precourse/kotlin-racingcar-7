@@ -6,10 +6,10 @@ class InputView {
     fun inputName(): List<String> {
         val input = Console.readLine()
         val nameList = input.split(NAME_DELIMITER)
-        return getNameOfCar(nameList)
+        return verifyInputName(nameList)
     }
 
-    fun getNameOfCar(nameList: List<String>): List<String> {
+    fun verifyInputName(nameList: List<String>): List<String> {
         require(nameList.size == nameList.distinct().size) { ERROR_SAME_NAME }
         for (name in nameList) {
             require(name.isNotEmpty()) { ERROR_EMPTY_NAME }
@@ -21,10 +21,10 @@ class InputView {
 
     fun inputCount(): Int {
         val count = Console.readLine()
-        return getCount(count)
+        return verifyInputCount(count)
     }
 
-    fun getCount(count: String): Int {
+    fun verifyInputCount(count: String): Int {
         try {
             val convertCount = count.toInt()
             require(convertCount > 0) { ERROR_COUNT_SIZE }

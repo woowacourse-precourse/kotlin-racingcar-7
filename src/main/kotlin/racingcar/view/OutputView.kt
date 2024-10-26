@@ -1,11 +1,11 @@
 package racingcar.view
 
 class OutputView {
-    fun printGetNameOfCar() {
+    fun printInputNameMessage() {
         println(GET_NAME_OF_CAR_MESSAGE)
     }
 
-    fun printGetCount() {
+    fun printInputCountMessage() {
         println(GET_COUNT_MESSAGE)
     }
 

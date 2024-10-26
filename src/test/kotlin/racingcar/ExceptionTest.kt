@@ -10,70 +10,70 @@ class ExceptionTest {
     @Test
     fun `입력이 비어있는 경우`() {
         assertThrows<IllegalArgumentException>(ERROR_EMPTY_NAME) {
-            inputView.getNameOfCar("".split(","))
+            inputView.verifyInputName("".split(","))
         }
     }
 
     @Test
     fun `이름이 알파벳이 아닌 경우`() {
         assertThrows<IllegalArgumentException>(ERROR_INVALID_NAME) {
-            inputView.getNameOfCar("mr'pobi,woni,jun".split(","))
+            inputView.verifyInputName("mr'pobi,woni,jun".split(","))
         }
     }
 
     @Test
     fun `이름이 비어있는 경우`() {
         assertThrows<IllegalArgumentException>(ERROR_EMPTY_NAME) {
-            inputView.getNameOfCar("pobi,,jun".split(","))
+            inputView.verifyInputName("pobi,,jun".split(","))
         }
     }
 
     @Test
     fun `이름이 5글자가 넘어갈 경우`() {
         assertThrows<IllegalArgumentException>(ERROR_NAME_LENGTH) {
-            inputView.getNameOfCar("pobi,woni,Angela".split(","))
+            inputView.verifyInputName("pobi,woni,Angela".split(","))
         }
     }
 
     @Test
     fun `중복된 이름이 있을 경우`() {
         assertThrows<IllegalArgumentException>(ERROR_SAME_NAME) {
-            inputView.getNameOfCar("pobi,woni,jun,jun".split(","))
+            inputView.verifyInputName("pobi,woni,jun,jun".split(","))
         }
     }
 
     @Test
     fun `횟수 입력이 비어있는 경우`() {
         assertThrows<IllegalArgumentException>(ERROR_ONLY_DIGIT) {
-            inputView.getCount("")
+            inputView.verifyInputCount("")
         }
     }
 
     @Test
     fun `횟수 입력에 문자가 들어올 경우`() {
         assertThrows<IllegalArgumentException>(ERROR_ONLY_DIGIT) {
-            inputView.getCount("abcd")
+            inputView.verifyInputCount("abcd")
         }
     }
 
     @Test
     fun `횟수 입력에 0이 들어올 경우`() {
         assertThrows<IllegalArgumentException>(ERROR_COUNT_SIZE) {
-            inputView.getCount("0")
+            inputView.verifyInputCount("0")
         }
     }
 
     @Test
     fun `횟수 입력에 음수가 들어올 경우`() {
         assertThrows<IllegalArgumentException>(ERROR_COUNT_SIZE) {
-            inputView.getCount("-10")
+            inputView.verifyInputCount("-10")
         }
     }
 
     @Test
     fun `횟수 입력에 Int 범위를 초과하는 값이 들어올 경우`() {
         assertThrows<IllegalArgumentException>(ERROR_ONLY_DIGIT) {
-            inputView.getCount("2147483648")
+            inputView.verifyInputCount("2147483648")
         }
     }
 

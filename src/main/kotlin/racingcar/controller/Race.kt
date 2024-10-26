@@ -9,9 +9,9 @@ class Race {
     private val outputView = OutputView()
 
     fun start() {
-        outputView.printGetNameOfCar()
+        outputView.printInputNameMessage()
         val infoOfCar = inputView.inputName().associateWith { 0 }.toMutableMap()
-        outputView.printGetCount()
+        outputView.printInputCountMessage()
         val count = inputView.inputCount()
         play(infoOfCar, count)
     }
