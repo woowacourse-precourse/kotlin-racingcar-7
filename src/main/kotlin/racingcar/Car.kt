@@ -7,4 +7,13 @@ class Car(val name: String) {
     fun moving(num: Int) {
         if (num >= 4) position++
     }
+
+    fun getStatus(): String {
+        var status = "$name : "
+
+        repeat(position) {
+            status += DASH
+        }
+        return status
+    }
 }
