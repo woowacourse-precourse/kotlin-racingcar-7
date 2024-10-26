@@ -10,7 +10,7 @@ class RacingCarGameController {
     fun play() {
         getCarNamesAndTryCounts()
         playAllTurns()
-        racingCarGameView.printTotalResult()
+        racingCarGameView.printWinner()
     }
 
     private fun getCarNamesAndTryCounts() {
@@ -23,7 +23,7 @@ class RacingCarGameController {
     }
 
     private fun checkIfValidNames(carNames: List<String>) {
-        if (carNames.all{it.length <= 5})
+        if (carNames.all { it.length <= 5 })
             return
         throw IllegalArgumentException()
     }
@@ -42,7 +42,7 @@ class RacingCarGameController {
     }
 
     private fun checkIfValidCount(tryCount: String) {
-        if (tryCount.all{it.isDigit()}) {
+        if (tryCount.all { it.isDigit() }) {
             return
         }
         throw IllegalArgumentException()

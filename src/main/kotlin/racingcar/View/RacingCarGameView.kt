@@ -4,7 +4,7 @@ package racingcar
 class RacingCarGameView(private val racingCars: List<RacingCar>) {
     fun printTurnResult() {
         racingCars.forEach {
-            print(it.name+" : ")
+            print(it.name + " : ")
             printMoveCount(it.moveCount)
         }
         println()
@@ -17,10 +17,10 @@ class RacingCarGameView(private val racingCars: List<RacingCar>) {
         println()
     }
 
-    fun printTotalResult() {
+    fun printWinner() {
         val maxMoveCount = racingCars.maxOf { it.moveCount }
-        val winners = racingCars.filter{it.moveCount == maxMoveCount}
-        val winnersName = winners.joinToString(",") { it.name }
+        val winners = racingCars.filter { it.moveCount == maxMoveCount }
+        val winnersName = winners.joinToString(", ") { it.name }
         println("최종 우승자 : $winnersName")
     }
 }
