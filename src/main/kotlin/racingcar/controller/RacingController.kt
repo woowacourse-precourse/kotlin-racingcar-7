@@ -13,6 +13,8 @@ class RacingController(private val repo: Repository, private val view: InOutView
             moveAllCars()
             view.printAllCarsMoveCnt()
         }
+
+        repo.selectWinner()
     }
 
     private fun moveAllCars() {

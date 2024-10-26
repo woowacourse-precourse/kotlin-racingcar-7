@@ -4,6 +4,7 @@ class Repository {
     var userInput: String = ""
     var execCnt: Int = 0
     var racingCars: MutableList<RacingCar> = mutableListOf()
+    var winner: MutableList<String> = mutableListOf()
 
     fun separateCarName() {
         racingCars = userInput.split(",")
@@ -27,5 +28,13 @@ class Repository {
 
     fun increaseMoveCnt(idx: Int) {
         racingCars[idx].moveCnt += 1
+    }
+
+    fun selectWinner() {
+        val maxMoveCnt: Int = racingCars.maxOf { it.moveCnt }
+
+        winner = racingCars.filter { it.moveCnt == maxMoveCnt }
+            .map { it.carName }
+            .toMutableList()
     }
 }
