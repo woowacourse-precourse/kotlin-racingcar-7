@@ -24,10 +24,22 @@ class CarRacing(names: String) {
         }
     }
 
+    fun getNamesOfChampions(): String {
+        val leadingCarPosition = cars.maxOfOrNull { it.position } ?: return "없음"
+        val championCars = cars.filter { it.position == leadingCarPosition }
+        return championCars.joinToString(", ") { it.name }
+    }
+
+    fun printNamesOfChampions() {
+        val namesOfChampions = getNamesOfChampions()
+        print("최종 우승자 : $namesOfChampions")
+    }
+
     fun racing() {
         print("시도할 횟수는 몇 회인가요?\n")
         val inputRepeatCount = readLine()
         val repeatCount = inputRepeatCount.toInt()
         moveCarsRepeat(repeatCount)
+        printNamesOfChampions()
     }
 }
