@@ -16,7 +16,7 @@ class CarRacing(names: String) {
     }
 
     private fun moveCarsRepeat(count: Int) {
-        print("실행결과\n")
+        print("\n실행결과\n")
         repeat(count) {
             moveCars()
         }
