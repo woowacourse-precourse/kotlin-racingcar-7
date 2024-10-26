@@ -66,3 +66,14 @@ fun showStatus(carList: MutableList<Car>) {
     }
     println()
 }
+
+/* 우승자 안내 문구를 출력하는 함수 */
+fun showWinner(carList: MutableList<Car>) {
+    val maxStatusLength = carList.maxOfOrNull { it.status.length } //가장 큰 전진 횟수 찾기
+    val winnerCars = carList.filter { it.status.length == maxStatusLength } //우승자 찾기
+
+    print("최종 우승자 : ")
+    winnerCars.forEach { car ->
+        print("${car.name} ")
+    }
+}
