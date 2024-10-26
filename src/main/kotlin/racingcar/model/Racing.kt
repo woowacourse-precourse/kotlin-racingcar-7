@@ -13,19 +13,34 @@ class Racing {
         return cars
     }
 
-    fun eachRacing(cars:List<Car>):List<Car>{
+    private fun eachRace(cars:List<Car>):List<Car>{
         for (car in cars){
             if (Random().randomGenerator())
                 car.go()
             Output().printEachRacingResult(car)
         }
+        println()
         return cars
     }
-    fun racing(count:Int,cars:List<Car>){
+    fun race(count:Int,cars:List<Car>){
         var racingCars = cars
         Output().printResultMessage()
         repeat(count){
-            racingCars = eachRacing(cars)
+            racingCars = eachRace(cars)
+        }
+    }
+
+    fun judgeWinner(cars:List<Car>){
+        var winner = mutableMapOf<String,Int>()
+        for (car in cars){
+            if (winner.isEmpty()){
+                winner.put(car.name,car.getStatus())
+            } else if (winner.values.max()<car.getStatus()){
+                winner = mutableMapOf()
+                winner.put(car.name,car.getStatus())
+            } else if (winner.values.max() == car.getStatus()){
+                winner.put(car.name,car.getStatus())
+            }
         }
     }
 }
