@@ -11,8 +11,8 @@ class InputAdapter (
         return cars
     }
 
-    fun validateCarName(cars: List<String>): List<String> {
-        val racingCars = mutableListOf<String>()
+    fun validateCarName(cars: List<String>): Set<String> {
+        val racingCars = mutableSetOf<String>()
         for (car in cars) {
             when {
                 car.length > 5 -> throw IllegalArgumentException(INPUT_ERROR_MSG + CARNAME_LESS_THAN_5_EXCEPTION_MSG)
@@ -20,14 +20,13 @@ class InputAdapter (
                 car.isBlank() -> throw IllegalArgumentException(INPUT_ERROR_MSG + CARNAME_WHITESPACE_EXCEPTION_MSG)
                 racingCars.contains(car) -> throw IllegalArgumentException(INPUT_ERROR_MSG + CARNAME_SAME_CARNAME_EXCEPTION_MSG)
             }
-
             racingCars.add(car)
         }
         if (racingCars.size == 1) throw IllegalArgumentException(INPUT_ERROR_MSG +CARNAME_ONE_EXCEPTION_MSG)
         return racingCars
     }
 
-    fun changeTypeOfCar(racingCars: List<String>): List<Car> {
+    fun changeTypeOfCar(racingCars: Set<String>): List<Car> {
         val readyRacingCars: List<Car> = racingCars.map{ Car(it) }
         return readyRacingCars
     }

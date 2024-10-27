@@ -5,7 +5,7 @@ import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import racingcar.domain.Car
-import racingcar.domain.RaceResult
+import racingcar.domain.GameResult
 import racingcar.infrastructure.ConsoleOutput
 
 class GameMangerTest {
@@ -36,7 +36,7 @@ class GameMangerTest {
         gameManger = GameManger(readyRacingCars, 2, output)
 
         val testWinner = gameManger.findWinners()
-        val exceptWinner = RaceResult(listOf("car1"))
+        val exceptWinner = GameResult(listOf("car1"))
 
         assertEquals(exceptWinner, testWinner)
     }

@@ -71,7 +71,7 @@ class InputAdapterTest {
     @DisplayName("changeTypeOfCar 함수는 Car 객체 리스트로 변환하는 지 확인하는 테스트")
     fun `changeTypeOfCar 함수는 Car 객체 리스트로 변환하는 지 확인하는 테스트`() {
         val inputAdapter = InputAdapter("car1,car2,car3", "3")
-        val racingCar = listOf("car1", "car2", "car3")
+        val racingCar = setOf("car1", "car2", "car3")
         val readyRacingCar = inputAdapter.changeTypeOfCar(racingCar)
         assertTrue(readyRacingCar[0] is Car)
         assertEquals("car1", readyRacingCar[0].name)
