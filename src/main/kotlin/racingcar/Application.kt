@@ -1,5 +1,6 @@
 package racingcar
 
+import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
@@ -11,7 +12,7 @@ class CarRacingGame {
     private var attemptCount: Int = 0
 
     fun startRace() {
-        // cars에 getCarNames()으로 자동차 이름 입력 받기
+        cars = getCarNames()
 
         // attemptCount에 getAttemptCount()으로 시도 횟수 입력 받기
 
@@ -25,7 +26,14 @@ class CarRacingGame {
         // printWinners()
     }
 
-    // getCarNames()
+    private fun getCarNames(): List<Car> {
+        println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
+        val names = Console.readLine().split(",")
+        require(names.all { it.length <= 5 && !it.contains(" ") }) {
+            throw IllegalArgumentException("자동차 이름은 5자 이하만 가능하며, 공백을 허용하지 않습니다.")
+        }
+        return names.map { Car(it) }
+    }
 
     // getAttemptCount()
 
