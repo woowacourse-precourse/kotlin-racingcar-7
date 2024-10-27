@@ -28,7 +28,7 @@
 - [x] 차수별 랜덤 시행
 - [x] 차수별 실행 결과 출력
 - [x] 우승자 안내 문구 출력
-- [ ] 예외 처리
+- [x] 예외 처리
 
 ## 문제 해결 과정
 
@@ -151,3 +151,32 @@ fun outputWinner(winner: String) {
 ```
 
 - 출력 형식에 맞게 우승차를 출력
+
+### 예외 처리
+
+#### 차의 이름이 5글자 초과인 경우
+
+```kotlin
+    val cars = readLine()!!.trim().split(",")
+    checkCarsName(cars)
+```
+- `input` 함수에서 입력을 받은후 차의 이름을 확인하는 `checkCarsName` 함수를 실행
+
+```kotlin
+fun checkCarsName(cars: List<String>) {
+    cars.forEach { if(it.length>5) throw IllegalArgumentException("잘못된 입력입니다.") }
+}
+```
+- 각 차의 이름의 글자 수가 5글자를 넘는 경우 `IllegalArgumentException` 을 발생시킨 후 종료
+
+#### 입력된 시행 횟수가 숫자가 아닌 경우
+
+```kotlin
+    val n = try {
+        readln().toInt()
+    } catch (e: NumberFormatException) {
+        throw IllegalArgumentException("잘못된 입력입니다.")
+    }
+```
+
+- `input` 함수에서 입력을 받을때 받은 시행 횟수가 숫자가 아닌 경우 `IllegalArgumentException` 을 발생시킨 후 종료

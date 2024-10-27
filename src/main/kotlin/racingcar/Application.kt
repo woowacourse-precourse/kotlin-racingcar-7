@@ -12,8 +12,13 @@ fun main() {
 fun input(): Pair<List<String>, Int> {
     println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
     val cars = readLine()!!.trim().split(",")
+    checkCarsName(cars)
     println("시도할 횟수는 몇 회인가요?")
-    val n = readln().toInt()
+    val n = try {
+        readln().toInt()
+    } catch (e: NumberFormatException) {
+        throw IllegalArgumentException("잘못된 입력입니다.")
+    }
     return Pair(cars, n)
 }
 
@@ -62,4 +67,8 @@ fun pickWinner(cars: List<String>, carsProgressCount: Array<Int>): String {
 
 fun outputWinner(winner: String) {
     println("\n최종 우승자 : $winner")
+}
+
+fun checkCarsName(cars: List<String>) {
+    cars.forEach { if(it.length>5) throw IllegalArgumentException("잘못된 입력입니다.") }
 }
