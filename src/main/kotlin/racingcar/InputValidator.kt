@@ -16,4 +16,7 @@ class InputValidator() {
 
     private fun String.isNegativeNumber(): Boolean =
         this.toInt() < 0
+
+    private fun String.isDecimalNumber(): Boolean =
+        this.toDouble() != this.toInt().toDouble()
 }
