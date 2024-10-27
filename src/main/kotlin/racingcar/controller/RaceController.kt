@@ -8,18 +8,33 @@ import racingcar.view.OutputView
 class RaceController {
     private val inputView = InputView()
     private val outputView = OutputView()
+    private lateinit var race: Race
+    private var rounds = 0
 
     fun run() {
-        val carList = getValidCarList()
-        val rounds = getValidRounds()
-        val race = Race(carList)
-
-        repeat(rounds) {
-            outputView.printRoundResult(race.getRaceResult())
-        }
-        outputView.printWinner(race.getRaceWinner())
+        setUp()
+        showRoundResult()
+        showWinnerResult()
 
         inputView.close()
+    }
+
+    private fun setUp() {
+        val carList = getValidCarList()
+        rounds = getValidRounds()
+        race = Race(carList)
+    }
+
+    private fun showRoundResult() {
+        repeat(rounds) {
+            val roundResult = race.getRoundResult()
+            outputView.printRoundResult(roundResult)
+        }
+    }
+
+    private fun showWinnerResult() {
+        val raceWinner = race.getRaceWinner()
+        outputView.printWinner(raceWinner)
     }
 
     private fun getValidCarList(): List<Car> {
