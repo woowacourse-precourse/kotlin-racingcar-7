@@ -71,8 +71,15 @@ class RacingCar {
     //이동 횟수 검증 함수
     fun inputTestCount(testCount: String) {
         try {
-            testCount.toInt()
+            confirmInteger(testCount.toInt())
         } catch (e: NumberFormatException) {
+            throw IllegalArgumentException()
+        }
+    }
+
+    //횟수가 음수일 경우 검증
+    fun confirmInteger(num: Int) {
+        if (num < 0) {
             throw IllegalArgumentException()
         }
     }

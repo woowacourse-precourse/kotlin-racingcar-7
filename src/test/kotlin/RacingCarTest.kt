@@ -52,6 +52,14 @@ class RacingCarTest {
     }
 
     @Test
+    fun `시도 횟수가 음수인 경우 예외 발생`() {
+        val racingCar = RacingCar()
+        assertThrows(IllegalArgumentException::class.java) {
+            racingCar.confirmInteger(-3)
+        }
+    }
+
+    @Test
     fun `자동차가 전진 조건을 만족하는 경우 이동`() {
         val racingCar = RacingCar()
         racingCar.inputCarName("pobi,jun")
