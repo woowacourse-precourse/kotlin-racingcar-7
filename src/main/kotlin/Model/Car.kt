@@ -5,7 +5,9 @@ class Car(val name: String) {
         private set
 
     init {
-        require(name.length <= 5) { "자동차 이름은 5자 이하만 가능합니다." }
+        require(name.length <= 5) {
+            throw IllegalArgumentException()
+        }
     }
 
     fun move(canMove: Boolean) {
