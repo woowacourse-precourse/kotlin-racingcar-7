@@ -109,3 +109,5 @@ fun init() {
 ![img_2.png](img_2.png)
 
 예외처리도 정상적으로 작동된다.
+
++ 시도횟수가 자연수가 아닐 경우 IllegalArgumentException을 throw하도록 수정해주었다.

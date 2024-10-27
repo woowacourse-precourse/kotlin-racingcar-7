@@ -10,7 +10,7 @@ class RacingGame {
         carList =
             Console.readLine().split(",").map { if (it.length <= 5) Car(it) else throw IllegalArgumentException() }
         println("시도할 횟수는 몇 회인가요?")
-        val moveCount = Console.readLine().toIntOrNull() ?: throw IllegalArgumentException()
+        val moveCount = Console.readLine().toIntOrNull()?.takeIf { it > 0 } ?: throw IllegalArgumentException()
         racing(moveCount)
     }
 
