@@ -62,7 +62,6 @@ class Race(val cars: List<Car>, val tryCount: Int) {
 
 class Car(val name: String) {
     var position: Int = 0
-        private set
 
     fun stopOrMove() {
         if (Randoms.pickNumberInRange(0, 9) >= 4)
