@@ -26,7 +26,7 @@ pobi,woni,jun
 
 ## Controler
 
-- [ ] run : input값을 받아서 아래의 함수들을 실행한 후 result를 view로 넘겨주는 역할
+- [x] run : input값을 받아서 아래의 함수들을 실행한 후 result를 view로 넘겨주는 역할
 
 - [x] generateCarList
   - [x] car 객체 리스트를 만들고 초기화

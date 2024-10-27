@@ -13,9 +13,12 @@ class CarRacing(private val view: UserInterface) {
         val cars = CarList(generateCarList(carName))
         for( i in 0 until attempts){
             simulateRace(cars)
-            //view.printRacingCar(car)
+            val carNameList = cars.carList.map { it.name }
+            val carMovedList = cars.carList.map { it.distanceCovered }
+            view.printRacingCar(carNameList, carMovedList)
         }
-
+        val winner = getWinner(cars)
+        view.showResult(winner)
     }
     fun generateCarList(input: String): List<Car> {
         val carArray = input.split(",")
