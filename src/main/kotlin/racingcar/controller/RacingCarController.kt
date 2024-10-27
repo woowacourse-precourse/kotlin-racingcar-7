@@ -5,6 +5,7 @@ import racingcar.view.InputView
 import camp.nextstep.edu.missionutils.Randoms
 import racingcar.constant.PrintMessage
 import racingcar.view.OutputView
+import racingcar.constant.ErrorMessage
 
 class RacingCarController {
     private val inputView = InputView()
@@ -31,16 +32,16 @@ class RacingCarController {
                 RacingCar(racingCarName)
             }
         }
-        throw IllegalArgumentException("레이싱카 생성이 실패했습니다.")
+        throw IllegalArgumentException(ErrorMessage.FAIL_CREATE_RACINGCAR)
     }
 
     private fun parseRacingCarNames(input: String) = input.split(",").map { it.trim() }
 
     private fun validateRacingCarNames(racingCarNames: List<String>): Boolean {
         return when {
-            hasDuplicateNames(racingCarNames) -> throw IllegalArgumentException("자동차 이름은 중복될 수 없습니다.")
-            isNameEmpty(racingCarNames) -> throw IllegalArgumentException("자동차의 이름이 입력되지 않았습니다.")
-            isOverMaxLength(racingCarNames) -> throw IllegalArgumentException("입력하신 이름의 길이가 5글자를 초과하였습니다.")
+            hasDuplicateNames(racingCarNames) -> throw IllegalArgumentException(ErrorMessage.HAS_DUPLICATE_NAMES)
+            isNameEmpty(racingCarNames) -> throw IllegalArgumentException(ErrorMessage.IS_NAME_EMPTY)
+            isOverMaxLength(racingCarNames) -> throw IllegalArgumentException(ErrorMessage.IS_OVER_MAX_LENGTH)
             else -> true
         }
     }
@@ -55,18 +56,18 @@ class RacingCarController {
         if (validateAttemptCount(input)) {
             return input.toInt()
         }
-        throw IllegalArgumentException("입력하신 시도 횟수가 검증에 실패하였습니다.")
+        throw IllegalArgumentException(ErrorMessage.FAIL_CONVERT_TO_ATTEMPT_COUNT)
     }
 
     private fun validateAttemptCount(attemptCount: String): Boolean  {
         return when {
-            isNotNumber(attemptCount) -> throw IllegalArgumentException("입력하신 횟수는 숫자가 아닙니다.")
-            isNonPositiveNumber(attemptCount) -> throw IllegalArgumentException("입력하신 숫자는 양수가 아닙니다.")
+            isNonNumber(attemptCount) -> throw IllegalArgumentException(ErrorMessage.IS_NON_NUMBER)
+            isNonPositiveNumber(attemptCount) -> throw IllegalArgumentException(ErrorMessage.IS_NON_POSITIVE_NUMBER)
             else -> true
         }
     }
 
-    private fun isNotNumber(input: String) = input.toIntOrNull() == null
+    private fun isNonNumber(input: String) = input.toIntOrNull() == null
 
     private fun isNonPositiveNumber(input: String) = input.toInt() <= 0
 
