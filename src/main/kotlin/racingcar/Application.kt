@@ -13,15 +13,23 @@ fun main() {
 }
 
 
-fun showGameProgress() {
+
+private fun validateData() {
+    //검증 완료된 이름 값
+    val name = ""
+    showGameProgress(name, randomValue())
+}
+
+
+private fun showGameProgress(playerName: String, randomNum: Int) {
+    //todo : 랜덤 수 만큼 전진하여야 한다.
+    display(playerName, randomNum)
 
 }
 
-private fun generateValidatedNumbers(playNum: Int) {
-    //todo : 단일 시도 횟차수에 사람 수 만큼 반복문을 돌려야한다.
-    repeat(playNum) {
-        randomValue()
-    }
+private fun display(name: String, distance: Int): String {
+    val GO = "_"
+    return "$name : ${GO.repeat(distance)}"
 }
 
 
