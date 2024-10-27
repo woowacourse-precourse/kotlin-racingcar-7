@@ -3,24 +3,24 @@ package racingcar
 import camp.nextstep.edu.missionutils.Console.readLine
 
 const val CAR_NAMES_REQUEST_MESSAGE = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
-const val TOTAL_ATTEMPTS_REQUEST_MESSAGE = "시도할 횟수는 몇 회인가요?"
+const val ROUNDS_REQUEST_MESSAGE = "시도할 횟수는 몇 회인가요?"
 
-data class Output(val carNameList: List<String>, val totalAttempts: Long)
+data class Output(val carNameList: List<String>, val rounds: Long)
 
 class UserInput {
     companion object {
         fun request(): Output {
             println(CAR_NAMES_REQUEST_MESSAGE)
             var carNamesInput = readLine()
-            println(TOTAL_ATTEMPTS_REQUEST_MESSAGE)
-            var totalAttemptsInput = readLine()
+            println(ROUNDS_REQUEST_MESSAGE)
+            var roundsInput = readLine()
 
             verifyCarNamesInput(carNamesInput)
-            verifyTotalAttemptsInput(totalAttemptsInput)
+            verifyRoundsInput(roundsInput)
             val carNameList = parseCarNamesInput(carNamesInput)
-            val totalAttempts = parseTotalAttemptsInput(totalAttemptsInput)
+            val rounds = parseRoundsInput(roundsInput)
 
-            return Output(carNameList, totalAttempts)
+            return Output(carNameList, rounds)
         }
         private fun parseCarNamesInput(carNamesInput: String): List<String> {
             val rawCarNameList = carNamesInput.split(",")
@@ -44,15 +44,15 @@ class UserInput {
             return refinedCarNameList.toList()
         }
 
-        private fun parseTotalAttemptsInput(totalAttemptsInput: String): Long {
-            return totalAttemptsInput.toLong()
+        private fun parseRoundsInput(roundsInput: String): Long {
+            return roundsInput.toLong()
         }
 
         private fun verifyCarNamesInput(carNamesInput: String) {
             // TODO: 자동차 이름 입력에 대한 검증 구현
         }
 
-        private fun verifyTotalAttemptsInput(totalAttemptsInput: String) {
+        private fun verifyRoundsInput(roundsInput: String) {
             // TODO: 총 이동 횟수에 대한 검증 구현
         }
     }

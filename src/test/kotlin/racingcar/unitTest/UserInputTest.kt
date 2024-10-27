@@ -1,4 +1,5 @@
 package racingcar
+
 import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
@@ -19,7 +20,7 @@ class UserInputTest : NsTest() {
     fun `중복된 자동차 이름 입력`() {
         var carInput = "pobi,pobi,pobi"
         var totalAttemptsInput = "5"
-            assertSimpleTest {
+        assertSimpleTest {
             run(carInput, totalAttemptsInput)
             assertThat(output()).contains("[pobi, pobi0, pobi1]", "5")
         }
@@ -35,12 +36,12 @@ class UserInputTest : NsTest() {
         }
     }
 
-    
+
     override fun runMain() {
 
         val output = UserInput.request()
         println(output.carNameList)
-        println(output.totalAttempts)
+        println(output.rounds)
     }
 
 }
