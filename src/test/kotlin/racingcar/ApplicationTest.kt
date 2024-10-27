@@ -26,6 +26,20 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `중복된 이름일시 예외 테스트`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> {runException("kotlin,kotlin,java", "2")}
+        }
+    }
+
+    @Test
+    fun `음수 입력시 예외 테스트` () {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> {runException("kotlin,java", "-1")}
+        }
+    }
+
     override fun runMain() {
         main()
     }
