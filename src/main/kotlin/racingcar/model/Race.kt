@@ -2,10 +2,12 @@ package racingcar.model
 
 import camp.nextstep.edu.missionutils.Randoms
 
-class Race(private val carList: List<Car>) {
-    fun getRoundResult(): List<Car> {
-        moveCar()
-        return carList
+class Race(private val carList: List<Car>, private val rounds: Int) {
+    fun play(onShowRoundResult: (List<Car>) -> Unit) {
+        repeat(rounds) {
+            moveCar()
+            onShowRoundResult(carList)
+        }
     }
 
     fun getRaceWinner(): List<String> {
