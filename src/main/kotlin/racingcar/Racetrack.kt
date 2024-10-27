@@ -20,9 +20,9 @@ object Racetrack {
     fun startRace() {
         repeat(attemptCount) {
             raceOnce() // 한 번의 경주 진행
-            printRaceStatus() // 현재 상태 출력
+            RaceView.displayRaceStatus(cars) // 현재 경주 상태 출력
         }
-        printWinners() // 경기 종료 후, 우승자 출력
+        RaceView.displayWinners(cars) // 경기 종료 후, 우승자 출력
         clearCars() // 경기 종료 후, 자동차 리스트 초기화
     }
 
@@ -32,21 +32,6 @@ object Racetrack {
             val randomValue = Randoms.pickNumberInRange(0, 9) // 0과 9 사이의 무작위 값
             car.moveFoward(randomValue)
         }
-    }
-
-    // 현재 상태 출력
-    private fun printRaceStatus() {
-        cars.forEach { car ->
-            println("${car.name} : ${"-".repeat(car.distance)}")
-        }
-        println("\n")
-    }
-
-    // 우승자 출력
-    private fun printWinners() {
-        val maxPosition = cars.maxOf { it.distance }
-        val winners = cars.filter { it.distance == maxPosition }
-        println("최종 우승자 : ${winners.joinToString(", ") { it.name }}")
     }
 
     // 자동차 초기화
