@@ -25,8 +25,8 @@
 ## 구현할 기능 목록
 
 - [x] 입력 기능
-- [ ] 차수별 랜덤 시행
-- [ ] 차수별 실행 결과 출력
+- [x] 차수별 랜덤 시행
+- [x] 차수별 실행 결과 출력
 - [ ] 우승자 안내 문구 출력
 - [ ] 예외 처리
 
@@ -66,12 +66,14 @@ fun race(cars: List<String>, n: Int) {
         for(i in carsProgressCount.indices){
             carsProgressCount[i] += randomPick()
         }
+        outputProgress(cars,carsProgressCount)
     }
 }
 ```
 
 - 차들의 전진 횟수를 저장 할 `carsProgressCount` 배열 선언
 - 시행 횟수인 `n` 번 만큼 각 차들에 대해 `randomPick()` 을 진행한 후 `carsProgressCount` 배열에 전진 여부를 저장
+- 각 차수별로 `outputProgress()` 함수를 통해 진행 상황을 출력
 
 #### randomPick
 
@@ -85,4 +87,22 @@ fun randomPick(): Int {
 
 - 0~9 사이의 숫자중 하나를 랜덤으로 선택해 `n`에 저장
 - `n`이 4이상이라면 전진햇음으로 1, 그외에는 전진하지 않았음으로 0을 리턴
+
+### 차수별 실행 결과 출력
+
+#### outputProgress
+
+```kotlin
+fun outputProgress(cars: List<String>, carsProgressCount: Array<Int>) {
+    println("\n실행 결과")
+    for(i in cars.indices){
+        print("${cars[i]} : ")
+        repeat(carsProgressCount[i]){
+            print("-")
+        }
+        println()
+    }
+}
+```
+- 출력 형식에 맞게 각 차들의 이름이 담긴 리스트인 `cars` 와 각 차들의 진행 상황이 담긴 배열인 `carsProgressCount`를 출력
 

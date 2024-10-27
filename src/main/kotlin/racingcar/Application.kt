@@ -21,6 +21,7 @@ fun race(cars: List<String>, n: Int) {
         for(i in carsProgressCount.indices){
             carsProgressCount[i] += randomPick()
         }
+        outputProgress(cars,carsProgressCount)
     }
 }
 
@@ -28,4 +29,15 @@ fun randomPick(): Int {
     val n = Randoms.pickNumberInRange(0, 9)
     return if (n >= 4) 1
     else 0
+}
+
+fun outputProgress(cars: List<String>, carsProgressCount: Array<Int>) {
+    println("\n실행 결과")
+    for(i in cars.indices){
+        print("${cars[i]} : ")
+        repeat(carsProgressCount[i]){
+            print("-")
+        }
+        println()
+    }
 }
