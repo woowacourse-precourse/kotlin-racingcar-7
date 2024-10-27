@@ -6,8 +6,8 @@ import camp.nextstep.edu.missionutils.Randoms
 fun main() {
     val game = Game()
     game.run()
-    Console.close()
 }
+
 class Game {
     fun run() {
         val carNames: List<String> = getCarNamesInput()
@@ -24,7 +24,6 @@ class Game {
         val input: String = Console.readLine()
         val carNames: List<String> = input.split(",").map { it.trim() }.filter { it.isNotBlank() }
         if (carNames.any { it.length > 5 }) {
-            Console.close()
             throw IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.")
         }
         return carNames
@@ -32,8 +31,7 @@ class Game {
 
     private fun getTryCountInput(): Int {
         println("시도할 횟수는 몇 회인가요?")
-        val tryCount: Int = Console.readLine().toInt()
-        return tryCount
+        return Console.readLine().toInt()
     }
 }
 
@@ -55,16 +53,17 @@ class Race(val cars: List<Car>, val tryCount: Int) {
 
     fun printWinners() {
         val maxPosition = cars.maxOf { it.position }
-        val winners = cars.filter { it.position.equals(maxPosition) }.joinToString(", ") { it.name }
+        val winners = cars.filter { it.position == maxPosition }.joinToString(", ") { it.name }
         println("최종 우승자 : $winners")
     }
 }
 
 class Car(val name: String) {
+    private val MOVEMENT_THRESHOLD = 4
     var position: Int = 0
 
     fun stopOrMove() {
-        if (Randoms.pickNumberInRange(0, 9) >= 4)
+        if (Randoms.pickNumberInRange(0, 9) >= MOVEMENT_THRESHOLD)
             position++
     }
 }
