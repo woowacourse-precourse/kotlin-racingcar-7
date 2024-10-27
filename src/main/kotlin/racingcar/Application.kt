@@ -5,5 +5,7 @@ import racingcar.view.RacingView
 
 fun main() {
     val dependencyInjector = DependencyInjector()
-    RacingView(dependencyInjector)
+    val viewModel = dependencyInjector.injectViewModel()
+
+    RacingView(viewModel)
 }

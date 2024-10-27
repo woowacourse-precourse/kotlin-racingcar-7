@@ -8,11 +8,9 @@ import racingcar.di.DependencyInjector
 import racingcar.intent.UserInputIntent.EnterPlayCountState
 import racingcar.intent.UserInputIntent.EnterPlayerNameState
 import racingcar.model.CarRacingState.PlayResultState
+import racingcar.viewModel.RacingViewModel
 
-class RacingView(
-    dependencyInjector: DependencyInjector
-) {
-    private val viewModel = dependencyInjector.injectViewModel()
+class RacingView(private val viewModel: RacingViewModel) {
 
     init {
         startGame()
