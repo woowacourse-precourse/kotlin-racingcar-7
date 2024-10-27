@@ -24,6 +24,9 @@ class ApplicationTest : NsTest() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
         }
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,jaai", "p") }
+        }
     }
 
     override fun runMain() {

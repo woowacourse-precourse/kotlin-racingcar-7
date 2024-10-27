@@ -24,6 +24,7 @@ class UserInterface {
             val dashes = "-".repeat(carMoved[i])
             println("${carNames[i]} : $dashes")
         }
+        println()
     }
 
     fun showResult(result: List<String>) {
