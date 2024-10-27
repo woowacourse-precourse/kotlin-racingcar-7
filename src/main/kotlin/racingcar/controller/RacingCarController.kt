@@ -3,6 +3,7 @@ package racingcar.controller
 import racingcar.model.RacingCar
 import racingcar.validator.Validator
 import racingcar.view.InputView
+import racingcar.view.OutputView
 
 class RacingCarController {
     /* 순서
@@ -20,7 +21,7 @@ class RacingCarController {
         val tryCount = getTryCount()
 
         playRacing(carNames, tryCount)
-        printWinners()
+//        printWinners()
     }
 
     private fun getInput(): List<String> {
@@ -35,14 +36,16 @@ class RacingCarController {
         return tryCount.toInt()
     }
 
-    private fun playRacing(
+    fun playRacing(
         carNames: List<String>,
         tryCount: Int,
     ) {
-        val carList = carNames.map { RacingCar(it) }
+        OutputView().printDefaultMessage() // "실행 결과" 출력
 
+        val carList = carNames.map { RacingCar(it) }
         repeat(tryCount) {
             moveCars(carList)
+            OutputView().printResult(carList)
         }
     }
 

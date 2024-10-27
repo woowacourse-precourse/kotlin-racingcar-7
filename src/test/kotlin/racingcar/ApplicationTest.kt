@@ -6,6 +6,7 @@ import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
+import racingcar.controller.RacingCarController
 import racingcar.model.RacingCar
 
 class ApplicationTest : NsTest() {
@@ -33,6 +34,17 @@ class ApplicationTest : NsTest() {
         val racingCar = RacingCar("apple")
         repeat(5) { racingCar.moveForward() }
         println(racingCar)
+    }
+
+    @Test
+    fun `레이싱카 게임 테스트`() {
+        val carList =
+            listOf(
+                "apple",
+                "peach",
+                "pear",
+            )
+        RacingCarController().playRacing(carList, 5)
     }
 
     override fun runMain() {
