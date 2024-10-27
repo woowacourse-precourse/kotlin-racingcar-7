@@ -64,9 +64,9 @@ class Organizer {
         raceCars.forEachIndexed { index, car ->
             val randomValue = pickNumberInRange(MINIMUM_RANDOM_VALUE, MAXIMUM_RANDOM_VALUE)
             if (validator.isPossibleForward(randomValue)) {
-                updatedRaceCars[index] = car.copy(forward = car.forward + FORWARD)
+                updatedRaceCars[index] = car.copy(location = car.location + FORWARD)
             }
-            outputView.printNotice("${updatedRaceCars[index].name} : ${"-".repeat(updatedRaceCars[index].forward)}")
+            outputView.printNotice("${updatedRaceCars[index].name} : ${"-".repeat(updatedRaceCars[index].location)}")
         }
         return updatedRaceCars
     }
