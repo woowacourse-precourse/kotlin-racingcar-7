@@ -26,6 +26,43 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `입력 받기`() {
+        assertSimpleTest {
+            run("a,b,c,d")
+            assertThat(output()).contains("Car a", "Car b", "Car c","Car d")
+        }
+    }
+
+    @Test
+    fun `입력 오류`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
+        }
+    }
+
+    @Test
+    fun `레이스 하기`() {
+        assertSimpleTest {
+            run("a,b,c,d","5")
+            assertThat(output()).contains("a","b","c","d")
+        }
+    }
+    @Test
+    fun `레이스 오류`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,javaji", "a") }
+        }
+    }
+
+    @Test
+    fun `최종 결과`() {
+        assertSimpleTest {
+            run("a,b,c,d","5")
+            assertThat(output()).contains("최종 우승자")
+        }
+    }
+
     override fun runMain() {
         main()
     }
