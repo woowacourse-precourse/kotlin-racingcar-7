@@ -4,8 +4,8 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import racingcar.util.CarValidator
-import racingcar.util.CarValidator.INVALID_INPUT_CAR_NAME_DUPLICATE
-import racingcar.util.CarValidator.INVALID_INPUT_CAR_NAME_LENGTH
+import racingcar.util.CarValidator.INVALID_INPUT_CAR_NAME_DUPLICATE_MESSAGE
+import racingcar.util.CarValidator.INVALID_INPUT_CAR_NAME_LENGTH_MESSAGE
 import java.lang.reflect.InvocationTargetException
 
 class CarValidatorTest {
@@ -23,7 +23,7 @@ class CarValidatorTest {
         } catch (e: IllegalAccessException) {
             e.printStackTrace()
         } catch (e: InvocationTargetException) {
-            assertThat(e.cause?.message).isEqualTo(INVALID_INPUT_CAR_NAME_LENGTH)
+            assertThat(e.cause?.message).isEqualTo(INVALID_INPUT_CAR_NAME_LENGTH_MESSAGE)
         }
     }
 
@@ -40,7 +40,7 @@ class CarValidatorTest {
         } catch (e: IllegalAccessException) {
             e.printStackTrace()
         } catch (e: InvocationTargetException) {
-            assertThat(e.cause?.message).isEqualTo(INVALID_INPUT_CAR_NAME_LENGTH)
+            assertThat(e.cause?.message).isEqualTo(INVALID_INPUT_CAR_NAME_LENGTH_MESSAGE)
         }
     }
 
@@ -57,7 +57,7 @@ class CarValidatorTest {
         } catch (e: IllegalAccessException) {
             e.printStackTrace()
         } catch (e: InvocationTargetException) {
-            assertThat(e.cause?.message).isEqualTo(INVALID_INPUT_CAR_NAME_DUPLICATE)
+            assertThat(e.cause?.message).isEqualTo(INVALID_INPUT_CAR_NAME_DUPLICATE_MESSAGE)
         }
     }
 }

@@ -4,7 +4,7 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import racingcar.util.TryCountValidator
-import racingcar.util.TryCountValidator.INVALID_INPUT_TRY_COUNT
+import racingcar.util.TryCountValidator.INVALID_INPUT_TRY_COUNT_MESSAGE
 import java.lang.reflect.InvocationTargetException
 
 class TryCountValidatorTest {
@@ -21,7 +21,7 @@ class TryCountValidatorTest {
         } catch (e: IllegalAccessException) {
             e.printStackTrace()
         } catch (e: InvocationTargetException) {
-            assertThat(e.cause?.message).isEqualTo(INVALID_INPUT_TRY_COUNT)
+            assertThat(e.cause?.message).isEqualTo(INVALID_INPUT_TRY_COUNT_MESSAGE)
         }
     }
 
@@ -37,7 +37,7 @@ class TryCountValidatorTest {
         } catch (e: IllegalAccessException) {
             e.printStackTrace()
         } catch (e: InvocationTargetException) {
-            assertThat(e.cause?.message).isEqualTo(INVALID_INPUT_TRY_COUNT)
+            assertThat(e.cause?.message).isEqualTo(INVALID_INPUT_TRY_COUNT_MESSAGE)
         }
     }
 }
