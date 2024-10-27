@@ -34,5 +34,10 @@ out/
 ### Mac OS ###
 .DS_Store
 
-# Ignore build folder
-/app/build/
+### Kotlin ###
+# Compiled class file
+*.class
+
+# Android Studio
+/*/build/
+/*/local.properties
