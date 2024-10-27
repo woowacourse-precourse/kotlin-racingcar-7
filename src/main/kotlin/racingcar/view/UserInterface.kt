@@ -19,6 +19,13 @@ class UserInterface {
         println("실행 결과")
     }
 
+    fun printRacingCar(carNames: List<String>, carMoved: List<Int>){
+        for(i in carNames.indices){
+            val dashes = "-".repeat(carMoved[i])
+            println("${carNames[i]} : $dashes")
+        }
+    }
+
     fun showResult(result: List<String>) {
         println("최종 우승자: ${result.joinToString(", ")}")
     }

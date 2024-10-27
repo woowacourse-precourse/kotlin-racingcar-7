@@ -18,8 +18,8 @@ pobi,woni,jun
 
 - [x] showRaceStart : `실행 결과` 출력
 
-- [ ] printRacingCar : 전진하는 자동차 출력
-    - [ ] `자동차 이름`도 같이 출력
+- [x] printRacingCar : 전진하는 자동차 출력
+    - [x] `자동차 이름`도 같이 출력
 
 - [x] showResult : 우승 차 출력 `최종 우승자 : ooo`
   - [x] 여러 명일 경우 쉼표를 이용해 구분
@@ -28,8 +28,8 @@ pobi,woni,jun
 
 - [ ] run : input값을 받아서 아래의 함수들을 실행한 후 result를 view로 넘겨주는 역할
 
-- [ ] generateCar
-  - [ ] car 객체 리스트를 만들고 초기화
+- [x] generateCarList
+  - [x] car 객체 리스트를 만들고 초기화
   
 - [ ] simulateRace : 경주 시뮬레이션
 
