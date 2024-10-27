@@ -1,6 +1,10 @@
 package racingcar.controller
 
+import camp.nextstep.edu.missionutils.Randoms
 import racingcar.model.RacingCar
+import racingcar.util.Constant.MOVE_VALID_CONDITION
+import racingcar.util.Constant.RANDOM_NUMBER_MAX_RANGE
+import racingcar.util.Constant.ZERO
 import racingcar.util.PrintMessage.RESULT_TITLE
 import racingcar.util.PrintMessage.START_OUTPUT_MESSAGE
 import racingcar.util.PrintMessage.TRY_NUMBER_OUTPUT_MESSAGE
@@ -34,11 +38,24 @@ class RacingCarController {
         outputView.printMessage(RESULT_TITLE)
 
         repeat(tryNumber) {
-            carList.forEach { carItem ->
-                carItem.onMoveCar()
-            }
+            val updatedCarList: List<RacingCar> = updateRacingCarList(carList)
 
-            outputView.printRacingResult(carList)
+            outputView.printRacingResult(updatedCarList)
         }
+    }
+
+    private fun updateRacingCarList(carList: List<RacingCar>): List<RacingCar> {
+        carList.forEach { carItem ->
+            moveRacingCarItem(carItem)
+        }
+
+        return carList
+    }
+
+    private fun moveRacingCarItem(carItem: RacingCar) {
+        val randomMoveNumber = Randoms.pickNumberInRange(ZERO, RANDOM_NUMBER_MAX_RANGE)
+
+        if (randomMoveNumber >= MOVE_VALID_CONDITION)
+            carItem.onMoveCar()
     }
 }
