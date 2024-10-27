@@ -8,7 +8,7 @@ class RacingInputView {
 
     fun guideInputRaceCount() = println(GUIDE_INPUT_RACE_COUNT_MESSAGE)
 
-    fun getCarsName() = Console.readLine()
+    fun getCarsNameInput() = Console.readLine()
 
     fun getRaceCountInput() = Console.readLine()
 
