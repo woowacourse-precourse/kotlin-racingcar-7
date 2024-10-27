@@ -6,8 +6,6 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
-import racingcar.ApplicationTest.Companion.MOVING_FORWARD
-import racingcar.ApplicationTest.Companion.STOP
 
 class RacingGameTest : NsTest() {
 
@@ -125,5 +123,10 @@ class RacingGameTest : NsTest() {
     }
 
     override fun runMain() {
+    }
+
+    companion object {
+        private const val MOVING_FORWARD: Int = 4
+        private const val STOP: Int = 3
     }
 }
