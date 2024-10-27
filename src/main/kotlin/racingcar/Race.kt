@@ -2,7 +2,7 @@ package racingcar
 
 class Race(
     private val numberGenerator: NumberGenerator,
-    private val outputView: OutputView
+    private val outputView: OutputViewInterface
 ) {
     private var cars: List<Car> = listOf()
     private var tryCount: Int = 0

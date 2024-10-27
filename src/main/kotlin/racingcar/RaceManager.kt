@@ -3,7 +3,7 @@ package racingcar
 class RaceManager(
     private val race: Race,
     private val inputView: InputView,
-    private val outputView: OutputView,
+    private val outputView: OutputViewInterface,
     private val inputValidator: InputValidator
 ) {
 
