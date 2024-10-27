@@ -35,7 +35,10 @@ class Game {
     }
 }
 
-class Race(val cars: List<Car>, val tryCount: Int) {
+class Race(
+    val cars: List<Car>,
+    val tryCount: Int
+) {
     fun start() {
         println("\n실행 결과")
         repeat(tryCount) {
@@ -58,7 +61,9 @@ class Race(val cars: List<Car>, val tryCount: Int) {
     }
 }
 
-class Car(val name: String) {
+class Car(
+    val name: String
+) {
     private val MOVEMENT_THRESHOLD = 4
     var position: Int = 0
 
