@@ -7,7 +7,9 @@ enum class InputViewString(private val transmission: String){
 }
 
 enum class ExceptionString(private val transmission: String){
-    BLANK("빈 문자열은 조건에 맞지 않습니다.");
+    BLANK("빈 문자열은 조건에 맞지 않습니다."),
+    LENGTH("이름이 5글자를 초과하였습니다."),
+    NOT_NAME("이름 형식에 맞지 않습니다");
     override fun toString() = transmission
 }
 
