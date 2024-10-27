@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
 class ApplicationTest : NsTest() {
+    // ### 기능 테스트 ###
     @Test
     fun `기능 테스트`() {
         assertRandomNumberInRangeTest(
@@ -19,12 +20,27 @@ class ApplicationTest : NsTest() {
         )
     }
 
+
+    @Test
+    fun `공동 우승자 존재`() {
+        assertRandomNumberInRangeTest(
+            {
+                run("pobi,woni,jun", "1")
+                assertThat(output()).contains("최종 우승자 : pobi, woni, jun")
+            },
+            MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD
+        )
+    }
+
+
+    // ### 예외 테스트 ###
     @Test
     fun `예외 테스트`() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
         }
     }
+
 
     override fun runMain() {
         main()
