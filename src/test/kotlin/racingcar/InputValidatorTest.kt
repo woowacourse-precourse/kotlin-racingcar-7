@@ -70,7 +70,7 @@ class InputValidatorTest {
             inputValidator.validateTryCount(0)
         }
         // 예외 메시지 검증
-        assertEquals(InputValidator.TRY_COUNT_ERROR, exception.message)
+        assertEquals(InputValidator.TRY_COUNT_TOO_SMALL_ERROR, exception.message)
     }
 
     @Test
@@ -79,7 +79,6 @@ class InputValidatorTest {
             inputValidator.validateTryCount(-1)
         }
         // 예외 메시지 검증
-        assertEquals(InputValidator.TRY_COUNT_ERROR, exception.message)
+        assertEquals(InputValidator.TRY_COUNT_TOO_SMALL_ERROR, exception.message)
     }
-
 }
