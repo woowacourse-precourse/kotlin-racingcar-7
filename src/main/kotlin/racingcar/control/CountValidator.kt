@@ -7,13 +7,13 @@ class CountValidator {
     fun countValidator(countInput: String): Int {
 
         if (countInput.isBlank()) {
-            throw IllegalArgumentException(CountError().countBlank)
+            throw IllegalArgumentException(CountError().EMPTY_COUNT)
         }
         if (!countInput.contains(Regex("^[0-9]*$"))) {
-            throw IllegalArgumentException(CountError().countIncludeString)
+            throw IllegalArgumentException(CountError().INCLUDED_STRING)
         }
         if (countInput.toInt() == 0) {
-            throw IllegalArgumentException(CountError().zeroInput)
+            throw IllegalArgumentException(CountError().ZERO_INPUT)
         }
 
         val count = countInput.toInt()
