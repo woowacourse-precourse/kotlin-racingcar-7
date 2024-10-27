@@ -26,24 +26,23 @@ fun main() {
     race(names, tryNumber.toInt())
 }
 
-fun processNames(names: String): List<String> {
+fun validateName(name: String): String {
+    if (name.length > 5) {
+        throw IllegalArgumentException("이름은 5자 이하여야 합니다.")
+    }
+    return name
+}
+
+fun divideNames(names: String): List<String> {
     val delimiter = ","
 
-    return names.split(delimiter.toRegex()).mapNotNull { name ->
-        try {
-            if (name.length > 5) {
-                throw IllegalArgumentException("이름은 5자 이하여야 합니다.")
-            }
-            name
-        } catch (e: IllegalArgumentException) {
-            println("잘못된 값이 입력되었습니다")
-            null
-        }
+    return names.split(delimiter.toRegex()).map { name ->
+        validateName(name)
     }
 }
 
 fun race(names: String, tryNumber: Int) {
-    val finalParticipants = processNames(names)
+    val finalParticipants = divideNames(names)
     val position = finalParticipants.associateWith { 0 }.toMutableMap()
 
     for (trying in 1..tryNumber) {

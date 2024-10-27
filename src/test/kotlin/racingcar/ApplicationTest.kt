@@ -11,7 +11,7 @@ class ApplicationTest : NsTest() {
     @Test
     fun `자동차 이름이 올바르게 처리되는지 테스트`() {
         val inputNames = "pobi,woni"
-        val finalParticipants = processNames(inputNames)
+        val finalParticipants = divideNames(inputNames)
 
         assertThat(finalParticipants).containsExactlyInAnyOrder("pobi", "woni")
     }
