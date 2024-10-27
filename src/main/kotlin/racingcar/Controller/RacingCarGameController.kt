@@ -8,18 +8,18 @@ class RacingCarGameController {
     private val racingCarGameView = RacingCarGameView(racingCars)
 
     fun play() {
-        getCarNamesAndTryCounts()
+        getCarNamesAndTryCount()
         playAllTurns()
         racingCarGameView.printWinner()
     }
 
-    private fun getCarNamesAndTryCounts() {
+    private fun getCarNamesAndTryCount() {
         println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
-        val userInput = Console.readLine()
-        val carNames = userInput.split(",")
+        val inputCarNames = Console.readLine()
+        val carNames = inputCarNames.split(",")
         checkIfValidNames(carNames)
-        getTryCountsInput()
-        makeRacingCar(carNames)
+        getTryCountInput()
+        makeRacingCars(carNames)
     }
 
     private fun checkIfValidNames(carNames: List<String>) {
@@ -28,17 +28,17 @@ class RacingCarGameController {
         throw IllegalArgumentException()
     }
 
-    private fun makeRacingCar(carNames: List<String>) {
+    private fun makeRacingCars(carNames: List<String>) {
         carNames.forEach {
             racingCars.add(RacingCar(it))
         }
     }
 
-    private fun getTryCountsInput() {
+    private fun getTryCountInput() {
         println("시도할 횟수는 몇 회인가요?")
-        val tryCountInput = Console.readLine()
-        checkIfValidCount(tryCountInput)
-        tryCount = tryCountInput.toInt()
+        val inputTryCount = Console.readLine()
+        checkIfValidCount(inputTryCount)
+        tryCount = inputTryCount.toInt()
     }
 
     private fun checkIfValidCount(tryCount: String) {
