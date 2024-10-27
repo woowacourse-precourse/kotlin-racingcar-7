@@ -2,7 +2,6 @@ package racingcar
 
 import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
-import kotlin.math.max
 
 /*
     - 요구사항 정리
@@ -29,11 +28,11 @@ fun main() {
 data class Car(
     val name: String,
     var count: Int = 0
-){
+) {
     //현재 점수를 "-" 문자열로 치환해주는 함수
-    fun translateCount() : String {
+    fun translateCount(): String {
         val stringBuilder = StringBuilder()
-        for(i in 0 until count){
+        for (i in 0 until count) {
             stringBuilder.append("-")
         }
         return stringBuilder.toString()
@@ -42,8 +41,8 @@ data class Car(
 
 //레이싱 게임의 프로퍼티, 메소드를 포함한 클래스
 class RacingCar {
-    private lateinit var carList: List<Car>
-    private lateinit var winnerList: ArrayList<String>
+    lateinit var carList: List<Car>
+    lateinit var winnerList: ArrayList<String>
 
     //입력 함수
     fun inputValue() {
@@ -61,15 +60,16 @@ class RacingCar {
     }
 
     //자동차 이름 검증 함수
-    private fun inputCarName(carNameList: String) {
-        return when {
-            carNameList.length >= 5 -> throw IllegalArgumentException()
-            else -> this.carList = carNameList.trim().split(",").map { Car(it) }
+    fun inputCarName(carNameList: String) {
+        this.carList = carNameList.split(",").map { Car(it.trim()) }
+        carList.forEach {
+            if (it.name.length >= 5 || it.name.isBlank())
+                throw IllegalArgumentException()
         }
     }
 
     //이동 횟수 검증 함수
-    private fun inputTestCount(testCount: String) {
+    fun inputTestCount(testCount: String) {
         try {
             testCount.toInt()
         } catch (e: NumberFormatException) {
@@ -79,8 +79,9 @@ class RacingCar {
 
     //입력값이 Null, Blank 검증 함수
     private fun blankOrNullCheck(carNameList: String, testCount: String) {
-        if (carNameList.isNotBlank() || testCount.isNotBlank()) {
+        if (carNameList.isNotBlank()) {
             inputCarName(carNameList)
+        } else if (testCount.isNotBlank()) {
             inputTestCount(testCount)
         } else {
             throw IllegalArgumentException()
@@ -88,7 +89,7 @@ class RacingCar {
     }
 
     //레이싱 시작 함수
-    private fun run(count: Int) {
+    fun run(count: Int) {
         for (i in 0 until count) {
             moveAllCar()
         }
@@ -103,39 +104,37 @@ class RacingCar {
 
     //자동차 이동 함수
     private fun move(car: Car) {
-        when(Randoms.pickNumberInRange(0, 9)){
-            in 0..4 -> return
+        when (Randoms.pickNumberInRange(0, 9)) {
+            in 0..3 -> return
             else -> car.count++
         }
     }
 
     //이동한 현황을 알려주는 함수
-    private fun printMove(){
-        carList.forEach{
+    private fun printMove() {
+        carList.forEach {
             println("${it.name} : ${it.translateCount()}")
         }
         println()
     }
 
 
-
     //우승자 검증 함수
-    private fun resultWinner() {
+    fun resultWinner() {
         val sortList = carList.sortedByDescending { it.count }
         val winnerScore = sortList[0].count
         winnerList = arrayListOf()
         sortList.forEach {
-            if(it.count == winnerScore)
+            if (it.count == winnerScore)
                 winnerList.add(it.name)
         }
-
     }
 
     //우승자를 출력해주는 함수
-    private fun printWinner(){
+    fun printWinner(): String {
         val result = winnerList.joinToString(", ")
-        print("최종 우승자 : $result")
+        println("최종 우승자 : $result")
+        return result
     }
-
 
 }
