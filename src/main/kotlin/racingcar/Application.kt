@@ -20,21 +20,21 @@ class Game {
 
     private fun getCarNamesInput(): List<String> {
         println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
-        val input: String = "pobi,woni,jun" // val input: String = Console.readLine()
+        val input: String = Console.readLine()
         val carNames: List<String> = input.split(",")
         return carNames
     }
 
     private fun getTryCountInput(): Int {
         println("시도할 횟수는 몇 회인가요?")
-        val tryCount: Int = 5 // val tryCount: Int = Console.readLine().toInt()
+        val tryCount: Int = Console.readLine().toInt()
         return tryCount
     }
 }
 
 class Race(val cars: List<Car>, val tryCount: Int) {
     fun start() {
-        print("\n실행 결과\n")
+        println("\n실행 결과")
         repeat(tryCount) {
             cars.forEach { it.stopOrMove() }
             printStatus()
