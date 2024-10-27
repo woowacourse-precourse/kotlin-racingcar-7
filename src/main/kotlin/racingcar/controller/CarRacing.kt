@@ -23,5 +23,10 @@ class CarRacing(private val view: UserInterface) {
         return Randoms.pickNumberInRange(0, 9)
     }
 
-
+    fun driveCar(car: Car) {
+        val number = getRandomNumber()
+        if (number >= 4){
+            car.distanceCovered++
+        }
+    }
 }
