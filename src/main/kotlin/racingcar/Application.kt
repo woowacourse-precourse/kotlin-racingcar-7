@@ -4,13 +4,9 @@ import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
-    println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
+    val carNames = inputCarNames()
+    val times = inputTimes()
 
-    val carNames = Console.readLine().split(",") ?: emptyList()
-
-    println("시도할 횟수는 몇 회인가요?")
-
-    val times = readln().toInt() ?: 0
     val distance = MutableList(carNames.size) { 0 }
 
     repeat(times) {
@@ -34,6 +30,20 @@ private fun printWinner(carNames: List<String>, moveDistance: List<Int>) {
     println("최종 우승자 : ${winners.joinToString(", ")}")
 }
 
+private fun inputTimes() : Int {
+    println("시도할 횟수는 몇 회인가요?")
+    val input = Console.readLine().toInt()
+    return input
+}
+
+private fun inputCarNames() : List<String> {
+    println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
+    val carNames = Console.readLine().split(",").map { it.trim() }
+    carNames.forEach {
+        if (it.length > 5) throw IllegalArgumentException("자동차 이름은 5글자만 입력 가능합니다.")
+    }
+    return carNames
+}
 
 
 private fun racingRound(carNames: List<String>, moveDistance: MutableList<Int>) {
