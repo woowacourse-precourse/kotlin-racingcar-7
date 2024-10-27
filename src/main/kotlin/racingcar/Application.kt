@@ -19,6 +19,7 @@ fun input(): Pair<List<String>, Int> {
     } catch (e: NumberFormatException) {
         throw IllegalArgumentException("잘못된 입력입니다.")
     }
+    checkPositiveInteger(n)
     return Pair(cars, n)
 }
 
@@ -70,5 +71,15 @@ fun outputWinner(winner: String) {
 }
 
 fun checkCarsName(cars: List<String>) {
-    cars.forEach { if(it.length>5) throw IllegalArgumentException("잘못된 입력입니다.") }
+    if (cars.size<2) throw IllegalArgumentException("잘못된 입력입니다.")
+    cars.forEach {
+        if(it.length>5) throw IllegalArgumentException("잘못된 입력입니다.")
+        if(it.isBlank()) throw IllegalArgumentException("잘못된 입력입니다.")
+    }
+    val count = cars.size
+    if(cars.toSet().size != count) throw IllegalArgumentException("잘못된 입력입니다.")
+}
+
+fun checkPositiveInteger(n: Int) {
+    if(n<=0) throw IllegalArgumentException("잘못된 입력입니다.")
 }

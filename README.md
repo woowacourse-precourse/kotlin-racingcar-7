@@ -154,7 +154,7 @@ fun outputWinner(winner: String) {
 
 ### 예외 처리
 
-#### 차의 이름이 5글자 초과인 경우
+#### 차의 이름 예외처리
 
 ```kotlin
     val cars = readLine()!!.trim().split(",")
@@ -164,12 +164,21 @@ fun outputWinner(winner: String) {
 
 ```kotlin
 fun checkCarsName(cars: List<String>) {
-    cars.forEach { if(it.length>5) throw IllegalArgumentException("잘못된 입력입니다.") }
+    if (cars.size<2) throw IllegalArgumentException("잘못된 입력입니다.")
+    cars.forEach {
+        if(it.length>5) throw IllegalArgumentException("잘못된 입력입니다.")
+        if(it.isBlank()) throw IllegalArgumentException("잘못된 입력입니다.")
+    }
+    val count = cars.size
+    if(cars.toSet().size != count) throw IllegalArgumentException("잘못된 입력입니다.")
 }
 ```
+- 입력된 차의 이름의 개수가 2개 미만인 경우 `IllegalArgumentException` 을 발생시킨 후 종료
 - 각 차의 이름의 글자 수가 5글자를 넘는 경우 `IllegalArgumentException` 을 발생시킨 후 종료
+- 차의 이름에 빈 문자가 온 경우 `IllegalArgumentException` 을 발생시킨 후 종료
+- 동일한 차의 이름이 들어온 경우 `IllegalArgumentException` 을 발생시킨 후 종료
 
-#### 입력된 시행 횟수가 숫자가 아닌 경우
+#### 입력된 시행 횟수 예외 처리
 
 ```kotlin
     val n = try {
@@ -177,6 +186,16 @@ fun checkCarsName(cars: List<String>) {
     } catch (e: NumberFormatException) {
         throw IllegalArgumentException("잘못된 입력입니다.")
     }
+    checkPositiveInteger(n)
 ```
 
 - `input` 함수에서 입력을 받을때 받은 시행 횟수가 숫자가 아닌 경우 `IllegalArgumentException` 을 발생시킨 후 종료
+- 이후 숫자인 것이 판별 되면 양수인지 체크하기 위해 `checkPositiveInteger` 함수를 실행
+
+```kotlin
+fun checkPositiveInteger(n: Int) {
+    if(n<=0) throw IllegalArgumentException("잘못된 입력입니다.")
+}
+```
+
+- 숫자 `n`이 양수가 아닌 경우 `IllegalArgumentException` 을 발생시킨 후 종료
