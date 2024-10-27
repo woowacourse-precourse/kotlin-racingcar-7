@@ -3,6 +3,8 @@ package racingcar
 import camp.nextstep.edu.missionutils.Console
 import racingcar.constants.CarException
 import racingcar.constants.GameMessage
+import racingcar.model.Attempt
+import racingcar.model.Car
 
 class CarRacingGame {
     private lateinit var cars: List<Car>
