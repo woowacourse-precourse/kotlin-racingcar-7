@@ -34,7 +34,7 @@ class CarRacing(private val view: UserInterface) {
                 throw IllegalArgumentException("Number of attempts must be greater than zero.")
             }
 
-            carArray = carName.split(",")
+            carArray = carName.split(",").map { it.trim() }
 
             for (i in carArray) {
                 if (i.length > 5) {
