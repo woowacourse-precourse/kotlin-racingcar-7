@@ -1,13 +1,17 @@
 package racingcar
 
-import racingcar.ui.GuideOutput
-import racingcar.ui.RacingCarController
-import racingcar.ui.ResultOutput
-import racingcar.ui.UserInput
+import racingcar.domain.usecase.CreateCarUseCase
+import racingcar.domain.usecase.GetWinnersUseCase
+import racingcar.domain.usecase.PlayRaceUseCase
+import racingcar.ui.*
 
 fun main() {
-    val userInput = UserInput()
-    val guideOutput = GuideOutput()
-    val resultOutput = ResultOutput()
-    RacingCarController(userInput, guideOutput, resultOutput).execute()
+    val createCarUseCase = CreateCarUseCase()
+    val getWinnersUseCase = GetWinnersUseCase()
+    val playRaceUseCase = PlayRaceUseCase()
+    val raceInputView = RacingInputView()
+    val raceResultView = RacingResultView()
+    val controller =
+        RacingCarController(raceInputView, raceResultView, createCarUseCase, getWinnersUseCase, playRaceUseCase)
+    controller.run()
 }
