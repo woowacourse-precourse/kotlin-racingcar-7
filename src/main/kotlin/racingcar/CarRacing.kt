@@ -2,21 +2,31 @@ package racingcar
 import camp.nextstep.edu.missionutils.Console.readLine
 
 class CarRacing(names: String) {
-    private val cars: List<Car> = names.split(",").map { Car(it) }
+    private val cars: List<Car>
+
+    init {
+        val carNames = names.split(",")
+        exceptForCarNamesLongerThan5Characters(carNames)
+        this.cars = carNames.map { Car(it) }
+    }
+
+    private fun exceptForCarNamesLongerThan5Characters(carNames: List<String>) {
+        if (carNames.any { it.length > 5 }) {
+            throw IllegalArgumentException("5자 이하의 자동차 이름을 입력해주세요.")
+        }
+    }
 
     fun getNamesOfCars(): List<String> {
         return cars.map { it.name }
     }
 
     private fun moveCars() {
-        for (car in cars) {
-            car.moveForwardRandomly()
-        }
-        print("\n")
+        cars.forEach { it.moveForwardRandomly() }
+        Printer.printNewLine()
     }
 
     private fun moveCarsRepeat(count: Int) {
-        print("\n실행결과\n")
+        Printer.printResultTitle()
         repeat(count) {
             moveCars()
         }
@@ -28,19 +38,19 @@ class CarRacing(names: String) {
         return championCars.joinToString(", ") { it.name }
     }
 
-    private fun printNamesOfChampions() {
+    private fun holdAnAwardsCeremony() {
         val namesOfChampions = getNamesOfChampions()
-        print("최종 우승자 : $namesOfChampions")
+        Printer.printChampions(namesOfChampions)
     }
 
     fun racing() {
         val repeatCount = inputRepeatCount()
         moveCarsRepeat(repeatCount)
-        printNamesOfChampions()
+        holdAnAwardsCeremony()
     }
 
     private fun inputRepeatCount(): Int {
-        print("시도할 횟수는 몇 회인가요?\n")
+        Printer.printInputRepeatCount()
         val repeatCount = readLine()
         return repeatCount.toInt()
     }

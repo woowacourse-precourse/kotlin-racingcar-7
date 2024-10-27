@@ -35,7 +35,7 @@ class ApplicationTest : NsTest() {
         }
     }
 
-    fun checkMovingCar(car: Car, position: Int, point: Int): Int {
+    private fun checkMovingCar(car: Car, position: Int, point: Int): Int {
         val newPosition = position + 1
         assertThat(car.position).isEqualTo(position)
         car.move(point)
@@ -51,10 +51,31 @@ class ApplicationTest : NsTest() {
         }
     }
 
-    fun checkStopedCar(car: Car, point: Int) {
+    private fun checkStopedCar(car: Car, point: Int) {
         assertThat(car.position).isEqualTo(0)
         car.move(point)
         assertThat(car.position).isEqualTo(0)
+    }
+
+    @Test
+    fun `기능 테스트`() {
+        assertRandomNumberInRangeTest(
+            {
+                run("pobi,woni", "1")
+                assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi")
+            },
+            MOVING_FORWARD, STOP
+        )
+    }
+
+    @Test
+    fun `예외 테스트`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
+            assertThrows<IllegalArgumentException> { runException("123456,b,c", "1") }
+            assertThrows<IllegalArgumentException> { runException("pobi,dominic", "1") }
+            assertThrows<IllegalArgumentException> { runException("pobi,jun,woni", "a") }
+        }
     }
 
     override fun runMain() {
