@@ -23,4 +23,19 @@ class CarTest {
         assertEquals(0, car.position)
     }
 
+    @ParameterizedTest
+    @ValueSource(ints = [1, 2, 3])
+    fun `전진이 불가능한 상태`(input: Int) {
+        val goStraight = car.isPossibleGoStraight(input)
+
+        assertEquals(false, goStraight)
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = [4, 5, 7, 9])
+    fun `전진이 가능한 상태`(input: Int) {
+        val goStraight = car.isPossibleGoStraight(input)
+
+        assertEquals(true, goStraight)
+    }
 }
