@@ -9,6 +9,7 @@ class OutputView {
 
     fun printResult(carList: List<RacingCar>) {
         carList.map { println(it) } // 각 자동차의 상태 출력
+        println() // 각 시도 결과 사이에 빈 줄 추가
     }
 
     fun printWinners(winners: List<RacingCar>) {
