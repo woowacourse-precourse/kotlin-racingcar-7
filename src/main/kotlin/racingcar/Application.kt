@@ -79,8 +79,15 @@ fun checkCarNameLength(cars : List<String>) {
 
 fun checkInputCarIsNotEmpty(inputCar : String){
     if(inputCar == ""){
-        throw IllegalArgumentException("자동차 이름을 입력해주세요")
+        throw IllegalArgumentException("자동차 이름을 입력하지 않았습니다")
     }
+}
+
+fun checkCarNameDuplication(cars : List<String>) {
+    if(cars.toSet().size != cars.size){
+        throw IllegalArgumentException("자동차 이름이 중복입니다")
+    }
+
 }
 
 fun checkCountIsNumber(inputCount : String){
@@ -100,6 +107,7 @@ fun main() {
     checkInputCarIsNotEmpty(inputCar)
     val cars : List<String> = inputCar.split(',')
     checkCarNameLength(cars)
+    checkCarNameDuplication(cars)
 
     inputView.inputCount()
     val inputCount = Console.readLine()
