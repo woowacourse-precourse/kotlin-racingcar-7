@@ -3,6 +3,8 @@ package racingcar.view
 import racingcar.model.Car
 
 class OutputView {
+    fun printStartMassage() = println(RACE_START_MSG)
+
     fun printRoundResult(carList: List<Car>) {
         val sb = StringBuilder()
         carList.forEach { car ->
@@ -19,6 +21,7 @@ class OutputView {
     private fun Car.formatRoundResult() = "$name : ${"-".repeat(moves)}"
 
     companion object {
+        private const val RACE_START_MSG = "\n실행 결과"
         private const val WINNER_MSG_FORMAT = "최종 우승자 : %s"
     }
 }

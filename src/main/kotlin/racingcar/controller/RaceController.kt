@@ -14,7 +14,7 @@ class RaceController(
 
     fun run() {
         setUp()
-        showRoundResult()
+        showRoundsResult()
         showWinnerResult()
 
         inputView.close()
@@ -30,7 +30,8 @@ class RaceController(
         race = Race(carList, rounds)
     }
 
-    private fun showRoundResult() {
+    private fun showRoundsResult() {
+        outputView.printStartMassage()
         race.play { carList ->
             outputView.printRoundResult(carList)
         }

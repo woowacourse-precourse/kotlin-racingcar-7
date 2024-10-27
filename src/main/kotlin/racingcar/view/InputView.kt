@@ -11,7 +11,6 @@ class InputView {
     fun getRounds(): String {
         println(ROUND_QUEST_MSG)
         val rounds = read()
-        println()
         return rounds
     }
 
