@@ -72,4 +72,18 @@ class RacingCar {
             throw IllegalArgumentException()
         }
     }
+
+    //레이싱 시작 함수
+    private fun run(count: Int) {
+        for (i in 0 until count) {
+            moveAllCar()
+        }
+
+    }
+
+    //모든 자동차들의 이동을 알려주는 함수
+    private fun moveAllCar() {
+        carList.map { move(it) }
+        printMove()
+    }
 }
