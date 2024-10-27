@@ -92,7 +92,6 @@ class ApplicationTest : NsTest() {
             }
         }
 
-        @Disabled
         @DisplayName("자동차 이름이 빈칸인 경우")
         @Test
         fun emptyCarNamesTest() {

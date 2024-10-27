@@ -5,8 +5,11 @@ import racingcar.model.Car
 class DataFormatter {
 
     fun getCarList(input: String): List<Car> {
-        val carNames = input.splitByDelimiter()
+        val carNames = input.splitByDelimiter().removeWhiteSpace().removeEmptyElements()
+
+        require(isNotEmptyList(carNames))
         require(validateCarNames(carNames))
+
         return carNames.toCarList()
     }
 
@@ -18,9 +21,15 @@ class DataFormatter {
         return winners.joinToString()
     }
 
-    private fun String.splitByDelimiter() = this.split(",").map { it.trim() }
+    private fun String.splitByDelimiter() = this.split(",")
 
-    private fun List<String>.toCarList(): List<Car> = this.map { Car(it, StringBuilder()) }
+    private fun List<String>.removeWhiteSpace() = this.map { it.trim() }
+
+    private fun List<String>.removeEmptyElements() = this.filter { it.isNotEmpty() }
+
+    private fun List<String>.toCarList(): List<Car> = this.map { Car(name = it) }
+
+    private fun isNotEmptyList(list: List<String>) = list.isNotEmpty()
 
     private fun validateCarNames(carNames: List<String>) = !carNames.any { it.length > 5 }
 }
