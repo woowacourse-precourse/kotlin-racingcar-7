@@ -26,6 +26,27 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `입력 공백 테스트`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,,woni") }
+        }
+    }
+
+    @Test
+    fun `시도 횟수 0회 이하 입력`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,woni","0") }
+        }
+    }
+
+    @Test
+    fun `콤마 아닌 문자 입력`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi.woni") }
+        }
+    }
+
     override fun runMain() {
         main()
     }
