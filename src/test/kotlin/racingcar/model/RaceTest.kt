@@ -44,6 +44,6 @@ class RaceTest {
         }
 
         val winners = race.getWinners()
-        assertEquals(listOf("a", "b"), winners) // "A"와 "C"가 가장 많이 이동했어야 함
+        assertEquals(listOf("a", "b"), winners)
     }
 }
