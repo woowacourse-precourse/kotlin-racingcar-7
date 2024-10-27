@@ -13,4 +13,13 @@ class UserInterface {
         val input = readLine()?.toInt()
         return input
     }
+
+    fun showRaceStart() {
+        println()
+        println("실행 결과")
+    }
+
+    fun showResult(result: List<String>) {
+        println("최종 우승자: ${result.joinToString(", ")}")
+    }
 }

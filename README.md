@@ -16,11 +16,13 @@ pobi,woni,jun
   - 잘못된 값을 입력할 경우 에러 발생
   - `시도할 횟수는 몇 회인가요?`
 
+- [x] showRaceStart : `실행 결과` 출력
+
 - [ ] printRacingCar : 전진하는 자동차 출력
     - [ ] `자동차 이름`도 같이 출력
 
-- [ ] showResult : 우승 차 출력 `최종 우승자 : ooo`
-  - [ ] 여러 명일 경우 쉼표를 이용해 구분
+- [x] showResult : 우승 차 출력 `최종 우승자 : ooo`
+  - [x] 여러 명일 경우 쉼표를 이용해 구분
 
 ## Controler
 
