@@ -38,3 +38,12 @@
 ### 6. 우승자 출력 기능
 
 - 자동차 경주 게임 완료 후 누가 우승했는지를 출력한다. 우승자가 여러 명인 경우 쉼표(,)로 구분한다.
+
+## [예외 처리 목록]
+
+- 자동차 이름이 6자 이상인 경우: IllegalArgumentException 발생
+- 자동차 이름이 빈 문자열일 경우: IllegalArgumentException 발생
+- 자동차 이름에 이모티콘이 포함되어 글자 수가 더 많게 표현되는 경우: 이모티콘의 코드 포인트 수를 계산하도록 한다.
+- 자동차 이름이 중복되는 경우: IllegalArgumentException 발생
+- 이동 횟수가 양의 정수가 아닌 경우(문자열 또는 소수 또는 음수): IllegalArgumentException 발생
+- 이동 횟수가 너무 많은 경우: 횟수 제한을 설정하고 제한을 넘길 시 IllegalArgumentException 발생
