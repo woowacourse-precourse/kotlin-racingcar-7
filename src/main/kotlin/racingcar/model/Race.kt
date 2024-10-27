@@ -3,7 +3,7 @@ package racingcar.model
 import racingcar.constants.Constants.COMMA
 
 
-class Race(carNames: String, private val tryCount: Int) {
+class Race(carNames: String, val tryCount: Int) {
     val carList = carNames.split(COMMA).map { Car(it) }
 
     fun start() {
