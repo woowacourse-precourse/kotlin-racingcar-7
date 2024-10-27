@@ -1,5 +1,9 @@
 package racingcar
 
 fun main() {
-    // TODO: 프로그램 구현
+    val start = InputHandler().startMatch()
+    val matchProgress = Racing()
+    matchProgress.registaration = start
+    val cars = matchProgress.racing()
+    Rewarding(cars).awardWinner()
 }
