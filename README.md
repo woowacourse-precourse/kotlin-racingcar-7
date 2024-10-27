@@ -53,3 +53,5 @@ pobi,woni,jun
 - [x] data class car
   - [x] val name
   - [x] var distanceCovered
+- [x] data class CarList
+  - [x] carList
