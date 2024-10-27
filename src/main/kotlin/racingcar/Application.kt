@@ -5,63 +5,68 @@ import camp.nextstep.edu.missionutils.Console
 import java.lang.NumberFormatException
 
 
-class InputView{
-    fun inputCars(){
+class InputView {
+    fun inputCars() {
         println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
     }
 
-    fun inputCount(){
+    fun inputCount() {
         println("시도할 횟수는 몇 회인가요?")
     }
 }
 
 class OutputView {
-    fun outputPrint(){
+    fun outputPrint() {
         println("실행 결과")
     }
-    fun gameResult(carName:String, movingCount: Int){
+
+    fun gameResult(carName: String, movingCount: Int) {
         println("$carName : ${"-".repeat(movingCount)}")
     }
 
-    fun winnerPrint(winners : List<String>){
+    fun winnerPrint(winners: List<String>) {
         println("최종 우승자 : ${winners.joinToString(", ")}")
 
     }
 }
 
-fun isCanGo(): Boolean {
-    return Randoms.pickNumberInRange(0,9) >= 4
+fun carsNameTrim(cars : List<String>): List<String> {
+    return cars.map { it.trim() }
 }
 
-fun gameOfOneCar(carsMoving : Array<Int>, index : Int) {
-    if(isCanGo()){
+fun isCanGo(): Boolean {
+    return Randoms.pickNumberInRange(0, 9) >= 4
+}
+
+fun gameOfOneCar(carsMoving: Array<Int>, index: Int) {
+    if (isCanGo()) {
         carsMoving[index] += 1
     }
 }
 
-fun gameOfTurn(cars : List<String>, carsMovingArray : Array<Int>, outputView : OutputView){
-    for(i in 0 until cars.count()){
+fun gameOfTurn(cars: List<String>, carsMovingArray: Array<Int>, outputView: OutputView) {
+    for (i in 0 until cars.count()) {
         gameOfOneCar(carsMovingArray, i)
         outputView.gameResult(cars[i], carsMovingArray[i])
     }
     println()
 }
 
-fun game(cars : List<String>, carsMovingArray: Array<Int>, outputView: OutputView, count : Int){
-    for (i in 0 until count){
+fun game(cars: List<String>, carsMovingArray: Array<Int>, outputView: OutputView, count: Int) {
+    for (i in 0 until count) {
         gameOfTurn(cars, carsMovingArray, outputView)
     }
 }
 
-fun getWinnerIndex(carsMoving : Array<Int>): MutableList<Int> {
-    val winners  = mutableListOf<Int>()
+fun getWinnerIndex(carsMoving: Array<Int>): MutableList<Int> {
+    val winners = mutableListOf<Int>()
     var maxNumber = 0
 
     carsMoving.forEachIndexed { idx, it ->
-        if(it == maxNumber){
+        if (it == maxNumber) {
             winners.addLast(idx)
         }
-        if(it > maxNumber){
+        if (it > maxNumber) {
             maxNumber = it
             winners.clear()
             winners.addLast(idx)
@@ -71,32 +76,33 @@ fun getWinnerIndex(carsMoving : Array<Int>): MutableList<Int> {
 }
 
 
-fun checkCarNameLength(cars : List<String>) {
-    if (!(cars.all { it -> it.count() <= 5 })){
+fun checkCarNameLength(cars: List<String>) {
+    if (!(cars.all { it -> it.count() <= 5 })) {
         throw IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다")
     }
 }
 
-fun checkInputCarIsNotEmpty(inputCar : String){
-    if(inputCar == ""){
+fun checkInputCarIsNotEmpty(inputCar: String) {
+    if (inputCar == "") {
         throw IllegalArgumentException("자동차 이름을 입력하지 않았습니다")
     }
 }
 
-fun checkCarNameDuplication(cars : List<String>) {
-    if(cars.toSet().size != cars.size){
+fun checkCarNameDuplication(cars: List<String>) {
+    if (cars.toSet().size != cars.size) {
         throw IllegalArgumentException("자동차 이름이 중복입니다")
     }
 
 }
 
-fun checkCountIsNumber(inputCount : String){
+fun checkCountIsNumber(inputCount: String) {
     try {
         inputCount.toInt()
-    }catch (e: NumberFormatException){
+    } catch (e: NumberFormatException) {
         throw IllegalArgumentException("정수만 입력가능합니다")
     }
 }
+
 
 fun main() {
     val outputView = OutputView()
@@ -105,9 +111,11 @@ fun main() {
     inputView.inputCars()
     val inputCar = Console.readLine()
     checkInputCarIsNotEmpty(inputCar)
-    val cars : List<String> = inputCar.split(',')
-    checkCarNameLength(cars)
+    var cars: List<String> = inputCar.split(',')
     checkCarNameDuplication(cars)
+    cars = carsNameTrim(cars)
+    checkCarNameLength(cars)
+
 
     inputView.inputCount()
     val inputCount = Console.readLine()
