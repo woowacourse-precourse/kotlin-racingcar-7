@@ -278,3 +278,5 @@ fun checkPositiveInteger(n: Int) {
         }
     }
 ```
+### 테스트 실행 결과
+<img width="509" alt="image" src="https://github.com/user-attachments/assets/6241fe71-e673-421b-8ac2-a6bef444f1dc">
