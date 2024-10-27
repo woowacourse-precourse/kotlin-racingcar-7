@@ -1,6 +1,6 @@
 package racingcar
 
-import kotlin.random.Random
+import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
     racingGame()
@@ -56,7 +56,7 @@ fun inputTimes(): Int {
 
 /* 전진을 결정하는 함수 */
 fun isMoving(): Boolean {
-    val randomNum = Random.nextInt(10) //0에서 9 사이의 랜덤 값 생성
+    val randomNum = Randoms.pickNumberInRange(0, 9) //0에서 9 사이의 랜덤 값 생성
 
     if (randomNum >= 4) { //랜덤 값이 4 이상이면 전진
         return true
