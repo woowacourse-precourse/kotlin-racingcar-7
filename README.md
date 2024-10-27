@@ -199,3 +199,7 @@ fun checkPositiveInteger(n: Int) {
 ```
 
 - 숫자 `n`이 양수가 아닌 경우 `IllegalArgumentException` 을 발생시킨 후 종료
+
+## 실행 결과
+
+<img width="642" alt="image" src="https://github.com/user-attachments/assets/91490109-7d28-4445-994a-5eb123e4aac2">
