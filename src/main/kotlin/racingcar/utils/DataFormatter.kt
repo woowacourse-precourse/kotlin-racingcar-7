@@ -6,10 +6,7 @@ class DataFormatter {
 
     fun getCarList(input: String): List<Car> {
         val carNames = input.splitByDelimiter().removeWhiteSpace().removeEmptyElements()
-
-        require(isNotEmptyList(carNames))
-        require(validateCarNames(carNames))
-
+        validateCarNames(carNames)
         return carNames.toCarList()
     }
 
@@ -31,5 +28,13 @@ class DataFormatter {
 
     private fun isNotEmptyList(list: List<String>) = list.isNotEmpty()
 
-    private fun validateCarNames(carNames: List<String>) = !carNames.any { it.length > 5 }
+    private fun isCarNamesLengthValid(carNames: List<String>) = !carNames.any { it.length > 5 }
+
+    private fun isUniqueCarNames(carNames: List<String>) = carNames.distinct().size == carNames.size
+
+    private fun validateCarNames(carNames: List<String>) {
+        require(isNotEmptyList(carNames))
+        require(isCarNamesLengthValid(carNames))
+        require(isUniqueCarNames(carNames))
+    }
 }

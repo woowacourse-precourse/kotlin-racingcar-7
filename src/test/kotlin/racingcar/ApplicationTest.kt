@@ -100,7 +100,6 @@ class ApplicationTest : NsTest() {
             }
         }
 
-        @Disabled
         @DisplayName("자동차 이름이 중복되는 경우")
         @Test
         fun duplicateCarNamesTest() {
