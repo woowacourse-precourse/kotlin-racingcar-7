@@ -33,7 +33,6 @@ class CarNameValidator {
         if (carNameInput.contains(SettingValue().DELIMITER) && carNameInput.split(SettingValue().DELIMITER).size == 1) {
             throw IllegalArgumentException(CarNameError().CANT_RACE_ALONE)
         }
-        println(carNameInput)
         return carNameInput
     }
 }
