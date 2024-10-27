@@ -14,8 +14,8 @@ class RacingView(private val viewModel: RacingViewModel) {
 
     init {
         startGame()
-        val result = viewModel.onCompleteValidationCheck()
-        closeGame(result)
+        val state = viewModel.playGame()
+        closeGame(state)
     }
 
     private fun startGame() {

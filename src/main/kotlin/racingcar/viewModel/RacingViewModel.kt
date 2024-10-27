@@ -39,7 +39,7 @@ class RacingViewModel(
         readyForPlayCount(playCount.toInt())
     }
 
-    fun onCompleteValidationCheck(): PlayResultState {
+    fun playGame(): PlayResultState {
         return playGround.play(state, playCount)
     }
 
