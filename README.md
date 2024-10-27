@@ -24,9 +24,34 @@
 
 ## 구현할 기능 목록
 
-- [ ] 경주할 자동차 이름, 시도할 횟수 입력
+- [x] 입력 기능
 - [ ] 차수별 랜덤 시행
 - [ ] 차수별 실행 결과 출력
 - [ ] 우승자 안내 문구 출력
 - [ ] 예외 처리
+
+## 문제 해결 과정
+
+### 입력 기능
+
+#### input 
+
+```kotlin
+fun input(): Pair<List<String>, Int> {
+    println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
+    val cars = readLine()!!.trim().split(",")
+    println("시도할 횟수는 몇 회인가요?")
+    val n = readln().toInt()
+    return Pair(cars, n)
+}
+```
+- 경주할 자동차 이름, 시도할 횟수를 `readline()`, `readln()`을 통해 입력 받음
+- `cars`, `n` 을 `Pair`로 한번에 묶어서 리턴
+
+#### main
+
+```kotlin
+val (cars, n) = input()
+```
+- 메인 함수에서 `input()` 함수를 실행하여 입력을 받아 경주할 자동차 이름, 시도할 횟수를 `cars`, `n`에 저장
 
