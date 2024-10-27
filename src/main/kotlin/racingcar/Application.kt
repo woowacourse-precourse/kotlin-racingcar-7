@@ -22,6 +22,6 @@ fun main() {
     val matches: Int = inputAdapter.changeTypeOfMatches()
 
     val raceManger = RaceManger(readyRacingCars, matches, consoleOutput)
-    raceManger.playRace()
+    raceManger.playGame()
     raceManger.findWinners()
 }

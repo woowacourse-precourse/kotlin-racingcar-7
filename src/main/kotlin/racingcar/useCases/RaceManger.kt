@@ -10,7 +10,7 @@ class RaceManger (
     private val matches: Int,
     private val output: Output,
 ){
-    fun playRace() {
+    fun playGame() {
         output.showMessage()
         repeat(matches) {
             readyRacingCars.forEach { readyRacingCar -> readyRacingCar.goOneStep(RandomNumber.pick()) }

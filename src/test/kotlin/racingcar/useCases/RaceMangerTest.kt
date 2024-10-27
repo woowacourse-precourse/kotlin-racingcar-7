@@ -25,7 +25,7 @@ class RaceMangerTest {
     @Test
     @DisplayName("자동차 게임 진행 테스트")
     fun `자동차 게임 진행 테스트`() {
-        raceManger.playRace()
+        raceManger.playGame()
         readyRacingCars.forEach { assert(it.distance >= 0) }
     }
 
