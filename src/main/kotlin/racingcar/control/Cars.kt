@@ -1,4 +1,4 @@
-import racingcar.control.CarData
+package racingcar.control
 
 class Cars {
     fun cars(carNameSeperator: List<String>): List<CarData> {

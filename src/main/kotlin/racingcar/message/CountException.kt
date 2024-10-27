@@ -1,6 +1,6 @@
-package racingcar.view
+package racingcar.message
 
-class CountError {
+class CountException {
 
     val EMPTY_COUNT = "횟수를 입력하지 않았습니다."
     val ZERO_INPUT = "0회는 할 수 없습니다."

@@ -1,10 +1,10 @@
 package racingcar.control
 
-import racingcar.view.Message
+import racingcar.message.Other
 
 class Racing(private val cars: List<CarData>, private val count: Int) {
     init {
-        println(Message().RESULT)
+        println(Other().RESULT)
     }
 
     fun repeatRacing(): List<CarData> {
@@ -21,12 +21,12 @@ class Racing(private val cars: List<CarData>, private val count: Int) {
             }
         }
         cars.forEach { c ->
-            println(c.name + Message().NAME_FORWARD_STRING_SEPARATOR + hyphensCount(c.point))
+            println(c.name + Other().NAME_FORWARD_STRING_SEPARATOR + hyphensCount(c.point))
         }
         println()
     }
 
     private fun hyphensCount(int: Int): String {
-        return Message().FORWARD_STRING.repeat(int)
+        return Other().FORWARD_STRING.repeat(int)
     }
 }

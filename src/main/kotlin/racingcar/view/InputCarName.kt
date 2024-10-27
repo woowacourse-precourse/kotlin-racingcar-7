@@ -1,8 +1,8 @@
-package racingcar.userInput
+package racingcar.view
 
 import camp.nextstep.edu.missionutils.Console
 
-class CarNameInput {
+class InputCarName {
 
     fun carNameInput(): String {
         val carNameInput = Console.readLine()

@@ -1,4 +1,4 @@
-package racingcar.control
+package racingcar.utils
 
 class SettingValue {
 

@@ -1,6 +1,6 @@
-package racingcar.view
+package racingcar.message
 
-class CarNameError {
+class CarNameException {
 
     val EMPTY_NAME = "이름을 입력하지 않았습니다."
     val ONLY_GAP = "공백만 입력할 수 없습니다."

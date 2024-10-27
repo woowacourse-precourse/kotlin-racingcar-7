@@ -1,37 +1,34 @@
 package racingcar.control
 
-import Cars
-import racingcar.userInput.CarNameInput
-import racingcar.userInput.CountInput
-import racingcar.view.Message
-import racingcar.view.Winner
-
+import racingcar.view.InputCarName
+import racingcar.view.InputCount
+import racingcar.view.OutputWinner
+import racingcar.message.Other
 
 class Race {
     fun start() {
         winnerAnnouncement()
     }
 
-    fun carList(): List<CarData> {
-        println(Message().CAR_NAME)
-        val carName = CarNameValidator().carNameValidator(CarNameInput().carNameInput())
-        val carList = Cars().cars(CarNameSeperator().carNameSeperator(carName))
-        return carList
+    private fun carList(): List<CarData> {
+        println(Other().CAR_NAME)
+        val carName = CarNameValidator().carNameValidator(InputCarName().carNameInput())
+        return Cars().cars(CarNameSeperator().carNameSeperator(carName))
     }
 
-    fun count(): Int {
-        println(Message().COUNT)
-        val count = CountValidator().countValidator(CountInput().countInput())
+    private fun count(): Int {
+        println(Other().COUNT)
+        val count = CountValidator().countValidator(InputCount().countInput())
         return count
     }
 
-    fun raceStart(): List<CarData> {
+    private fun raceStart(): List<CarData> {
         val raceOver = Racing(carList(), count()).repeatRacing()
         return raceOver
     }
 
-    fun winnerAnnouncement() {
+    private fun winnerAnnouncement() {
         val winner = WinnerSelection().winnerSelection(raceStart())
-        Winner().winner(winner)
+        OutputWinner().winner(winner)
     }
 }
