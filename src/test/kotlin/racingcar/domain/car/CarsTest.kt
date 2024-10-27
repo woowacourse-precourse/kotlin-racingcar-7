@@ -57,7 +57,7 @@ class CarsTest {
     @Test
     fun `레이싱 경주의 우승자를 확인할 수 있다`() {
         // given
-        val carRacers =    Cars(listOf(Car("lecle"), Car("hamil"), Car("pobi")))
+        val carRacers = Cars(listOf(Car("lecle"), Car("hamil"), Car("pobi")))
         val round = 3
         val expected = "lecle, pobi"
         // when
