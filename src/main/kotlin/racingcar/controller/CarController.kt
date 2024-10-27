@@ -9,7 +9,6 @@ class CarController(private val carList: CarList) {
         val carNameList = carNames.split(",")
         for (index in carNameList.indices) {
             carList.addCar(Car(carNameList[index].trim()))
-            println(carList.getCar(index).getName())
         }
     }
 
