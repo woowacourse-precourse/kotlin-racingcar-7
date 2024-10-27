@@ -5,18 +5,25 @@ class RacingGame {
     private val outputView = OutputView()
     private val validator = Validator()
     private lateinit var cars: List<Car>
+    private var tryCount: Int = 0
 
     fun startRace() {
-        val carNames = inputView.getCarNames()
-        val tryCount = inputView.getTryCount()
-
-        cars = carNames.map { Car(it) }
-
+        initializeRace()
         outputView.showRoundResultTitle()
+        repeatRounds()
+        showWinners()
+    }
+
+    private fun initializeRace() {
+        val carNames = inputView.getCarNames()
+        tryCount = inputView.getTryCount()
+        cars = carNames.map { Car(it) }
+    }
+
+    private fun repeatRounds() {
         repeat(tryCount) {
             executeRound()
         }
-        showWinners()
     }
 
     private fun executeRound() {
@@ -26,20 +33,16 @@ class RacingGame {
 
     private fun moveAllCars() {
         cars.forEach { car ->
-            moveCarIfAllowed(car)
+            if (validator.isAllowedForMove()) {
+                car.move()
+            }
             outputView.showCarPosition(car)
         }
     }
 
-    private fun moveCarIfAllowed(car: Car) {
-        if (validator.isAllowedForMove()) {
-            car.move()
-        }
-    }
-
     private fun showWinners() {
-        val maxPosition = cars.maxOf { it.position }
-        val winners = cars.filter { it.position == maxPosition }.map { it.name }
+        val maxPosition = cars.maxOf { it.getCurrentPosition() }
+        val winners = cars.filter { it.getCurrentPosition() == maxPosition }.map { it.name }
         outputView.showWinners(winners)
     }
 }
