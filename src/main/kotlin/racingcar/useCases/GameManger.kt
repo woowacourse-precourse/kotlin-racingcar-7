@@ -5,7 +5,7 @@ import racingcar.domain.RaceResult
 import racingcar.infrastructure.Output
 import racingcar.infrastructure.RandomNumber
 
-class RaceManger (
+class GameManger (
     private val readyRacingCars: List<Car>,
     private val matches: Int,
     private val output: Output,

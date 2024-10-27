@@ -4,7 +4,7 @@ import racingcar.domain.Car
 import racingcar.infrastructure.ConsoleInput
 import racingcar.infrastructure.ConsoleOutput
 import racingcar.interfaces.InputAdapter
-import racingcar.useCases.RaceManger
+import racingcar.useCases.GameManger
 
 fun main() {
     // TODO: 프로그램 구현
@@ -21,7 +21,7 @@ fun main() {
     val readyRacingCars: List<Car> = inputAdapter.changeTypeOfCar(racingCars)
     val matches: Int = inputAdapter.changeTypeOfMatches()
 
-    val raceManger = RaceManger(readyRacingCars, matches, consoleOutput)
-    raceManger.playGame()
-    raceManger.findWinners()
+    val gameManger = GameManger(readyRacingCars, matches, consoleOutput)
+    gameManger.playGame()
+    gameManger.findWinners()
 }
