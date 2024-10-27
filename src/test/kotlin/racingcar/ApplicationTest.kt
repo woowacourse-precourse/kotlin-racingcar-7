@@ -6,6 +6,7 @@ import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
+import racingcar.model.RacingCar
 
 class ApplicationTest : NsTest() {
     @Test
@@ -15,7 +16,8 @@ class ApplicationTest : NsTest() {
                 run("pobi,woni", "1")
                 assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi")
             },
-            MOVING_FORWARD, STOP
+            MOVING_FORWARD,
+            STOP,
         )
     }
 
@@ -24,6 +26,13 @@ class ApplicationTest : NsTest() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
         }
+    }
+
+    @Test
+    fun `레이싱카 전진 테스트`() {
+        val racingCar = RacingCar("apple")
+        repeat(5) { racingCar.moveForward() }
+        println(racingCar)
     }
 
     override fun runMain() {
