@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeT
 import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
@@ -12,17 +13,117 @@ class ApplicationTest : NsTest() {
     fun `기능 테스트`() {
         assertRandomNumberInRangeTest(
             {
+                run("pobi,woni", "0")
+                assertThat(output()).contains("최종 우승자 : pobi, woni")
+            },
+            MOVING_FORWARD
+        )
+
+        assertRandomNumberInRangeTest(
+            {
                 run("pobi,woni", "1")
                 assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi")
             },
             MOVING_FORWARD, STOP
         )
+
+        assertRandomNumberInRangeTest(
+            {
+                run("pobi,woni", "5")
+                assertThat(output()).contains("pobi : -----", "woni : -----", "최종 우승자 : pobi, woni")
+            },
+            MOVING_FORWARD, MOVING_FORWARD,MOVING_FORWARD, MOVING_FORWARD,MOVING_FORWARD, MOVING_FORWARD,MOVING_FORWARD, MOVING_FORWARD,MOVING_FORWARD, MOVING_FORWARD
+        )
+
+        assertRandomNumberInRangeTest(
+            {
+                run("pobi,woni", "5")
+                assertThat(output()).contains("pobi : -----", "woni : ----", "최종 우승자 : pobi")
+            },
+            MOVING_FORWARD, MOVING_FORWARD,MOVING_FORWARD, MOVING_FORWARD,MOVING_FORWARD, MOVING_FORWARD,MOVING_FORWARD, MOVING_FORWARD,MOVING_FORWARD, STOP
+        )
+
+        assertRandomNumberInRangeTest(
+            {
+                run("pobi,woni", "5")
+                assertThat(output()).contains("pobi : ", "woni : ", "최종 우승자 : pobi, woni")
+            },
+            STOP
+        )
+
+        assertRandomNumberInRangeTest(
+            {
+                run("pobi,woni, a", "5")
+                assertThat(output()).contains("pobi : -", "woni : -", " a : ", "최종 우승자 : pobi, woni")
+            },
+            MOVING_FORWARD,MOVING_FORWARD,STOP
+        )
+    }
+
+    @Test
+    @DisplayName("Car 객체 기능 테스트")
+    fun `자동차 기능 테스트`() {
+        assertSimpleTest {
+            val test = Car("a")
+
+            test.move()
+            assert(test.movedCount == 1)
+            test.move()
+            assert(test.movedCount == 2)
+
+            repeat(10000000) {
+                test.move()
+            }
+            assert(test.movedCount == 10000002)
+        }
+
+        assertSimpleTest {
+            val test = Car("a")
+
+            assert(test.roundResult == "a : ")
+
+            test.move()
+            assert(test.roundResult == "a : -")
+
+            test.move()
+            assert(test.roundResult == "a : --")
+
+            test.move()
+            assert(test.roundResult == "a : ---")
+        }
+    }
+
+    @Test
+    @DisplayName("Dice 객체 기능 테스트")
+    fun `주사위 기능 테스트`() {
+        assertSimpleTest {
+            val dice = Dice()
+            repeat(1000) {
+                assert(dice.roll() in 0..9)
+            }
+        }
     }
 
     @Test
     fun `예외 테스트`() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
+        }
+
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("d", "\n") }
+        }
+
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,,d", "1") }
+        }
+
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,d", "z") }
+        }
+
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,d", "-1") }
         }
     }
 
