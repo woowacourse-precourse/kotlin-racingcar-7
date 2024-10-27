@@ -31,8 +31,8 @@
 
 ## Controller (연산 및 흐름 제어)
 ### RacingGame.kt (controller/RacingGame.kt)
-- [ ] `InputView`를 통해 사용자 입력을 받는다.
-- [ ] `StringNamesParser`를 사용해 자동차 이름을 파싱한다.
+- [x] `InputView`를 통해 사용자 입력을 받는다.
+- [x] `StringNamesParser`를 사용해 자동차 이름을 파싱한다.
 - [ ] 시도 횟수만큼 `CarMovement`을 반복 실행한다.
 - [ ] 각 라운드 결과를 `OutputView`를 통해 레이싱 상황을 출력한다.
 - [ ] 모든 라운드가 종료된 후, `WinnerCheck`를 통해 최종 우승자를 선정한다.
@@ -40,7 +40,7 @@
 
 ## Main Application (프로그램 진입점)
 ### Application.kt
-- [ ] 프로그램의 **진입점** 역할을 한다.
+- [x] 프로그램의 **진입점** 역할을 한다.
 
 # 🔧 프로그래밍 요구 사항
 - [ ] Kotlin 1.9.24에서 실행 가능해야 한다.
