@@ -1,5 +1,7 @@
 package racingcar
 
+import kotlin.math.max
+
 var carNames:List<String> = mutableListOf<String>()
 var moveCounts:MutableList<Int> = mutableListOf<Int>()
 var tryCounts:Int = 0
@@ -61,6 +63,20 @@ fun display() {
 
 }
 
+fun defineWinner():MutableList<String> {
+	var winnerIndexList:List<Int> = mutableListOf()
+	var maxCount = moveCounts.max()
+
+	winnerIndexList = moveCounts.withIndex().filter { (_, count) -> count == maxCount }.map { it.index }
+
+
+	val winnerList:MutableList<String> = mutableListOf()
+	for (idx in winnerIndexList) {
+		winnerList.add(carNames[idx])
+	}
+
+	return winnerList
+}
 
 
 fun main() {
@@ -72,4 +88,7 @@ fun main() {
 		display()
 		print("\n")
 	}
+
+	val winners = defineWinner().joinToString(",")
+	print("최종 우승자 : $winners\n")
 }
