@@ -6,7 +6,7 @@ class OutputView {
     }
 
     fun showCarPosition(car: Car) {
-        println(Messages.CAR_POSITION_FORMAT.format(car.name, "-".repeat(car.position)))
+        println(Messages.CAR_POSITION_FORMAT.format(car.name, "-".repeat(car.getCurrentPosition())))
     }
 
     fun showRoundFooter() {
