@@ -1,11 +1,9 @@
 package racingcar
 
-class Car(val name: String) {
-
-    private var position: Int = 0
+class Car(val name: String, var position: Int = 0) {
 
     fun moving(num: Int) {
-        if (num >= 4) position++
+        if (isPossibleGoStraight(num)) position++
     }
 
     fun getStatus(): String {
@@ -16,4 +14,6 @@ class Car(val name: String) {
         }
         return status
     }
+
+    private fun isPossibleGoStraight(num: Int): Boolean = num >= 4
 }
