@@ -7,5 +7,5 @@ class Message {
     val RESULT = "실행 결과"
     val FORWARD_STRING = "-"
     val NAME_FORWARD_STRING_SEPARATOR = " : "
-    val WINNER = "최종 우승자 : "
+    val WINNER_ANNOUNCEMENT = "최종 우승자 : "
 }
