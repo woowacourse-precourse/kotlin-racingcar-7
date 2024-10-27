@@ -5,7 +5,12 @@ import racingcar.view.InputView
 
 
 object RacingController {
-    fun run(): List<String> {
+    fun run() {
+        val carNames = getCarNames()
+        val attemptCount = getAttemptCount()
+    }
+
+    private fun getCarNames(): List<String> {
         InputView.carNames()
         val namesInput = Console.readLine()
         val names = namesInput.split(",").map { it.trim() }.filter { it.isNotEmpty() }
@@ -17,5 +22,13 @@ object RacingController {
         require(names.size >= 2) { "자동차는 최소 두 대 이상이어야 합니다." }
 
         return names
+    }
+
+    private fun getAttemptCount(): Int {
+        InputView.attemptCount()
+        val attemptInput = Console.readLine()
+        val attempt = attemptInput.toIntOrNull() ?: throw IllegalArgumentException("시도 횟수는 정수여야 합니다.")
+        require(attempt >= 1) { "시도 횟수는 1 이상이어야 합니다." }
+        return attempt
     }
 }
