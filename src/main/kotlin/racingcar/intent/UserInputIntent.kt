@@ -1,6 +1,6 @@
 package racingcar.intent
 
 sealed class UserInputIntent {
-    data class EnterPlayerNameState(val userNames: String) : UserInputIntent()
-    data class EnterPlayCountState(val playCount: String) : UserInputIntent()
+    data class EnterPlayerNameIntent(val userNames: String) : UserInputIntent()
+    data class EnterPlayCountIntent(val playCount: String) : UserInputIntent()
 }

@@ -3,9 +3,9 @@ package racingcar.viewModel
 import racingcar.constans.Constants.SEPARATOR
 import racingcar.delegate.ValidationDelegator
 import racingcar.intent.UserInputIntent
+import racingcar.intent.UserInputIntent.EnterPlayerNameIntent
+import racingcar.intent.UserInputIntent.EnterPlayCountIntent
 import racingcar.PlayGround
-import racingcar.intent.UserInputIntent.EnterPlayerNameState
-import racingcar.intent.UserInputIntent.EnterPlayCountState
 import racingcar.model.CarRacingState.PlayerState
 import racingcar.model.CarRacingState.PlayResultState
 
@@ -18,12 +18,12 @@ class RacingViewModel(
 
     fun onCompleteInput(intent: UserInputIntent) {
         when (intent) {
-            is EnterPlayerNameState -> onCompleteInputPlayerNames(intent)
-            is EnterPlayCountState -> onCompleteInputPlayCount(intent)
+            is EnterPlayerNameIntent -> onCompleteInputPlayerNames(intent)
+            is EnterPlayCountIntent -> onCompleteInputPlayCount(intent)
         }
     }
 
-    private fun onCompleteInputPlayerNames(intent: EnterPlayerNameState) {
+    private fun onCompleteInputPlayerNames(intent: EnterPlayerNameIntent) {
         val userNames = intent.userNames
         validationDelegator.handleUserNameInput(userNames)
         val separatedNames = userNames
@@ -32,7 +32,7 @@ class RacingViewModel(
         readyForPlayers(separatedNames)
     }
 
-    private fun onCompleteInputPlayCount(intent: EnterPlayCountState) {
+    private fun onCompleteInputPlayCount(intent: EnterPlayCountIntent) {
         val playCount = intent.playCount
         validationDelegator.checkPlayCountIsValidNumeric(playCount)
         validationDelegator.handlePlayCountInput(playCount.toInt())
