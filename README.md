@@ -19,7 +19,7 @@
 - [X] 구현할 클래스 정의
 - [ ] Race
     - [X] field 정의
-    - [ ] ready
+    - [X] ready
     - [ ] start
     - [ ] end
 - [ ] Car
