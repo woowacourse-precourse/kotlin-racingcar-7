@@ -15,18 +15,22 @@ class Game {
     private fun inputCarNames(): List<Car> {
         println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
         val carNames = Console.readLine().split(",").map{it.trim()}
-        Exceptions.nameLengthError(carNames)
-        Exceptions.blankNameError(carNames)
-        Exceptions.duplicateNameError(carNames)
+        inputNameException(carNames)
         return carNames.map {Car(it)}
 
     }
-    // 시도할 횟수 입력 및 예외 발생
+    // 시도할 횟수 입력
     private fun inputRoundCount(): Int {
         println("시도할 횟수는 몇 회인가요?")
         val roundCount = Console.readLine().toIntOrNull()
         Exceptions.validateRoundCount(roundCount)
         return roundCount!!
+    }
+    // 입력 받은 이름의 유효성 검사
+    private fun inputNameException(carNames: List<String>) {
+        Exceptions.nameLengthError(carNames)
+        Exceptions.blankNameError(carNames)
+        Exceptions.duplicateNameError(carNames)
     }
 }
 
