@@ -3,7 +3,7 @@ package racingcar.model
 import camp.nextstep.edu.missionutils.Randoms
 
 class Race(private val carList: List<Car>) {
-    fun getRaceResult(): List<Car> {
+    fun getRoundResult(): List<Car> {
         moveCar()
         return carList
     }
