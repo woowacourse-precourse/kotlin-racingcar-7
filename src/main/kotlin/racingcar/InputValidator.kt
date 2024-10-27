@@ -10,4 +10,7 @@ class InputValidator() {
                 )
         }
     }
+
+    private fun String.isNumeric(): Boolean =
+        this.all { it.isDigit() } || (this.startsWith("-") && this.drop(1).all { it.isDigit() })
 }
