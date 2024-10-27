@@ -7,11 +7,13 @@ import camp.nextstep.edu.missionutils.Randoms
 class CarRacing(private val view: UserInterface) {
     val carList = mutableListOf<Car>()
 
-    //    fun run() {
-//        val cars = view.getCarName()
-//        val attempts = view.getNumberOfAttempts()
-//
-//    }
+    fun run() {
+        val cars = view.getCarName()
+        val attempts = view.getNumberOfAttempts()
+        if (cars == "") throw IllegalArgumentException("자동차 이름을 하나 이상 입력해주세요: null")
+        generateCarList(cars)
+
+    }
     fun generateCarList(input: String) {
         val carArray = input.split(",")
         for (i in carArray) {
@@ -19,12 +21,8 @@ class CarRacing(private val view: UserInterface) {
         }
     }
 
-    fun getRandomNumber(): Int {
-        return Randoms.pickNumberInRange(0, 9)
-    }
-
     fun driveCar(car: Car) {
-        val number = getRandomNumber()
+        val number = Randoms.pickNumberInRange(0, 9)
         if (number >= 4) {
             car.distanceCovered++
         }

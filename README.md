@@ -33,7 +33,7 @@ pobi,woni,jun
   
 - [x] simulateRace : 경주 시뮬레이션
 
-- [x] getRandomNumber : 0에서 9 사이에서 무작위 값을 구하기
+- deleted(getRandomNumber : 0에서 9 사이에서 무작위 값을 구하기)
 
 - [x] driveCar : 전진, 멈춤
   - [x] playRandom으로 구한 무작위 값이 4 이상일 경우
