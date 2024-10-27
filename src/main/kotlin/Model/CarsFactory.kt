@@ -7,7 +7,16 @@ object CarsFactory {
     }
 
     private fun validateNames(names: List<String>) {
-        if (names.any { it.length > 5 }) {
+        require(names.size > 1) {
+            throw IllegalArgumentException()
+        }
+        require(names.all { it.isNotBlank() }) {
+            throw IllegalArgumentException()
+        }
+        require(names.all { it.length <= 5 }) {
+            throw IllegalArgumentException()
+        }
+        require(names.distinct().size == names.size) {
             throw IllegalArgumentException()
         }
     }

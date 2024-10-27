@@ -10,6 +10,6 @@ object InputView {
     fun getRounds(): Int {
         println("시도할 횟수는 몇 회인가요?")
         return Console.readLine().toIntOrNull()?.takeIf { it > 0 }
-            ?: throw IllegalArgumentException("횟수는 1 이상의 정수를 입력해야 합니다.")
+            ?: throw IllegalArgumentException()
     }
 }
