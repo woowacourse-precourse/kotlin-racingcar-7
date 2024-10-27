@@ -30,6 +30,12 @@ object RacingController {
 
         require(names.size >= 2) { "자동차는 최소 두 대 이상이어야 합니다." }
 
+        val uniqueNames = names.toSet()
+        require(uniqueNames.size == names.size) {"자동차 이름은 중복될 수 없습니다."}
+
+        val namePattern = Regex("^[a-zA-Z0-9]+$")
+        require(names.all { it.matches(namePattern) }) { "자동차 이름에는 알파벳과 숫자만 사용할 수 있습니다." }
+
         return names
     }
 
