@@ -35,4 +35,23 @@ class RacingCar {
     private lateinit var carList: List<Car>
     private lateinit var winnerList: ArrayList<String>
 
+    /입력 함수
+    fun inputValue() {
+        println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
+        val carNameList = Console.readLine()
+        blankOrNullCheck(carNameList, "")
+
+        println("시도할 횟수는 몇 회인가요?")
+        val testCount = Console.readLine()
+        blankOrNullCheck("", testCount)
+    }
+
+    //입력값이 Null, Blank 검증 함수
+    private fun blankOrNullCheck(carNameList: String, testCount: String) {
+        if (carNameList.isNotBlank() || testCount.isNotBlank()) {
+        } else {
+            throw IllegalArgumentException()
+        }
+    }
+
 }
