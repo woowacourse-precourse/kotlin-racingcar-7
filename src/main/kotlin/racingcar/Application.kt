@@ -1,5 +1,9 @@
 package racingcar
 
+import camp.nextstep.edu.missionutils.Console
+import camp.nextstep.edu.missionutils.Randoms
+import kotlin.math.max
+
 /*
     - 요구사항 정리
     [] indent(인덴트, 들여쓰기) depth를 3이 넘지 않도록 구현한다. 2까지만 허용
@@ -13,10 +17,15 @@ package racingcar
     [] 전진하는 조건은 0에서 9 사이에서 무작위 값을 구한 후 무작위 값이 4 이상일 경우, 그렇지 않으면 전진 X
 
     - 예외 테스트 케이스
-    [] 자동차 이름이 쉼표로 구분되지 않을 경우
     [] 자동차 이름이 5자 이상
     [] 시도할 횟수가 정수인 경우
  */
 fun main() {
 
 }
+
+//자동차 클래스 정의
+data class Car(
+    val name: String,
+    var count: Int = 0
+)

@@ -34,4 +34,8 @@ class ApplicationTest : NsTest() {
         private const val MOVING_FORWARD: Int = 4
         private const val STOP: Int = 3
     }
-}
+
+    @Test
+    fun runsMain() {
+        assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi")
+    }}
