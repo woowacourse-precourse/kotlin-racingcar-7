@@ -9,4 +9,8 @@ class Model(val name: String) {
         return Randoms.pickNumberInRange(0, 9) >= 4
     }
 
+    fun moveCountUp() {
+        if (canMoveForward()) moveCount++
+    }
+
 }

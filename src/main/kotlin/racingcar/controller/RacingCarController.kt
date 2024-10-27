@@ -14,7 +14,7 @@ object RacingCarController {
 
         val cars = inputNames.split(",").map { it.trim() }.map { Model(it) }
 
-        raceStrat(cars, round)
+        raceStart(cars, round)
 
         val winners = identifyRaceWinners(cars)
         OutputView.outputWinners(winners)
@@ -22,7 +22,8 @@ object RacingCarController {
 
     }
 
-    fun raceStrat(cars: List<Model>, round: Int) {
+    fun raceStart(cars: List<Model>, round: Int) {
+        println()
         println("실행결과")
         repeat(round) {
             randomCarMove(cars)
@@ -34,7 +35,7 @@ object RacingCarController {
 
     fun randomCarMove(cars: List<Model>) {
         for (car in cars) {
-            if (car.canMoveForward()) car.moveCount++
+            car.moveCountUp()
         }
     }
 
