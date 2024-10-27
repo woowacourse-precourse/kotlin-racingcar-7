@@ -4,6 +4,7 @@ import org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.CsvSource
 import org.junit.jupiter.params.provider.ValueSource
 
 internal class CarNameValidatorTest {
@@ -37,4 +38,9 @@ internal class CarNameValidatorTest {
         }
     }
 
+    @ParameterizedTest
+    @CsvSource(value = ["탭  존   재 : 탭존재", "공백 존재:공백존재","둘 다   있   다:둘다있다"], delimiter = ':')
+    fun `자동차 이름에 공백이 존재한다면 제거 후 반환한다`(element: String, expected: String) {
+        Assertions.assertEquals(expected, CarNameValidator.validate(element))
+    }
 }
