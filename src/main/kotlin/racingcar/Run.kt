@@ -24,4 +24,9 @@ class Run {
         if( carNames.length < 1 && carNames.length > 5) throw IllegalArgumentException ("이름은 1자 이상 5자 이하로 입력해 주세요.")
         return true
     }
+
+    fun isValidAttemptTimes(attemptTimes: String): Boolean {
+        attemptTimes.toIntOrNull() ?: throw IllegalArgumentException("시도 횟수를 입력해 주세요.")
+        return true
+    }
 }
