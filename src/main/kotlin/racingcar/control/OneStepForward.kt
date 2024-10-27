@@ -3,6 +3,6 @@ package racingcar.control
 class OneStepForward {
     fun oneStepForward(): Boolean {
         val oneStepForward = SettingValue()
-        return RandomNumberGenerator().randomNumberGenerator()>=oneStepForward.minimumNumberToOneStepForward
+        return RandomNumberGenerator().randomNumberGenerator()>=oneStepForward.MINIMUM_NUMBER_TO_ONE_STEP_FORWARD
     }
 }
