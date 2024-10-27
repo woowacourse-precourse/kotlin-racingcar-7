@@ -31,16 +31,16 @@ pobi,woni,jun
 - [x] generateCarList
   - [x] car 객체 리스트를 만들고 초기화
   
-- [ ] simulateRace : 경주 시뮬레이션
+- [x] simulateRace : 경주 시뮬레이션
 
 - [x] getRandomNumber : 0에서 9 사이에서 무작위 값을 구하기
 
 - [x] driveCar : 전진, 멈춤
   - [x] playRandom으로 구한 무작위 값이 4 이상일 경우
 
-- [ ] compareMove
-  - [ ] val winners: List<String>
-  - [ ] 각 자동차가 얼마나 나갔는지 비교하기
+- [x] getWinner
+  - [x] val winners: List<String>
+  - [x] 각 자동차가 얼마나 나갔는지 비교하기
 
 ## Model
 - [x] data class car
