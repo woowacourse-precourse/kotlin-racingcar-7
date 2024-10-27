@@ -4,7 +4,9 @@ import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
     val (cars, n) = input()
-    race(cars,n)
+    val carsProgressCount = race(cars,n)
+    val winner = pickWinner(cars, carsProgressCount)
+    outputWinner(winner)
 }
 
 fun input(): Pair<List<String>, Int> {
@@ -15,7 +17,7 @@ fun input(): Pair<List<String>, Int> {
     return Pair(cars, n)
 }
 
-fun race(cars: List<String>, n: Int) {
+fun race(cars: List<String>, n: Int): Array<Int> {
     val carsProgressCount = Array(cars.size){0}
     repeat(n){
         for(i in carsProgressCount.indices){
@@ -23,6 +25,7 @@ fun race(cars: List<String>, n: Int) {
         }
         outputProgress(cars,carsProgressCount)
     }
+    return carsProgressCount
 }
 
 fun randomPick(): Int {
@@ -40,4 +43,23 @@ fun outputProgress(cars: List<String>, carsProgressCount: Array<Int>) {
         }
         println()
     }
+}
+
+fun pickWinner(cars: List<String>, carsProgressCount: Array<Int>): String {
+    val winner = mutableListOf<String>()
+    var max = 0
+    for(i in carsProgressCount.indices){
+        if(max < carsProgressCount[i]){
+            winner.clear()
+            winner.add(cars[i])
+            max = carsProgressCount[i]
+        }else if(max == carsProgressCount[i]){
+            winner.add(cars[i])
+        }
+    }
+    return winner.joinToString(", ")
+}
+
+fun outputWinner(winner: String) {
+    println("\n최종 우승자 : $winner")
 }

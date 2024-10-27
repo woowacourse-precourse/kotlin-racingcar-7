@@ -27,7 +27,7 @@
 - [x] 입력 기능
 - [x] 차수별 랜덤 시행
 - [x] 차수별 실행 결과 출력
-- [ ] 우승자 안내 문구 출력
+- [x] 우승자 안내 문구 출력
 - [ ] 예외 처리
 
 ## 문제 해결 과정
@@ -60,7 +60,7 @@ val (cars, n) = input()
 #### race
 
 ```kotlin
-fun race(cars: List<String>, n: Int) {
+fun race(cars: List<String>, n: Int): Array<Int> {
     val carsProgressCount = Array(cars.size){0}
     repeat(n){
         for(i in carsProgressCount.indices){
@@ -68,12 +68,14 @@ fun race(cars: List<String>, n: Int) {
         }
         outputProgress(cars,carsProgressCount)
     }
+    return carsProgressCount
 }
 ```
 
 - 차들의 전진 횟수를 저장 할 `carsProgressCount` 배열 선언
 - 시행 횟수인 `n` 번 만큼 각 차들에 대해 `randomPick()` 을 진행한 후 `carsProgressCount` 배열에 전진 여부를 저장
 - 각 차수별로 `outputProgress()` 함수를 통해 진행 상황을 출력
+- 경기가 완료된 후에는 최종적인 진행 상황을 담은 `carsProgressCount` 배열을 리턴
 
 #### randomPick
 
@@ -106,3 +108,46 @@ fun outputProgress(cars: List<String>, carsProgressCount: Array<Int>) {
 ```
 - 출력 형식에 맞게 각 차들의 이름이 담긴 리스트인 `cars` 와 각 차들의 진행 상황이 담긴 배열인 `carsProgressCount`를 출력
 
+### 우승자 안내 문구 출력
+
+#### main
+
+```kotlin
+    val winner = pickWinner(cars, carsProgressCount)
+    outputWinner(winner)
+```
+- `pickWinner` 함수를 통해 우승자를 구한 후 `winner` 변수에 저장
+- 저장된 우승자를 `outputWinner` 함수를 통해 출력
+
+#### pickWinner
+
+```kotlin
+fun pickWinner(cars: List<String>, carsProgressCount: Array<Int>): String {
+    val winner = mutableListOf<String>()
+    var max = 0
+    for(i in carsProgressCount.indices){
+        if(max < carsProgressCount[i]){
+            winner.clear()
+            winner.add(cars[i])
+            max = carsProgressCount[i]
+        }else if(max == carsProgressCount[i]){
+            winner.add(cars[i])
+        }
+    }
+    return winner.joinToString(", ")
+}
+```
+
+- 최종 진행 상황인 `carsProgressCount` 배열을 통해 가장 많이 전진한 차를 구함
+- 가장 많이 전진한 차는 `winner` 리스트에 저장
+- 저장된 `winner` 리스트를 `joinToString` 함수를 통해 스트링으로 변환후 리턴
+
+#### outputWinner
+
+```kotlin
+fun outputWinner(winner: String) {
+    println("\n최종 우승자 : $winner")
+}
+```
+
+- 출력 형식에 맞게 우승차를 출력
