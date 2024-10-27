@@ -16,9 +16,7 @@ class Car(name: String, position: Int = 0) {
     }
 
     fun move(point: Int) {
-        if (point >= 4) {
-            this.position += 1
-        }
+        this.position += if (point >= 4) 1 else 0
         printPosition()
     }
 
