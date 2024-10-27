@@ -2,9 +2,17 @@ package racingcar
 
 data class Car(
     val name: String,
-    var position: Int = 0,
+    private val initialPosition: Int = INITIAL_POSITION
 ) {
+    private var currentPosition = initialPosition
+
     fun move() {
-        position++
+        currentPosition++
+    }
+
+    fun getCurrentPosition(): Int = currentPosition
+
+    companion object {
+        private const val INITIAL_POSITION = 0
     }
 }
