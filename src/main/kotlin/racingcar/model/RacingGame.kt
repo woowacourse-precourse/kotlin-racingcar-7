@@ -23,12 +23,7 @@ class RacingGame {
     }
 
     fun createCars(names: List<String>): Map<String, Car> {
-        names.forEach { name ->
-            if (cars.containsKey(name)) {
-                throw IllegalArgumentException()
-            }
-            cars[name] = Car()
-        }
+        names.forEach { cars[it] = Car() }
         return cars
     }
 
