@@ -1,14 +1,22 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Randoms
-import racingcar.Strings.ERROR_NAME_LENGTH
 import racingcar.Strings.ERROR_DUPLICATE_NAME
 import racingcar.Strings.ERROR_INVALID_TRY_COUNT
+import racingcar.Strings.ERROR_NAME_CONTAINS_SPACES
+import racingcar.Strings.ERROR_NAME_LENGTH
 
 class Validator {
-    fun validateNameLength(carNames: List<String>) {
-        if (carNames.any { it.isEmpty() || it.length > MAX_NAME_LENGTH }) {
-            throw IllegalArgumentException(ERROR_NAME_LENGTH)
+    fun validateCarNamesLength(carNames: List<String>) {
+        carNames.forEach { carName ->
+            when {
+                carName.trim().isEmpty() -> {
+                    throw IllegalArgumentException(ERROR_NAME_CONTAINS_SPACES)
+                }
+                carName.trim().length > MAX_NAME_LENGTH -> {
+                    throw IllegalArgumentException(ERROR_NAME_LENGTH)
+                }
+            }
         }
     }
 
