@@ -16,6 +16,7 @@ class MainController {
 
         val raceCountString = consoleView.inputRaceCount()
         val raceCount = RaceCountValidator.validatePositiveInteger(raceCountString) // 경주(이동) 횟수가 양의 정수인지 유효성 검사 후 정수 반환
+        RaceCountValidator.validateNumberSize(raceCount) // 경주 횟수 제한
         raceController.setRaceCount(raceCount)
 
         raceController.race()
