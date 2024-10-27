@@ -22,7 +22,7 @@ class CarRacing(private val view: UserInterface) {
         view.showResult(winner)
     }
 
-    private fun handleInput(): Pair<CarList, Int> {
+    public fun handleInput(): Pair<CarList, Int> {
         val carName = view.getCarName()
         val attempts: Int
         val carArray: List<String>
@@ -39,7 +39,7 @@ class CarRacing(private val view: UserInterface) {
             for (i in carArray) {
                 if (i.length > 5) {
                     throw IllegalArgumentException("Car name cannot exceed 5 characters.")
-                } else if (i.isBlank()) {
+                } else if (i.equals("")) {
                     throw IllegalArgumentException("Car name cannot be blank.")
                 } else if (!i.matches(Regex("^[a-zA-Z]+$"))) {
                     throw IllegalArgumentException("Car name must contain only alphabetic characters.")
@@ -52,7 +52,6 @@ class CarRacing(private val view: UserInterface) {
         val cars = CarList(generateCarList(carArray))
         return Pair(cars, attempts)
     }
-
 
     private fun generateCarList(carArray: List<String>): List<Car> {
 

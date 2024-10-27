@@ -28,6 +28,6 @@ class UserInterface {
     }
 
     fun showResult(result: List<String>) {
-        println("최종 우승자: ${result.joinToString(", ")}")
+        println("최종 우승자 : ${result.joinToString(", ")}")
     }
 }
