@@ -19,8 +19,8 @@ class CarRacingGame {
         // attemptCount만큼 반복하면서
         // 자동자 객체 별로 shouldMove와 moveForwardIfPossible 실행 -> printRaceStatus 출력
         repeat(attemptCount) {
-            // raceRound()
-            // printRaceStatus()
+             raceRound()
+//             printRaceStatus()
         }
         // printWinners()
     }
@@ -44,7 +44,11 @@ class CarRacingGame {
         return count
     }
 
-    // raceRound()
+    private fun raceRound() {
+        cars.forEach { car ->
+            car.moveForwardIfPossible()
+        }
+    }
 
     // printRaceStatus()
 
