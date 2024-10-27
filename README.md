@@ -37,6 +37,6 @@
   - [ ] 각 자동차가 얼마나 나갔는지 비교하기
 
 ## Model
-- [ ] data class car
-  - [ ] val name
-  - [ ] var distanceCovered
+- [x] data class car
+  - [x] val name
+  - [x] var distanceCovered
