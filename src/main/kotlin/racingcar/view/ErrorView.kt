@@ -1,6 +1,6 @@
 package racingcar.view
 
-object ErrorView{
+object ErrorView {
     fun errorMessage(message: String) {
         println(message)
     }
