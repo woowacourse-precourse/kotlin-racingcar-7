@@ -86,4 +86,12 @@ class RacingCar {
         carList.map { move(it) }
         printMove()
     }
+
+    //자동차 이동 함수
+    private fun move(car: Car) {
+        when(Randoms.pickNumberInRange(0, 9)){
+            in 0..4 -> return
+            else -> car.count++
+        }
+    }
 }
