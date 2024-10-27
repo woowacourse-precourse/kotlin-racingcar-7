@@ -6,9 +6,9 @@ import camp.nextstep.edu.missionutils.Randoms
 class Game {
     // 게임 시작
     fun start() {
-        val carNames = inputCarNames()
+        val cars = inputCarNames()
         val roundCount = inputRoundCount()
-        val race= Race(carNames, roundCount)
+        val race= Race(cars, roundCount)
         race.runStart()
     }
     // 자동차 이름 입력
@@ -17,7 +17,6 @@ class Game {
         val carNames = Console.readLine().split(",").map{it.trim()}
         inputNameException(carNames)
         return carNames.map {Car(it)}
-
     }
     // 시도할 횟수 입력
     private fun inputRoundCount(): Int {
