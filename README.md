@@ -23,7 +23,7 @@
     - [ ] start
     - [ ] end
 - [ ] Car
-    - [ ] field 정의
+    - [X] field 정의
     - [ ] move
     - [ ] printResult
 - [ ] 리펙토링
