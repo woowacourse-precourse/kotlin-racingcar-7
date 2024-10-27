@@ -25,10 +25,10 @@ class Organizer {
 
     private fun validateCarNames(appliedCars: List<String>) {
         if (judge.isDuplicatedCarNames(appliedCars)) {
-            outputView.printErrorMessage("경주에 등록할 자동차 이름은 중복될 수 없습니다.")
+            throw IllegalArgumentException("경주에 등록할 자동차 이름은 중복될 수 없습니다.")
         }
         if (!appliedCars.all { judge.isValidCarName(it) }) {
-            outputView.printErrorMessage("경주에 등록할 자동차 이름은 공백을 포함할 수 없으며, 5자 이하여야 합니다.")
+            throw IllegalArgumentException("경주에 등록할 자동차 이름은 공백을 포함할 수 없으며, 5자 이하여야 합니다.")
         }
     }
 
@@ -42,12 +42,12 @@ class Organizer {
 
     private fun validateRaceCount(raceCount: String) {
         if (!judge.isValidRaceCount(raceCount)) {
-            outputView.printErrorMessage("경주 횟수는 최소 1회 이상이며, 정수만 입력 가능합니다.")
+            throw IllegalArgumentException("경주 횟수는 최소 1회 이상이며, 정수만 입력 가능합니다.")
         }
     }
 
     private fun startRace(raceCars: List<Car>, raceCount: String) {
-        var updatedRaceCars: List<Car> = raceCars
+        var updatedRaceCars = raceCars
         outputView.printNotice("실행 결과")
 
         for (race in 0 until raceCount.toInt()) {
