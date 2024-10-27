@@ -18,7 +18,7 @@ class Organizer {
 
     private fun inputCarNames(): List<String> {
         outputView.printNotice("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
-        val appliedCars: List<String> = inputView.inputCarNames()
+        val appliedCars = inputView.inputCarNames()
 
         validateCarNames(appliedCars)
         return appliedCars
@@ -52,14 +52,14 @@ class Organizer {
         outputView.printNotice("실행 결과")
 
         for (race in 0 until raceCount.toInt()) {
-            updatedRaceCars = playOneRace(updatedRaceCars)
+            updatedRaceCars = updateRaceProgress(updatedRaceCars)
             outputView.printNotice("")
         }
 
         endRace(updatedRaceCars)
     }
 
-    private fun playOneRace(raceCars: List<Car>): List<Car> {
+    private fun updateRaceProgress(raceCars: List<Car>): List<Car> {
         val updatedRaceCars: MutableList<Car> = raceCars.toMutableList()
         raceCars.forEachIndexed { index, car ->
             val randomValue = pickNumberInRange(0, 9)
