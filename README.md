@@ -24,7 +24,7 @@
     - [ ] end
 - [ ] Car
     - [X] field 정의
-    - [ ] move
+    - [X] move
     - [ ] printResult
 - [ ] 리펙토링
 
