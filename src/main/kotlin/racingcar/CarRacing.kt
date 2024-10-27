@@ -2,7 +2,15 @@ package racingcar
 import camp.nextstep.edu.missionutils.Console.readLine
 
 class CarRacing(names: String) {
-    private val cars: List<Car> = names.split(",").map { Car(it) }
+    private val cars: List<Car>
+
+    init {
+        val carNames = names.split(",")
+        if (carNames.any { it.length > 5 }) {
+            throw IllegalArgumentException("5자 이하의 자동차 이름을 입력해주세요.")
+        }
+        this.cars = carNames.map { Car(it) }
+    }
 
     fun getNamesOfCars(): List<String> {
         return cars.map { it.name }
