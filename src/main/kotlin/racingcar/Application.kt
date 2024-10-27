@@ -13,8 +13,7 @@ class CarRacingGame {
 
     fun startRace() {
         cars = getCarNames()
-
-        // attemptCount에 getAttemptCount()으로 시도 횟수 입력 받기
+        attemptCount = getAttemptCount()
 
         println("실행 결과")
         // attemptCount만큼 반복하면서
@@ -35,7 +34,15 @@ class CarRacingGame {
         return names.map { Car(it) }
     }
 
-    // getAttemptCount()
+    private fun getAttemptCount(): Int {
+        println("시도할 횟수는 몇 회인가요?")
+        val input = Console.readLine()
+        val count = input.toIntOrNull() ?: throw IllegalArgumentException("횟수는 숫자여야 합니다.")
+        require(count > 0) {
+            throw IllegalArgumentException("횟수는 0보다 커야 합니다.")
+        }
+        return count
+    }
 
     // raceRound()
 
