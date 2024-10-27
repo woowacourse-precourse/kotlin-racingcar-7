@@ -3,9 +3,9 @@ package racingcar.view
 import racingcar.model.Car
 
 class OutputView {
-    fun printRoundResult(carResult: List<Car>) {
+    fun printRoundResult(carList: List<Car>) {
         val sb = StringBuilder()
-        carResult.forEach {  car ->
+        carList.forEach { car ->
             sb.appendLine(car.formatRoundResult())
         }
         println(sb)
