@@ -1,7 +1,7 @@
 package racingcar.useCases
 
 import racingcar.domain.Car
-import racingcar.domain.RaceResult
+import racingcar.domain.GameResult
 import racingcar.infrastructure.Output
 import racingcar.infrastructure.RandomNumber
 
@@ -18,11 +18,11 @@ class GameManger (
         }
     }
 
-    fun findWinners(): RaceResult {
+    fun findWinners(): GameResult {
         val maxDistance: Int = readyRacingCars.maxOf { it.distance }
         val winners: List<Car> = readyRacingCars.filter { it.distance == maxDistance }
         val winnersName: List<String> = winners.map{ it.name }
         output.showWinners(winnersName)
-        return RaceResult(winnersName)
+        return GameResult(winnersName)
     }
 }

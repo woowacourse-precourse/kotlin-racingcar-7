@@ -1,5 +1,5 @@
 package racingcar.domain
 
-data class RaceResult(
+data class GameResult(
     val winners: List<String>
 )
