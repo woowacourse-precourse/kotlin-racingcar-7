@@ -1,12 +1,20 @@
 package racingcar.controller
 
+import racingcar.model.Car
+import racingcar.service.RaceGameService
 import racingcar.view.RaceGameView
 
 class RaceGameController(
     private val raceGameView: RaceGameView,
+    private val raceGameService: RaceGameService
 ) {
     fun startRaceProcess() {
         val carNames: String = raceGameView.inputCarNames()
         val tryCount: Int = raceGameView.inputTryCount()
+        conductRace(carNames, tryCount)
+    }
+
+    private fun conductRace(carNames: String, tryCount: Int) {
+        val raceCars: List<Car> = raceGameService.setupCars(carNames)
     }
 }
