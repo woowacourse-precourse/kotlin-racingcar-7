@@ -1,6 +1,7 @@
 package racingcar
 
 class Validator {
+
     fun isDuplicatedCarNames(appliedCars: List<String>): Boolean {
         return appliedCars.distinct().size != appliedCars.size
     }
