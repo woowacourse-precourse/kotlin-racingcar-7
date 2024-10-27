@@ -27,7 +27,9 @@ class Race(
         }
     }
 
-    fun end() {}
+    fun end() {
+        println("최종 우승자 : ${getWinner().joinToString(", ")}")
+    }
 
     private fun examineName(input: String?): List<Car> {
         if (input.isNullOrBlank()) throw IllegalArgumentException()
@@ -48,7 +50,8 @@ class Race(
     }
 
     private fun getWinner(): List<String> {
-        return listOf<String>()
+        var max = cars.maxOf { it.getPosition() }
+        return cars.filter { it.getPosition() == max }.map { it.getName() }
     }
 
     companion object {}

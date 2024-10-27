@@ -17,12 +17,12 @@
 - [X] 테스트 코드 작성
 - [X] 요구사항 정리
 - [X] 구현할 클래스 정의
-- [ ] Race
+- [X] Race
     - [X] field 정의
     - [X] ready
     - [X] start
-    - [ ] end
-- [ ] Car
+    - [X] end
+- [X] Car
     - [X] field 정의
     - [X] move
     - [X] printResult
