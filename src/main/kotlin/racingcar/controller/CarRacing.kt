@@ -1,24 +1,29 @@
 package racingcar.controller
 
 import racingcar.model.Car
+import racingcar.model.CarList
 import racingcar.view.UserInterface
 import camp.nextstep.edu.missionutils.Randoms
 
 class CarRacing(private val view: UserInterface) {
-    val carList = mutableListOf<Car>()
 
     fun run() {
-        val cars = view.getCarName()
+        val carName = view.getCarName()
         val attempts = view.getNumberOfAttempts()
-        if (cars == "") throw IllegalArgumentException("자동차 이름을 하나 이상 입력해주세요: null")
-        generateCarList(cars)
+        val cars = CarList(generateCarList(carName))
+        for( i in 0 until attempts){
+            simulateRace(cars)
+            //view.printRacingCar(car)
+        }
 
     }
-    fun generateCarList(input: String) {
+    fun generateCarList(input: String): List<Car> {
         val carArray = input.split(",")
+        val cars = mutableListOf<Car>()
         for (i in carArray) {
-            carList.add(Car(i, 0))
+            cars.add(Car(i, 0))
         }
+        return cars
     }
 
     fun driveCar(car: Car) {
@@ -28,19 +33,19 @@ class CarRacing(private val view: UserInterface) {
         }
     }
 
-    fun simulateRace() {
-        for (i in carList) {
+    fun simulateRace(cars: CarList) {
+        for (i in cars.carList) {
             driveCar(i)
         }
     }
 
-    fun getWinner(): List<String> {
+    fun getWinner(cars: CarList): List<String> {
         var max = 0
-        for (i in carList) {
+        for (i in cars.carList) {
             max = if(i.distanceCovered>max) i.distanceCovered else max
         }
         val winners = mutableListOf<String>()
-        for(i in carList){
+        for(i in cars.carList){
             if(i.distanceCovered == max){
                 winners.add(i.name)
             }
