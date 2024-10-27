@@ -17,11 +17,6 @@ class Car(name: String, position: Int = 0) {
 
     fun move(point: Int) {
         this.position += if (point >= 4) 1 else 0
-        printPosition()
-    }
-
-    private fun printPosition() {
-        val positionString = "-".repeat(this.position)
-        print("$name : $positionString\n")
+        Printer.printPosition(this.name, this.position)
     }
 }

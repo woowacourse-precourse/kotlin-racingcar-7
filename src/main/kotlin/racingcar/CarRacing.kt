@@ -24,11 +24,11 @@ class CarRacing(names: String) {
         for (car in cars) {
             car.moveForwardRandomly()
         }
-        print("\n")
+        Printer.printNewLine()
     }
 
     private fun moveCarsRepeat(count: Int) {
-        print("\n실행결과\n")
+        Printer.printResultTitle()
         repeat(count) {
             moveCars()
         }
@@ -40,19 +40,19 @@ class CarRacing(names: String) {
         return championCars.joinToString(", ") { it.name }
     }
 
-    private fun printNamesOfChampions() {
+    private fun holdAnAwardsCeremony() {
         val namesOfChampions = getNamesOfChampions()
-        print("최종 우승자 : $namesOfChampions")
+        Printer.printChampions(namesOfChampions)
     }
 
     fun racing() {
         val repeatCount = inputRepeatCount()
         moveCarsRepeat(repeatCount)
-        printNamesOfChampions()
+        holdAnAwardsCeremony()
     }
 
     private fun inputRepeatCount(): Int {
-        print("시도할 횟수는 몇 회인가요?\n")
+        Printer.printInputRepeatCount()
         val repeatCount = readLine()
         return repeatCount.toInt()
     }
