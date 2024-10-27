@@ -35,13 +35,6 @@ class Game {
 
 // 경주 진행 클래스
 class Race(private val cars: List<Car>, private val roundCount: Int) {
-    // 횟수만큼 경주 반복
-    fun runStart() {
-        repeat(roundCount) {
-            raceOnce()
-        }
-        announceWinner()
-    }
     // 한 라운드의 경주 진행
     private fun raceOnce() {
         for (car in cars) {
@@ -50,11 +43,12 @@ class Race(private val cars: List<Car>, private val roundCount: Int) {
         }
         println()
     }
-    // 최종 우승자 발표
-    private fun announceWinner() {
-        val longest = findLongest()
-        val winners = findWinners(longest)
-        println("최종 우승자 : ${winners.joinToString(", ")}")
+    // 횟수만큼 경주 반복
+    fun runStart() {
+        repeat(roundCount) {
+            raceOnce()
+        }
+        announceWinner()
     }
     // 가장 멀리 이동한 거리 찾기
     private fun findLongest(): Int {
@@ -64,9 +58,15 @@ class Race(private val cars: List<Car>, private val roundCount: Int) {
     private fun findWinners(longest: Int): List<String> {
         return cars.filter {it.getMoveDistance()==longest}.map { it.name }
     }
+    // 최종 우승자 발표
+    private fun announceWinner() {
+        val longest = findLongest()
+        val winners = findWinners(longest)
+        println("최종 우승자 : ${winners.joinToString(", ")}")
+    }
 }
 
-// 각 자동차를 나타냄
+// 각 자동차의 정보
 data class Car(val name: String, var move: String = "") {
     // 자동차 움직이는 기능
     fun move() {
