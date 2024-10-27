@@ -26,5 +26,6 @@ class RaceGameController(
         }
 
         val winningResults: List<WinnerResultDto> = raceGameService.findWinners(raceCars)
+        raceGameView.printRaceGameWinners(winningResults)
     }
 }
