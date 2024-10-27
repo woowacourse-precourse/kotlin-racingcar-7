@@ -8,12 +8,12 @@ class CreateCarUseCase {
     fun execute(input: String): List<Car> {
         val carNames = input.split(DELIMITER)
         validateCarNames(carNames)
-        return carNames.map { name -> createCarWithName(name) }
+        return carNames.map { name -> createCar(name) }
     }
 
-    private fun createCarWithName(name: String): Car {
-        val processedName = if (name.trim().isEmpty()) "$ANONYMITY${anonymityCount++}" else name
-        return Car(processedName)
+    private fun createCar(name: String): Car {
+        if (name.trim().isEmpty()) return Car("$ANONYMITY${anonymityCount++}")
+        return Car(name)
     }
 
     private fun validateCarNames(carNames: List<String>) = carNames.forEach { name ->
