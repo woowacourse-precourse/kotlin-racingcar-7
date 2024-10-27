@@ -9,7 +9,7 @@ class CarNameValidator {
         if (carNameInput.isBlank()) {
             throw IllegalArgumentException(CarNameError().carNameBlank)
         }
-        if (carNameInput.all{it.toString() == SettingValue().delimiters }) {
+        if (carNameInput.all { it.toString() == SettingValue().delimiters }) {
             throw IllegalArgumentException(CarNameError().onlyDelimiters)
         }
 
@@ -20,7 +20,6 @@ class CarNameValidator {
                 throw IllegalArgumentException(CarNameError().carNameOverFive)
             }
         }
-
         if (!carNameInput.contains(SettingValue().delimiters) || carName.count() == 1) {
             throw IllegalArgumentException(CarNameError().notCompetitor)
         }
