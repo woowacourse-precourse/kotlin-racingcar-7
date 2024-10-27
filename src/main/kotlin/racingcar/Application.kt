@@ -33,6 +33,10 @@ fun getTryCounts() {
 	try {
 		println("시도할 횟수는 몇 회인가요?")
 		tryCounts = camp.nextstep.edu.missionutils.Console.readLine().toInt()
+
+		if (tryCounts < 0) {
+			throw IllegalArgumentException("양수를 입력해주세요")
+		}
 	} catch (exception:NumberFormatException) {
 		throw IllegalArgumentException("숫자를 입력해주세요")
 	}
@@ -68,7 +72,6 @@ fun defineWinner():MutableList<String> {
 	var maxCount = moveCounts.max()
 
 	winnerIndexList = moveCounts.withIndex().filter { (_, count) -> count == maxCount }.map { it.index }
-
 
 	val winnerList:MutableList<String> = mutableListOf()
 	for (idx in winnerIndexList) {
