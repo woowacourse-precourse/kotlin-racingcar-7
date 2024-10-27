@@ -31,9 +31,14 @@ fun main() {
         validateNameUniqueness(input)
     }
 
-    fun readTrialCount(): Int {
+    fun validateCountIsNumeric(countInput: String) {
+        if (countInput.toIntOrNull() == null) throw IllegalArgumentException("올바른 숫자가 아닙니다.")
+    }
+
+    fun readTrialCount() {
         println("시도할 횟수는 몇 회인가요?")
-        return Console.readLine().toInt()
+        val input = Console.readLine()
+        validateCountIsNumeric(input)
     }
 
     println(readCarNames())
