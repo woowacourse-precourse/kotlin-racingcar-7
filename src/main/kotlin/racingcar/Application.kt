@@ -20,7 +20,7 @@ fun main() {
     }
 
     fun validateNameUniqueness(cars: List<String>) {
-        if (setOf(cars).size < cars.size) throw IllegalArgumentException("중복된 자동차 이름이 있습니다.")
+        if (cars.toSet().size < cars.size) throw IllegalArgumentException("중복된 자동차 이름이 있습니다.")
     }
 
     fun readCarNames() {
