@@ -1,5 +1,6 @@
 package racingcar.controller
 
+import racingcar.validator.Validator
 import racingcar.view.InputView
 
 class RacingCarController {
@@ -19,5 +20,17 @@ class RacingCarController {
 
         playRacing()
         printWinners()
+    }
+
+    private fun getInput(): List<String> {
+        val carNames = inputView.getCarNames()
+        Validator.validateCarNames(carNames)
+        return carNames.split(",")
+    }
+
+    private fun getTryCount(): Int {
+        val tryCount = inputView.getTryCount()
+        Validator.validateTryCount(tryCount)
+        return tryCount.toInt()
     }
 }
