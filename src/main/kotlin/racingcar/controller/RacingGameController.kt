@@ -11,26 +11,27 @@ class Controller {
 
     fun start() {
         outputView.showPrompt("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
-        val names = inputView.getInput()
-        racingGame.splitToList(names)
-        if (!racingGame.isValidName(names)) {
+        val input = inputView.getInput()
+        val nameList = racingGame.splitToList(input)
+        if (!racingGame.isValidName(nameList)) {
             throw IllegalArgumentException()
         }
 
         outputView.showPrompt("시도할 횟수는 몇 회인가요?")
-        val round = inputView.getInput()
-        if (!racingGame.isValidNaturalNumber(round)) {
+        val inputNumber = inputView.getInput()
+        if (!racingGame.isNaturalNumber(inputNumber)) {
             throw IllegalArgumentException()
         }
 
-        racingGame.createCars()
+        val cars = racingGame.createCars(nameList)
+        val round = inputNumber.toInt()
 
         outputView.showPrompt("실행 결과")
-        repeat(round.toInt()) {
-            racingGame.getNameList().forEach {
-                racingGame.play(it)
-                val score = racingGame.getScore(it)
-                outputView.displayRacingProgress(it, score)
+        repeat(round) {
+            cars.forEach {
+                racingGame.play(it.key)
+                val scoreSymbol = racingGame.getScoreSymbol(it.key)
+                outputView.displayRacingProgress(it.key, scoreSymbol)
             }
         }
         val winner = racingGame.getWinner()
