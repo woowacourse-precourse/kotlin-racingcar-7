@@ -1,6 +1,7 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Console.readLine
+import camp.nextstep.edu.missionutils.Randoms.pickNumberInRange
 
 fun main() {
     val carMap = mutableMapOf<String, Int>()
@@ -13,4 +14,13 @@ fun main() {
 
     println("시도할 횟수는 몇 회인가요?")
     val attemptNumber = readLine().toInt() // TODO : 위치 변경?
+
+    for (i in 0 until attemptNumber) {
+        carMap.forEach { key, value ->
+            if (pickNumberInRange(0,9) >= 4) {
+                carMap[key] = value + 1
+            }
+        }
+    }
+
 }
