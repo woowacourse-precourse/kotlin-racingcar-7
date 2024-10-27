@@ -20,6 +20,25 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
+    fun `기능 테스트2`() {
+        assertRandomNumberInRangeTest(
+            {
+                run("pobi,woni,jun,john", "3")
+                assertThat(output()).contains(
+                    "pobi : -", "pobi : --", "pobi : ---",
+                    "woni : -", "woni : --",
+                    "jun : -", "jun : --",
+                    "john : -", "john : --", "john : ---",
+                    "최종 우승자 : pobi, john"
+                )
+            },
+            MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD,
+            MOVING_FORWARD, STOP, MOVING_FORWARD, MOVING_FORWARD,
+            MOVING_FORWARD, MOVING_FORWARD, STOP, MOVING_FORWARD,
+        )
+    }
+
+    @Test
     fun `예외 테스트`() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
