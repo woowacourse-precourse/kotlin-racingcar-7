@@ -8,9 +8,9 @@ class InputView {
         return read()
     }
 
-    fun getRounds(): Int {
+    fun getRounds(): String {
         println(ROUND_QUEST_MSG)
-        val rounds = read().toIntOrNull() ?: throw IllegalArgumentException()
+        val rounds = read()
         println()
         return rounds
     }
