@@ -29,3 +29,10 @@ data class Car(
     val name: String,
     var count: Int = 0
 )
+
+//레이싱 게임의 프로퍼티, 메소드를 포함한 클래스
+class RacingCar {
+    private lateinit var carList: List<Car>
+    private lateinit var winnerList: ArrayList<String>
+
+}
