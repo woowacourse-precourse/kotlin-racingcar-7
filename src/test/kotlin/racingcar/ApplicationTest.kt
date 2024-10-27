@@ -12,20 +12,33 @@ class ApplicationTest : NsTest() {
 
     @Test
     fun `기능 테스트`() {
+
         assertRandomNumberInRangeTest(
             {
-                run("pobi,woni", "1")
-                assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi")
-                run("pobi,woni", "1")
-                assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi")
-                run("pobi,woni", "1")
-                assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi")
-                run("pobi,woni", "1")
-                assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi")
-
+                run("pobi,woni,jisu", "5")
+                assertThat(output()).contains("pobi : -", "woni : ", "jisu :", "최종 우승자 : pobi")
+                assertThat(tryCounts).isEqualTo(5)
+                assertThat(carNames).containsExactly("pobi", "woni", "jisu")
+                assertThat(moveCounts).containsExactly(1, 0, 0)
             },
             MOVING_FORWARD, STOP
         )
+
+        assertRandomNumberInRangeTest(
+            {
+                carNames = mutableListOf<String>()
+                moveCounts = mutableListOf<Int>()
+                tryCounts = 0
+                run("pobi,woni,jisu", "5")
+                assertThat(output()).contains("최종 우승자 : woni,jisu")
+                assertThat(tryCounts).isEqualTo(5)
+                assertThat(carNames).containsExactly("pobi", "woni", "jisu")
+                assertThat(moveCounts).containsExactly(4, 5, 5)
+
+            },
+            2, 4
+        )
+
     }
 
     @Test

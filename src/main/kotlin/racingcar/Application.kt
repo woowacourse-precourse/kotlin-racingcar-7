@@ -1,7 +1,5 @@
 package racingcar
 
-import kotlin.math.max
-
 var carNames:List<String> = mutableListOf<String>()
 var moveCounts:MutableList<Int> = mutableListOf<Int>()
 var tryCounts:Int = 0
