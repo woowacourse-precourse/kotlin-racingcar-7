@@ -21,7 +21,7 @@ class RacingCarGame(private val racingCarsName: String, private val raceCount: S
     }
 
     fun forwardCar(racingCar: RacingCar, randomNumber: Int) {
-        if (randomNumber >= 4) racingCar.forwardCount += 1
+        if (randomNumber >= FORWARD_CONDITION_NUMBER) racingCar.forwardCount += 1
     }
 
     fun findRaceWinners(): List<String> {
@@ -34,7 +34,7 @@ class RacingCarGame(private val racingCarsName: String, private val raceCount: S
 
     fun addRacingCar() {
         racingCarsName.split(",").forEach { name ->
-            racingCars.add(RacingCar(name, 0))
+            racingCars.add(RacingCar(name, START_FORWARD_COUNT))
         }
     }
 
@@ -53,6 +53,12 @@ class RacingCarGame(private val racingCarsName: String, private val raceCount: S
         println()
     }
 
-    fun generateRandomNumber(): Int = Randoms.pickNumberInRange(0, 9)
+    fun generateRandomNumber(): Int = Randoms.pickNumberInRange(START_RANDOM_NUMBER, END_RANDOM_NUMBER)
 
+    companion object {
+        const val START_RANDOM_NUMBER = 0
+        const val END_RANDOM_NUMBER = 9
+        const val FORWARD_CONDITION_NUMBER = 4
+        const val START_FORWARD_COUNT = 0
+    }
 }

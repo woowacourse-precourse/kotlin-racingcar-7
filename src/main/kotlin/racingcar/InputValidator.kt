@@ -9,7 +9,7 @@ class InputValidator() {
 
     fun String.validateNameLength() {
         this.split(",").forEach {
-            if (it.length > 5)
+            if (it.length > MAX_LENGTH_CONDITION)
                 throw IllegalArgumentException(
                     ErrorType.INVALID_NAME_OVER_5_LENGTH_INPUT.message
                 )
@@ -33,4 +33,8 @@ class InputValidator() {
 
     private fun String.isDecimalNumber(): Boolean =
         this.toDouble() != this.toInt().toDouble()
+
+    companion object {
+        const val MAX_LENGTH_CONDITION = 5
+    }
 }
