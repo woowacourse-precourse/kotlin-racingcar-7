@@ -4,63 +4,51 @@ import camp.nextstep.edu.missionutils.Randoms
 
 class RacingGame {
     private var cars: MutableMap<String, Car> = mutableMapOf()
-    private var names: List<String> = listOf()
 
-    fun splitToList(input: String) {
-        names = input.split(",").toMutableList()
+    fun splitToList(input: String): List<String> {
+        return input.split(",").toMutableList()
     }
 
-    fun getNameList(): List<String> {
-        return names
-    }
-
-    fun isValidName(input: String): Boolean {
-        names.forEach {
-            if (it.length > 5) {
-                return false
-            }
+    fun isValidName(nameList: List<String>): Boolean {
+        return when {
+            nameList.any { it.length > 5 } -> false
+            nameList.size != nameList.distinct().size -> false
+            else -> true
         }
-        if (!input.contains(",")) return false
-        return true
     }
 
-    fun isValidNaturalNumber(round: String): Boolean {
-        if (round.matches("\\D".toRegex())) return false
-        if (round.toIntOrNull() == 0) return false
-        if (round == "") return false
-        return true
+    fun isNaturalNumber(roundString: String): Boolean {
+        val round = roundString.toIntOrNull() ?: 0
+        return round > 0
     }
 
-    fun createCars() {
-        names.forEach { name -> cars[name] = Car() }
+    fun createCars(names: List<String>): Map<String, Car> {
+        names.forEach { name ->
+            if (cars.containsKey(name)) {
+                throw IllegalArgumentException()
+            }
+            cars[name] = Car()
+        }
+        return cars
     }
 
     fun play(key: String) {
         val randomValue = Randoms.pickNumberInRange(0, 9)
         if (randomValue >= 4) {
             cars[key]!!.move()
+            cars[key]!!.updateScoreSymbol()
         }
-    }
-
-    fun getScore(key: String): String {
-        val symbol = "-"
-        val score: Int = cars[key]!!.score
-        val scoreSymbol = symbol.repeat(score)
-        return scoreSymbol
     }
 
     fun getWinner(): String {
-        var topScore = -1
-        var winner = ""
-        for ((key, value) in cars) {
-            if (value.score > topScore) {
-                topScore = value.score
-                winner = key
-            } else if (value.score == topScore) {
-                winner += ", $key"
+        val winnerList = mutableListOf<String>()
+        val maxScore = cars.maxOf { it.value.score }
+        cars.forEach {
+            if (it.value.score == maxScore) {
+                winnerList.add(it.key)
             }
         }
-        return winner
+        return winnerList.joinToString(", ")
     }
 
 }
