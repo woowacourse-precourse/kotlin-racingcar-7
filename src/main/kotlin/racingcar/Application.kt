@@ -1,6 +1,7 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Randoms
+import camp.nextstep.edu.missionutils.Console.readLine
 
 fun main() {
     racingGame()
