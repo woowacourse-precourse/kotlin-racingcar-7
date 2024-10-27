@@ -10,4 +10,9 @@ object OutputView {
             println("$carName : $carMoveCount")
         }
     }
+
+    fun outputWinners(winners: List<Model>) {
+        val winnerNames = winners.joinToString(", ") { it.name }
+        println("최종 우승자 : $winnerNames")
+    }
 }

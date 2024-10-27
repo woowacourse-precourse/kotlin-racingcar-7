@@ -15,22 +15,33 @@ object RacingCarController {
         val cars = inputNames.split(",").map { it.trim() }.map { Model(it) }
 
         raceStrat(cars, round)
+
+        val winners = identifyRaceWinners(cars)
+        OutputView.outputWinners(winners)
+
+
     }
 
     fun raceStrat(cars: List<Model>, round: Int) {
         println("실행결과")
         repeat(round) {
-            RandomCarMove(cars)
+            randomCarMove(cars)
             OutputView.outputRaceStatus(cars)
             println()
         }
 
     }
 
-    fun RandomCarMove(cars: List<Model>) {
+    fun randomCarMove(cars: List<Model>) {
         for (car in cars) {
             if (car.canMoveForward()) car.moveCount++
         }
+    }
+
+    fun identifyRaceWinners(cars: List<Model>): List<Model> {
+        val max = cars.maxOf { it.moveCount }
+        val winners = cars.filter { it.moveCount == max }
+        return winners
     }
 
 }
