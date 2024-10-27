@@ -16,7 +16,7 @@ class RacingCarSetup {
         val cars = inputCars()
         println(RacingCarText.INPUT_TRY_COUNT)
         val tryCount = inputTryCount()
-        println("$cars, $tryCount")
+        println("$cars, $tryCount") // TODO 삭제 예정
     }
 
     private fun inputCars(): List<String> {
