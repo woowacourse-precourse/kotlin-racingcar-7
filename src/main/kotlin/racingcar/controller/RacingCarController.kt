@@ -1,5 +1,6 @@
 package racingcar.controller
 
+import racingcar.model.RacingCar
 import racingcar.validator.Validator
 import racingcar.view.InputView
 
@@ -15,10 +16,10 @@ class RacingCarController {
     private val inputView = InputView()
 
     fun runRacingGame() {
-        val carList = getInput()
+        val carNames = getInput()
         val tryCount = getTryCount()
 
-        playRacing()
+        playRacing(carNames, tryCount)
         printWinners()
     }
 
@@ -32,5 +33,20 @@ class RacingCarController {
         val tryCount = inputView.getTryCount()
         Validator.validateTryCount(tryCount)
         return tryCount.toInt()
+    }
+
+    private fun playRacing(
+        carNames: List<String>,
+        tryCount: Int,
+    ) {
+        val carList = carNames.map { RacingCar(it) }
+
+        repeat(tryCount) {
+            moveCars(carList)
+        }
+    }
+
+    private fun moveCars(carList: List<RacingCar>) {
+        carList.forEach { car -> car.moveForward() }
     }
 }
