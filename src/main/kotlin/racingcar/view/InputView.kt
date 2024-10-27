@@ -1,6 +1,7 @@
 package racingcar.view
 
 import camp.nextstep.edu.missionutils.Console
+import racingcar.util.Constant.CAR_NAME_SPLITTER
 
 class InputView {
 
@@ -9,9 +10,5 @@ class InputView {
         val carList = inputCar.split(CAR_NAME_SPLITTER)
 
         return carList
-    }
-
-    companion object {
-        private const val CAR_NAME_SPLITTER = ','
     }
 }
