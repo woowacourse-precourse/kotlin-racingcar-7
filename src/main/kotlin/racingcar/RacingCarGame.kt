@@ -24,18 +24,26 @@ class RacingCarGame(private val racingCarsName: String, private val raceCount: S
         if (randomNumber >= 4) racingCar.forwardCount += 1
     }
 
-    fun printResultByStep() {
-        racingCars.forEach { car ->
-            print("${car.name} : ")
-            printForwardCountByStep(car.forwardCount)
-        }
-        println()
+    fun findRaceWinners(): List<String> {
+        val maxForwardCount = racingCars.maxOfOrNull { it.forwardCount }
+        val winners = racingCars
+            .filter { it.forwardCount == maxForwardCount }
+            .map { it.name }
+        return winners
     }
 
     fun addRacingCar() {
         racingCarsName.split(",").forEach { name ->
             racingCars.add(RacingCar(name, 0))
         }
+    }
+
+    fun printResultByStep() {
+        racingCars.forEach { car ->
+            print("${car.name} : ")
+            printForwardCountByStep(car.forwardCount)
+        }
+        println()
     }
 
     private fun printForwardCountByStep(forwardCount: Int) {
