@@ -1,10 +1,9 @@
 package racingcar.model
 
 import camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
-
-import org.junit.jupiter.api.Assertions.*
 
 class RaceTest {
     private lateinit var race: Race
