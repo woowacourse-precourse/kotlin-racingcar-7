@@ -2,33 +2,10 @@ package racingcar
 
 import camp.nextstep.edu.missionutils.Randoms
 import camp.nextstep.edu.missionutils.Console
-import java.lang.NumberFormatException
+import racingcar.Validation.Validation
+import racingcar.View.InputView
+import racingcar.View.OutputView
 
-
-class InputView {
-    fun inputCars() {
-        println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
-    }
-
-    fun inputCount() {
-        println("시도할 횟수는 몇 회인가요?")
-    }
-}
-
-class OutputView {
-    fun outputPrint() {
-        println("실행 결과")
-    }
-
-    fun gameResult(carName: String, movingCount: Int) {
-        println("$carName : ${"-".repeat(movingCount)}")
-    }
-
-    fun winnerPrint(winners: List<String>) {
-        println("최종 우승자 : ${winners.joinToString(", ")}")
-
-    }
-}
 
 fun carsNameTrim(cars : List<String>): List<String> {
     return cars.map { it.trim() }
@@ -75,52 +52,35 @@ fun getWinnerIndex(carsMoving: Array<Int>): MutableList<Int> {
     return winners
 }
 
+fun inputCars(inputView: InputView, validation: Validation): List<String> {
+    inputView.inputCars()
+    val inputCar = Console.readLine()
+    validation.checkInputCarIsNotEmpty(inputCar)
 
-fun checkCarNameLength(cars: List<String>) {
-    if (!(cars.all { it -> it.count() <= 5 })) {
-        throw IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다")
-    }
+    var cars: List<String> = inputCar.split(',')
+    validation.checkCarNameDuplication(cars)
+    cars = carsNameTrim(cars)
+    validation.checkCarNameLength(cars)
+
+    return cars
 }
 
-fun checkInputCarIsNotEmpty(inputCar: String) {
-    if (inputCar == "") {
-        throw IllegalArgumentException("자동차 이름을 입력하지 않았습니다")
-    }
+fun inputCount(inputView: InputView, validation: Validation): Int {
+    inputView.inputCount()
+    val inputCount = Console.readLine()
+    validation.checkCountIsNumber(inputCount)
+    val count = inputCount.toInt()
+
+    return count
 }
-
-fun checkCarNameDuplication(cars: List<String>) {
-    if (cars.toSet().size != cars.size) {
-        throw IllegalArgumentException("자동차 이름이 중복입니다")
-    }
-
-}
-
-fun checkCountIsNumber(inputCount: String) {
-    try {
-        inputCount.toInt()
-    } catch (e: NumberFormatException) {
-        throw IllegalArgumentException("정수만 입력가능합니다")
-    }
-}
-
 
 fun main() {
     val outputView = OutputView()
     val inputView = InputView()
+    val validation = Validation()
 
-    inputView.inputCars()
-    val inputCar = Console.readLine()
-    checkInputCarIsNotEmpty(inputCar)
-    var cars: List<String> = inputCar.split(',')
-    checkCarNameDuplication(cars)
-    cars = carsNameTrim(cars)
-    checkCarNameLength(cars)
-
-
-    inputView.inputCount()
-    val inputCount = Console.readLine()
-    checkCountIsNumber(inputCount)
-    val count = inputCount.toInt()
+    val cars = inputCars(inputView, validation)
+    val count = inputCount(inputView, validation)
 
     val carsMovingArray = Array(cars.count()) { 0 }
 
