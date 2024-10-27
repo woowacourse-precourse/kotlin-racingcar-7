@@ -19,13 +19,17 @@ fun main() {
         }
     }
 
+    fun validateNameUniqueness(cars: List<String>) {
+        if (setOf(cars).size < cars.size) throw IllegalArgumentException("중복된 자동차 이름이 있습니다.")
+    }
+
     fun readCarNames() {
         println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
         val input = splitNamesByDelimiter(Console.readLine())
         validateNameNotNull(input)
         validateNameLength(input)
+        validateNameUniqueness(input)
     }
-
 
     fun readTrialCount(): Int {
         println("시도할 횟수는 몇 회인가요?")
