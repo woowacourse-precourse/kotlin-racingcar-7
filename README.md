@@ -5,12 +5,13 @@
 1. **자동차 이름 입력 (getCarNames)** :
    - `Console.readLine()`을 사용하여 사용자로부터 자동차 이름을 입력받음
    - 쉼표(,)로 구분하여 여러 자동차의 이름을 입력받음
-   - 자동차 이름은 5자 이하로 제한하며, 공백을 허용하지 않음
-   - 잘못된 이름(5자를 초과하거나 공백인 경우)이 입력될 경우, `IllegalArgumentException`을 발생시킴
+   - 자동차 이름은 영어 소문자 5자 이하로 제한하며, 공백을 포함하는 것과 이름 중복을 허용하지 않음
+   - 잘못 입력될 경우, `IllegalArgumentException`을 발생시킴
 
 2. **시도 횟수 입력 (getAttemptCount)** :
    - `Console.readLine()`을 사용하여 시도 횟수를 입력받음
-   - 숫자 타입이 아니거나 0 이하인 경우, `IllegalArgumentException`을 발생시킴
+   - 시도 횟수는 숫자여야 하며, 0보다 크고 정수 최대값(Int.MAX_VALUE)보다 작아야 함
+   - 잘못 입력될 경우, `IllegalArgumentException`을 발생시킴
 
 3. **자동차 객체 생성 (Car 클래스)** :
    - 필드 : `name` (자동차 이름), `distance` (이동 거리)
