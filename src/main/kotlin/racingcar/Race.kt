@@ -15,6 +15,7 @@ class Race(private val carNameList: Iterable<String>, private val rounds: Long) 
     private val carList: List<Car> = carNameList.map { Car(it) }
 
     fun run() {
+        print("\n")
         println(RACE_RESULT_HEADER_MESSAGE)
         for (i in 0..rounds) {
             executeRound()
