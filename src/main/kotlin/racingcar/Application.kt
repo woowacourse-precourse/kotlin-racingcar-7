@@ -20,7 +20,7 @@ fun main() {
 
 private fun printWinner(carNames: List<String>, moveDistance: List<Int>) {
     val winners = mutableListOf<String>()
-    var maxDistance = moveDistance.maxOrNull()
+    val maxDistance = moveDistance.maxOrNull()
 
     moveDistance.forEachIndexed { index, distance ->
         if (distance == maxDistance) {
@@ -32,16 +32,34 @@ private fun printWinner(carNames: List<String>, moveDistance: List<Int>) {
 
 private fun inputTimes() : Int {
     println("시도할 횟수는 몇 회인가요?")
-    val input = Console.readLine().toInt()
-    return input
+    val input = Console.readLine()
+
+    if (input.isNullOrBlank()) throw IllegalArgumentException("횟수를 입력해 주세요")
+
+    val times = input.toIntOrNull() ?: throw IllegalArgumentException("올바른 숫자를 입력해 주세요.")
+
+    if (times < 1) throw IllegalArgumentException("올바른 숫자를 입력해 주세요.")
+
+    return times
 }
 
 private fun inputCarNames() : List<String> {
     println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
+
     val carNames = Console.readLine().split(",").map { it.trim() }
-    carNames.forEach {
-        if (it.length > 5) throw IllegalArgumentException("자동차 이름은 5글자만 입력 가능합니다.")
+
+    carNames.forEach { name ->
+        when {
+            name.isBlank() -> throw IllegalArgumentException("올바른 자동차 이름을 입력해 주세요.")
+            name.length > 5 -> throw IllegalArgumentException("자동차 이름은 5글자 이하로 설정해주세요.")
+            name.contains(Regex("[^가-힣a-zA-Z]")) -> throw IllegalArgumentException("올바른 자동차 이름을 사용해주세요.")
+        }
     }
+
+    if (carNames.size != carNames.distinct().size) {
+        throw IllegalArgumentException("중복된 이름은 사용할 수 없습니다.")
+    }
+
     return carNames
 }
 
