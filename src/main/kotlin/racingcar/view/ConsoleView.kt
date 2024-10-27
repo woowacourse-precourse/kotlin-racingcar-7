@@ -11,10 +11,10 @@ class ConsoleView {
         return carNameList
     }
 
-    fun inputRaceCount(): Int {
+    fun inputRaceCount(): String {
         println("시도할 횟수는 몇 회인가요?")
         val raceCount = Console.readLine()
-        return raceCount.toInt()
+        return raceCount
     }
 
     fun printRaceStart() {

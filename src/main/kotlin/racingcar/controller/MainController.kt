@@ -1,6 +1,7 @@
 package racingcar.controller
 
 import racingcar.model.CarList
+import racingcar.util.RaceCountValidator
 import racingcar.view.ConsoleView
 
 class MainController {
@@ -13,7 +14,8 @@ class MainController {
         val carNames = consoleView.inputCarName()
         carController.addCarList(carNames)
 
-        val raceCount = consoleView.inputRaceCount()
+        val raceCountString = consoleView.inputRaceCount()
+        val raceCount = RaceCountValidator.validatePositiveInteger(raceCountString) // 경주(이동) 횟수가 양의 정수인지 유효성 검사 후 정수 반환
         raceController.setRaceCount(raceCount)
 
         raceController.race()
