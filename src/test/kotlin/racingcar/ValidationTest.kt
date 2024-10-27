@@ -1,7 +1,23 @@
 package racingcar
 
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
+import java.lang.IllegalArgumentException
+
 class ValidationTest {
 
     private val validation = Validation()
 
+    @Test
+    fun `자동차 이름 유효성 검사 (이름 5자 초과)` () {
+        val carList = listOf(
+            Car("lipton"),
+            Car("Cider"),
+            Car("Cola"),
+        )
+
+        assertThrows<IllegalArgumentException> {
+            validation.checkCarNameLength(carList)
+        }
+    }
 }
