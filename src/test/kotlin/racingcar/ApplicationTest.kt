@@ -57,6 +57,17 @@ class ApplicationTest : NsTest() {
         assertThat(car.position).isEqualTo(0)
     }
 
+    @Test
+    fun `기능 테스트`() {
+        assertRandomNumberInRangeTest(
+            {
+                run("pobi,woni", "1")
+                assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi")
+            },
+            MOVING_FORWARD, STOP
+        )
+    }
+
     override fun runMain() {
         main()
     }
