@@ -14,16 +14,19 @@ class ExceptionTest {
     }
 
     @Test
-    @DisplayName("")
     fun `firstInput_자동차 이름이 공백일 경우`() {
         assertThrows<IllegalArgumentException> { check.firstInput("a,") }
         assertThrows<IllegalArgumentException> { check.firstInput(",a,b") }
     }
 
     @Test
-    @DisplayName("")
     fun `firstInput_자동차 이름이 하나만 입력된 경우`() {
         assertThrows<IllegalArgumentException> { check.firstInput("a") }
+    }
+
+    @Test
+    fun `firstInput_자동차 이름이 중복될 경우`() {
+        assertThrows<IllegalArgumentException> { check.firstInput("a, b, c, d, e, a") }
     }
 
 
