@@ -19,10 +19,9 @@ class DependencyInjector {
     fun injectViewModel(): RacingViewModel {
         val nameErrorDelegator = injectNameErrorDelegator()
         val playCountErrorDelegator = injectPlayCountErrorDelegator()
-        val moveCountFactory = injectMoveCountFactory()
         val validationDelegator =
             injectValidationDelegator(nameErrorDelegator, playCountErrorDelegator)
-        return RacingViewModel(validationDelegator, injectPlayGround(), moveCountFactory)
+        return RacingViewModel(validationDelegator, injectPlayGround())
     }
 
     private fun injectValidationDelegator(
