@@ -8,7 +8,7 @@ class RacingCarGame(private val racingCarsName: String, private val raceCount: S
 
     fun start() {
         addRacingCar()
-        for (i in 1..raceCount.toInt()) {
+        repeat(raceCount.toInt()) {
             runRace()
         }
     }
