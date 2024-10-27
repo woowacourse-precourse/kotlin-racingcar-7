@@ -15,12 +15,15 @@ fun main() {
     println("시도할 횟수는 몇 회인가요?")
     val attemptNumber = readLine().toInt() // TODO : 위치 변경?
 
+    println("실행 결과")
     for (i in 0 until attemptNumber) {
         carMap.forEach { key, value ->
             if (pickNumberInRange(0,9) >= 4) {
                 carMap[key] = value + 1
             }
-        }
-    }
 
+            println("$key : " + "-".repeat(carMap[key]!!))
+        }
+        println()
+    }
 }
