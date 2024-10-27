@@ -1,17 +1,22 @@
 package racingcar
 
-class RacingGame(
-    private val cars: List<Car>,
-    private val tryCount: Int,
-) {
-    private val validator = Validator()
+class RacingGame {
+    private val inputView = InputView()
     private val outputView = OutputView()
+    private val validator = Validator()
+    private lateinit var cars: List<Car>
 
     fun startRace() {
+        val carNames = inputView.getCarNames()
+        val tryCount = inputView.getTryCount()
+
+        cars = carNames.map { Car(it) }
+
         outputView.showRoundResultTitle()
         repeat(tryCount) {
             executeRound()
         }
+        showWinners()
     }
 
     private fun executeRound() {
@@ -30,5 +35,11 @@ class RacingGame(
         if (validator.isAllowedForMove()) {
             car.move()
         }
+    }
+
+    private fun showWinners() {
+        val maxPosition = cars.maxOf { it.position }
+        val winners = cars.filter { it.position == maxPosition }.map { it.name }
+        outputView.showWinners(winners)
     }
 }

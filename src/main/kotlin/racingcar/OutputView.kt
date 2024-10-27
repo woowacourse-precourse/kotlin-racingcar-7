@@ -12,4 +12,8 @@ class OutputView {
     fun showRoundFooter() {
         println()
     }
+
+    fun showWinners(winners: List<String>) {
+        println(Messages.WINNER_ANNOUNCEMENT.format(winners.joinToString(", ")))
+    }
 }
