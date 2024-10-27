@@ -61,13 +61,12 @@ class Organizer {
 
     private fun playOneRace(raceCars: List<Car>): List<Car> {
         val updatedRaceCars: MutableList<Car> = raceCars.toMutableList()
-        for (raceCar in raceCars.indices) {
+        raceCars.forEachIndexed { index, car ->
             val randomValue = pickNumberInRange(0, 9)
             if (validator.isPossibleForward(randomValue)) {
-                val car = raceCars[raceCar]
-                updatedRaceCars[raceCar] = car.copy(forward = car.forward + 1)
+                updatedRaceCars[index] = car.copy(forward = car.forward + 1)
             }
-            outputView.printNotice("${updatedRaceCars[raceCar].name} : ${"-".repeat(updatedRaceCars[raceCar].forward)}")
+            outputView.printNotice("${updatedRaceCars[index].name} : ${"-".repeat(updatedRaceCars[index].forward)}")
         }
         return updatedRaceCars
     }
