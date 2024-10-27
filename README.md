@@ -20,7 +20,7 @@
 - [ ] Race
     - [X] field 정의
     - [X] ready
-    - [ ] start
+    - [X] start
     - [ ] end
 - [ ] Car
     - [X] field 정의

@@ -16,7 +16,16 @@ class Race(
         println()
     }
 
-    fun start() {}
+    fun start() {
+        println("실행 결과")
+        repeat(times) {
+            for (car in cars) {
+                car.move()
+                car.printResult()
+            }
+            println()
+        }
+    }
 
     fun end() {}
 
