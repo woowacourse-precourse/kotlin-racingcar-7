@@ -1,6 +1,5 @@
-# 문자열 덧셈 계산기
-
-
+# kotlin-racingcar-precourse
+# 자동차 경주
 
 ## 기능 목록
 
