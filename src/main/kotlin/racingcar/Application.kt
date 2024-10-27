@@ -49,9 +49,17 @@ class Race(private val cars: List<Car>, private val roundCount: Int) {
     }
     // 최종 우승자 발표
     private fun announceWinner() {
-        val longest = cars.maxByOrNull {it.getMoveDistance()}?.getMoveDistance() ?: 0
-        val winner = cars.filter {it.getMoveDistance()==longest}.map {it.name}
-        println("최종 우승자 : ${winner.joinToString(", ")}")
+        val longest = findLongest()
+        val winners = findWinners(longest)
+        println("최종 우승자 : ${winners.joinToString(", ")}")
+    }
+    // 가장 멀리 이동한 거리 찾기
+    private fun findLongest(): Int {
+        return cars.maxByOrNull {it.getMoveDistance()}?.getMoveDistance() ?: 0
+    }
+    // 가장 멀리 간 우승자 리스트 찾기
+    private fun findWinners(longest: Int): List<String> {
+        return cars.filter {it.getMoveDistance()==longest}.map { it.name }
     }
 }
 
