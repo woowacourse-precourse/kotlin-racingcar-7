@@ -33,10 +33,10 @@
 4-2 우승자를 출력한다.
 
 ### feature 5: 잘못된 값이 입력된 경우 IllegalArgumentException 발생
-5-1 자동차 이름에 "a:50"을 입력했을 경우 IllegalArgumentException을 발생시킨 후 애플리케이션은 종료된다.
+5-1 자동차 이름에 "pobi,javaji"을 입력했을 경우 IllegalArgumentException을 발생시킨 후 애플리케이션은 종료된다.
 
-5-2 자동차 이름에 "a,b,c:100"을 입력했을 경우 IllegalArgumentException을 발생시킨 후 애플리케이션은 종료된다.
+5-2 자동차 이름에 "123456,b,c"을 입력했을 경우 IllegalArgumentException을 발생시킨 후 애플리케이션은 종료된다.
 
-5-3 자동차 이름에 "123456,b,c"을 입력했을 경우 IllegalArgumentException을 발생시킨 후 애플리케이션은 종료된다.
+5-3 자동차 이름에 "pobi,dominic"을 입력했을 경우 IllegalArgumentException을 발생시킨 후 애플리케이션은 종료된다.
 
 5-4 반복 횟수에 "a"을 입력했을 경우 IllegalArgumentException을 발생시킨 후 애플리케이션은 종료된다.
