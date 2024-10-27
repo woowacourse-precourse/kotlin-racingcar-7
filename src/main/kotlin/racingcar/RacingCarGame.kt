@@ -6,6 +6,12 @@ class RacingCarGame(
     private val cars: List<Car>,
     private val gameCount: Int,
 ) {
+    private val winners = mutableMapOf<String, Int>()
+
+    init {
+        println(GAME_START_TEXT)
+    }
+
     private fun processGame(cars: List<Car>) {
         cars.forEach { car ->
             val randomNumber = pickNumberInRange(RANDOM_NUMBER_MIN, RANDOM_NUMBER_MAX)
@@ -13,6 +19,7 @@ class RacingCarGame(
         }
         cars.forEach { car ->
             printEachGame(car)
+            saveScore(car)
         }
         println()
     }
@@ -20,8 +27,13 @@ class RacingCarGame(
     private fun printEachGame(car: Car) {
         val forwardCount = car.forwardCount
         val forwardDashText = CAR_FORWARD_DASH.repeat(forwardCount)
-        val resultText = "${car.name} ${RacingCarDelimiters.CAR_NAME_DASH_DELIMITER} $forwardDashText"
+        val resultText =
+            "${car.name} ${RacingCarDelimiters.CAR_NAME_DASH_DELIMITER} $forwardDashText"
         println(resultText)
+    }
+
+    private fun saveScore(car: Car) {
+        winners[car.name] = car.forwardCount
     }
 
     fun start() {
@@ -30,9 +42,22 @@ class RacingCarGame(
         }
     }
 
+    fun printWinnerResult() {
+        val winnerScore = winners.maxBy { it.value }
+        val winners = winners.filter { it.value == winnerScore.value }
+        val winnersName = winners.joinKeysAsString()
+        println(winnersName)
+    }
+
     companion object {
         private const val RANDOM_NUMBER_MIN = 0
         private const val RANDOM_NUMBER_MAX = 9
         private const val CAR_FORWARD_DASH = "-"
+        private const val GAME_START_TEXT = "실행결과"
     }
 }
+
+private fun Map<String, Int>.joinKeysAsString() =
+    this.keys.joinToString(RacingCarDelimiters.NAME_DELIMITER) {
+        it
+    }
