@@ -17,4 +17,12 @@ class RaceGameService(private val randomMoveStrategy: MoveStrategy) {
 
         return cars
     }
+
+    fun performRace(cars: List<Car>) {
+        for (car in cars) {
+            if (randomMoveStrategy.canMove()) {
+                car.moveOnce()
+            }
+        }
+    }
 }
