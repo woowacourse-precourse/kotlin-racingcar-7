@@ -11,11 +11,16 @@ fun readCarNames(): String {
     }
 }
 
-fun readTryNumber(): String {
+fun readTryNumber(): Int {
     println("시도할 횟수는 몇 회인가요?")
     return try {
-        Console.readLine() ?: ""
+        val input = Console.readLine() ?: throw IllegalArgumentException("입력이 필요합니다.")
+        val number = input.toIntOrNull() ?: throw IllegalArgumentException("정수를 입력해주세요.")
+        if (number < 0) {
+            throw IllegalArgumentException("음수를 입력할 수 없습니다.")
+        }
+        number
     } catch (e: Exception) {
-        ""
+        throw IllegalArgumentException("잘못된 값이 입력되었습니다.")
     }
 }

@@ -6,5 +6,5 @@ fun main() {
 
     println("실행 결과")
 
-    winner(names, tryNumber.toInt())
+    winner(names, tryNumber)
 }
