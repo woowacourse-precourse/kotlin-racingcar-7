@@ -21,9 +21,7 @@ class CarRacing(names: String) {
     }
 
     private fun moveCars() {
-        for (car in cars) {
-            car.moveForwardRandomly()
-        }
+        cars.forEach { it.moveForwardRandomly() }
         Printer.printNewLine()
     }
 
