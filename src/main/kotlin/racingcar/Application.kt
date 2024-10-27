@@ -49,8 +49,18 @@ class RacingCar {
     //입력값이 Null, Blank 검증 함수
     private fun blankOrNullCheck(carNameList: String, testCount: String) {
         if (carNameList.isNotBlank() || testCount.isNotBlank()) {
+            inputCarName(carNameList)
+
         } else {
             throw IllegalArgumentException()
+        }
+    }
+
+    //자동차 이름 검증 함수
+    private fun inputCarName(carNameList: String) {
+        return when {
+            carNameList.length >= 5 -> throw IllegalArgumentException()
+            else -> this.carList = carNameList.trim().split(",").map { Car(it) }
         }
     }
 
