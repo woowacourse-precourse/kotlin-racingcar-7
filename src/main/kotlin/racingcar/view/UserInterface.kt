@@ -8,9 +8,9 @@ class UserInterface {
         return input
     }
 
-    fun getNumberOfAttempts(): Int {
+    fun getNumberOfAttempts(): String {
         println("시도할 횟수는 몇 회인가요?")
-        val input = Console.readLine().toInt()
+        val input = Console.readLine()
         return input
     }
 

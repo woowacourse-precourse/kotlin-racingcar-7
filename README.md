@@ -28,8 +28,14 @@ pobi,woni,jun
 
 - [x] run : input값을 받아서 아래의 함수들을 실행한 후 result를 view로 넘겨주는 역할
 
-- [x] generateCarList
-  - [x] car 객체 리스트를 만들고 초기화
+- [x] handleInput : input값을 받아서 generateCarList 후 error 처리하는 함수
+  - [x] generateCarList
+    - [x] car 객체 리스트를 만들고 초기화
+  - [x] !예외처리
+    - [x] 시도횟수가 0 이하인 경우
+    - [x] 시도횟수가 숫자가 아닌 경우
+    - [x] 차 이름의 길이가 5 초과인 경우
+    - [x] 차 이름에 아무것도 없는 경우
   
 - [x] simulateRace : 경주 시뮬레이션
 

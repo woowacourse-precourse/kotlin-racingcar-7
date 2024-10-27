@@ -10,6 +10,7 @@ class CarRacing(private val view: UserInterface) {
     fun run() {
         val (cars, attempts) = handleInput()
 
+        view.showRaceStart()
         for (i in 0 until attempts) {
             simulateRace(cars)
             val carNameList = cars.carList.map { it.name }
@@ -23,17 +24,38 @@ class CarRacing(private val view: UserInterface) {
 
     private fun handleInput(): Pair<CarList, Int> {
         val carName = view.getCarName()
-        val attempts = view.getNumberOfAttempts()
-        view.showRaceStart()
-        val cars = CarList(generateCarList(carName))
+        val attempts: Int
+        val carArray: List<String>
+
+        try {
+            attempts = view.getNumberOfAttempts().toInt()
+
+            if (attempts <= 0) {
+                throw IllegalArgumentException("Number of attempts must be greater than zero.")
+            }
+
+            carArray = carName.split(",")
+
+            for (i in carArray) {
+                if (i.length > 5) {
+                    throw IllegalArgumentException("Car name cannot exceed 5 characters.")
+                } else if (i.isBlank()) {
+                    throw IllegalArgumentException("Car name cannot be blank.")
+                } else if (!i.matches(Regex("^[a-zA-Z]+$"))) {
+                    throw IllegalArgumentException("Car name must contain only alphabetic characters.")
+                }
+            }
+        } catch (e: Exception) {
+            throw IllegalArgumentException("Invalid input: ${e.message}")
+        }
+
+        val cars = CarList(generateCarList(carArray))
         return Pair(cars, attempts)
     }
 
-    private fun generateCarList(input: String): List<Car> {
-        val carArray = input.split(",")
-        for (i in carArray) {
-            if (i.length > 5) throw IllegalArgumentException()
-        }
+
+    private fun generateCarList(carArray: List<String>): List<Car> {
+
         val cars = mutableListOf<Car>()
         for (i in carArray) {
             cars.add(Car(i, 0))
