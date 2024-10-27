@@ -28,7 +28,17 @@ fun main() {
 data class Car(
     val name: String,
     var count: Int = 0
-)
+){
+    //현재 점수를 "-" 문자열로 치환해주는 함수
+    fun translateCount() : String {
+        val stringBuilder = StringBuilder()
+        for(i in 0 until count){
+            stringBuilder.append("-")
+        }
+        return stringBuilder.toString()
+    }
+
+}
 
 //레이싱 게임의 프로퍼티, 메소드를 포함한 클래스
 class RacingCar {
@@ -94,4 +104,13 @@ class RacingCar {
             else -> car.count++
         }
     }
+
+    //이동한 현황을 알려주는 함수
+    private fun printMove(){
+        carList.forEach{
+            println("${it.name} : ${it.translateCount()}")
+        }
+        println()
+    }
+
 }
