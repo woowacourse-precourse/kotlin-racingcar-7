@@ -1,5 +1,7 @@
 package racingcar
 
+import camp.nextstep.edu.missionutils.Randoms
+
 class Validator {
     fun validateCarNames(carNames: List<String>) {
         if (carNames.any { it.isEmpty() || it.length > MAX_NAME_LENGTH }) {
@@ -16,8 +18,13 @@ class Validator {
         }
     }
 
+    fun isAllowedForMove(): Boolean {
+        return Randoms.pickNumberInRange(0, 9) >= MIN_FORWARD_VALUE
+    }
+
     companion object {
         private const val MAX_NAME_LENGTH = 5
         private const val MIN_TRY_COUNT = 1
+        private const val MIN_FORWARD_VALUE = 4
     }
 }
