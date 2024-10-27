@@ -20,7 +20,7 @@ class CarRacingGame {
              raceRound()
              printRaceStatus()
         }
-        // printWinners()
+         printWinners()
     }
 
     private fun getCarNames(): List<Car> {
@@ -55,7 +55,11 @@ class CarRacingGame {
         println()
     }
 
-    // printWinners()
+    private fun printWinners() {
+        val maxDistance = cars.maxOf { it.distance }
+        val winners = cars.filter { it.distance == maxDistance }.joinToString(", ") { it.name }
+        println("최종 우승자 : $winners")
+    }
 }
 
 class Car(val name: String) {
