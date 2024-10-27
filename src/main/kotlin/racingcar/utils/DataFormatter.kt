@@ -10,7 +10,11 @@ class DataFormatter {
         return carNames.toCarList()
     }
 
-    fun getTimes(times: String): Int = times.toIntOrNull() ?: throw IllegalArgumentException()
+    fun getTimes(times: String): Int {
+        val parsedTimes = times.toIntOrNull() ?: throw IllegalArgumentException()
+        require(parsedTimes > 0)
+        return parsedTimes
+    }
 
     fun getWinner(cars: List<Car>): String {
         val maxMove = cars.maxOf { it.move.length }
