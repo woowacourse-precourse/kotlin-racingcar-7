@@ -15,6 +15,7 @@ object RacingController {
         val cars = createCars(carNames)
         val raceResults = startRace(cars, attemptCount)
         displayRaceResults(raceResults)
+        displayWinners(cars)
     }
 
     private fun getCarNames(): List<String> {
@@ -56,5 +57,11 @@ object RacingController {
 
     private fun displayRaceResults(raceResults: List<List<Car>>) {
         OutputView.displayRaceResults(raceResults)
+    }
+
+    private fun displayWinners(cars: List<Car>) {
+        val race = Race(cars, 0)
+        val winners = race.getWinners()
+        OutputView.displayWinners(winners)
     }
 }
