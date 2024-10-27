@@ -26,6 +26,33 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `이름이 공백일 경우 예외 발생`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("minji, ,jinu","3") }
+        }
+    }
+
+    @Test
+    fun `이름이 중복될 경우 예외 발생`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("minji,minji,jinu","4") }
+        }
+    }
+    @Test
+    fun `시도할 횟수가 양의 정수가 아닐 경우 예외 발생`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("kim,min,ji","-3") }
+        }
+    }
+    @Test
+    fun `시도할 횟수가 숫자가 아닐 경우 예외 발생`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("minji,jinu","a") }
+        }
+    }
+
+
     override fun runMain() {
         main()
     }
