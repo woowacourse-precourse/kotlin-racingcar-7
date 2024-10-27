@@ -25,5 +25,14 @@ class RacingCarSetup {
         return cars
     }
 
-    private fun inputTryCount(): Int = readLine().toInt()
+    private fun inputTryCount(): Int {
+        val tryCount =
+            readLine().toIntOrNull()
+                ?: throw IllegalArgumentException(TRY_COUNT_IS_NOT_NUMBER_EXCEPTION)
+        return tryCount
+    }
+
+    companion object {
+        private const val TRY_COUNT_IS_NOT_NUMBER_EXCEPTION = "시도할 횟수는 숫자만 입력 받을 수 있습니다."
+    }
 }
