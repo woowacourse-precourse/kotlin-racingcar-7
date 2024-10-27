@@ -77,34 +77,61 @@ class ApplicationTest : NsTest() {
     @DisplayName("예외 테스트")
     @Nested
     inner class ExceptionTest {
-        @Test
-        fun `예외 테스트`() {
-            assertSimpleTest {
-                assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
+
+        @DisplayName("자동차 이름 예외 테스트")
+        @Nested
+        inner class CarNameExceptionTest {
+            @Test
+            fun `예외 테스트`() {
+                assertSimpleTest {
+                    assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
+                }
+            }
+
+            @DisplayName("자동차 이름이 빈칸인 경우")
+            @Test
+            fun emptyCarNamesTest() {
+                assertSimpleTest {
+                    assertThrows<IllegalArgumentException> { runException(",", "1") }
+                }
+            }
+
+            @DisplayName("자동차 이름이 중복되는 경우")
+            @Test
+            fun duplicateCarNamesTest() {
+                assertSimpleTest {
+                    assertThrows<IllegalArgumentException> { runException("pobi, pobi, woni", "1") }
+                }
             }
         }
 
-        @DisplayName("입력받은 횟수를 숫자로 변환할 수 없는 경우")
-        @Test
-        fun failToParseNumberTest() {
-            assertSimpleTest {
-                assertThrows<IllegalArgumentException> { runException("pobi,java", "3a") }
+        @DisplayName("실행 횟수 예외 테스트")
+        @Nested
+        inner class TimesExceptionTest {
+            @DisplayName("입력받은 횟수를 숫자로 변환할 수 없는 경우")
+            @Test
+            fun failToParseNumberTest() {
+                assertSimpleTest {
+                    assertThrows<IllegalArgumentException> { runException("pobi,java", "3a") }
+                }
             }
-        }
 
-        @DisplayName("자동차 이름이 빈칸인 경우")
-        @Test
-        fun emptyCarNamesTest() {
-            assertSimpleTest {
-                assertThrows<IllegalArgumentException> { runException(",", "1") }
-            }
-        }
+            @DisplayName("0, 음수 횟수 입력")
+            @Nested
+            inner class NonPositiveTimesTest {
+                @Test
+                fun zeroTimesTest() {
+                    assertSimpleTest {
+                        assertThrows<IllegalArgumentException> { runException("pobi, woni, jun", "0") }
+                    }
+                }
 
-        @DisplayName("자동차 이름이 중복되는 경우")
-        @Test
-        fun duplicateCarNamesTest() {
-            assertSimpleTest {
-                assertThrows<IllegalArgumentException> { runException("pobi, pobi, woni", "1") }
+                @Test
+                fun negativeTimesTest() {
+                    assertSimpleTest {
+                        assertThrows<IllegalArgumentException> { runException("pobi, woni, jun", "-1") }
+                    }
+                }
             }
         }
     }
