@@ -68,6 +68,16 @@ class ApplicationTest : NsTest() {
         )
     }
 
+    @Test
+    fun `예외 테스트`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
+            assertThrows<IllegalArgumentException> { runException("123456,b,c", "1") }
+            assertThrows<IllegalArgumentException> { runException("pobi,dominic", "1") }
+            assertThrows<IllegalArgumentException> { runException("pobi,jun,woni", "a") }
+        }
+    }
+
     override fun runMain() {
         main()
     }
