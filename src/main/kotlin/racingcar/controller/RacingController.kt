@@ -8,7 +8,7 @@ import racingcar.validator.RoundValidator
 import racingcar.view.*
 
 private const val ROUND_START = 1
-private const val CAR_NAME_DELIMITER = ","
+const val CAR_NAME_DELIMITER = ","
 
 class RacingController(
     private val numberGenerator: NumberGenerator
@@ -24,8 +24,8 @@ class RacingController(
 
     private fun getCars(): List<Car> {
         val carNamesInput = carNamesView()
-        CarNameValidator.validate(carNamesInput)
-        return carNamesInput.split(CAR_NAME_DELIMITER).map { Car(it) }.toList()
+        val carNames = CarNameValidator.validate(carNamesInput)
+        return carNames.split(CAR_NAME_DELIMITER).map { Car(it) }.toList()
     }
 
     private fun getNumberOfRound(): Int {
