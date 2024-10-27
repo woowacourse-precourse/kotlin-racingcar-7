@@ -2,12 +2,14 @@
 
 ##### Documentation Changes
 
+* **CHANGELOG:**  CHANGELOG 갱신 (71ef3e7c)
 * **README:**
   *  프로그래밍 요구사항 확인 (47764940)
   *  요구 사항 및 기능 정의 (a3a8d48a)
 
 ##### New Features
 
+* **RacingGameValidator:**  자동차 경주에 대한 유효성 검사 구현 (3916977a)
 * **Application:**  RacingGameController 객체 생성 (bb8cf54f)
 * **RacingGameController:**  RacingGameController 클래스 구현 (cf26c00d)
 * **RacingGame:**
