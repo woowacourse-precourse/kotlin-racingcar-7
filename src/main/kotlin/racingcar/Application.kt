@@ -1,5 +1,9 @@
 package racingcar
 
 fun main() {
-    // TODO: 프로그램 구현
+    val race1 = Race()
+
+    race1.ready()
+    race1.start()
+    race1.end()
 }
