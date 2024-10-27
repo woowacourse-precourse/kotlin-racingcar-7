@@ -13,17 +13,22 @@ class RacingGameController(
     private var cars: List<Car> = emptyList()
     private var tryCount: Int = 0
 
+    companion object {
+        fun create(): RacingGameController {
+            val racingGameView = RacingGameView()
+            val inputValidator = InputValidator()
+            val racingGameService = RacingGameService()
+            return RacingGameController(racingGameView, inputValidator, racingGameService)
+        }
+    }
+
     fun gameStart() {
         cars = readCarNames()
-        tryCount = inputTryCount()
+        tryCount = readTryCount()
         multiRace()
         announceFinalWinner()
     }
 
-    /**
-     * 자동차 이름들을 사용자로부터 입력받아 Car객채 초기화
-     * @return 자동차 이름들과 0으로 초기화된 LinkedHashMap 값
-     */
     private fun readCarNames(): List<Car> {
         racingGameView.showGameStart()
         val inputString = racingGameView.readLine()
@@ -32,11 +37,7 @@ class RacingGameController(
         return racingGameService.generateCarsByInput(inputString)
     }
 
-    /**
-     * 자동차 경주 횟수를 사용자로 부터 입력받기
-     * @return 자동차 경주 횟수를 나타내는 Int 값
-     */
-    private fun inputTryCount(): Int {
+    private fun readTryCount(): Int {
         racingGameView.showInputCount()
         val inputCountString = racingGameView.readLine()
         validator.tryCountValidate(inputCountString)
@@ -44,9 +45,6 @@ class RacingGameController(
         return inputCountString.toInt()
     }
 
-    /**
-     * 경주를 한번 진행 하고 결과를 출력
-     */
     private fun singleRace() {
         cars.forEach {
             racingGameService.moveCarRandomly(it)
@@ -55,9 +53,6 @@ class RacingGameController(
         racingGameView.showBlankLine()
     }
 
-    /**
-     * 경주를 시도횟수 만큼 진행 하고 결과를 출력
-     */
     private fun multiRace() {
         racingGameView.showBlankLine()
         racingGameView.showRaceResultHeader()
@@ -66,9 +61,6 @@ class RacingGameController(
         }
     }
 
-    /**
-     * 최종 우승자 출력
-     */
     private fun announceFinalWinner() {
         val winnersName = racingGameService.findWinnerNames(cars)
         racingGameView.showWinners(winnersName)

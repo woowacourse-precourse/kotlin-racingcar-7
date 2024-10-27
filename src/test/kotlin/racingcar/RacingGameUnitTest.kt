@@ -7,19 +7,13 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.DisplayName
 import racingcar.controller.RacingGameController
-import racingcar.domain.InputValidator
-import racingcar.domain.RacingGameService
-import racingcar.view.RacingGameView
 
 class RacingGameUnitTest : NsTest() {
     private lateinit var racingGameController: RacingGameController
 
     @BeforeEach
     fun setUp() {
-        val racingGameView = RacingGameView()
-        val inputValidator = InputValidator()
-        val racingGameService = RacingGameService()
-        racingGameController = RacingGameController(racingGameView, inputValidator, racingGameService)
+        racingGameController = RacingGameController.create()
     }
 
     @Test
