@@ -2,6 +2,7 @@ package racingcar.controller
 
 import racingcar.model.Car
 import racingcar.view.UserInterface
+import camp.nextstep.edu.missionutils.Randoms
 
 class CarRacing(private val view: UserInterface) {
     //    fun run() {
@@ -17,4 +18,10 @@ class CarRacing(private val view: UserInterface) {
         }
         return carList
     }
+
+    fun getRandomNumber(): Int {
+        return Randoms.pickNumberInRange(0, 9)
+    }
+
+
 }
