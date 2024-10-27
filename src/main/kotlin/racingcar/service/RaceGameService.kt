@@ -1,5 +1,6 @@
 package racingcar.service
 
+import racingcar.controller.dto.WinnerResultDto
 import racingcar.model.Car
 import racingcar.strategy.MoveStrategy
 
@@ -24,5 +25,12 @@ class RaceGameService(private val randomMoveStrategy: MoveStrategy) {
                 car.moveOnce()
             }
         }
+    }
+
+    fun findWinners(cars: List<Car>): List<WinnerResultDto> {
+        val maxPosition: Int = cars.maxOf { it.position }
+        val winningCars: List<Car> = cars.filter { it.position == maxPosition }
+
+        return WinnerResultDto.mapToWinnerResults(winningCars)
     }
 }
