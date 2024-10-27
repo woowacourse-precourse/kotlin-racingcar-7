@@ -1,19 +1,19 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Console
-import racingcar.constants.ErrorMessage
+import racingcar.constants.CarException
 import racingcar.constants.GameMessage
 
 class CarRacingGame {
     private lateinit var cars: List<Car>
-    private var attemptCount: Int = 0
+    private lateinit var attempt: Attempt
 
     fun startRace() {
         cars = getCarNames()
-        attemptCount = getAttemptCount()
+        attempt = getAttemptCount()
 
         println(GameMessage.RESULT.message)
-        repeat(attemptCount) {
+        repeat(attempt.getCount()) {
             raceRound()
             printRaceStatus()
         }
@@ -22,21 +22,14 @@ class CarRacingGame {
 
     private fun getCarNames(): List<Car> {
         println(GameMessage.CAR_INPUT.message)
-        val names = Console.readLine().split(",")
-        require(names.all { it.length <= 5 && !it.contains(" ") }) {
-            throw IllegalArgumentException(ErrorMessage.NAME_VALIDATION.message)
-        }
+        val names = Console.readLine().split(",").filter { it.isNotBlank() }
+        require(names.distinct().size == names.size) { CarException.DUPLICATE.message }
         return names.map { Car(it) }
     }
 
-    private fun getAttemptCount(): Int {
+    private fun getAttemptCount(): Attempt {
         println(GameMessage.TRY_INPUT.message)
-        val input = Console.readLine()
-        val count = input.toIntOrNull() ?: throw IllegalArgumentException(ErrorMessage.ATTEMPT_NOT_NUMBER.message)
-        require(count > 0) {
-            throw IllegalArgumentException(ErrorMessage.ATTEMPT_VALIDATION.message)
-        }
-        return count
+        return Attempt.of(Console.readLine())
     }
 
     private fun raceRound() {
