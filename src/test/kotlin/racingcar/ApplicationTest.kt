@@ -27,7 +27,10 @@ class ApplicationTest : NsTest() {
             assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
         }
         assertSimpleTest {
-            assertThrows<IllegalArgumentException> { runException("","") }
+            assertThrows<IllegalArgumentException> { runException("","1") }
+        }
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,pobi,woni","3") }
         }
     }
 
