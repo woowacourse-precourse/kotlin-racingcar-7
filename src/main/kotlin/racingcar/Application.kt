@@ -50,7 +50,7 @@ class RacingCar {
     private fun blankOrNullCheck(carNameList: String, testCount: String) {
         if (carNameList.isNotBlank() || testCount.isNotBlank()) {
             inputCarName(carNameList)
-
+            inputTestCount(testCount)
         } else {
             throw IllegalArgumentException()
         }
@@ -64,4 +64,12 @@ class RacingCar {
         }
     }
 
+    //이동 횟수 검증 함수
+    private fun inputTestCount(testCount: String) {
+        try {
+            testCount.toInt()
+        } catch (e: NumberFormatException) {
+            throw IllegalArgumentException()
+        }
+    }
 }
