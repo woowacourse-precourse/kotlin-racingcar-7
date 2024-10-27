@@ -3,10 +3,13 @@ package racingcar
 import camp.nextstep.edu.missionutils.Randoms
 
 class Validator {
-    fun validateCarNames(carNames: List<String>) {
+    fun validateNameLength(carNames: List<String>) {
         if (carNames.any { it.isEmpty() || it.length > MAX_NAME_LENGTH }) {
             throw IllegalArgumentException(Messages.ERROR_NAME_LENGTH)
         }
+    }
+
+    fun validateNameDuplication(carNames: List<String>) {
         if (carNames.size != carNames.distinct().size) {
             throw IllegalArgumentException(Messages.ERROR_DUPLICATE_NAME)
         }

@@ -13,7 +13,8 @@ class InputView {
         val input = Console.readLine()
 
         val carNames = input.split(",").map { it.trim() }
-        validator.validateCarNames(carNames)
+        validator.validateNameLength(carNames)
+        validator.validateNameDuplication(carNames)
 
         return carNames
     }
