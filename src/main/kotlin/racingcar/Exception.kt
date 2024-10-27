@@ -26,7 +26,7 @@ class Exception {
         const val NEGATIVE_SIGN = "-"
         const val ERROR_NAME_TOO_LONG = "자동차 이름은 5글자 이내여야 합니다."
         const val ERROR_NAME_EMPTY = "자동차 이름이 공백이면 안됩니다."
-        const val ERROR_NOT_NUMBER = "시도 횟수가 숫자여야 합니다."
+        const val ERROR_NOT_NUMBER = "시도 횟수는 정수형 숫자여야 합니다."
         const val ERROR_OUT_OF_INT_RANGE = "시도 횟수가 너무 큽니다."
         const val ERROR_BLANK_NUMBER = "시도 횟수는 비어있지 않아야 합니다."
         const val ERROR_ZERO = "시도 횟수는 1 이상이어야 합니다."

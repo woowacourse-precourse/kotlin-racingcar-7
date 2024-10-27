@@ -82,6 +82,13 @@ class ApplicationTest : NsTest() {
         }
 
         @Test
+        fun `전진 횟수가 소수일 경우`() {
+            assertSimpleTest {
+                assertThrows<IllegalArgumentException> { runException("pobi,abc", "1.1") }
+            }
+        }
+
+        @Test
         fun `전진 횟수가 일정 범위을 벗어날 경우`() {
             val moveCount = 2147483646
 
