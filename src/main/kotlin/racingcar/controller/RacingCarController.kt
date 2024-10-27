@@ -28,7 +28,7 @@ class RacingCarController {
         doRacing(carList, tryNumber)
     }
 
-    private fun createRacingCarList(inputCarList: List<String>): List<RacingCar> {
+    fun createRacingCarList(inputCarList: List<String>): List<RacingCar> {
         val carList = inputCarList.map { carItemName ->
             RacingCar(carName = carItemName)
         }
@@ -60,11 +60,13 @@ class RacingCarController {
     private fun moveRacingCarItem(carItem: RacingCar) {
         val randomMoveNumber = Randoms.pickNumberInRange(ZERO, RANDOM_NUMBER_MAX_RANGE)
 
-        if (randomMoveNumber >= MOVE_VALID_CONDITION)
+        if (isValidMoveCondition(randomMoveNumber))
             carItem.onMoveCar()
     }
 
-    private fun checkFinalWinner(carList: List<RacingCar>) {
+    fun isValidMoveCondition(randomNumber: Int): Boolean = randomNumber >= MOVE_VALID_CONDITION
+
+    fun checkFinalWinner(carList: List<RacingCar>) {
         val maxLocationCarNameList = checkMaxLocation(carList)
         val winner: String = maxLocationCarNameList.joinToString(WINNER_JOIN_LETTER)
 
