@@ -5,10 +5,14 @@ import racingcar.model.Car
 object OutputView {
     fun displayRaceResults(results: List<List<Car>>) {
         results.forEach { race ->
-            race.forEach { car ->
-                println("${car.name} : ${"-".repeat(car.position)}")
-            }
+            displaySingleRaceResult(race)
             println()
+        }
+    }
+
+    private fun displaySingleRaceResult(race: List<Car>) {
+        race.forEach { car ->
+            println("${car.name} : ${"-".repeat(car.position)}")
         }
     }
 
