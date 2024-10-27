@@ -7,9 +7,16 @@ fun main() {
         return input.split(",")
     }
 
+    fun validateNameNotNull(cars: List<String>) {
+        cars.forEach {
+            if (it.isEmpty()) throw IllegalArgumentException("자동차의 이름은 비어있을 수 없습니다.")
+        }
+    }
+
     fun readCarNames() {
         println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
         val input = splitNamesByDelimiter(Console.readLine())
+        validateNameNotNull(input)
     }
 
 
