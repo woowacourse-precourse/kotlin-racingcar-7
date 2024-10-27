@@ -4,6 +4,12 @@ class CarFactory {
 
     companion object {
 
+        fun createCars(carNames: List<String>, randomNumber: RandomNumber): List<Car> {
+            validateCarNamesCount(carNames)
+            validateUniqueCarNames(carNames)
+            return carGenerator(carNames, randomNumber)
+        }
+
         private fun carGenerator(carNames: List<String>, randomNumber: RandomNumber): List<Car> =
             carNames.map { carName -> Car(carName, randomNumber) }
 
