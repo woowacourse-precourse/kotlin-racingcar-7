@@ -9,5 +9,4 @@ object Constants {
     const val COLON = " : "
     const val WINNERS_MSG = "최종 우승자 : "
     const val COMMA = ","
-
 }

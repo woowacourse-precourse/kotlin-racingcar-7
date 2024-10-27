@@ -1,8 +1,7 @@
 package racingcar.model
 
+import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
-
-import org.junit.jupiter.api.Assertions.*
 
 class ErrorKtTest {
     private val error = Error()
@@ -25,7 +24,7 @@ class ErrorKtTest {
 
     @Test
     fun `차 이름이 중복될 때 테스트`() {
-        val caNames ="a,a,b"
+        val caNames = "a,a,b"
         val result = error.carNameError(caNames)
 
         assertTrue(result)
