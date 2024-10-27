@@ -2,22 +2,20 @@ package Controller
 
 import Model.CarsFactory
 import Model.MoveStrategy
-import Model.Race
-import View.InputView
-import View.ResultView
+import Model.startRace
+import Model.findWinner
+import View.*
 
 class RacingGameController(private val moveStrategy: MoveStrategy) {
-
     fun playGame() {
         try {
             val cars = CarsFactory.createCars(InputView.getCarNames())
             val rounds = InputView.getRounds()
-            val race = Race(cars, rounds, moveStrategy)
+            val raceProgress = startRace(cars, rounds, moveStrategy)
 
             println("\n실행 결과")
-            val raceProgress = race.startRace()
             raceProgress.forEach { ResultView.printRaceProgress(it) }
-            ResultView.printWinners(race.findWinners())
+            ResultView.printWinners(findWinner(cars))
 
         } catch (e: IllegalArgumentException) {
             throw IllegalArgumentException()
