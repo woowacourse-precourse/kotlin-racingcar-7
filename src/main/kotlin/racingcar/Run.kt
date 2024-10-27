@@ -29,4 +29,12 @@ class Run {
         attemptTimes.toIntOrNull() ?: throw IllegalArgumentException("시도 횟수를 입력해 주세요.")
         return true
     }
+
+    fun moveForward():Int {
+        var position: Int = 0
+        if(Randoms.pickNumberInRange(0,9) >= 4) {
+            position++
+        }
+        return position
+    }
 }
