@@ -30,7 +30,7 @@ object Racetrack {
     private fun raceOnce() {
         cars.forEach { car ->
             val randomValue = Randoms.pickNumberInRange(0, 9) // 0과 9 사이의 무작위 값
-            car.moveFoward(randomValue)
+            car.moveForward(randomValue)
         }
     }
 
