@@ -62,7 +62,7 @@ class ApplicationTest : NsTest() {
     @Test
     fun `자동차 이름에 유효하지 않은 문자가 포함될 때 예외 발생`() {
         assertSimpleTest {
-            val exception = assertThrows<IllegalArgumentException> { runException("pobi,woni,@wkdan", "1") }
+            val exception = assertThrows<IllegalArgumentException> { runException("pobi,woni,@wkd", "1") }
             assertThat(exception.message).isEqualTo("자동차 이름에는 알파벳과 숫자만 사용할 수 있습니다.")
         }
     }
