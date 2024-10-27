@@ -17,8 +17,11 @@ class CreateCarUseCase {
     }
 
     private fun validateCarNames(carNames: List<String>) = carNames.forEach { name ->
-        require(name.length <= NAME_COUNT_LIMIT) { println(OVER_NAME_COUNT_MESSAGE) }
+        validateCarNamesLength(name)
     }
+
+    private fun validateCarNamesLength(name: String) =
+        require(name.length > NAME_COUNT_LIMIT) { println(OVER_NAME_COUNT_MESSAGE) }
 
     companion object {
         private const val ANONYMITY = "익명"
