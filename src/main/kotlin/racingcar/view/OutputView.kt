@@ -1,6 +1,7 @@
 package racingcar.view
 
 import racingcar.model.RacingCar
+import racingcar.util.Constant.CAR_LOCATION_PRINTER
 
 class OutputView {
     fun printMessage(message: String) {
@@ -9,7 +10,7 @@ class OutputView {
 
     fun printRacingResult(carList: List<RacingCar>) {
         carList.forEach { carItem ->
-            println("${carItem.carName} : ${carItem.location}")
+            println("${carItem.carName} : ${CAR_LOCATION_PRINTER.repeat(carItem.location)}")
         }
         println()
     }
