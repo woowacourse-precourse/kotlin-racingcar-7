@@ -10,10 +10,10 @@ object InputView {
         return input
     }
 
-    fun tryCount(): UInt{
+    fun tryCount(): Int{
         println(InputViewString.RACING_TRY_GUIDE)
         val input = Console.readLine()
         require(input.toUIntOrNull() != null){ExceptionInt.NOT_UINT}
-        return input.toUInt()
+        return input.toInt()
     }
 }
