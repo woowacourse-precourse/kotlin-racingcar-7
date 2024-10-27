@@ -38,4 +38,12 @@ class CreateCarUseCaseTest {
             createCarUseCase.execute(input)
         }
     }
+
+    @Test
+    fun `자동차들의 이름에 중복이 있을 경우 예외 처리 테스트`() {
+        val input = "red,blue,white,blue"
+        assertThrows<IllegalArgumentException> {
+            createCarUseCase.execute(input)
+        }
+    }
 }
