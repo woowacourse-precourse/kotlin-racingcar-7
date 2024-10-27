@@ -2,6 +2,8 @@ package racingcar
 
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.ValueSource
 import kotlin.IllegalArgumentException
 
 class ValidationTest {
@@ -45,6 +47,14 @@ class ValidationTest {
 
         assertThrows<IllegalArgumentException> {
             validation.checkCarNameDuplication(carList)
+        }
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = ["a", "-", "cola", "콜라"])
+    fun `시도 횟수 유효성 검사 (숫자가 아닐 경우)`(input: String) {
+        assertThrows<IllegalArgumentException> {
+            validation.checkRoundCountNotNumber(input)
         }
     }
 }
