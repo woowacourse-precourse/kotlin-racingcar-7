@@ -1,37 +1,30 @@
 package racingcar.ui
 
-import racingcar.domain.entity.Race
+import racingcar.domain.entity.Car
 import racingcar.domain.usecase.CreateCarUseCase
+import racingcar.domain.usecase.GetWinnersUseCase
+import racingcar.domain.usecase.PlayRaceUseCase
 
 class RacingCarController(
-    private val userInput: UserInput,
-    private val guideOutput: GuideOutput,
-    private val resultOutput: ResultOutput,
+    private val createCarUseCase: CreateCarUseCase,
+    private val getWinnersUseCase: GetWinnersUseCase,
+    private val playRaceUseCase: PlayRaceUseCase,
 ) {
-    fun execute() {
-        val carsName = getCarsName()
-        val raceCount = getRaceCount()
-        val cars = CreateCarUseCase().execute(input = carsName)
-        val race = Race(cars)
-        playRace(raceCount, race)
-        resultOutput.printWinners(race.getWinnersName())
+    fun convertRaceCount(input: String): Int {
+        val count = input.toIntOrNull()
+        requireNotNull(count) { println(INPUT_INTEGER_ERROR_MESSAGE) }
+        return count
     }
 
-    private fun getCarsName(): String {
-        guideOutput.guideInputCarsName()
-        return userInput.getCarsName()
+    private fun playRace(cars: List<Car>) {
+        playRaceUseCase.execute(cars)
     }
 
-    private fun getRaceCount(): Int {
-        guideOutput.guideInputRaceCount()
-        return userInput.getRaceCount()
-    }
+    private fun createCars(input: String) = createCarUseCase.execute(input)
 
-    private fun playRace(raceCount: Int, race: Race) {
-        guideOutput.guideExecuteResult()
-        repeat(raceCount) {
-            race.play()
-            resultOutput.printRaceResult(race.cars)
-        }
+    private fun getWinners(cars: List<Car>) = getWinnersUseCase.execute(cars)
+
+    companion object {
+        private const val INPUT_INTEGER_ERROR_MESSAGE = "정수를 입력해주세요"
     }
 }
