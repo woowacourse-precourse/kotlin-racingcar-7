@@ -76,7 +76,5 @@ fun winner(names: String, tryNumber: Int) {
     val maxPosition = position.values.maxOrNull()
     val winners = position.filter {it.value == maxPosition}.keys
 
-    race(names, tryNumber)
-
     println("최종 우승자 : ${winners.joinToString(", ")}")
 }
