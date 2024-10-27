@@ -16,7 +16,6 @@ class CountValidator {
             throw IllegalArgumentException(CountError().ZERO_INPUT)
         }
 
-        val count = countInput.toInt()
-        return count
+        return countInput.toInt()
     }
 }
