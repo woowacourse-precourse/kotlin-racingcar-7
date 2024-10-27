@@ -1,6 +1,7 @@
 package racingcar.controller
 
 import racingcar.controller.dto.RaceGameResultDto
+import racingcar.controller.dto.WinnerResultDto
 import racingcar.model.Car
 import racingcar.service.RaceGameService
 import racingcar.view.RaceGameView
@@ -23,5 +24,7 @@ class RaceGameController(
             val raceResults: List<RaceGameResultDto> = RaceGameResultDto.mapToRaceGameResults(raceCars)
             raceGameView.printRaceGameResults(raceResults)
         }
+
+        val winningResults: List<WinnerResultDto> = raceGameService.findWinners(raceCars)
     }
 }
