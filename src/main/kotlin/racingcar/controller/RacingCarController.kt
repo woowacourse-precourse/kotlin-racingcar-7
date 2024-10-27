@@ -7,19 +7,25 @@ import racingcar.view.OutputView
 
 object RacingCarController {
     fun run() {
-        val inputNames = InputView.inputNames()
-        Validator.validateInputNames(inputNames)
-        val round = InputView.inputRound().toInt()
-        Validator.validateInputRound(round.toString())
-
-        val cars = inputNames.split(",").map { it.trim() }.map { Model(it) }
+        val cars = initializeCars()
+        val round = initializeRounds()
 
         raceStart(cars, round)
 
         val winners = identifyRaceWinners(cars)
         OutputView.outputWinners(winners)
+    }
 
+    fun initializeCars(): List<Model> {
+        val inputNames = InputView.inputNames()
+        Validator.validateInputNames(inputNames)
+        return inputNames.split(",").map { it.trim() }.map { Model(it) }
+    }
 
+    fun initializeRounds(): Int {
+        val round = InputView.inputRound().toInt()
+        Validator.validateInputRound(round.toString())
+        return round
     }
 
     fun raceStart(cars: List<Model>, round: Int) {
