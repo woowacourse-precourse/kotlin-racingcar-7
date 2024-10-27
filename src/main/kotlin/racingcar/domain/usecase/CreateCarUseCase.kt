@@ -29,7 +29,7 @@ class CreateCarUseCase {
     }
 
     private fun validateCarNamesLength(name: String) =
-        require(name.length > NAME_COUNT_LIMIT) { println(OVER_NAME_COUNT_MESSAGE) }
+        require(name.length <= NAME_COUNT_LIMIT) { println(OVER_NAME_COUNT_MESSAGE) }
 
     companion object {
         private const val INITIAL_ANONYMITY_COUNT = 1
