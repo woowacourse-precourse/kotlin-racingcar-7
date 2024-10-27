@@ -29,6 +29,7 @@
 - [x] 차수별 실행 결과 출력
 - [x] 우승자 안내 문구 출력
 - [x] 예외 처리
+- [x] 단위 테스트
 
 ## 문제 해결 과정
 
@@ -39,14 +40,21 @@
 ```kotlin
 fun input(): Pair<List<String>, Int> {
     println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
-    val cars = readLine()!!.trim().split(",")
+    val cars = readLine()!!.trim().split(",").map { it.trim() }
+    checkCarsName(cars)
     println("시도할 횟수는 몇 회인가요?")
-    val n = readln().toInt()
+    val n = try {
+        readln().toInt()
+    } catch (e: NumberFormatException) {
+        throw IllegalArgumentException("잘못된 입력입니다.")
+    }
+    checkPositiveInteger(n)
     return Pair(cars, n)
 }
 ```
 - 경주할 자동차 이름, 시도할 횟수를 `readline()`, `readln()`을 통해 입력 받음
 - `cars`, `n` 을 `Pair`로 한번에 묶어서 리턴
+- 각 입력된 값은 예외처리 함수를 통해 예외 확인 후 처리
 
 #### main
 
@@ -203,3 +211,70 @@ fun checkPositiveInteger(n: Int) {
 ## 실행 결과
 
 <img width="642" alt="image" src="https://github.com/user-attachments/assets/91490109-7d28-4445-994a-5eb123e4aac2">
+
+## 단위 테스트 추가
+
+### 공동 우승자가 나온 경우
+
+```kotlin
+    @Test
+    fun `기능 테스트(공동 우승자)`() {
+        assertRandomNumberInRangeTest(
+            {
+                run("pobi,woni,jun", "2")
+                assertThat(output()).contains("pobi : -", "woni : ","jun : -","pobi : --","jun : --", "최종 우승자 : pobi, jun")
+            },
+            MOVING_FORWARD, STOP, MOVING_FORWARD, MOVING_FORWARD, STOP, MOVING_FORWARD
+        )
+    }
+```
+
+### 예외 테스트 입력된 차의 숫자가 2개 미만인 경우
+```kotlin
+    @Test
+    fun `예외 테스트(입력된 차의 숫자가 2개 미만인 경우)`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi", "1") }
+        }
+    }
+```
+
+### 예외 테스트 차의 이름에 빈 문자가 온 경우
+```kotlin
+    @Test
+    fun `예외 테스트(차의 이름에 빈 문자가 온 경우)`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi, ", "1") }
+        }
+    }
+```
+
+### 예외 테스트 동일한 차의 이름이 들어온 경우
+```kotlin
+    @Test
+    fun `예외 테스트(동일한 차의 이름이 들어온 경우)`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,pobi", "1") }
+        }
+    }
+```
+
+### 예외 테스트 입력된 시행 횟수가 숫자가 아닌 경우
+```kotlin
+    @Test
+    fun `예외 테스트(입력된 시행 횟수가 숫자가 아닌 경우)`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,pobi", "a") }
+        }
+    }
+```
+
+### 예외 테스트 입력된 시행 횟수가 양의 정수가 아닌 경우
+```kotlin
+    @Test
+    fun `예외 테스트(입력된 시행 횟수가 양의 정수가 아닌 경우)`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,pobi", "-1") }
+        }
+    }
+```
