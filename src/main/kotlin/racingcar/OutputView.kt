@@ -1,12 +1,16 @@
 package racingcar
 
+import racingcar.Strings.ROUND_RESULT_TITLE
+import racingcar.Strings.CAR_POSITION_FORMAT
+import racingcar.Strings.WINNER_ANNOUNCEMENT
+
 class OutputView {
     fun showRoundResultTitle() {
-        println(Messages.ROUND_RESULT_TITLE)
+        println(ROUND_RESULT_TITLE)
     }
 
     fun showCarPosition(car: Car) {
-        println(Messages.CAR_POSITION_FORMAT.format(car.name, "-".repeat(car.getCurrentPosition())))
+        println(CAR_POSITION_FORMAT.format(car.name, "-".repeat(car.getCurrentPosition())))
     }
 
     fun showRoundFooter() {
@@ -14,6 +18,6 @@ class OutputView {
     }
 
     fun showWinners(winners: List<String>) {
-        println(Messages.WINNER_ANNOUNCEMENT.format(winners.joinToString(", ")))
+        println(WINNER_ANNOUNCEMENT.format(winners.joinToString(", ")))
     }
 }

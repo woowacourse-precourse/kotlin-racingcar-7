@@ -1,23 +1,26 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Randoms
+import racingcar.Strings.ERROR_NAME_LENGTH
+import racingcar.Strings.ERROR_DUPLICATE_NAME
+import racingcar.Strings.ERROR_INVALID_TRY_COUNT
 
 class Validator {
     fun validateNameLength(carNames: List<String>) {
         if (carNames.any { it.isEmpty() || it.length > MAX_NAME_LENGTH }) {
-            throw IllegalArgumentException(Messages.ERROR_NAME_LENGTH)
+            throw IllegalArgumentException(ERROR_NAME_LENGTH)
         }
     }
 
     fun validateNameDuplication(carNames: List<String>) {
         if (carNames.size != carNames.distinct().size) {
-            throw IllegalArgumentException(Messages.ERROR_DUPLICATE_NAME)
+            throw IllegalArgumentException(ERROR_DUPLICATE_NAME)
         }
     }
 
     fun validateTryCount(tryCount: Int) {
         if (tryCount < MIN_TRY_COUNT) {
-            throw IllegalArgumentException(Messages.ERROR_INVALID_TRY_COUNT)
+            throw IllegalArgumentException(ERROR_INVALID_TRY_COUNT)
         }
     }
 

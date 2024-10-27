@@ -1,9 +1,9 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Console
-import racingcar.Messages.ERROR_INVALID_TRY_COUNT
-import racingcar.Messages.INPUT_CAR_NAMES
-import racingcar.Messages.INPUT_TRY_COUNT
+import racingcar.Strings.ERROR_INVALID_TRY_COUNT
+import racingcar.Strings.INPUT_CAR_NAMES
+import racingcar.Strings.INPUT_TRY_COUNT
 
 class InputView {
     private val validator = Validator()
@@ -21,13 +21,12 @@ class InputView {
 
     fun getTryCount(): Int {
         println(INPUT_TRY_COUNT)
-        val input = Console.readLine()
 
-        return try {
-            val tryCount = input.toInt()
+        return runCatching {
+            val tryCount = Console.readLine().toInt()
             validator.validateTryCount(tryCount)
             tryCount
-        } catch (e: NumberFormatException) {
+        }.getOrElse {
             throw IllegalArgumentException(ERROR_INVALID_TRY_COUNT)
         }
     }
