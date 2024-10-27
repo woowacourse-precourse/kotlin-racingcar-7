@@ -7,7 +7,7 @@ import racingcar.Strings.ERROR_NAME_CONTAINS_SPACES
 import racingcar.Strings.ERROR_NAME_LENGTH
 
 class Validator {
-    fun validateCarNamesLength(carNames: List<String>) {
+    fun validateCarNames(carNames: List<String>) {
         carNames.forEach { carName ->
             when {
                 carName.trim().isEmpty() -> {
