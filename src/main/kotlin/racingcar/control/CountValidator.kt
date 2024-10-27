@@ -12,10 +12,11 @@ class CountValidator {
         if (!countInput.contains(Regex("^[0-9]*$"))) {
             throw IllegalArgumentException(CountError().countIncludeString)
         }
+        if (countInput.toInt() == 0) {
+            throw IllegalArgumentException(CountError().zeroInput)
+        }
 
         val count = countInput.toInt()
-
         return count
     }
-
 }
