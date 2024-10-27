@@ -6,6 +6,7 @@ import camp.nextstep.edu.missionutils.Randoms
 import racingcar.constant.PrintMessage
 import racingcar.view.OutputView
 import racingcar.constant.ErrorMessage
+import racingcar.constant.GameSettings
 
 class RacingCarController {
     private val inputView = InputView()
@@ -13,9 +14,9 @@ class RacingCarController {
 
     fun run() {
         val racingCarNameInput = inputView.inputRacingCarName()
-        val attemptCountInput = inputView.inputAttemptCount()
-
         val racingCars = createRacingCars(racingCarNameInput)
+
+        val attemptCountInput = inputView.inputAttemptCount()
         val attemptCount = convertToAttemptCount(attemptCountInput)
 
         printRaceResult(racingCars, attemptCount)
@@ -35,7 +36,7 @@ class RacingCarController {
         throw IllegalArgumentException(ErrorMessage.FAIL_CREATE_RACINGCAR)
     }
 
-    private fun parseRacingCarNames(input: String) = input.split(",").map { it.trim() }
+    private fun parseRacingCarNames(input: String) = input.split(GameSettings.PARSE_DELIMITER).map { it.trim() }
 
     private fun validateRacingCarNames(racingCarNames: List<String>): Boolean {
         return when {
@@ -50,7 +51,7 @@ class RacingCarController {
 
     private fun isNameEmpty(names: List<String>) = names.any { name -> name.isEmpty() }
 
-    private fun isOverMaxLength(names: List<String>) = names.any { name -> name.length > 5 }
+    private fun isOverMaxLength(names: List<String>) = names.any { name -> name.length > GameSettings.MAX_LENGTH }
 
     fun convertToAttemptCount(input: String): Int {
         if (validateAttemptCount(input)) {
@@ -69,9 +70,9 @@ class RacingCarController {
 
     private fun isNonNumber(input: String) = input.toIntOrNull() == null
 
-    private fun isNonPositiveNumber(input: String) = input.toInt() <= 0
+    private fun isNonPositiveNumber(input: String) = input.toInt() <= GameSettings.NON_POSITIVE_STANDARD
 
-    private fun createRandomNumber() = Randoms.pickNumberInRange(0, 9)
+    private fun createRandomNumber() = Randoms.pickNumberInRange(GameSettings.RANDOM_NUMBER_MIN, GameSettings.RANDOM_NUMBER_MAX)
 
     private fun moveForward(racingCars: List<RacingCar>) {
         racingCars.forEach { car->
@@ -82,7 +83,7 @@ class RacingCarController {
         }
     }
 
-    private fun isMoveForwardPossible(number: Int) = number >= 4
+    private fun isMoveForwardPossible(number: Int) = number >= GameSettings.MOVE_FORWARD_STANDARD
 
     private fun printRaceResult(racingCars: List<RacingCar>, attemptCount: Int) {
         outputView.printRaceResult()

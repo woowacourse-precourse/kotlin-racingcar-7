@@ -1,5 +1,6 @@
 package racingcar.view
 
+import racingcar.constant.GameSettings
 import racingcar.constant.PrintMessage
 
 class OutputView {
@@ -9,7 +10,7 @@ class OutputView {
     }
 
     fun printFinalWinner(finalWinner: List<String>) {
-        println(PrintMessage.FINAL_WINNER + finalWinner.joinToString(", "))
+        println(PrintMessage.FINAL_WINNER + finalWinner.joinToString(GameSettings.JOIN_TO_STRING_SEPARATOR))
     }
 
     fun printBlank() {
