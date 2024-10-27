@@ -31,13 +31,16 @@ class RacingCarController(
     private fun getRaceCount(): Int {
         racingInputView.guideInputRaceCount()
         val input = racingInputView.getRaceCountInput()
-        return convertRaceCount(input)
+        return parseRaceCount(input)
     }
 
-    private fun convertRaceCount(input: String): Int {
-        val count = input.toIntOrNull()
-        requireNotNull(count) { println(INPUT_INTEGER_ERROR_MESSAGE) }
+    private fun parseRaceCount(input: String): Int {
+        val count = convertToIntOrThrow(input)
         return count
+    }
+
+    private fun convertToIntOrThrow(input: String): Int {
+        return input.toIntOrNull() ?: throw IllegalArgumentException(INVALID_TRY_NUMBER_MIN_ERROR)
     }
 
     private fun startRace(raceCount: Int, cars: List<Car>) {
@@ -60,6 +63,6 @@ class RacingCarController(
     private fun getWinners(cars: List<Car>) = getWinnersUseCase.execute(cars)
 
     companion object {
-        private const val INPUT_INTEGER_ERROR_MESSAGE = "정수를 입력해주세요"
+        private const val INVALID_TRY_NUMBER_MIN_ERROR = "최소 1이상의 정수를 입력 해주세요."
     }
 }
