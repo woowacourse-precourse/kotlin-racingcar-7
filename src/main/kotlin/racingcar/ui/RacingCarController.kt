@@ -36,11 +36,16 @@ class RacingCarController(
 
     private fun parseRaceCount(input: String): Int {
         val count = convertToIntOrThrow(input)
+        validateMinRaceCount(count)
         return count
     }
 
     private fun convertToIntOrThrow(input: String): Int {
         return input.toIntOrNull() ?: throw IllegalArgumentException(INVALID_TRY_NUMBER_MIN_ERROR)
+    }
+
+    private fun validateMinRaceCount(count: Int) {
+        require(count >= MIN_RACE_COUNT) { println(INVALID_TRY_NUMBER_MIN_ERROR) }
     }
 
     private fun startRace(raceCount: Int, cars: List<Car>) {
@@ -64,5 +69,6 @@ class RacingCarController(
 
     companion object {
         private const val INVALID_TRY_NUMBER_MIN_ERROR = "최소 1이상의 정수를 입력 해주세요."
+        private const val MIN_RACE_COUNT = 1
     }
 }
