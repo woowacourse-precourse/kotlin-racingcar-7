@@ -13,6 +13,7 @@ fun main() {
 
     val inputCarNames: String = consoleInput.getCarNames()
     val inputMatches: String = consoleInput.getMatches()
+    consoleInput.closeInput()
 
     val inputAdapter = InputAdapter(inputCarNames, inputMatches)
 
