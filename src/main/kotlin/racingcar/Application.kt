@@ -113,4 +113,22 @@ class RacingCar {
         println()
     }
 
+    //우승자 검증 함수
+    private fun resultWinner() {
+        val sortList = carList.sortedByDescending { it.count }
+        val winnerScore = sortList[0].count
+        winnerList = arrayListOf()
+        sortList.forEach {
+            if(it.count == winnerScore)
+                winnerList.add(it.name)
+        }
+
+    }
+
+    //우승자를 출력해주는 함수
+    private fun printWinner(){
+        val result = winnerList.joinToString(", ")
+        print("최종 우승자 : $result")
+    }
+
 }
