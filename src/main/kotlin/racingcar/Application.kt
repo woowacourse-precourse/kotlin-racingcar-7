@@ -21,7 +21,8 @@ import kotlin.math.max
     [] 시도할 횟수가 정수인 경우
  */
 fun main() {
-
+    val racingCar = RacingCar()
+    racingCar.inputValue()
 }
 
 //자동차 클래스 정의
@@ -37,7 +38,6 @@ data class Car(
         }
         return stringBuilder.toString()
     }
-
 }
 
 //레이싱 게임의 프로퍼티, 메소드를 포함한 클래스
@@ -45,7 +45,7 @@ class RacingCar {
     private lateinit var carList: List<Car>
     private lateinit var winnerList: ArrayList<String>
 
-    /입력 함수
+    //입력 함수
     fun inputValue() {
         println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
         val carNameList = Console.readLine()
@@ -54,16 +54,10 @@ class RacingCar {
         println("시도할 횟수는 몇 회인가요?")
         val testCount = Console.readLine()
         blankOrNullCheck("", testCount)
-    }
 
-    //입력값이 Null, Blank 검증 함수
-    private fun blankOrNullCheck(carNameList: String, testCount: String) {
-        if (carNameList.isNotBlank() || testCount.isNotBlank()) {
-            inputCarName(carNameList)
-            inputTestCount(testCount)
-        } else {
-            throw IllegalArgumentException()
-        }
+        println("\n실행결과")
+        run(testCount.toInt())
+        printWinner()
     }
 
     //자동차 이름 검증 함수
@@ -83,12 +77,22 @@ class RacingCar {
         }
     }
 
+    //입력값이 Null, Blank 검증 함수
+    private fun blankOrNullCheck(carNameList: String, testCount: String) {
+        if (carNameList.isNotBlank() || testCount.isNotBlank()) {
+            inputCarName(carNameList)
+            inputTestCount(testCount)
+        } else {
+            throw IllegalArgumentException()
+        }
+    }
+
     //레이싱 시작 함수
     private fun run(count: Int) {
         for (i in 0 until count) {
             moveAllCar()
         }
-
+        resultWinner()
     }
 
     //모든 자동차들의 이동을 알려주는 함수
@@ -113,6 +117,8 @@ class RacingCar {
         println()
     }
 
+
+
     //우승자 검증 함수
     private fun resultWinner() {
         val sortList = carList.sortedByDescending { it.count }
@@ -130,5 +136,6 @@ class RacingCar {
         val result = winnerList.joinToString(", ")
         print("최종 우승자 : $result")
     }
+
 
 }
