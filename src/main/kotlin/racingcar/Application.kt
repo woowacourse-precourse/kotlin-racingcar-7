@@ -1,8 +1,10 @@
 package racingcar
 
+import camp.nextstep.edu.missionutils.Randoms
+
 fun main() {
     val (cars, n) = input()
-
+    race(cars,n)
 }
 
 fun input(): Pair<List<String>, Int> {
@@ -11,4 +13,19 @@ fun input(): Pair<List<String>, Int> {
     println("시도할 횟수는 몇 회인가요?")
     val n = readln().toInt()
     return Pair(cars, n)
+}
+
+fun race(cars: List<String>, n: Int) {
+    val carsProgressCount = Array(cars.size){0}
+    repeat(n){
+        for(i in carsProgressCount.indices){
+            carsProgressCount[i] += randomPick()
+        }
+    }
+}
+
+fun randomPick(): Int {
+    val n = Randoms.pickNumberInRange(0, 9)
+    return if (n >= 4) 1
+    else 0
 }

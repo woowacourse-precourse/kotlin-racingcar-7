@@ -55,3 +55,34 @@ val (cars, n) = input()
 ```
 - 메인 함수에서 `input()` 함수를 실행하여 입력을 받아 경주할 자동차 이름, 시도할 횟수를 `cars`, `n`에 저장
 
+### 차수별 랜덤 시행
+
+#### race
+
+```kotlin
+fun race(cars: List<String>, n: Int) {
+    val carsProgressCount = Array(cars.size){0}
+    repeat(n){
+        for(i in carsProgressCount.indices){
+            carsProgressCount[i] += randomPick()
+        }
+    }
+}
+```
+
+- 차들의 전진 횟수를 저장 할 `carsProgressCount` 배열 선언
+- 시행 횟수인 `n` 번 만큼 각 차들에 대해 `randomPick()` 을 진행한 후 `carsProgressCount` 배열에 전진 여부를 저장
+
+#### randomPick
+
+```kotlin
+fun randomPick(): Int {
+    val n = Randoms.pickNumberInRange(0, 9)
+    return if (n >= 4) 1
+    else 0
+}
+```
+
+- 0~9 사이의 숫자중 하나를 랜덤으로 선택해 `n`에 저장
+- `n`이 4이상이라면 전진햇음으로 1, 그외에는 전진하지 않았음으로 0을 리턴
+
