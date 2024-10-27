@@ -33,4 +33,18 @@ class ValidationTest {
             validation.checkCarNameBlank(carList)
         }
     }
+
+    @Test
+    fun `자동차 이름 유효성 검사 (중복된 이름이 있을 경우)`() {
+        val carList = listOf(
+            Car("Cider"),
+            Car("Cola"),
+            Car("Cider"),
+            Car("Cola"),
+        )
+
+        assertThrows<IllegalArgumentException> {
+            validation.checkCarNameDuplication(carList)
+        }
+    }
 }
