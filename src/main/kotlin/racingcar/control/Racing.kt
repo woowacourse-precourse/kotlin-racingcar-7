@@ -3,6 +3,10 @@ package racingcar.control
 import racingcar.view.Message
 
 class Racing(private val cars: List<CarData>, private val count: Int) {
+    init {
+        println(Message().RESULT)
+    }
+
     fun repeatRacing(): List<CarData> {
         repeat(count) {
             racing()
