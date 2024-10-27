@@ -7,6 +7,7 @@ object Strings {
     const val ROUND_RESULT_TITLE = "실행 결과"
     const val CAR_POSITION_FORMAT = "%s : %s"
     const val ERROR_NAME_LENGTH = "자동차 이름은 1자 이상 5자 이하의 이름이어야 합니다."
+    const val ERROR_NAME_CONTAINS_SPACES = "자동차 이름에는 공백이 포함될 수 없습니다."
     const val ERROR_DUPLICATE_NAME = "자동차 이름은 중복될 수 없습니다."
     const val ERROR_INVALID_TRY_COUNT = "이동 횟수는 양의 정수로 입력해야 합니다."
 }
