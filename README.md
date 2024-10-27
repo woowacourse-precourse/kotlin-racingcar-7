@@ -25,7 +25,7 @@
 - [ ] Car
     - [X] field 정의
     - [X] move
-    - [ ] printResult
+    - [X] printResult
 - [ ] 리펙토링
 
 ## 추가 정보
