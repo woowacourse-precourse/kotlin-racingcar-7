@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test
 import camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest
 
 class RacingCarTest {
-
     @Test
     fun `자동차 이름이 조건에 맞는 경우 정상 처리`() {
         val racingCar = RacingCar()
@@ -104,5 +103,4 @@ class RacingCarTest {
             5, 5, 5
         )
     }
-
 }
