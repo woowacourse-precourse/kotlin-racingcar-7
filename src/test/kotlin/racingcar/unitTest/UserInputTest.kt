@@ -5,8 +5,6 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
 class UserInputTest : NsTest() {
-    private val userInput = UserInput()
-
     @Test
     fun `정상적인 입력`() {
         var carInput = "pobi,woni,jun"
@@ -39,8 +37,8 @@ class UserInputTest : NsTest() {
 
     
     override fun runMain() {
-        val userInput = UserInput()
-        val output = userInput.request()
+
+        val output = UserInput.request()
         println(output.carNameList)
         println(output.totalAttempts)
     }
