@@ -37,7 +37,7 @@ fun printCarDrivingDistance(cars: List<Car>) {
     for (car in cars) {
         val message = CAR_DRIVING_DISTANCE_MESSAGE_FORMAT.format(
             car.name,
-            DASH_SEPARATOR.repeat(car.drivingDistance)
+            DASH_SEPARATOR.repeatUInt(car.drivingDistance)
         )
 
         println(message)

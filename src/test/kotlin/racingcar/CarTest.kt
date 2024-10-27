@@ -40,11 +40,11 @@ class CarTest {
     @Test
     fun successPlusDrivingDistance() {
         val name = "감자"
-        val round = 4
+        val round = 4U
 
         val car = Car(name)
 
-        for (i in 1..round) {
+        for (i in 1U..round) {
             car.plusDrivingDistance()
         }
 

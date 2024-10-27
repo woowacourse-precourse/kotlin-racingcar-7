@@ -40,8 +40,8 @@ class RacingGameTest : NsTest() {
         assertRandomNumberInRangeTest(
             {
                 game.startOneRound()
-                assertEquals(game.cars[0].drivingDistance, 1)
-                assertEquals(game.cars[1].drivingDistance, 0)
+                assertEquals(game.cars[0].drivingDistance, 1U)
+                assertEquals(game.cars[1].drivingDistance, 0U)
             },
             MOVING_FORWARD, STOP
         )
@@ -58,8 +58,8 @@ class RacingGameTest : NsTest() {
                 game.startOneRound()
                 game.startOneRound()
 
-                assertEquals(game.cars[0].drivingDistance, 2)
-                assertEquals(game.cars[1].drivingDistance, 1)
+                assertEquals(game.cars[0].drivingDistance, 2U)
+                assertEquals(game.cars[1].drivingDistance, 1U)
             },
             MOVING_FORWARD, STOP, MOVING_FORWARD, STOP, STOP, MOVING_FORWARD
         )

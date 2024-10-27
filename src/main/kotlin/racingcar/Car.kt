@@ -2,7 +2,7 @@ package racingcar
 
 class Car(name: String) {
     val name: String
-    var drivingDistance: Int = 0
+    var drivingDistance: UInt = 0U
         private set
 
     init {

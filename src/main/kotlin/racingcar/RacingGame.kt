@@ -15,7 +15,7 @@ class RacingGame(names: List<String>) {
     }
 
     fun getLeadingCars(): MutableList<Car> {
-        var top = 0
+        var top = 0U
         val leadingCars: MutableList<Car> = mutableListOf()
 
         for (car in cars) {
