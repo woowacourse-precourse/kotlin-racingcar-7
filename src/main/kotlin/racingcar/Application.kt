@@ -29,12 +29,12 @@ class OutputView {
     }
 }
 
-fun isCanMove(): Boolean {
+fun isCanGo(): Boolean {
     return Randoms.pickNumberInRange(0,9) >= 4
 }
 
 fun gameOfOneCar(carsMoving : Array<Int>, index : Int) {
-    if(isCanMove()){
+    if(isCanGo()){
         carsMoving[index] += 1
     }
 }
@@ -77,6 +77,12 @@ fun checkCarNameLength(cars : List<String>) {
     }
 }
 
+fun checkInputCarIsNotEmpty(inputCar : String){
+    if(inputCar == ""){
+        throw IllegalArgumentException("자동차 이름을 입력해주세요")
+    }
+}
+
 fun checkCountIsNumber(inputCount : String){
     try {
         inputCount.toInt()
@@ -91,6 +97,7 @@ fun main() {
 
     inputView.inputCars()
     val inputCar = Console.readLine()
+    checkInputCarIsNotEmpty(inputCar)
     val cars : List<String> = inputCar.split(',')
     checkCarNameLength(cars)
 
