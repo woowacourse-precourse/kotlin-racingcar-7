@@ -139,6 +139,14 @@ class ApplicationTest : NsTest() {
                 assertThrows<IllegalArgumentException> { runException("Car1,Car2", "0") }
             }
         }
+
+        @DisplayName("사용자가 입력한 자동차가 하나인 경우 예외 테스트")
+        @Test
+        fun exceptionCase10Test() {
+            assertSimpleTest {
+                assertThrows<IllegalArgumentException> { runException("Car1", "1") }
+            }
+        }
     }
 
     override fun runMain() {
