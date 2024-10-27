@@ -35,7 +35,7 @@ class ApplicationTest : NsTest() {
         }
     }
 
-    fun checkMovingCar(car: Car, position: Int, point: Int): Int {
+    private fun checkMovingCar(car: Car, position: Int, point: Int): Int {
         val newPosition = position + 1
         assertThat(car.position).isEqualTo(position)
         car.move(point)
@@ -51,7 +51,7 @@ class ApplicationTest : NsTest() {
         }
     }
 
-    fun checkStopedCar(car: Car, point: Int) {
+    private fun checkStopedCar(car: Car, point: Int) {
         assertThat(car.position).isEqualTo(0)
         car.move(point)
         assertThat(car.position).isEqualTo(0)
