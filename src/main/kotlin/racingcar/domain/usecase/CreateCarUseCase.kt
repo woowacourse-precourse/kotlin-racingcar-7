@@ -16,18 +16,28 @@ class CreateCarUseCase {
         return Car(name)
     }
 
-    private fun validateCarNames(carNames: List<String>) = carNames.forEach { name ->
-        validateCarNamesLength(name)
+    private fun validateCarNames(carNames: List<String>) {
+        validateUniqueName(carNames)
+        carNames.forEach { name ->
+            validateCarNamesLength(name)
+        }
+    }
+
+    private fun validateUniqueName(carNames: List<String>) {
+        val isDuplicate = carNames.distinct().size == carNames.size
+        require(isDuplicate) { println(DUPLICATE_CARS_ERROR_MESSAGE) }
     }
 
     private fun validateCarNamesLength(name: String) =
         require(name.length > NAME_COUNT_LIMIT) { println(OVER_NAME_COUNT_MESSAGE) }
 
     companion object {
+        private const val INITIAL_ANONYMITY_COUNT = 1
+        private const val DELIMITER = ","
         private const val ANONYMITY = "익명"
+        private const val DUPLICATE_CARS_ERROR_MESSAGE = "자동차 이름에 중복이 있습니다. 중복을 제거 해주세요"
         private const val OVER_NAME_COUNT_MESSAGE = "자동차 이름을 5글자 이하로 작성해주세요!"
         private const val NAME_COUNT_LIMIT = 5
-        private const val DELIMITER = ","
-        private const val INITIAL_ANONYMITY_COUNT = 1
+
     }
 }
