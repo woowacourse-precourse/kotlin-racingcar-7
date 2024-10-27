@@ -22,6 +22,7 @@ class UserInput {
 
             return Output(carNameList, rounds)
         }
+
         private fun parseCarNamesInput(carNamesInput: String): List<String> {
             val rawCarNameList = carNamesInput.split(",")
             return appendIndexToDuplicatedCarNames(rawCarNameList)
@@ -36,7 +37,7 @@ class UserInput {
                     map[carName] = 0
                     refinedCarNameList.add(carName)
                 } else {
-                    refinedCarNameList.add(carName+map[carName])
+                    refinedCarNameList.add(carName + map[carName])
                     map[carName] = map[carName]!! + 1
                 }
             }
@@ -49,11 +50,18 @@ class UserInput {
         }
 
         private fun verifyCarNamesInput(carNamesInput: String) {
-            // TODO: 자동차 이름 입력에 대한 검증 구현
+            if (carNamesInput.isBlank()) throw IllegalArgumentException("자동차 이름이 빈 문자열입니다.")
+
+            val names = carNamesInput.split(",").map { it }
+            for (name in names) {
+                if (name.isBlank()) throw IllegalArgumentException("자동차 이름은 비어 있을 수 없습니다.")
+                if (name.length > 5) throw IllegalArgumentException("자동차 이름은 5자 이하여야 합니다.")
+            }
         }
 
         private fun verifyRoundsInput(roundsInput: String) {
-            // TODO: 총 이동 횟수에 대한 검증 구현
+            val rounds = roundsInput.toIntOrNull() ?: throw IllegalArgumentException("이동 횟수는 숫자로 입력해야 합니다.")
+            if (rounds <= 0) throw IllegalArgumentException("이동 횟수는 1 이상이어야 합니다.")
         }
     }
 }
