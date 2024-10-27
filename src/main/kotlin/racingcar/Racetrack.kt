@@ -19,17 +19,17 @@ object Racetrack {
     // 경기 시작
     fun startRace() {
         repeat(attemptCount) {
-            raceOnce()  // 한 번의 경주 진행
-            printRaceStatus()  // 현재 상태 출력
+            raceOnce() // 한 번의 경주 진행
+            printRaceStatus() // 현재 상태 출력
         }
-        printWinners()  // 경기 종료 후, 우승자 출력
-        clearCars()  // 경기 종료 후, 자동차 리스트 초기화
+        printWinners() // 경기 종료 후, 우승자 출력
+        clearCars() // 경기 종료 후, 자동차 리스트 초기화
     }
 
     // 차수마다 경주를 진행
     private fun raceOnce() {
         cars.forEach { car ->
-            val randomValue = Randoms.pickNumberInRange(0, 9)  // 0과 9 사이의 무작위 값
+            val randomValue = Randoms.pickNumberInRange(0, 9) // 0과 9 사이의 무작위 값
             car.moveFoward(randomValue)
         }
     }
