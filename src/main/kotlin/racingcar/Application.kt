@@ -6,11 +6,12 @@ import camp.nextstep.edu.missionutils.Randoms
 fun main() {
     val game = Game()
     game.run()
+    Console.close()
 }
 class Game {
     fun run() {
         val carNames: List<String> = getCarNamesInput()
-        val cars = carNames.map { Car(it) }
+        val cars = carNames.map { Car(it.trim()) }
         val tryCount = getTryCountInput()
 
         val race = Race(cars, tryCount)
@@ -22,6 +23,10 @@ class Game {
         println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
         val input: String = Console.readLine()
         val carNames: List<String> = input.split(",")
+        if (carNames.any { it.length > 5 }) {
+            Console.close()
+            throw IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.")
+        }
         return carNames
     }
 
