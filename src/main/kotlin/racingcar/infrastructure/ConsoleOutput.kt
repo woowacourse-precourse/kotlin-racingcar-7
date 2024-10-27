@@ -26,7 +26,7 @@ class ConsoleOutput : Output
     companion object {
         private const val ONE_STEP: String = "-"
         private const val DELIMITER: String = ","
-        private const val PLAY_RESULT: String = "실행 결과"
+        private const val PLAY_RESULT: String = "\n실행 결과"
         private const val WINNERS: String = "최종 우승자 : "
     }
 }
