@@ -1,6 +1,11 @@
 package racingcar
 
 class Race(private val cars: List<Car>, private val times: Int) {
+class Race(
+
+) {
+    private var cars: List<Car> = listOf()
+    private var times: Int = 0
 
     fun start() {}
 
