@@ -1,14 +1,16 @@
 package racingcar.view
 
-import racingcar.util.PrintMessage
+import racingcar.model.RacingCar
 
 class OutputView {
-
-    fun printStartMessage() {
-        println(PrintMessage.START_OUTPUT_MESSAGE)
+    fun printMessage(message: String) {
+        println(message)
     }
 
-    fun printTryNumberMessage() {
-        println(PrintMessage.TRY_NUMBER_OUTPUT_MESSAGE)
+    fun printRacingResult(carList: List<RacingCar>) {
+        carList.forEach { carItem ->
+            println("${carItem.carName} : ${carItem.location}")
+        }
+        println()
     }
 }
