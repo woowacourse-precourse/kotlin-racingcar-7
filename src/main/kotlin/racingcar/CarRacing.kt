@@ -6,10 +6,14 @@ class CarRacing(names: String) {
 
     init {
         val carNames = names.split(",")
+        exceptForCarNamesLongerThan5Characters(carNames)
+        this.cars = carNames.map { Car(it) }
+    }
+
+    private fun exceptForCarNamesLongerThan5Characters(carNames: List<String>) {
         if (carNames.any { it.length > 5 }) {
             throw IllegalArgumentException("5자 이하의 자동차 이름을 입력해주세요.")
         }
-        this.cars = carNames.map { Car(it) }
     }
 
     fun getNamesOfCars(): List<String> {
