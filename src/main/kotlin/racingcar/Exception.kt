@@ -10,13 +10,12 @@ class Exception {
     }
 
     fun moveCountException(moveCount: String) {
-
         moveCount.toLongOrNull() ?: throw IllegalArgumentException(ERROR_NOT_NUMBER)
         moveCount.toIntOrNull() ?: throw IllegalArgumentException(ERROR_OUT_OF_INT_RANGE)
 
         when {
             moveCount.isBlank() -> throw IllegalArgumentException(ERROR_BLANK_NUMBER)
-            ZERO in moveCount -> throw IllegalArgumentException(ERROR_ZERO)
+            moveCount == ZERO -> throw IllegalArgumentException(ERROR_ZERO)
             moveCount.startsWith(NEGATIVE_SIGN) -> throw IllegalArgumentException(ERROR_NEGATIVE_NUMBER)
         }
     }

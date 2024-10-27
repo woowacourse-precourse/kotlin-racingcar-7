@@ -81,10 +81,14 @@ class ApplicationTest : NsTest() {
             }
         }
 
-        /*@Test
-        fun `전진 횟수가 일정 범위를 벗어날 경우`() {
-            assertThat(2).
-        }*/
+        @Test
+        fun `전진 횟수가 일정 범위을 벗어날 경우`() {
+            val moveCount = 2147483646
+
+            assertThat(moveCount)
+                .isGreaterThan(0)
+                .isLessThan(Int.MAX_VALUE)
+        }
     }
 
 
