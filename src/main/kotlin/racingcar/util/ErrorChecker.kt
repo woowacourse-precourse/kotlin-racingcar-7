@@ -17,22 +17,22 @@ object ErrorChecker {
         checkNumberLength(tryNumber.toInt())
     }
 
-    fun checkCarNameLength(carItemName: String) {
+    private fun checkCarNameLength(carItemName: String) {
         if (carItemName.length > MAX_LENGTH)
             throw IllegalArgumentException(ErrorType.CAR_NAME_LENGTH_OVER_FIVE_ERROR.errorMessage)
     }
 
-    fun checkValidInput(carItemName: String) {
+    private fun checkValidInput(carItemName: String) {
         if (carItemName.contains(BLANK) || carItemName.isEmpty())
             throw IllegalArgumentException(ErrorType.CAR_NAME_BLANK_OR_INCLUDE_BLANK_ERROR.errorMessage)
     }
 
-    fun checkNumberType(tryNumber: String) {
+    private fun checkNumberType(tryNumber: String) {
         if (tryNumber.toIntOrNull() == null)
             throw IllegalArgumentException(ErrorType.TRY_NUMBER_NOT_INT_TYPE_ERROR.errorMessage)
     }
 
-    fun checkNumberLength(tryNumber: Int) {
+    private fun checkNumberLength(tryNumber: Int) {
         if (tryNumber <= ZERO)
             throw IllegalArgumentException(ErrorType.TRY_NUMBER_UNDER_ZERO_ERROR.errorMessage)
     }

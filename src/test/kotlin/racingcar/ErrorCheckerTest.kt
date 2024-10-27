@@ -12,20 +12,20 @@ class ErrorCheckerTest {
     @Test
     @DisplayName("자동차명이 5자를 초과할 경우 에러 발생")
     fun `자동차명이 5자를 초과할 경우 에러 발생`() {
-        val carName = "aaaaaa"
+        val carNameList: List<String> = listOf("aaaaaa", "aaa")
 
         assertThrows<IllegalArgumentException> {
-            errorChecker.checkCarNameLength(carName)
+            errorChecker.checkValidCardName(carNameList)
         }
     }
 
     @Test
     @DisplayName("자동차명이 공백이거나 공백을 포함할 경우 에러 발생")
     fun `자동차명이 공백이거나 공백을 포함할 경우 에러 발생`() {
-        val carName = " aa"
+        val carNameList: List<String> = listOf("aa", " aaa")
 
         assertThrows<IllegalArgumentException> {
-            errorChecker.checkValidInput(carName)
+            errorChecker.checkValidCardName(carNameList)
         }
     }
 
@@ -35,17 +35,17 @@ class ErrorCheckerTest {
         val tryNumber = "a"
 
         assertThrows<IllegalArgumentException> {
-            errorChecker.checkNumberType(tryNumber)
+            errorChecker.checkValidTryNumber(tryNumber)
         }
     }
 
     @Test
     @DisplayName("시도 횟수가 0 이하일 경우 에러 발생")
     fun `시도 횟수가 0 이하일 경우 에러 발생`() {
-        val tryNumber = 0
+        val tryNumber = "0"
 
         assertThrows<IllegalArgumentException> {
-            errorChecker.checkNumberLength(tryNumber)
+            errorChecker.checkValidTryNumber(tryNumber)
         }
     }
 }
