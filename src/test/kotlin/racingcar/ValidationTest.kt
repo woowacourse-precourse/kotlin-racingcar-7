@@ -57,4 +57,12 @@ class ValidationTest {
             validation.checkRoundCountNotNumber(input)
         }
     }
+
+    @ParameterizedTest
+    @ValueSource(strings = ["0", "-1", "-34"])
+    fun `시도 횟수 유효성 검사 (1보다 작은 수)`(input: String) {
+        assertThrows<IllegalArgumentException> {
+            validation.checkRoundCountNegativeInteger(input)
+        }
+    }
 }
