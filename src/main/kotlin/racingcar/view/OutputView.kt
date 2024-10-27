@@ -13,7 +13,8 @@ class OutputView {
     }
 
     fun printWinners(winners: List<RacingCar>) {
-        println(OutputMessage.WINNERS.message + winners.joinToString(", "))
+        val winnerNames = winners.map { it.carName }
+        println(OutputMessage.WINNERS.message + winnerNames.joinToString(", "))
     }
 
     enum class OutputMessage(

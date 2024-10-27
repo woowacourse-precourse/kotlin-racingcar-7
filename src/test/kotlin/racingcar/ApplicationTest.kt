@@ -38,13 +38,14 @@ class ApplicationTest : NsTest() {
 
     @Test
     fun `레이싱카 게임 테스트`() {
-        val carList =
+        val carNames =
             listOf(
                 "apple",
                 "peach",
                 "pear",
             )
-        RacingCarController().playRacing(carList, 5)
+        val carList = RacingCarController().playRacing(carNames, 5)
+        RacingCarController().announceWinners(carList)
     }
 
     override fun runMain() {

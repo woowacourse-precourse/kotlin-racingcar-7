@@ -20,8 +20,8 @@ class RacingCarController {
         val carNames = getInput()
         val tryCount = getTryCount()
 
-        playRacing(carNames, tryCount)
-//        printWinners()
+        val carList = playRacing(carNames, tryCount)
+        announceWinners(carList)
     }
 
     private fun getInput(): List<String> {
@@ -39,7 +39,7 @@ class RacingCarController {
     fun playRacing(
         carNames: List<String>,
         tryCount: Int,
-    ) {
+    ): List<RacingCar> {
         OutputView().printDefaultMessage() // "실행 결과" 출력
 
         val carList = carNames.map { RacingCar(it) }
@@ -47,9 +47,28 @@ class RacingCarController {
             moveCars(carList)
             OutputView().printResult(carList)
         }
+        return carList
     }
 
     private fun moveCars(carList: List<RacingCar>) {
         carList.forEach { car -> car.moveForward() }
+    }
+
+    fun announceWinners(carList: List<RacingCar>) {
+        val winners = getWinners(carList)
+        OutputView().printWinners(winners)
+    }
+
+    private fun getWinners(carList: List<RacingCar>): List<RacingCar> {
+        val winners = mutableListOf<RacingCar>()
+        carList.forEach {
+            if (winners.isEmpty() || it.forwardCount == winners[0].forwardCount) {
+                winners.add(it)
+            } else if (it.forwardCount > winners[0].forwardCount) {
+                winners.clear()
+                winners.add(it)
+            }
+        }
+        return winners
     }
 }
