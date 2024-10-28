@@ -20,3 +20,5 @@ class Car(
 }
 
 private const val MIN_VALUE_TO_MOVE_CAR = 4
+
+fun List<String>.asCar(): List<Car> = this.map { Car(it) }

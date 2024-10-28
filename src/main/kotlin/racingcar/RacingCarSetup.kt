@@ -7,15 +7,20 @@ import camp.nextstep.edu.missionutils.Console.readLine
  * 자동차 이름과 시도할 횟수를 입력 받고 사용할 데이터를 반환한다.
  */
 class RacingCarSetup {
+    var cars: List<Car> = emptyList()
+        private set
+    var tryCount: Int = 0
+        private set
+
     init {
         setUp()
     }
 
     private fun setUp() {
         println(RacingCarText.INPUT_CAR_NAME)
-        val cars = inputCars().asCar()
+        cars = inputCars().asCar()
         println(RacingCarText.INPUT_TRY_COUNT)
-        val tryCount = inputTryCount()
+        tryCount = inputTryCount()
     }
 
     private fun inputCars(): List<String> {
