@@ -1,5 +1,16 @@
 package racingcar
 
+import racingcar.view.carnameinputview
+import racingcar.view.racenuminputview
+import racingcar.view.raceoutput
+import racingcar.view.winnerprint
+
 fun main() {
-    // TODO: 프로그램 구현
+    val carname = carnameinputview()
+    val racenum = racenuminputview()
+
+    val carscore = Array<Int>(carname.size, { 0 })
+
+    raceoutput(carname, racenum, carscore)
+    winnerprint(carscore, carname)
 }
