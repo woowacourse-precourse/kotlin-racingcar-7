@@ -8,19 +8,15 @@ class Game(
 ) {
     private val winners = mutableMapOf<String, Int>()
 
-    init {
-        println(GAME_START_TEXT)
-    }
-
     fun start() {
+        println(GAME_START_TEXT)
         repeat(gameCount) {
             processGame(cars)
         }
     }
 
     fun printWinnerResult() {
-        val winnerScore = winners.maxBy { it.value }
-        val winners = winners.filter { it.value == winnerScore.value }
+        val winners = calculateWinners()
         val winnersName = winners.joinKeysAsString()
         val winnerResultText =
             "${InputOutputText.FINAL_WINNERS} ${Delimiters.CAR_NAME_CONTENT_DELIMITER} $winnersName"
@@ -28,10 +24,7 @@ class Game(
     }
 
     private fun processGame(cars: List<Car>) {
-        cars.forEach { car ->
-            val randomNumber = pickNumberInRange(RANDOM_NUMBER_MIN, RANDOM_NUMBER_MAX)
-            car.moveForwardAndStop(randomNumber)
-        }
+        carRandomMove(cars)
         cars.forEach { car ->
             printEachGame(car)
             saveScore(car)
@@ -39,16 +32,29 @@ class Game(
         println()
     }
 
+    private fun carRandomMove(cars: List<Car>) {
+        cars.forEach { car ->
+            val randomNumber = pickNumberInRange(RANDOM_NUMBER_MIN, RANDOM_NUMBER_MAX)
+            car.moveForwardOrNothing(randomNumber)
+        }
+    }
+
     private fun printEachGame(car: Car) {
         val forwardCount = car.forwardCount
         val forwardDashText = CAR_FORWARD_DASH.repeat(forwardCount)
-        val resultText =
+        val eachGameResultText =
             "${car.name} ${Delimiters.CAR_NAME_CONTENT_DELIMITER} $forwardDashText"
-        println(resultText)
+        println(eachGameResultText)
     }
 
     private fun saveScore(car: Car) {
         winners[car.name] = car.forwardCount
+    }
+
+    private fun calculateWinners(): Map<String, Int> {
+        val winnerScore = winners.maxBy { it.value }
+        val winners = winners.filter { it.value == winnerScore.value }
+        return winners
     }
 
     companion object {
