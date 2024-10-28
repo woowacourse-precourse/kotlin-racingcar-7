@@ -9,18 +9,15 @@ private const val ROUND_UPPER_BOUND = 10_000
 object RoundValidator {
 
     fun validate(numberOfRoundInput: String): Int {
-        if (!isNumeric(numberOfRoundInput)) throw RacingGameException(ExceptionMessage.INVALID_NUMERIC_INPUT)
-        if (!isValidNumberOfRound(numberOfRoundInput)) throw RacingGameException(ExceptionMessage.INVALID_NUMBER_OF_ROUND)
+        val numberOfRound =
+            numberOfRoundInput.toIntOrNull() ?: throw RacingGameException(ExceptionMessage.INVALID_NUMERIC_INPUT)
+        if (!isValidNumberOfRound(numberOfRound)) throw RacingGameException(ExceptionMessage.INVALID_NUMBER_OF_ROUND)
 
-        return numberOfRoundInput.toInt()
+        return numberOfRound
     }
 
-    private fun isNumeric(input: String): Boolean {
-        return input.all { it.isDigit() }
-    }
-
-    private fun isValidNumberOfRound(input: String): Boolean {
-        return input.toInt() in ROUND_LOWER_BOUND..ROUND_UPPER_BOUND
+    private fun isValidNumberOfRound(numberOfRound: Int): Boolean {
+        return numberOfRound in ROUND_LOWER_BOUND..ROUND_UPPER_BOUND
     }
 
 }
