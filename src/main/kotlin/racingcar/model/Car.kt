@@ -1,10 +1,12 @@
 package racingcar.model
 
-class Car(val name: String) {
+class Car(private val name: String, private val move: CarMove) {
     private var position = 0
 
-    fun carMove() {
-        position++
+    fun move() {
+        if (move.canMove()) {
+            position++
+        }
     }
 
     override fun toString(): String {
