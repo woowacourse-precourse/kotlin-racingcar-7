@@ -44,5 +44,24 @@ class RacingGame {
         }
         println("${currentCar} : ${carPositions[currentCar]?.let { "-".repeat(it) }}")
     }
+
+    fun printWinner(carPositions: MutableMap<String, Int>) {
+
+        val winnerList = checkWinner(carPositions)
+
+        println("최종 우승자 : ${winnerList.joinToString(",")}")
+    }
+
+    fun checkWinner(carPositions: MutableMap<String, Int>): MutableList<String> {
+        val winnerDistance = carPositions.values.maxOrNull()
+
+        val winnerList = mutableListOf<String>()
+        for((carName,distance) in carPositions) {
+            if(distance == winnerDistance) {
+                winnerList.add(carName)
+            }
+        }
+
+        return winnerList
     }
 }
