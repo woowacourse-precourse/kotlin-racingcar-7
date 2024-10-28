@@ -25,6 +25,7 @@ fun main() {
     val inputCar = Console.readLine()
     var cars = inputCar.split(",")
     isOver5Letters(cars)
+    isNameless(cars)
     cars = duplicateName(cars)
     println("시도할 횟수는 몇 회인가요?")
     val inputMove = Console.readLine()
@@ -37,6 +38,14 @@ fun isOver5Letters(cars: List<String>) {
     carIter.forEach {
         if (5 < it.length) {
             throw IllegalArgumentException("이름이 5자를 넘습니다")
+        }
+    }
+}
+
+fun isNameless(cars: List<String>) {
+    for (car in cars) {
+        if (car.isBlank()) {
+            throw IllegalArgumentException("이름이 없는 참가자가 있습니다")
         }
     }
 }
