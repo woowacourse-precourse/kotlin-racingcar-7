@@ -55,6 +55,13 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `입력된 시행 횟수가 올바른 숫자가 아닐 시 예외 처리`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("car", "notNumeric") }
+        }
+    }
+
     override fun runMain() {
         main()
     }
