@@ -62,6 +62,17 @@ class ValidationTest {
         }
     }
 
+    @Test
+    fun `자동차 이름 유효성 검사 (자동차가 1대일 경우)`() {
+        val carList = listOf(
+            Car("Cider"),
+        )
+
+        assertThrows<IllegalArgumentException> {
+            validation.checkOnlyOneCar(carList)
+        }
+    }
+
     @ParameterizedTest
     @ValueSource(strings = ["a", "-", "cola", "콜라"])
     fun `시도 횟수 유효성 검사 (숫자가 아닐 경우)`(input: String) {
