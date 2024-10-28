@@ -12,11 +12,7 @@ class Run {
         val carNames = Console.readLine().split(",").map { it.trim() }
         return carNames
     }
-
-    fun getAttemptTimes():Int {
-        val attemptTimes = Console.readLine().toInt()
-        return attemptTimes
-    }
+    
 
     fun isValidCarNames(carNames:String ):Boolean {
         if(carNames.isBlank()) throw IllegalArgumentException ("이름을 입력해 주세요.")
@@ -25,9 +21,10 @@ class Run {
         return true
     }
 
-    fun isValidAttemptTimes(attemptTimes: String): Boolean {
-        attemptTimes.toIntOrNull() ?: throw IllegalArgumentException("시도 횟수를 입력해 주세요.")
-        return true
+    fun getAttemptTimes(): Int {
+        val attemptTimes=
+            Console.readLine().toIntOrNull() ?: throw IllegalArgumentException("시도 횟수를 입력해 주세요.")
+        return attemptTimes
     }
 
     fun moveForward():Int {
