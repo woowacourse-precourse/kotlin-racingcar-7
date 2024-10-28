@@ -16,4 +16,14 @@ class Round(carNames: List<String>) {
             println(currentPosition)
         }
     }
+
+    fun getWinners(): List<String> {
+        val maxPosition = findMaxPosition()
+        return cars.filter { it.getPosition() == maxPosition }.map { it.getName() }
+    }
+
+    private fun findMaxPosition(): Int {
+        val winnerCar = cars.maxBy { it.getPosition() }
+        return winnerCar.getPosition()
+    }
 }
