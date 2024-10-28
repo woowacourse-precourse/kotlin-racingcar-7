@@ -6,7 +6,7 @@ class Car(
     var forwardCount = 0
         private set
 
-    fun moveForwardAndStop(randomNumber: Int) {
+    fun moveForwardOrNothing(randomNumber: Int) {
         if (randomNumber.canMoveForward()) {
             moveForward()
         }
@@ -17,8 +17,10 @@ class Car(
     }
 
     private fun Int.canMoveForward(): Boolean = this >= MIN_VALUE_TO_MOVE_CAR
-}
 
-private const val MIN_VALUE_TO_MOVE_CAR = 4
+    companion object {
+        private const val MIN_VALUE_TO_MOVE_CAR = 4
+    }
+}
 
 fun List<String>.asCar(): List<Car> = this.map { Car(it) }

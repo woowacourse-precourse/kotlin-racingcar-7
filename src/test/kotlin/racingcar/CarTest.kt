@@ -9,7 +9,7 @@ class CarTest {
         val car = Car("carName")
         val beforeValue = car.forwardCount
 
-        car.moveForwardAndStop(MOVING_FORWARD)
+        car.moveForwardOrNothing(MOVING_FORWARD)
         val afterValue = car.forwardCount
 
         assertEquals((afterValue - beforeValue), 1)
@@ -20,7 +20,7 @@ class CarTest {
         val car = Car("carName")
         val beforeValue = car.forwardCount
 
-        car.moveForwardAndStop(STOP)
+        car.moveForwardOrNothing(STOP)
         val afterValue = car.forwardCount
 
         assertEquals((afterValue - beforeValue), 0)
