@@ -45,7 +45,9 @@ class Car(val name: String) {
     }
 
     private fun getRandomNumber(): Int {
-        return Random.nextInt(0, 10)
+        val randomNumber = Random.nextInt(0, 10)
+        println(randomNumber)
+        return randomNumber
     }
 
     private fun checkForwardCondition(randomNumber: Int): Boolean {
