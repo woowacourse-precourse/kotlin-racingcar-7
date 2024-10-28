@@ -6,9 +6,9 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertDoesNotThrow
 import org.junit.jupiter.api.assertThrows
 
-class RacingCarSetupTest : NsTestCopy() {
+class SetupTest : NsTestCopy() {
     override fun runFunction() {
-        RacingCarSetup()
+        Setup()
     }
 
     @Test

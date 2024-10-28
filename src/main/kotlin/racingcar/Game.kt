@@ -2,7 +2,7 @@ package racingcar
 
 import camp.nextstep.edu.missionutils.Randoms.pickNumberInRange
 
-class RacingCarGame(
+class Game(
     private val cars: List<Car>,
     private val gameCount: Int,
 ) {
@@ -23,7 +23,7 @@ class RacingCarGame(
         val winners = winners.filter { it.value == winnerScore.value }
         val winnersName = winners.joinKeysAsString()
         val winnerResultText =
-            "${RacingCarText.FINAL_WINNERS} ${RacingCarDelimiters.CAR_NAME_CONTENT_DELIMITER} $winnersName"
+            "${InputOutputText.FINAL_WINNERS} ${Delimiters.CAR_NAME_CONTENT_DELIMITER} $winnersName"
         println(winnerResultText)
     }
 
@@ -43,7 +43,7 @@ class RacingCarGame(
         val forwardCount = car.forwardCount
         val forwardDashText = CAR_FORWARD_DASH.repeat(forwardCount)
         val resultText =
-            "${car.name} ${RacingCarDelimiters.CAR_NAME_CONTENT_DELIMITER} $forwardDashText"
+            "${car.name} ${Delimiters.CAR_NAME_CONTENT_DELIMITER} $forwardDashText"
         println(resultText)
     }
 
@@ -60,6 +60,6 @@ class RacingCarGame(
 }
 
 private fun Map<String, Int>.joinKeysAsString() =
-    this.keys.joinToString(RacingCarDelimiters.NAME_DELIMITER) {
+    this.keys.joinToString(Delimiters.NAME_DELIMITER) {
         it
     }
