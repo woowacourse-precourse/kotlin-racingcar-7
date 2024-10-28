@@ -31,8 +31,10 @@ fun processCarNames(input: String): List<String> {
     return carList
 }
 
-fun processAttemptNumber(input: String) =
-    input.toIntOrNull() ?: throw IllegalArgumentException(Strings.MESSAGE_EXCEPTION_INPUT_ATTEMPT_NUMBER)
+fun processAttemptNumber(input: String): Int {
+    require(input.toIntOrNull() != null) { Strings.MESSAGE_EXCEPTION_INPUT_ATTEMPT_NUMBER }
+    return input.toInt()
+}
 
 
 fun initializeCarMap(carList: List<String>): MutableMap<String, Int> {
