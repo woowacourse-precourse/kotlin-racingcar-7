@@ -12,7 +12,7 @@ object OutputView {
     }
 
     fun winnerPrint(winners: MutableList<String>) {
-        val result = winners.joinToString(",")
+        val result = winners.joinToString(", ")
         println("최종 우승자 : $result")
     }
 }
