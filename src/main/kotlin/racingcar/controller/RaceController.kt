@@ -8,18 +8,24 @@ import racingcar.view.OutputView
 
 class RaceController {
     fun startRace() {
-        val carNames = InputView.getCarNames().map { it.trim() }.filter { it.length <= 5 }
-        val numberOfRounds = InputView.getNumberOfRounds()
+        try {
+            val carNames = InputView.getCarNames().map { it.trim() }
+            val cars = carNames.map { Car(it) }
 
-        val cars = carNames.map { Car(it) }
-        val race = Race(cars, numberOfRounds)
+            val numberOfRounds = InputView.getNumberOfRounds()
+            val race = Race(cars, numberOfRounds)
 
-        repeat(numberOfRounds) {
-            race.raceRound { Randoms.pickNumberInRange(0, 9) }
-            OutputView.printRoundResult(cars)
+            repeat(numberOfRounds) {
+                race.raceRound { Randoms.pickNumberInRange(0, 9) }
+                OutputView.printRoundResult(cars)
+            }
+
+            val winners = race.findWinners()
+            OutputView.printWinners(winners)
+        }catch (e: IllegalArgumentException) {
+            e.message?.let { OutputView.printErrorMessage(it) }
+            throw e
         }
 
-        val winners = race.findWinners()
-        OutputView.printWinners(winners)
     }
 }
