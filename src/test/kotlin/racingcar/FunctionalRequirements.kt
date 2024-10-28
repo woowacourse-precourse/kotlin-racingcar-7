@@ -3,6 +3,7 @@ package racingcar
 
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.assertDoesNotThrow
 import org.junit.jupiter.api.assertThrows
 import racingcar.domain.Car
 import racingcar.domain.Stadium
@@ -44,7 +45,10 @@ class FunctionalRequirements {
 
     @Test
     fun `사용자는 몇 번의 이동을 할 것인지를 입력할 수 있어야 한다`() {
-
+        assertDoesNotThrow {
+            setInput("car1,car2\n5")
+            application.run()
+        }
     }
 
     @Test
