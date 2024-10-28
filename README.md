@@ -8,13 +8,13 @@
 ---
 
 - 자동차 이름을 입력받는다.
- - 이름 값이 공백일 때 `IllegalArgumentException` 예외 발생
- - 이름이 5자 이상일 때 `IllegalArgumentException` 예외 발생
- - 중복된 자동차 이름이 있을 때 `IllegalArgumentException` 예외 발생
+  - 이름 값이 공백일 때 `IllegalArgumentException` 예외 발생
+  - 이름이 5자 이상일 때 `IllegalArgumentException` 예외 발생
+  - 중복된 자동차 이름이 있을 때 `IllegalArgumentException` 예외 발생
 - 경기 횟수를 입력받는다.
- - 입력된 횟수가 숫자가 아닐 때 `IllegalArgumentException` 예외 발생
- - 입력된 횟수가 음수일 때 `IllegalArgumentException` 예외 발생
- - null 값이 입력되었을 때 `IllegalArgumentException` 예외 발생
+  - 입력된 횟수가 숫자가 아닐 때 `IllegalArgumentException` 예외 발생
+  - 입력된 횟수가 음수일 때 `IllegalArgumentException` 예외 발생
+  - null 값이 입력되었을 때 `IllegalArgumentException` 예외 발생
 - 자동차 이름을 쉼표(,)를 기준으로 구분한다.
 - 무작위 값(0에서 9사이의 숫자)을 구해 무작위 값이 4 이상인 각 자동차가 전진한다.
 - 자동차들의 현재 위치를 출력한다.

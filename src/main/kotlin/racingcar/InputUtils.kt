@@ -19,6 +19,9 @@ fun readTryNumber(): Int {
         if (number < 0) {
             throw IllegalArgumentException("음수를 입력할 수 없습니다.")
         }
+        if (number == 0) {
+            throw IllegalArgumentException("경주 횟수는 1 이상이어야 합니다.")
+        }
         number
     } catch (e: Exception) {
         throw IllegalArgumentException("잘못된 값이 입력되었습니다.")
