@@ -7,54 +7,54 @@ class RacingGame(
     private val totalRound: Int,
 ) {
 
-    private val playCars: MutableMap<String, Int> = getCarMap()
+    // 자동차 경주 게임 스코어를 저장하는 Map
+    private val _scoreMap: MutableMap<String, Int> = createScoreMap()
+    val scoreMap: Map<String, Int> get() = _scoreMap
 
-    private fun getCarMap(): MutableMap<String, Int> {
-        val carList = carList.split(",")
-        val carMap = carList.associateWith { 0 }.toMutableMap()
-        return carMap
+    private fun createScoreMap(): MutableMap<String, Int> {
+        val scoreMap = carList.associateWith { 0 }.toMutableMap()
+        return scoreMap
     }
 
     fun play() {
         repeat(totalRound) {
             playRound()
         }
-        printResult()
     }
 
     private fun playRound() {
-        playCars.forEach { (car, _) ->
+        _scoreMap.forEach { (car, _) ->
             val roundResult = getPlayResult()
-            updateGameScore(
+            updateScore(
                 carName = car,
                 result = roundResult
             )
         }
     }
 
-    private fun updateGameScore(carName: String, result: PlayResult) {
+    private fun updateScore(carName: String, result: PlayResult) {
         if(result == PlayResult.GO) {
-            playCars[carName] = playCars[carName]!! + 1
+            _scoreMap[carName] = _scoreMap[carName]!! + 1
         }
     }
 
     private fun getPlayResult(): PlayResult {
-        val playNum = getPlayNum()
-        val playResult = if(playNum < GAME_CRITICAL_POINT) PlayResult.STOP else PlayResult.GO
+        val playNum = createPlayNum()
+        val playResult = if(playNum < PLAY_CRITICAL_POINT) PlayResult.STOP else PlayResult.GO
         return playResult
     }
 
-    private fun getPlayNum(): Int {
+    private fun createPlayNum(): Int {
         val playNum = Randoms.pickNumberInRange(
             /* startInclusive = */ PLAY_NUMBER_START,
-            /* endInclusive = */ PLAY_NUMBER_END
+            /* endInclusive = */ PLAY_NUMBER_END,
         )
         return playNum
     }
 
-    private fun getWinners(): Set<String> {
-        val maxScore = playCars.values.max()
-        val winners = playCars.filter { it.value == maxScore }.keys
+    fun getWinners(): Set<String> {
+        val maxScore = scoreMap.values.max()
+        val winners = scoreMap.filter { it.value == maxScore }.keys
         return winners
     }
 

@@ -1,7 +1,7 @@
 package racingcar.utils
 
 
-object PrintResultUtils {
+object ResultPrintUtils {
 
     private const val GAME_RESULT_TILE = "-----자동차 경주 결과-----"
 
