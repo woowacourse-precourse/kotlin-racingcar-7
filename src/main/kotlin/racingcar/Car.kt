@@ -2,7 +2,7 @@ package racingcar
 
 import kotlin.random.Random
 
-class Car(val name: String) {
+open class Car(val name: String) {
     var position = 0
 
     fun move() {
@@ -11,7 +11,7 @@ class Car(val name: String) {
         }
     }
 
-    private fun getRandomNumber(): Int {
+    open fun getRandomNumber(): Int {
         val randomNumber = Random.nextInt(0, 10)
         return randomNumber
     }

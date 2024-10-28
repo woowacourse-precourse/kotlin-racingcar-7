@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeT
 import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
@@ -38,6 +39,24 @@ class ApplicationTest : NsTest() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("pobi,woni", "a") }
         }
+    }
+
+    @Test
+    fun `무작위 값이 4 이상일 때 전진 테스트`() {
+        val car = object : Car("pobi") {
+            override fun getRandomNumber() = 4
+        }
+        car.move()
+        assertEquals(1, car.position)
+    }
+
+    @Test
+    fun `무작위 값이 4 미만일 때 멈춤 테스트`() {
+        val car = object : Car("pobi") {
+            override fun getRandomNumber() = 2
+        }
+        car.move()
+        assertEquals(0, car.position)
     }
 
     override fun runMain() {
