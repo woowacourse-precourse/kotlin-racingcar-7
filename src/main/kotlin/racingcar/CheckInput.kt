@@ -26,7 +26,7 @@ class CheckInput {
         val checkedTrialNum = trialNum.toIntOrNull()
             ?: throw IllegalArgumentException("잘못된 값입니다. (시도 횟수는 숫자로 입력)")
 
-        if(checkedTrialNum < 0) {
+        if(checkedTrialNum <= 0) {
             throw IllegalArgumentException("잘못된 값입니다. (시도 횟수는 양수로 입력)")
         }
 
