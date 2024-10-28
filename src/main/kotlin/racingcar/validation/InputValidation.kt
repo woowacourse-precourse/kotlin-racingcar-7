@@ -1,9 +1,13 @@
 package racingcar.validation
 
+import racingcar.constant.Error.CAR_NAME_RANGE
+import racingcar.constant.Error.NOT_VALID_CAR_NAME_LENGTH
+import racingcar.constant.Error.NOT_VALID_ROUND_TYPE
+
 class InputValidation {
     fun carName(name: String) =
-        require(name.length in 1..5) { "자동차 이름은 1 ~ 5자로 입력해주세요. ${name}의 이름은 ${name.length}자 입니다." }
+        require(name.length in CAR_NAME_RANGE) { NOT_VALID_CAR_NAME_LENGTH.format(name, name.length) }
 
     fun raceRound(round: String) =
-        round.toIntOrNull() ?: throw IllegalArgumentException("경주 횟수는 숫자만 입력 가능합니다. ${round}은 숫자가 아닙니다.")
+        round.toIntOrNull() ?: throw IllegalArgumentException(NOT_VALID_ROUND_TYPE.format(round))
 }

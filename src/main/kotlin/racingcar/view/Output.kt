@@ -1,22 +1,26 @@
 package racingcar.view
 
+import racingcar.constant.Message.INFO_ROUND_RESULT
+import racingcar.constant.Message.MOVING_SYMBOL
+import racingcar.constant.Message.RACE_RESULT_FORMAT
+import racingcar.constant.Message.RACE_WINNER_DELIMITER
+import racingcar.constant.Message.ROUND_RESULT_FORMAT
 import racingcar.model.Car
 
 class Output {
-    fun infoGetCarNames() = println("경주할 자동차 이름을 입력하세요.")
-    fun infoGetRound() = println("시도할 횟수는 몇 회인가요?")
-
     fun showRoundResult(cars: List<Car>) {
-        println("실행 결과")
-        cars.forEach {
-            print("${it.name}: ")
-            repeat(it.moving) {
-                print("-")
+        println(INFO_ROUND_RESULT)
+
+        cars.forEach { car ->
+            print(ROUND_RESULT_FORMAT.format(car.name))
+            repeat(car.moving) {
+                print(MOVING_SYMBOL)
             }
             println()
         }
         println()
     }
 
-    fun showRaceResult(cars: List<Car>) = println("최종 우승자: ${cars.joinToString(", ") { it.name }}")
+    fun showRaceResult(cars: List<Car>) =
+        println(RACE_RESULT_FORMAT.format(cars.joinToString(RACE_WINNER_DELIMITER) { it.name }))
 }
