@@ -1,6 +1,7 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Console
+import racingcar.feature.RacingCarGame
 import racingcar.utils.isCountInvalid
 import racingcar.utils.isNamesInvalid
 
