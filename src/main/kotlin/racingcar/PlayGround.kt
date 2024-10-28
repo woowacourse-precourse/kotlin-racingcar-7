@@ -25,7 +25,7 @@ class PlayGround(
 
     private fun reduceState(players: List<PlayerState>): List<PlayerState> {
         return players.map { player ->
-            val moveCount = factory.create()
+            val moveCount = factory()
             playerStateReducer(moveCount, player)
         }
     }

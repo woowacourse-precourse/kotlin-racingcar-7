@@ -1,5 +1,3 @@
 package racingcar.sam
 
-fun interface MoveCountFactory {
-    fun create(): Int
-}
+fun interface MoveCountFactory: () -> Int
