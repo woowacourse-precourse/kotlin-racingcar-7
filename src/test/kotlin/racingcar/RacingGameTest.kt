@@ -16,16 +16,16 @@ class RacingGameTest {
     fun `숫자가 아닌 횟수를 입력한 경우 에러가 발생한다`() {
         val nonNumeric = RacingGame("12a")
         assertThrows<IllegalArgumentException> {
-            nonNumeric.NumericCheck()
+            nonNumeric.checkNumeric()
         }
     }
 
     @Test
     fun `1 미만의 횟수를 입력한 경우 에러가 발생한다`() {
         val lessThanOne = RacingGame("0")
-        lessThanOne.NumericCheck()
+        lessThanOne.checkNumeric()
         assertThrows<IllegalArgumentException> {
-            lessThanOne.MinCheck()
+            lessThanOne.checkMinimum()
         }
     }
 }
