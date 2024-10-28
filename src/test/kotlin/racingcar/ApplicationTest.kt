@@ -49,7 +49,7 @@ class ApplicationTest : NsTest() {
 
     @Test
     fun `currentPosition이 현재 위치를 출력해야 한다`() {
-        val names = "pobi,woni"
+        val names = listOf("pobi", "woni")
         val position = mapOf("pobi" to 2, "woni" to 1)
 
         currentPosition(names, position)
@@ -59,19 +59,27 @@ class ApplicationTest : NsTest() {
     fun `race 함수가 올바른 위치를 반환해야 한다`() {
         val names = "pobi,woni"
         val tryNumber = 3
+        val participants = divideNames(names)
 
-        val result = race(names, tryNumber)
+        val result = race(participants, tryNumber)
+
         assertEquals(2, result.size)
         assertTrue(result.keys.containsAll(listOf("pobi", "woni")))
     }
 
+
     @Test
     fun `winner 함수가 최종 우승자를 출력해야 한다`() {
-        val names = "pobi,woni"
+        val names = "pobi,woni,jun"
         val tryNumber = 5
+        val participants = divideNames(names)
 
-        winner(names, tryNumber)
+        val position = race(participants, tryNumber)
+        val winners = findWinners(position)
+
+        assertTrue(winners.isNotEmpty())
     }
+
 
     override fun runMain() {
         main()
