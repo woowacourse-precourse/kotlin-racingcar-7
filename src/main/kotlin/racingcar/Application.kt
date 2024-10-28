@@ -12,6 +12,9 @@ fun main() {
   
   val carNames = getCarNames(input)
   val moveCount = getMoveCount(count)
+  
+  println("\n실행 결과")
+  raceCars(carNames, moveCount) // 자동차 경주 시작
 }
 
 fun getCarNames(input: String): List<String> {
@@ -19,12 +22,24 @@ fun getCarNames(input: String): List<String> {
     name.trim()
   } // 이름을 쉼표로 구분하고, 양쪽 공백 제거
   
+  // 자동차 이름 유효성 검사
+  if (carNames.any { name ->
+      name.isEmpty() || name.length > 5
+    }) {
+    throw IllegalArgumentException() // 이름이 비어 있거나 5자를 초과하는 경우 예외 처리
+  }
+  
   return carNames
 }
 
 fun getMoveCount(count: String): Int {
   val moveCount = count.toInt()
-
+  
+  // 이동 횟수 유효성 검사
+  if (moveCount <= 0) {
+    throw IllegalArgumentException() // 0 이하의 값인 경우 예외 처리
+  }
+  
   return moveCount
 }
 
