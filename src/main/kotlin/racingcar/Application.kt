@@ -45,5 +45,15 @@ fun raceCars(carNames: List<String>, moveCount: Int) {
         racingResults[carName] = racingResults[carName]!! + 1 // 무작위 값이 4 이상일 때 앞으로 전진
       }
     }
+    
+    printRacingResults(racingResults) // 이동 결과 출력
   }
+}
+
+fun printRacingResults(racingResults: Map<String, Int>) {
+  racingResults.forEach { (name, distance) ->
+    println("$name : ${"-".repeat(distance)}")
+  }
+  
+  println()
 }
