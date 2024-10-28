@@ -17,4 +17,6 @@ class Output {
         }
         println()
     }
+
+    fun showRaceResult(cars: List<Car>) = println("최종 우승자: ${cars.joinToString(", ") { it.name }}")
 }
