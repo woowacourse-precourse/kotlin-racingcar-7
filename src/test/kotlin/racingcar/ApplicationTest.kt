@@ -26,6 +26,31 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `입력 예외 테스트 5자 초과`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,javaji,juuuun", "1") }
+        }
+    }
+    @Test
+    fun `입력 예외 테스트 빈칸`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("", "1") }
+        }
+    }
+    @Test
+    fun `입력 예외 테스트 띄어쓰기`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException(" ", "1") }
+        }
+    }
+    @Test
+    fun `입력 예외 테스트 구분자 뒤에 빈칸`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,", "1") }
+        }
+    }
+
     override fun runMain() {
         main()
     }
