@@ -64,3 +64,23 @@ fun getRoundsInput(): Int {
     }
     return rounds
 }
+
+fun displayWinners(winners: List<Player>) {
+    val winnerNames = winners.joinToString(", ") { it.name }
+    println("최종 우승자 : $winnerNames")
+}
+
+fun main() {
+    try {
+        val players = getPlayerInput()
+        val rounds = getRoundsInput()
+
+        playGame(players, rounds)
+
+        val winners = findWinners(players)
+        displayWinners(winners)
+    } catch (e: IllegalArgumentException) {
+        println(e.message)
+        throw e
+    }
+}
