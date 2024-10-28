@@ -85,7 +85,7 @@ fun race(cars: List<String>, move: UInt) {
 
 fun turnAction(cars: List<String>, m: MutableMap<String, UInt>) {
   for (car in cars) {
-    if (4 < Randoms.pickNumberInRange(0, 9)) {
+    if (4 <= Randoms.pickNumberInRange(0, 9)) {
       m[car] = m[car]!!.plus(1u)
     }
   }
