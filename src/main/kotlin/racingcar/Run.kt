@@ -12,7 +12,7 @@ class Run {
         val carNames = Console.readLine().split(",").map { it.trim() }
         return carNames
     }
-    
+
 
     fun isValidCarNames(carNames:String ):Boolean {
         if(carNames.isBlank()) throw IllegalArgumentException ("이름을 입력해 주세요.")
@@ -33,5 +33,16 @@ class Run {
             position++
         }
         return position
+    }
+
+    fun race() {
+        val roundTimes = getAttemptTimes()
+        repeat(roundTimes) { playRound() }
+    }
+
+    fun playRound(cars: List<generateCars>) {
+        cars.forEach {
+            moveForward()
+        }
     }
 }
