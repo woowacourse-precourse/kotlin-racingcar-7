@@ -15,4 +15,15 @@ class CarTest {
 
         assertEquals(Car("loopy"), car)
     }
+
+    @Test
+    fun `자동차가 4번 전진할 경우 location은 4가 된다`() {
+        val car = Car.from("mong")
+
+        car.run {
+            repeat(4) { forward() }
+        }
+
+        assertEquals(4, car.location)
+    }
 }
