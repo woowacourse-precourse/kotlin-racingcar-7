@@ -11,6 +11,16 @@ class ValidationTest {
     private val validation = Validation()
 
     @Test
+    fun `자동차 이름 유효성 검사 (정상적 입력 )`() {
+        val carList = listOf(
+            Car("Cider"),
+            Car("Cola"),
+            Car("welch"),
+        )
+        validation.validateCarName(carList)
+    }
+
+    @Test
     fun `자동차 이름 유효성 검사 (이름 5자 초과)`() {
         val carList = listOf(
             Car("lipton"),
