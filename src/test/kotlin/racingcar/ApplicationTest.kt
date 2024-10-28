@@ -39,6 +39,14 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `자동차 이름이 5자를 초과할 시 예외 처리`() {
+        assertSimpleTest {
+            assertThrows<java.lang.IllegalArgumentException> { runException("longCarName", "1") }
+            assertThrows<java.lang.IllegalArgumentException> { runException("car1,longCarName", "1") }
+        }
+    }
+
     override fun runMain() {
         main()
     }
