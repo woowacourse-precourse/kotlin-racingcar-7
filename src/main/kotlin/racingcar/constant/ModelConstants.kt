@@ -2,7 +2,7 @@ package racingcar.constant
 
 object ModelConstants {
     const val NUMBER_OF_CARS_EXCEPTION_MESSAGE = "최소 2개에서 최대 16개의 이름을 입력해주세요."
-    const val CAR_NAME_LENGTH_LIMIT_EXCEPTION_MESSAGE = "이름은 최소 한글자에서 최대 5글자로 입력해주세요."
+    const val CAR_NAME_LENGTH_LIMIT_EXCEPTION_MESSAGE = "이름은 최소 한글자에서 최대 5글자로 입력해주세요.(공백은 입력시 0글자로 간주됩니다.)"
     const val NON_INTEGER_EXCEPTION_MESSAGE = "시도할 횟수는 정수를 입력해주세요."
     const val OUT_OF_TRY_COUNT_RANGE_EXCEPTION_MESSAGE = "시도할 횟수는 최소 1에서 16의 자연수로 입력해주세요."
 
