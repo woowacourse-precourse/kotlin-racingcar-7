@@ -7,17 +7,16 @@ import racingcar.view.Output
 
 class RaceController(carNames: List<String>, private val round: Int, private val output: Output) {
     private val race = Race()
-    private val cars = race.cars
 
     init {
-        carNames.forEach { name -> cars.add(Car(name)) }
+        race.addCar(carNames)
     }
 
-    private fun moveCar() = cars.forEach { it.move(pickNumberInRange(0, 9)) }
+    private fun moveCar() = race.cars.forEach { it.move(pickNumberInRange(0, 9)) }
 
     private fun getWinner(): List<Car> {
-        val maxMoving = cars.maxOf { it.moving }
-        return cars.filter { car -> car.moving == maxMoving }
+        val maxMoving = race.maxMoving()
+        return race.cars.filter { car -> car.moving == maxMoving }
     }
 
     fun start() {
@@ -26,7 +25,7 @@ class RaceController(carNames: List<String>, private val round: Int, private val
 
         repeat(round) {
             moveCar()
-            output.showRoundResult(cars)
+            output.showRoundResult(race.cars)
         }
 
         output.showRaceResult(getWinner())
