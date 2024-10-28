@@ -6,6 +6,7 @@ class Validation {
     fun checkCarName(names:List<String>){
         checkCarNameLength(names)
         checkCarNameDuplication(names)
+        checkCarMinimum(names)
     }
 
     fun checkCount(count:String){
@@ -25,6 +26,12 @@ class Validation {
             if (cars.contains(name))
                 throw IllegalArgumentException(Constants().ERROR_NAME_DUPLICATION)
             cars.add(name)
+        }
+    }
+
+    private fun checkCarMinimum(names:List<String>){
+        if (names.size < 2){
+            throw IllegalArgumentException(Constants().ERROR_CAR_MINIMUM)
         }
     }
 
