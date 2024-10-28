@@ -17,6 +17,7 @@ class RaceController {
         val cars = Cars(carNames)
         repeat(trialCount) {
             cars.move()
+            outputView.announceRaceStatus(cars)
         }
     }
 }
