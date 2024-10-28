@@ -1,6 +1,7 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Console
+import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
   // TODO: 프로그램 구현
@@ -26,6 +27,7 @@ fun main() {
   cars = duplicateName(cars)
   val inputMove = Console.readLine()
   val move = isMovementValid(inputMove)
+  race(cars, move)
 }
 
 fun isOver5Letters(cars: List<String>) {
@@ -54,11 +56,47 @@ fun duplicateName(cars: List<String>): List<String> {
   return result
 }
 
-fun isMovementValid(inputMove : String) : UInt{
-  try{
+fun isMovementValid(inputMove: String): UInt {
+  try {
     val move = inputMove.toUInt()
     return move
-  }catch (e : Exception){
+  } catch (e: Exception) {
     throw IllegalArgumentException("부적절한 이동 횟수 입니다")
   }
+}
+
+fun race(cars: List<String>, move: UInt) {
+  val m = mutableMapOf<String, UInt>()
+  for (car in cars) {
+    m[car] = 0u
+  }
+
+  var turn = 1u
+  while (turn <= move) {
+    turnAction(cars, m)
+    turnDisplay(cars, m, turn)
+    turn++
+  }
+}
+
+fun turnAction(cars: List<String>, m: MutableMap<String, UInt>) {
+  for (car in cars) {
+    if (4 < Randoms.pickNumberInRange(0, 9)) {
+      m[car] = m[car]!!.plus(1u)
+    }
+  }
+}
+
+fun turnDisplay(cars: List<String>, m: MutableMap<String, UInt>, turn : UInt) {
+  if(turn == 1u){
+    println("실행 결과")
+  }
+  for (car in cars) {
+    print("$car : ")
+    for(move in 1..m[car]!!.toInt()){
+      print("-")
+    }
+    println()
+  }
+  println()
 }
