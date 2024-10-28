@@ -10,7 +10,7 @@ class InputViewTest : NsTest() {
 
     @CsvSource(value = ["EMPTY", ",", " , ", "hyun,"], emptyValue = "EMPTY")
     @ParameterizedTest
-    fun `두 대 이상의 자동차가 입력되었는 지 확인`(nameOfCars: String?) {
+    fun `자동차는 두 대 이상 입력해야 한다`(nameOfCars: String?) {
         //given
         val input = InputView()
 
