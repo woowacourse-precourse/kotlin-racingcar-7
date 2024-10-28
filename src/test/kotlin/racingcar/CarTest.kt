@@ -7,20 +7,20 @@ import org.junit.jupiter.params.provider.ValueSource
 
 class CarTest {
     // 예외 처리 테스트
-    private val car = Car("car")
+    private val car = Car(TEST_CAR)
 
     @Test
     fun `자동차 전진 테스트1 (이동 가능)`() {
-        car.moving(4)
+        car.moving(GO)
 
-        assertEquals(1, car.position)
+        assertEquals(POSITION_GO, car.position)
     }
 
     @Test
     fun `자동차 전진 테스트2 (이동 불가)`() {
-        car.moving(1)
+        car.moving(STOP)
 
-        assertEquals(0, car.position)
+        assertEquals(POSITION_STOP, car.position)
     }
 
     @ParameterizedTest
@@ -28,7 +28,7 @@ class CarTest {
     fun `전진이 불가능한 상태`(input: Int) {
         val goStraight = car.isPossibleGoStraight(input)
 
-        assertEquals(false, goStraight)
+        assertEquals(IMPOSSIBLE, goStraight)
     }
 
     @ParameterizedTest
@@ -36,6 +36,16 @@ class CarTest {
     fun `전진이 가능한 상태`(input: Int) {
         val goStraight = car.isPossibleGoStraight(input)
 
-        assertEquals(true, goStraight)
+        assertEquals(POSSIBLE, goStraight)
+    }
+
+    companion object {
+        private const val TEST_CAR = "car"
+        private const val POSSIBLE = true
+        private const val IMPOSSIBLE = true
+        private const val GO = 4
+        private const val STOP = 1
+        private const val POSITION_GO = 1
+        private const val POSITION_STOP = 0
     }
 }
