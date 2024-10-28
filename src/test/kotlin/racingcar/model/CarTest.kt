@@ -13,10 +13,18 @@ class CarTest {
         assertThat(car.name).isEqualTo("pobi")
     }
 
+
     @Test
     fun `자동차 이름이 5글자를 초과하면 IllegalArgumentException이 발생한다`() {
         assertThrows<IllegalArgumentException> {
             Car("javaji")
+        }
+    }
+
+    @Test
+    fun `자동차 이름이 빈 문자열이면 IllegalArgumentException이 발생한다`() {
+        assertThrows<IllegalArgumentException> {
+            Car("")
         }
     }
 
