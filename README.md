@@ -41,3 +41,7 @@ MVC 패턴에 기반하여 코드를 작성하였습니다.
 ### util
 - `Validator` : 입력에 대한 예외 처리
 - `ErrorMessage` : 예외 발생 시 출력할 오류 메시지
+
+## 테스트
+![image](https://gist.github.com/user-attachments/assets/d949d41c-4025-4f69-a0a2-7fef20519bc3)
+- 테스트 코드를 통해 코드 커버리지 100%를 확인하였습니다.
