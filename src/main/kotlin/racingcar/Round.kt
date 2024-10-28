@@ -9,5 +9,11 @@ class Round(carNames: List<String>) {
         }
         println()
     }
-    
+
+    fun printRound() {
+        cars.forEach {
+            val currentPosition = it.movingState()
+            println(currentPosition)
+        }
+    }
 }
