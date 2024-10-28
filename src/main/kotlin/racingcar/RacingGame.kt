@@ -51,6 +51,12 @@ class RacingGame(
         return playNum
     }
 
+    private fun getWinners(): Set<String> {
+        val maxScore = playCars.values.max()
+        val winners = playCars.filter { it.value == maxScore }.keys
+        return winners
+    }
+
     companion object {
         private const val GAME_CRITICAL_POINT = 4
         private const val PLAY_NUMBER_START = 0
