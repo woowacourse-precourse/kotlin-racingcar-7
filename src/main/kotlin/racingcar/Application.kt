@@ -1,6 +1,7 @@
 package racingcar
 
 import racingcar.presenter.RacingCarPresenter
+import racingcar.util.ConstantsUtil.DELIMITER_COMMA
 import racingcar.util.ConstantsUtil.MESSAGE_INPUT_CAR_NAME
 import racingcar.util.ConstantsUtil.MESSAGE_INPUT_ROUND
 import racingcar.view.RacingCarView
@@ -10,7 +11,7 @@ fun main() {
     val view: RacingCarView = RacingCarViewImpl()
     val presenter = RacingCarPresenter(view)
 
-    val carNames = view.getUserInput(MESSAGE_INPUT_CAR_NAME).split(",")
+    val carNames = view.getUserInput(MESSAGE_INPUT_CAR_NAME).split(DELIMITER_COMMA)
     val round = view.getUserInput(MESSAGE_INPUT_ROUND)
 
     presenter.startRacingCar(carNames, round)
