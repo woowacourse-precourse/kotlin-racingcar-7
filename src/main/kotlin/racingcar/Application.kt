@@ -8,6 +8,9 @@ fun main() {
     try {
         val carNames = readLine()
         checkIsEmpty(carNames)
+        println(carNames)
+        var carList = carNames.split(",").map { Car(it.trim()) }
+        checkNumberOfCarName(carList.map { it.name })
     } catch (e: Exception) {
         throw IllegalArgumentException(e.message)
     }
@@ -16,6 +19,13 @@ fun main() {
 fun checkIsEmpty(s: String): Boolean {
     if (s.isBlank()) {
         throw IllegalArgumentException("자동차 이름을 입력해주세요.")
+    }
+    return true
+}
+
+fun checkNumberOfCarName(list: List<String>): Boolean {
+    for (name in list) {
+        if (name.length > 5) throw IllegalArgumentException("자동차 이름은 5글자 이하만 가능합니다.")
     }
     return true
 }
