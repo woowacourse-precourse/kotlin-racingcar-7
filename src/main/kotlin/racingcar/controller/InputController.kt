@@ -12,8 +12,8 @@ class InputController {
         }
     }
 
-    fun getRaceCount(): Int {
-        return input.raceCount().let {
+    fun getRaceRound(): Int {
+        return input.raceRound().let {
             it.toIntOrNull() ?: throw IllegalArgumentException("경주 횟수는 숫자만 입력 가능합니다. ${it}은 숫자가 아닙니다.")
         }
     }
