@@ -17,7 +17,7 @@ fun main() {
 
     println("실행 결과")
     for (i in 0 until count) {
-        for (i in cars.indices) {
+        for (j in cars.indices) {
             if (Randoms.pickNumberInRange(0, 9) >= 4) {
                 race[i] += "-"
             }
@@ -25,4 +25,13 @@ fun main() {
         }
         println()
     }
+
+    val gameResult = race.max()
+    val winners = ArrayList<String>()
+    for (i in race.indices) {
+        if (race[i] == gameResult) {
+            winners.add(cars[i])
+        }
+    }
+    println("최종 우승자 : " + winners.joinToString(", "))
 }
