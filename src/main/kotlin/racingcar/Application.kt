@@ -14,6 +14,8 @@ fun main() {
 
     val tryNumber = ui.requestTryNumber()
 
+    ui.displayResultHeader()
+
     repeat(tryNumber) {
         cars.tryMove()
         ui.displayTryResult(cars)

@@ -26,6 +26,10 @@ class Ui {
         }
     }
 
+    fun displayResultHeader() {
+        println("\n실행 결과")
+    }
+
     fun displayTryResult(cars: List<Car>) {
         val stringBuilder = StringBuilder()
 
