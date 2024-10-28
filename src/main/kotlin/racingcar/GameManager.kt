@@ -24,10 +24,14 @@ object GameManager {
     }
 
     fun playRound() {
-        for (i in 1..attemptTimes) {
-            round.start()
-            round.printRound()
+        repeat(attemptTimes) {
+            playOneRound()
         }
+    }
+
+    private fun playOneRound() {
+        round.start()
+        round.printRound()
     }
 
     fun getWinners(): List<String> {
