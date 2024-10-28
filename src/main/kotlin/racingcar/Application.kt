@@ -1,15 +1,10 @@
 package racingcar
 
-import camp.nextstep.edu.missionutils.Console
-
 fun main() {
-    val cars = Console.readLine().split(",").map { it.trim() }
-    if (cars.any { it.length > 5 }) throw IllegalArgumentException()
+    val names = readCarNames()
+    val tryNumber = readTryNumber()
 
-    val times: Int
-    try {
-        times = Console.readLine().toInt()
-    } catch (e: Exception) {
-        throw IllegalArgumentException()
-    }
+    println("실행 결과")
+
+    winner(names, tryNumber)
 }
