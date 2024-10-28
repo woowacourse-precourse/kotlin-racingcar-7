@@ -38,10 +38,16 @@ fun checkNumberOfCarName(list: List<String>): Boolean {
 fun startGame(count: Int, carList: List<Car>) {
     println("실행 결과")
     repeat(count) {
-
+        increaseDistance(carList)
     }
 }
 
 fun getRandomNumber(min: Int, max: Int): Int =
     camp.nextstep.edu.missionutils.Randoms.pickNumberInRange(min, max)
 
+fun increaseDistance(list: List<Car>) =
+    list.map { car ->
+        val randomN = getRandomNumber(0, 9)
+        if (randomN >= 4) car.increaseDistance(1)
+        else car
+    }
