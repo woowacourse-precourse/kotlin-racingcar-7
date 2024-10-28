@@ -20,4 +20,22 @@ object ValidatorUtil {
             MESSAGE_CAR_NAME_BLANK
         }
     }
+
+    fun validateCarsNames(carNames: List<String>) {
+        require(carNames.size == carNames.distinct().size){
+            MESSAGE_CAR_NAME_DUPLICATE
+        }
+    }
+
+    fun validateRoundType(roundString: String) {
+        require(roundString.toIntOrNull() != null){
+            MESSAGE_ROUND_NOT_INT
+        }
+    }
+
+    fun validateRoundRange(roundNumber: Int){
+        require(roundNumber >= 1){
+            MESSAGE_ROUND_NOT_EXCEEDED
+        }
+    }
 }
