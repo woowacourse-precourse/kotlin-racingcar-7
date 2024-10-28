@@ -34,6 +34,14 @@ class Validation {
         }
     }
 
+    fun checkContainBlank(carName: List<Car>) {
+        carName.forEach {
+            if (it.name.contains(BLANK)) {
+                throw IllegalArgumentException(CAR_NAME_CONTAIN_BLANK_ERROR_MESSAGE)
+            }
+        }
+    }
+
     fun checkCarNameDuplication(carName: List<Car>) {
         val carNames = carName.map { it.name }
         if (carNames.distinct().size != carNames.size) {
