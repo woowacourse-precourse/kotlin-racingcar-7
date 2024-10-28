@@ -7,6 +7,9 @@ fun main() {
         val carNames = readCarNames()
         val attempts = readAttempts()
 
+        val cars = carNames.map { Car(it) }
+        val game = RacingGame(cars, attempts)
+        game.start()
     } catch (e: IllegalArgumentException) {
         throw IllegalArgumentException("입력이 잘못되었습니다. 프로그램을 종료합니다.")
     }
