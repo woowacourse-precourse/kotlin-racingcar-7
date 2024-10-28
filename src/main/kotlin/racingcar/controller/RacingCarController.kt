@@ -38,6 +38,8 @@ class RacingCarController {
             throw IllegalArgumentException("이름이 전부 입력되지 않았습니다.")
         } else if (carNames.any { it.length > 5 }) {
             throw IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.")
+        } else if (carNames.size != carNames.toSet().size){
+            throw IllegalArgumentException("중복된 이름이 있습니다.")
         }
 
         return carNames
