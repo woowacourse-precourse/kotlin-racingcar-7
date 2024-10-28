@@ -6,11 +6,12 @@ class Round(
     init {
         require(count.toIntOrNull() != null)
         require(count.all { it.isDigit() })
-        require(count.toInt() >= MINIMUM_ROUND_COUNT)
+        require(count.toInt() in MINIMUM_ROUND_COUNT .. MAXIMUM_ROUND_COUNT)
     }
 
     companion object {
         private const val MINIMUM_ROUND_COUNT = 1
+        private const val MAXIMUM_ROUND_COUNT = 20
         fun Round.toInt() = count.toInt()
     }
 }
