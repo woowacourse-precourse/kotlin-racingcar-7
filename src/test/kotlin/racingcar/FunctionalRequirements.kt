@@ -47,7 +47,10 @@ class FunctionalRequirements {
 
     @Test
     fun `전진하는 자동차를 출력할 때 자동차 이름을 같이 출력한다`() {
-
+        setInput("pobi,crong\n5")
+        application.run()
+        assertThat(output()).contains("pobi :")
+        assertThat(output()).contains("crong :")
     }
 
     @Test
