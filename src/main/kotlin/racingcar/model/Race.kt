@@ -4,10 +4,10 @@ import camp.nextstep.edu.missionutils.Randoms
 import racingcar.constant.ModelConstants
 
 class Race {
-    fun adjustTryCountTypeInput(input: String): Int {
+    fun adjustTryCountInputType(input: String): Int {
         InputException.nonIntegerException(input)
         val tryCountInput = input.toInt()
-        InputException.outOfTryCountRange(tryCountInput)
+        InputException.outOfTryCountRangeException(tryCountInput)
 
         return tryCountInput
     }

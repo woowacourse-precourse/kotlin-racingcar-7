@@ -38,7 +38,7 @@ class CarRaceController(
     private fun parseAndValidateTryCount(): Int {
         val stringTypeTryCountInput = inputView.getTryCountInput()
 
-        return racingModel.adjustTryCountTypeInput(stringTypeTryCountInput)
+        return racingModel.adjustTryCountInputType(stringTypeTryCountInput)
     }
 
     private fun displayRoundResult(carWithCount: List<Pair<String, Int>>) {

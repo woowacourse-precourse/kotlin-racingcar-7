@@ -23,7 +23,7 @@ class InputException {
             if (nonInteger) throw IllegalArgumentException(ModelConstants.NON_INTEGER_EXCEPTION_MESSAGE)
         }
 
-        fun outOfTryCountRange(tryCountInput: Int) {
+        fun outOfTryCountRangeException(tryCountInput: Int) {
             val countRange = tryCountInput in ModelConstants.TRY_COUNT_MIN..ModelConstants.TRY_COUNT_MAX
             if (!countRange) throw IllegalArgumentException(ModelConstants.OUT_OF_TRY_COUNT_RANGE_EXCEPTION_MESSAGE)
         }

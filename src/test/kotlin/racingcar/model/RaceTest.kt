@@ -26,7 +26,7 @@ class RaceTest {
             // 최소 범위는 1
             fun `시도할 횟수가 1미만일 경우`() {
                 val input = -1
-                assertThrows<IllegalArgumentException> { InputException.outOfTryCountRange(input) }
+                assertThrows<IllegalArgumentException> { InputException.outOfTryCountRangeException(input) }
             }
 
             @Test
@@ -34,7 +34,7 @@ class RaceTest {
             // 최대 범위는 16
             fun `시도할 횟수가 16초과일 경우`() {
                 val input = 17
-                assertThrows<IllegalArgumentException> { InputException.outOfTryCountRange(input) }
+                assertThrows<IllegalArgumentException> { InputException.outOfTryCountRangeException(input) }
             }
         }
 
