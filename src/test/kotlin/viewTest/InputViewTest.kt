@@ -1,5 +1,6 @@
 package viewTest
 
+import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.params.ParameterizedTest
@@ -11,14 +12,16 @@ class InputViewTest : NsTest() {
     @CsvSource(value = ["EMPTY", ",", " , ", "hyun,"], emptyValue = "EMPTY")
     @ParameterizedTest
     fun `자동차는 두 대 이상 입력해야 한다`(nameOfCars: String?) {
-        //given
-        val input = InputView()
+        assertSimpleTest {
+            //given
+            val input = InputView()
 
-        //when
-        val nameOfCarsValidation = input.isNameOfCarsValid(nameOfCars)
+            //when
+            val nameOfCarsValidation = input.isNameOfCarsValid(nameOfCars)
 
-        //then
-        assertThat(nameOfCarsValidation).isFalse()
+            //then
+            assertThat(nameOfCarsValidation).isFalse()
+        }
     }
 
     override fun runMain() {
