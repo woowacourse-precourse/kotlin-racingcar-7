@@ -31,6 +31,24 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
+    fun `기능 테스트 2명 이상의 우승자`() {
+        assertRandomNumberInRangeTest(
+            {
+                run("pobi,woni,jun,a,b", "3")
+                assertThat(output()).contains(
+                    "pobi : -",
+                    "woni : ",
+                    "jun : ",
+                    "a : ",
+                    "b : ",
+                    "최종 우승자 : pobi, woni, jun, a, b"
+                )
+            },
+            MOVING_FORWARD
+        )
+    }
+
+    @Test
     fun `예외 테스트`() {
         assertSimpleTest {
             val exception = assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
