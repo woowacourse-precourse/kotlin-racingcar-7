@@ -1,15 +1,16 @@
 package racingcar.view
 
 import camp.nextstep.edu.missionutils.Console
+import racingcar.utils.InputMessages
 
 object InputView {
     fun getCarNames(): List<String> {
-        println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
-        return Console.readLine()?.split(",") ?: emptyList()
+        println(InputMessages.CAR_NAME_INPUT_MESSAGE)
+        return Console.readLine().split(",")
     }
 
-    fun getNumberOfRounds(): Int {
-        println("시도할 횟수는 몇 회인가요?")
-        return Console.readLine()?.toIntOrNull() ?: 0
+    fun getNumberOfRounds(): String {
+        println(InputMessages.NUMBER_OF_ROUNDS_INPUT_MESSAGE)
+        return Console.readLine()
     }
 }
