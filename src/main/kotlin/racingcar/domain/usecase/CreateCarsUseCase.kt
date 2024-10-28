@@ -1,10 +1,11 @@
 package racingcar.domain.usecase
 
 import racingcar.domain.entity.Car
+import racingcar.domain.generator.AnonymityNameGenerator
 
-class CreateCarsUseCase {
-    private var anonymityCount = INITIAL_ANONYMITY_COUNT
-
+class CreateCarsUseCase(
+    private val anonymityNameGenerator: AnonymityNameGenerator = AnonymityNameGenerator()
+) {
     fun execute(input: String): List<Car> {
         val carNames = input.split(DELIMITER)
         validateUniqueName(carNames)
@@ -12,7 +13,7 @@ class CreateCarsUseCase {
     }
 
     private fun createCar(name: String): Car {
-        if (name.isBlank()) return Car("$ANONYMITY${anonymityCount++}")
+        if (name.isBlank()) return Car(anonymityNameGenerator.generator())
         return Car(name)
     }
 
@@ -22,9 +23,7 @@ class CreateCarsUseCase {
     }
 
     companion object {
-        private const val INITIAL_ANONYMITY_COUNT = 1
         private const val DELIMITER = ","
-        private const val ANONYMITY = "익명"
         private const val DUPLICATE_CARS_ERROR_MESSAGE = "자동차 이름에 중복이 있습니다. 중복을 제거 해주세요"
     }
 }
