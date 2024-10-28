@@ -5,7 +5,7 @@ import java.util.prefs.Preferences.MAX_NAME_LENGTH
 
 class InputView {
 
-    fun inputCarNames() {
+    fun inputCarNames(): List<String> {
         println(MESSAGE_ENTER_CAR_NAMES)
         val input = Console.readLine().orEmpty()
         validateEmptyInput(input)
@@ -13,6 +13,8 @@ class InputView {
 
         val names = splitAndTrimNames(input)
         validateCarNames(names)
+
+        return names
     }
 
     private fun validateEmptyInput(input: String) {
