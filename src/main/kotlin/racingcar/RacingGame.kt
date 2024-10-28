@@ -1,12 +1,12 @@
 package racingcar
 
-import java.awt.SystemColor.text
+import camp.nextstep.edu.missionutils.Randoms
 
-class RacingGame(val inputnumber: String) {
+class RacingGame(val inputNumber: String) {
     var number = 0
     fun NumericCheck() {
-        if (inputnumber.all { it.isDigit() }) {
-            number = inputnumber.toInt()
+        if (inputNumber.all { it.isDigit() }) {
+            number = inputNumber.toInt()
         } else throw IllegalArgumentException("[ERROR] 숫자를 입력하세요.")
     }
 
