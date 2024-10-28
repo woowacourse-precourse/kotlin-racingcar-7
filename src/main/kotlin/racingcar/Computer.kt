@@ -22,11 +22,15 @@ class Computer {
     }
 
     fun printWinner(cars: List<Car>) {
+        println(makeWinnerMessage(cars))
+    }
+
+    fun makeWinnerMessage(cars: List<Car>): String {
         var winnerFrontMessage = WINNER_FRONT_MESSAGE
         cars.forEach {
             winnerFrontMessage += it.name
         }
-        println(winnerFrontMessage)
+        return winnerFrontMessage
     }
 
     private fun printInputCarNameMessage() {
