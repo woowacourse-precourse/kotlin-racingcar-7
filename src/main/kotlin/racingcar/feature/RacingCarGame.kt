@@ -3,9 +3,11 @@ package racingcar.feature
 import camp.nextstep.edu.missionutils.Randoms
 import racingcar.model.Car
 
-class RacingCarGame(names: List<String>) {
+class RacingCarGame(namesInput: String) {
 
-    private var cars: List<Car> = names.map { Car(it, DEFAULT_MOVE_COUNT) }
+    private var cars: List<Car> = namesInput.split(DELIMITER_COMMA).map {
+        Car(name = it, moveCount = DEFAULT_MOVE_COUNT)
+    }
 
     fun moveCars() {
         cars = cars.map { car ->
@@ -36,6 +38,7 @@ class RacingCarGame(names: List<String>) {
     }
 
     companion object {
+        private const val DELIMITER_COMMA = ','
         private const val DEFAULT_MOVE_COUNT: Int = 0
         private const val MOVING_FORWARD: Int = 4
         private const val MOVE_SYMBOL: String = "-"

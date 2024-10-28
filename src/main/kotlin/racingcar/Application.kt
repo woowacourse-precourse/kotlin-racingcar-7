@@ -16,12 +16,10 @@ fun main() {
 
     println()
 
-    val names = namesInput.split(',')
-    val count = countInput.toInt()
-    val racingCarGame = RacingCarGame(names)
+    val racingCarGame = RacingCarGame(namesInput)
 
     println("실행 결과")
-    repeat(count) {
+    repeat(countInput.toInt()) {
         racingCarGame.moveCars()
         racingCarGame.printResults()
         println()
