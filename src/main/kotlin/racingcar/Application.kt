@@ -52,13 +52,13 @@ fun printAllRaceResults(carMap: MutableMap<String, Int>, attemptNumber: Int) {
 
 fun printRaceResult(carMap: MutableMap<String, Int>) {
     carMap.forEach { key, value ->
-        moveForwardIfVaild(carMap, key, value)
+        moveForwardIfValid(carMap, key, value)
 
         println("$key : " + "-".repeat(carMap[key]!!))
     }
 }
 
-fun moveForwardIfVaild(carMap: MutableMap<String, Int>, key: String, value: Int) {
+fun moveForwardIfValid(carMap: MutableMap<String, Int>, key: String, value: Int) {
     if (isMoveForwardValid()) {
         carMap[key] = value + 1
     }
