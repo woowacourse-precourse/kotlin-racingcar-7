@@ -9,22 +9,74 @@ import org.junit.jupiter.api.assertThrows
 
 class ApplicationTest : NsTest() {
     @Test
-    fun `기능 테스트`() {
+    fun `기능 테스트(단독 우승)`() {
         assertRandomNumberInRangeTest(
             {
-                run("pobi,woni", "1")
-                assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi")
+                run("pobi,woni", "2")
+                assertThat(output()).contains(
+                    "pobi : -", "pobi : --",
+                    "woni : ", "woni : -",
+                    "최종 우승자 : pobi")
             },
-            MOVING_FORWARD, STOP
+            MOVING_FORWARD, STOP,
+            MOVING_FORWARD, MOVING_FORWARD
         )
     }
 
     @Test
-    fun `예외 테스트`() {
+    fun `기능 테스트(공동 우승)`() {
+        assertRandomNumberInRangeTest(
+            {
+                run("caca,board,nike", "4")
+                assertThat(output()).contains(
+                    "caca : -", "caca : --", "caca : ---", "caca : ---",
+                    "board : -", "board : --", "board : --", "board : --",
+                    "nike : ", "nike : -", "nike : --", "nike : ---",
+                    "최종 우승자 : caca, nike")
+            },
+            MOVING_FORWARD, MOVING_FORWARD, STOP,
+            MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD,
+            MOVING_FORWARD, STOP, MOVING_FORWARD,
+            STOP, STOP, MOVING_FORWARD,
+        )
+    }
+
+    @Test
+    fun `예외 테스트(자동차이름 공백 입력)`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("", "1") }
+        }
+    }
+
+    @Test
+    fun `예외 테스트(5글자 초과 입력)`() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
         }
     }
+
+    @Test
+    fun `예외 테스트(자동차 이름 중복)`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,pobi,nike", "1") }
+        }
+    }
+
+    @Test
+    fun `예외 테스트(레이싱 카운트 영문 or 한글 입력)`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,java", "ㅁ") }
+        }
+    }
+
+    @Test
+    fun `예외 테스트(레이싱 카운트 공백 입력)`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,java", "") }
+        }
+    }
+
+
 
     override fun runMain() {
         main()
