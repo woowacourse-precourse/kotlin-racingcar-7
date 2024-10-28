@@ -17,6 +17,7 @@ class Cars(
         private const val DELIMITER = ","
 
         private fun String.toCars() = this.split(DELIMITER).map { Car(it) }
+
         fun Cars.convertCarsToList() = input.toCars()
     }
 }
