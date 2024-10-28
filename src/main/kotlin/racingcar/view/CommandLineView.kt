@@ -16,10 +16,16 @@ class CommandLineView(private val viewModel: ViewModel = ViewModel()) : View {
     }
 
     override fun showMatchProcess() {
-        TODO("Not yet implemented")
+        val result = viewModel.race()
+        println("실행 결과")
+        println(result.joinToString(separator = "\n") { roundResult ->
+            roundResult.joinToString(
+                separator = "\n", postfix = "\n"
+            )
+        })
     }
 
     override fun showWinner() {
-        TODO("Not yet implemented")
+        println("최종 우승자 : ${viewModel.winners.joinToString()}")
     }
 }
