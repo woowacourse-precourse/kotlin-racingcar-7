@@ -1,5 +1,6 @@
 package racingcar.data
 
+import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.assertThrows
 import org.junit.jupiter.params.ParameterizedTest
@@ -36,4 +37,28 @@ class CarTest {
         assertThrows<IllegalArgumentException> { Car(name) }
     }
 
+    @DisplayName("자동차 전진 조건인 4 이상의 값을 전달한 경우")
+    @ParameterizedTest
+    @ValueSource(ints = [4, 5, 6, 7, 8, 9])
+    fun move(random: Int) {
+        val expectedResult = 1
+        val result = Car("move").move(random)
+        Assertions.assertEquals(expectedResult, result)
+    }
+
+    @DisplayName("자동차 전진 조건인 4 미만의 값을 전달한 경우")
+    @ParameterizedTest
+    @ValueSource(ints = [0, 1, 2, 3])
+    fun stop(random: Int) {
+        val expectedResult = 0
+        val result = Car("stop").move(random)
+        Assertions.assertEquals(expectedResult, result)
+    }
+
+    @DisplayName("0 ~ 9 이외의 값을 전달하는 경우")
+    @ParameterizedTest
+    @ValueSource(ints = [-1, -2, 10, 11, 12])
+    fun outOfNumber(random: Int) {
+        assertThrows<IllegalArgumentException> { Car("out").move(random) }
+    }
 }
