@@ -56,6 +56,13 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
+    fun `예외 테스트(자동차 이름 중복)`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,pobi,nike", "1") }
+        }
+    }
+
+    @Test
     fun `예외 테스트(레이싱 카운트 영문 or 한글 입력)`() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("pobi,java", "ㅁ") }
@@ -68,6 +75,8 @@ class ApplicationTest : NsTest() {
             assertThrows<IllegalArgumentException> { runException("pobi,java", "") }
         }
     }
+
+
 
     override fun runMain() {
         main()
