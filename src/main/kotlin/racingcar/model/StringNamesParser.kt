@@ -4,7 +4,7 @@ import racingcar.view.ExceptionString
 
 class StringNamesParser() {
     private val _currentStatus: MutableList<Pair<String, Int>> = mutableListOf()
-    val currentStatus: List<Pair<String, Int>> get() = _currentStatus
+    val currentStatus: MutableList<Pair<String, Int>> get() = _currentStatus
 
     fun parser(names: String) {
         _currentStatus.addAll(names.split(",").map { Pair(it.trim(), 0) })
