@@ -1,5 +1,10 @@
 package racingcar
 
 fun main() {
-    // TODO: 프로그램 구현
+    val carNames = inputCarNames()
+    validateCarNames(carNames)
+    val attemptCount = inputAttemptCount()
+    val distances = raceCars(carNames, attemptCount)
+    val winners = determineWinners(carNames, distances)
+    println("최종 우승자 : ${winners.joinToString(", ")}")
 }
