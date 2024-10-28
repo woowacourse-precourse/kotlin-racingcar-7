@@ -1,5 +1,9 @@
 package racingcar
 
+import racingcar.domain.Race
+import racingcar.ui.InputView
+import racingcar.ui.OutputView
+
 fun main() {
-    // TODO: 프로그램 구현
+    Race(InputView, OutputView).start()
 }
