@@ -9,8 +9,8 @@ fun main() {
     val carname = carnameinputview()
     val racenum = racenuminputview()
 
-    val carscore = Array<Int>(carname.size,{0})
+    val carscore = Array<Int>(carname.size, { 0 })
 
-    raceoutput(carname, racenum,carscore)
-    winnerprint(carscore,carname)
+    raceoutput(carname, racenum, carscore)
+    winnerprint(carscore, carname)
 }
