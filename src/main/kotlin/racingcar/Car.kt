@@ -12,7 +12,7 @@ class Car(val name: String) {
     }
 
     private fun checkValidate() {
-        require(name.length <= NAME_LIMIT) { WRONG_NAME_MESSAGE }
+        require(name.isNotEmpty() && name.length <= NAME_LIMIT) { WRONG_NAME_MESSAGE }
     }
 
     fun move() {
@@ -32,6 +32,6 @@ class Car(val name: String) {
         private const val RANDOMS_MIN_RANGE = 0
         private const val RANDOMS_MAX_RANGE = 9
         private const val GO_STATE_SYMBOL = '-'
-        private const val WRONG_NAME_MESSAGE = "자동차 이름은 5자 이하만 가능합니다."
+        private const val WRONG_NAME_MESSAGE = "자동차 이름은 1자 이상, 5자 이하로 입력해주세요."
     }
 }
