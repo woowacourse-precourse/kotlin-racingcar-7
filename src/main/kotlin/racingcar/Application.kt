@@ -21,10 +21,12 @@ fun main() {
   7. 경주 결과 출력(1등이 겹친다면 여러명 출력)
    */
 
+  println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
   val inputCar = Console.readLine()
   var cars = inputCar.split(",")
   isOver5Letters(cars)
   cars = duplicateName(cars)
+  println("시도할 횟수는 몇 회인가요?")
   val inputMove = Console.readLine()
   val move = isMovementValid(inputMove)
   race(cars, move)
