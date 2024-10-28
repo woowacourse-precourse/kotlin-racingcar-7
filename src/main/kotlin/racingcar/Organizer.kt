@@ -17,7 +17,7 @@ class Organizer {
     }
 
     private fun inputCarNames(): List<String> {
-        outputView.printNotice("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
+        outputView.printCarNamesRequest()
         val appliedCars = inputView.inputCarNames()
 
         validateCarNames(appliedCars)
@@ -34,7 +34,7 @@ class Organizer {
     }
 
     private fun inputRaceCount(): String {
-        outputView.printNotice("시도할 횟수는 몇 회인가요?")
+        outputView.printRaceCountRequest()
         val raceCount = inputView.inputRaceCount()
 
         validateRaceCount(raceCount)
@@ -49,11 +49,11 @@ class Organizer {
 
     private fun startRace(raceCars: List<Car>, raceCount: String) {
         var updatedRaceCars = raceCars
-        outputView.printNotice("실행 결과")
+        outputView.printResultHeader()
 
         for (race in 0 until raceCount.toInt()) {
             updatedRaceCars = updateRaceProgress(updatedRaceCars)
-            outputView.printNotice("")
+            outputView.printLineBreak()
         }
 
         endRace(updatedRaceCars)
@@ -61,19 +61,19 @@ class Organizer {
 
     private fun updateRaceProgress(raceCars: List<Car>): List<Car> {
         val updatedRaceCars: MutableList<Car> = raceCars.toMutableList()
-        raceCars.forEachIndexed { index, car ->
+        raceCars.forEach { car ->
             val randomValue = pickNumberInRange(MINIMUM_RANDOM_VALUE, MAXIMUM_RANDOM_VALUE)
             if (validator.isPossibleForward(randomValue)) {
                 car.forward()
             }
-            outputView.printNotice("${updatedRaceCars[index].name} : ${"-".repeat(updatedRaceCars[index].location)}")
+            outputView.printRaceProgress(car)
         }
         return updatedRaceCars
     }
 
     private fun endRace(raceCars: List<Car>) {
         val winnerCarsName = judge.findWinnerName(raceCars)
-        outputView.printNotice("최종 우승자 : ${winnerCarsName.joinToString(", ")}")
+        outputView.printWinners(winnerCarsName)
     }
 
     companion object {
