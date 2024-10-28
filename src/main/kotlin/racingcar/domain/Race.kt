@@ -1,8 +1,10 @@
 package racingcar.domain
 
 import racingcar.data.Car
-import racingcar.data.Cars.Companion.toList
-import racingcar.data.Round.Companion.toInt
+import racingcar.data.Cars
+import racingcar.data.Cars.Companion.convertCarsToList
+import racingcar.data.Round
+import racingcar.data.Round.Companion.convertRoundCountToInt
 import racingcar.ui.InputView
 import racingcar.ui.OutputView
 import racingcar.utils.Random
@@ -13,20 +15,20 @@ class Race(
     private val outputView: OutputView
 ) {
     fun start() {
-        val cars = buildCars()
-        val round = buildRound()
+        val cars = buildCars().convertCarsToList()
+        val round = buildRound().convertRoundCountToInt()
         repeatRounds(cars, round)
         printWinner(cars)
     }
 
-    private fun buildCars(): List<Car> {
+    private fun buildCars(): Cars {
         outputView.printCarsNameInput()
-        return inputView.parseCars().toList()
+        return inputView.parseCars()
     }
 
-    private fun buildRound(): Int {
+    private fun buildRound(): Round {
         outputView.printRoundCountInput()
-        return inputView.parseRound().toInt()
+        return inputView.parseRound()
     }
 
     private fun repeatRounds(cars: List<Car>, round: Int) {
