@@ -1,5 +1,11 @@
 package racingcar
 
+import racingcar.model.Car
+
 fun main() {
-    // TODO: 프로그램 구현
+    val car = Car("TestCar")
+    car.carMove()
+    println(car)
+    car.carMove()
+    println(car)
 }
