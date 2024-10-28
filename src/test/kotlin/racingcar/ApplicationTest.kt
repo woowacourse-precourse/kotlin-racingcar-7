@@ -26,6 +26,35 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `시도 횟수 입력값 테스트#1`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,woni", "-1") }
+        }
+    }
+
+    @Test
+    fun `레이서 이름 입력값 테스트#1`() {
+        assertRandomNumberInRangeTest(
+            {
+                run("pobi,자바지기", "1")
+                assertThat(output()).contains("pobi : -", "자바지기 : ", "최종 우승자 : pobi")
+            },
+            MOVING_FORWARD, STOP
+        )
+    }
+
+    @Test
+    fun `레이서 이름 입력값 테스트#2`() {
+        assertRandomNumberInRangeTest(
+            {
+                run("pobi     ,자바지기", "1")
+                assertThat(output()).contains("pobi : -", "자바지기 : ", "최종 우승자 : pobi")
+            },
+            MOVING_FORWARD, STOP
+        )
+    }
+
     override fun runMain() {
         main()
     }
