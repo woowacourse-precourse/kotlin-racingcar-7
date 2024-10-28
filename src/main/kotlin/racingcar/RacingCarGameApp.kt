@@ -1,6 +1,5 @@
 package racingcar
 
-import racingcar.model.RacingGame
 import racingcar.presenter.RacingCarPresenter
 import racingcar.view.InputView
 import racingcar.view.OutputView
@@ -19,8 +18,6 @@ class RacingCarGameApp(
         val attemptCount = racingCarPresenter.createAttemptCount(number)
         outputView.printNewLine()
 
-        val game = RacingGame(cars, attemptCount)
-
-        game.startRacing(outputView)
+        racingCarPresenter.startRacing(cars, attemptCount, outputView)
     }
 }
