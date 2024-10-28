@@ -42,33 +42,26 @@ fun randomMoveForward(name: String, position: MutableMap<String, Int>) {
     }
 }
 
-fun currentPosition(names: String, position: Map<String, Int>) {
-    val finalParticipants = divideNames(names)
-
+fun currentPosition(finalParticipants: List<String>, position: Map<String, Int>) {
     finalParticipants.forEach { name ->
         val currentPosition = "-".repeat(position[name]!!)
-        println("$name: $currentPosition")
+        println("$name : $currentPosition")
     }
 }
 
-fun race(names: String, tryNumber: Int): Map<String, Int> {
-    val finalParticipants = divideNames(names)
+fun race(finalParticipants: List<String>, tryNumber: Int): Map<String, Int> {
     val position = finalParticipants.associateWith { 0 }.toMutableMap()
-
     for (trying in 1..tryNumber) {
         finalParticipants.forEach { name ->
             randomMoveForward(name, position)
         }
-        currentPosition(names, position)
-        print("\n")
+        currentPosition(finalParticipants, position)
+        println()
     }
     return position
 }
 
-fun winner(names: String, tryNumber: Int) {
-    val position = race(names, tryNumber)
+fun findWinners(position: Map<String, Int>): List<String> {
     val maxPosition = position.values.maxOrNull()
-    val winners = position.filter {it.value == maxPosition}.keys
-
-    println("최종 우승자 : ${winners.joinToString(", ")}")
+    return position.filter { it.value == maxPosition }.keys.toList()
 }
