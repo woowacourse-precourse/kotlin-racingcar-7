@@ -98,6 +98,7 @@ __실행 결과 예시__
 - camp.nextstep.edu.missionutils에서 제공하는 Randoms 및 Console API를 사용하여 구현해야 한다.
   - Random 값 추출은 camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange()를 활용한다.
   - 사용자가 입력하는 값은 camp.nextstep.edu.missionutils.Console의 readLine()을 활용한다.
+
 __사용 예시__
 - 0에서 9까지의 정수 중 한 개의 정수 반환
   ```
