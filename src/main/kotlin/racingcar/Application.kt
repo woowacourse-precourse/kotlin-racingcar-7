@@ -1,5 +1,29 @@
 package racingcar
 
+import racingcar.feature.InputCount
+import racingcar.feature.InputNames
+import racingcar.feature.RacingCarGame
+
 fun main() {
-    // TODO: 프로그램 구현
+    val inputNames = InputNames()
+    inputNames.run {
+        printInputNamesMessage()
+        readNames()
+        validateNames()
+    }
+
+    val inputCount = InputCount()
+    inputCount.run {
+        printInputCountMessage()
+        readCount()
+        validateCount()
+    }
+
+    println()
+
+    val racingCarGame = RacingCarGame(
+        names = inputNames.names,
+        count = inputCount.count.toInt()
+    )
+    racingCarGame.startRace()
 }
