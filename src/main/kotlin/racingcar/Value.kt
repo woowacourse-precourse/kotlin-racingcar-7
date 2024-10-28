@@ -17,5 +17,6 @@ const val ROUND_COUNT_NOT_NUMBER_ERROR_MESSAGE = "숫자가 아닙니다."
 const val ROUND_COUNT_NEGATIVE_INTEGER_ERROR_MESSAGE = "1보다 작은 수는 입력할 수 없습니다."
 
 // Number 값
-
 const val POSSIBLE_NUMBER = 4
+const val MIN_RANDOM_NUMBER = 0
+const val MAX_RANDOM_NUMBER = 9

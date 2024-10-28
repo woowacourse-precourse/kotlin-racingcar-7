@@ -15,7 +15,7 @@ class Computer {
         return Console.readLine()
     }
 
-    fun generate() = Randoms.pickNumberInRange(0, 9)
+    fun generate() = Randoms.pickNumberInRange(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER)
 
     fun printCarPosition(car: Car) {
         println(car.getStatus())
