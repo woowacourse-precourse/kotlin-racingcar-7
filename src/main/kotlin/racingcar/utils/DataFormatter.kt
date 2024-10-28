@@ -46,7 +46,7 @@ class DataFormatter {
         const val CAR_NAME_LENGTH_ERROR = "자동차 이름은 5자 이하로 입력해 주세요."
         const val CAR_NAME_BLANK_ERROR = "자동차 이름을 입력해 주세요."
         const val CAR_NAME_DUPLICATE_ERROR = "자동차 이름이 중복되었습니다."
-        const val TIMES_PARSE_ERROR = "횟수는 숫자로 입력해 주세요."
+        const val TIMES_PARSE_ERROR = "횟수는 자연수로 입력해 주세요."
         const val TIMES_NON_POSITIVE_ERROR = "횟수는 1 이상의 숫자로 입력해 주세요."
     }
 }
