@@ -9,7 +9,7 @@ object Process {
 
     fun generateCars(input: String) {
         carNames = validation.validateCarNames(input.split(",").map { it.trim() })
-        round = Round()
+        round = Round(carNames)
     }
 
     fun setAttemptTimes(input: String) {
@@ -18,6 +18,17 @@ object Process {
 
     fun getRound(): Round {
         return round
+    }
+
+    fun playRound() {
+        for (i in 1..attemptTimes) {
+            round.start()
+            round.printRound()
+        }
+    }
+
+    fun getWinners(): List<String> {
+        return round.getWinners()
     }
 
 
