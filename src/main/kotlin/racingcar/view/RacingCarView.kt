@@ -15,6 +15,12 @@ class RacingCarView {
         return Console.readLine()
     }
 
+    fun showAttemptResult() {
 
+    }
+
+    fun showResults(result : String) {
+        println("$showResults $result")
+    }
 
 }
