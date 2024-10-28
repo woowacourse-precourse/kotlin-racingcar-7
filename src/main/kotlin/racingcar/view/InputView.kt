@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Console
 class InputView {
     private val outputView = OutputView()
 
-    fun getNameOfCars(): String? {
+    fun getNameOfCars(): String {
         outputView.enterNameOfCars()
         val nameOfCars = Console.readLine()
         return if (isNameOfCarsValid(nameOfCars)) {
@@ -26,6 +26,15 @@ class InputView {
 
     fun getTryCounts(): Int {
         outputView.enterTryCounts()
-        return Console.readLine().toInt()
+        val tryCounts = Console.readLine().toIntOrNull() ?: 0
+        return if(isTryCountsValid(tryCounts)) {
+            tryCounts
+        } else {
+            throw IllegalArgumentException("Try count invalid")
+        }
+    }
+
+    private fun isTryCountsValid(tryCounts: Int): Boolean {
+        return tryCounts > 0
     }
 }
