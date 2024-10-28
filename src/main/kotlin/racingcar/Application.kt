@@ -2,6 +2,7 @@ package racingcar
 
 import camp.nextstep.edu.missionutils.Console.readLine
 import camp.nextstep.edu.missionutils.Randoms.pickNumberInRange
+import kotlin.collections.set
 
 val isCarNameValidLength = { carName: String -> carName.length <= 5 }
 val isMoveForwardValid = { pickNumberInRange(0, 9) >= 4 }
@@ -15,18 +16,7 @@ fun main() {
     promptForAttemptNumber()
     val attemptNumber = processAttemptNumber(readLine())
 
-    println("실행 결과")
-    for (i in 0 until attemptNumber) {
-        carMap.forEach { key, value ->
-            if (isMoveForwardValid()) {
-                carMap[key] = value + 1
-            }
-
-            println("$key : " + "-".repeat(carMap[key]!!))
-        }
-        println(carMap)  // TODO : 테스트용 출력 ; 삭제할 것
-        println()
-    }
+    printAllRaceResults(carMap, attemptNumber)
 
     // TODO: 함수 분리할 것
     println(
@@ -53,6 +43,29 @@ fun initializeCarMap(carList: List<String>): MutableMap<String, Int> {
     }
 
     return carMap
+}
+
+fun printAllRaceResults(carMap: MutableMap<String, Int>, attemptNumber: Int) {
+    println("실행 결과")
+
+    for (i in 0 until attemptNumber) {
+        printRaceResult(carMap)
+        println()
+    }
+}
+
+fun printRaceResult(carMap: MutableMap<String, Int>) {
+    carMap.forEach { key, value ->
+        moveForwardIfVaild(carMap, key, value)
+
+        println("$key : " + "-".repeat(carMap[key]!!))
+    }
+}
+
+fun moveForwardIfVaild(carMap: MutableMap<String, Int>, key: String, value: Int) {
+    if (isMoveForwardValid()) {
+        carMap[key] = value + 1
+    }
 }
 
 fun validateCarName(carName: String) {
