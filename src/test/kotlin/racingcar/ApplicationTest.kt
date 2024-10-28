@@ -88,30 +88,35 @@ class ApplicationTest : NsTest() {
             assertThrows<IllegalArgumentException> { runException("ru1n, geu2n", "1") }
         }
     }
+
     @Test
     fun `이름 영역 특수기호 예외`() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("run!, geun", "1") }
         }
     }
+
     @Test
     fun `이름 영역 빈 문자열 예외`() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("", "1") }
         }
     }
+
     @Test
     fun `이름 영역 중간 빈문자열 예외`() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("run,,geun", "1") }
         }
     }
+
     @Test
     fun `이름 영역 쉽표 끝 예외`() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("run,geun,", "1") }
         }
     }
+
     // 시도 횟수 예외
     @Test
     fun `음수 입력 예외`() {
@@ -119,18 +124,21 @@ class ApplicationTest : NsTest() {
             assertThrows<IllegalArgumentException> { runException("run,geun,", "-1") }
         }
     }
+
     @Test
     fun `실수 입력 예외`() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("run,geun,", "3.1") }
         }
     }
+
     @Test
     fun `오버플로우 예외`() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("run,geun,", "2147483648") }
         }
     }
+
     override fun runMain() {
         main()
     }

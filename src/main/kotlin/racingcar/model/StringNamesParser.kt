@@ -15,6 +15,7 @@ class StringNamesParser() {
         name.forEach {
             require(it.length <= 5) { ExceptionString.LENGTH }
             require(it.all { char -> char.isLetter() }) { ExceptionString.NOT_NAME }
+            require(!it.isNullOrBlank()) { ExceptionString.BLANK }
         }
     }
 }
