@@ -25,8 +25,11 @@ fun main() {
 fun promptForCarNames() = println(Strings.MESSAGE_INPUT_CAR_NAME)
 fun promptForAttemptNumber() = println(Strings.MESSAGE_INPUT_ATTEMPT_NUMBER)
 
-fun processCarNames(input: String): List<String> = input.split(",")
-    .map { it.trim() }
+fun processCarNames(input: String): List<String> {
+    val carList = input.split(",").map { it.trim() }
+    require(carList.all { it.isNotBlank() }) { Strings.MESSAGE_EXCEPTION_INPUT_CAR_NAMES }
+    return carList
+}
 
 fun processAttemptNumber(input: String) =
     input.toIntOrNull() ?: throw IllegalArgumentException(Strings.MESSAGE_EXCEPTION_INPUT_ATTEMPT_NUMBER)
