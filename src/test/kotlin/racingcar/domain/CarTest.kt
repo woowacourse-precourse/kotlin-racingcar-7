@@ -81,6 +81,20 @@ class CarTest {
                 assertThat(message).isEqualTo(RANDOM_NUMBER_RANGE_ERROR_MESSAGE)
             }
         }
+
+        @Test
+        fun `랜덤값이 음수이면 예외가 발생한다`() {
+            // given
+            randomNumber.setNumber(-1)
+            val car = Car("car", randomNumber)
+
+            // when & then
+            assertThrows<IllegalArgumentException> {
+                car.moveToForward()
+            }.apply {
+                assertThat(message).isEqualTo(RANDOM_NUMBER_RANGE_ERROR_MESSAGE)
+            }
+        }
     }
 
     companion object {
