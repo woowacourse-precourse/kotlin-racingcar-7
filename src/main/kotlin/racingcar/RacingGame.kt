@@ -3,7 +3,7 @@ package racingcar
 import camp.nextstep.edu.missionutils.Randoms
 
 class RacingGame(
-    private val carList: String,
+    private val carList: List<String>,
     private val totalRound: Int,
 ) {
 
@@ -58,35 +58,10 @@ class RacingGame(
         return winners
     }
 
-    private fun printResult() {
-        println(GAME_RESULT_TILE)
-        printGameScore()
-        println()
-        printGameWinners()
-    }
-
-    private fun printGameScore() {
-        playCars.forEach { (car, score) ->
-            println("$car : ${score.toScoreSymbol()}")
-        }
-    }
-
-    private fun Int.toScoreSymbol(): String {
-        val scoreSymbol = "-"
-        return scoreSymbol.repeat(this)
-    }
-
-    private fun printGameWinners() {
-        print(GAME_RESULT_WINNER_TILE)
-        print(getWinners().joinToString(", "))
-    }
-
     companion object {
-        private const val GAME_CRITICAL_POINT = 4
+        private const val PLAY_CRITICAL_POINT = 4
         private const val PLAY_NUMBER_START = 0
         private const val PLAY_NUMBER_END = 9
-        private const val GAME_RESULT_TILE = "-----자동차 경주 결과-----"
-        private const val GAME_RESULT_WINNER_TILE = "♣ 최종 우승자 : "
     }
 
 }
