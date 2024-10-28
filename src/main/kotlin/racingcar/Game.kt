@@ -23,6 +23,19 @@ class Game {
     }
 
 
+    private fun startRace(carList: List<Car>, tryCount: Int): Int {
+        return CarFactory().displayCarRace(carList, tryCount)
+    }
+
+    private fun displayWinners(carList: List<Car>, maxDistance: Int) {
+        val winners = findWinner(carList, maxDistance)
+        monitor.displayWinner(winners)
+    }
+
+    private fun findWinner(cars: List<Car>, maxDistance: Int): String {
+        return cars.filter { it.distance == maxDistance }.joinToString(",") { it.name }
+    }
+
     private fun validCarCount(): Int {
         return reader.inputNum().toIntOrNull() ?: throw IllegalArgumentException(ERROR_INPUT_INT)
     }
@@ -30,19 +43,6 @@ class Game {
     private fun getTryCount(): Int {
         monitor.displayTryCount()
         return validCarCount()
-    }
-
-    private fun startRace(carList: List<Car>, tryCount: Int): Int {
-        return CarFactory().displayCarRace(carList, tryCount)
-    }
-
-    private fun displayWinners(carList: List<Car>, maxDistance: Int) {
-        val winners = findWinner(carList, maxDistance)
-        println("최종 우승자 : $winners")
-    }
-
-    private fun findWinner(cars: List<Car>, maxDistance: Int): String {
-        return cars.filter { it.distance == maxDistance }.joinToString(",") { it.name }
     }
 
     companion object {
