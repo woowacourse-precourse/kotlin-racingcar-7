@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console.readLine
 import camp.nextstep.edu.missionutils.Randoms.pickNumberInRange
 
 val isCarNameValidLength = { carName: String -> carName.length <= 5 }
+val isMoveForwardValid = { pickNumberInRange(0, 9) >= 4 }
 
 fun main() {
 
@@ -17,7 +18,7 @@ fun main() {
     println("실행 결과")
     for (i in 0 until attemptNumber) {
         carMap.forEach { key, value ->
-            if (pickNumberInRange(0, 9) >= 4) {
+            if (isMoveForwardValid()) {
                 carMap[key] = value + 1
             }
 
