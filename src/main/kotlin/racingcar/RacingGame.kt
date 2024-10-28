@@ -2,19 +2,37 @@ package racingcar
 
 import camp.nextstep.edu.missionutils.Randoms
 
-fun validateName(name: String): String {
+fun limitNameLength(name: String): String {
     if (name.length > 5) {
         throw IllegalArgumentException("이름은 5자 이하여야 합니다.")
     }
     return name
 }
 
+fun isNameCheck(name: String): String {
+    if (name.trim().isBlank()) {
+        throw IllegalArgumentException("이름은 공백이 아니어야 합니다.")
+    }
+    return name.trim()
+}
+
+fun isDuplicateNames(names: List<String>) {
+    if (names.size != names.toSet().size) {
+        throw IllegalArgumentException("중복된 이름이 존재합니다.")
+    }
+}
+
 fun divideNames(names: String): List<String> {
     val delimiter = ","
 
-    return names.split(delimiter.toRegex()).map { name ->
-        validateName(name)
+    val finalCarNames = names.split(delimiter.toRegex()).map { name ->
+        isNameCheck(name)
+        limitNameLength(name)
     }
+
+    isDuplicateNames(finalCarNames)
+
+    return finalCarNames
 }
 
 fun randomMoveForward(name: String, position: MutableMap<String, Int>) {
