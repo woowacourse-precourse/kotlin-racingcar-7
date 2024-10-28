@@ -1,9 +1,8 @@
-package racingcar.util
+package racingcar.utils
 
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.RepeatedTest
-import racingcar.utils.Random
 
 @DisplayName("랜덤값 테스트 케이스")
 class RandomTest {
