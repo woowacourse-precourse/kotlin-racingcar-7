@@ -19,7 +19,7 @@ fun main() {
     println("실행 결과")
     for (i in 0 until attemptNumber) {
         carMap.forEach { key, value ->
-            if (pickNumberInRange(0,9) >= 4) {
+            if (pickNumberInRange(0, 9) >= 4) {
                 carMap[key] = value + 1
             }
 
