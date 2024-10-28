@@ -17,38 +17,42 @@ class Validation {
     fun checkCarNameLength(carName: List<Car>) {
         carName.forEach {
             if (it.name.length > 5) {
-                throw IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.")
+                throw IllegalArgumentException(CAR_NAME_LENGTH_ERROR_MESSAGE)
             }
         }
     }
 
     fun checkCarNameBlank(carName: List<Car>) {
         if (carName.any { it.name.isBlank() }) {
-            throw IllegalArgumentException("자동차 이름이 공백일 수 없습니다.")
+            throw IllegalArgumentException(CAR_NAME_BLANK_ERROR_MESSAGE)
         }
     }
 
     fun checkOnlyOneCar(carName: List<Car>) {
         if (carName.isEmpty()) {
-            throw IllegalArgumentException("자동차 이름은 2대 이상 입력해 주세요.")
+            throw IllegalArgumentException(CAR_NAME_ONLY_ONE_ERROR_MESSAGE)
         }
     }
 
     fun checkCarNameDuplication(carName: List<Car>) {
         val carNames = carName.map { it.name }
         if (carNames.distinct().size != carNames.size) {
-            throw IllegalArgumentException("중복된 이름은 작성할 수 없습니다.")
+            throw IllegalArgumentException(CAR_NAME_DUPLICATED_ERROR_MESSAGE)
         }
     }
 
     fun checkRoundCountNotNumber(inputRoundCount: String) {
-        if (inputRoundCount.toIntOrNull() == null) {
-            throw IllegalArgumentException("숫자가 아닙니다.")
+        if (inputRoundCountIsNotInt(inputRoundCount)) {
+            throw IllegalArgumentException(ROUND_COUNT_NOT_NUMBER_ERROR_MESSAGE)
         }
     }
 
     fun checkRoundCountNegativeInteger(inputRoundCount: String) {
         val roundCount = inputRoundCount.toInt()
-        if (roundCount < 1) throw IllegalArgumentException("1보다 작은 수는 입력할 수 없습니다.")
+        if (roundCount < 1) throw IllegalArgumentException(ROUND_COUNT_NEGATIVE_INTEGER_ERROR_MESSAGE)
+    }
+
+    fun inputRoundCountIsNotInt(inputRoundCount: String): Boolean {
+        return inputRoundCount.toIntOrNull() == null
     }
 }
