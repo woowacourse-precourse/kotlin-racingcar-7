@@ -6,6 +6,8 @@ value class CarName(private val name: String) {
         require(name.length <= MAX_CAR_NAME_LENGTH)
     }
 
+    override fun toString(): String = name
+
     companion object {
         private const val MAX_CAR_NAME_LENGTH = 5
 

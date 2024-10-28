@@ -1,6 +1,7 @@
 package racingcar.ui
 
 import camp.nextstep.edu.missionutils.Console
+import racingcar.domain.Car
 import racingcar.domain.CarName
 import racingcar.domain.CarName.Companion.asCarName
 import racingcar.domain.validator.validateTryNumber
@@ -25,7 +26,25 @@ class Ui {
         }
     }
 
+    fun displayTryResult(cars: List<Car>) {
+        val stringBuilder = StringBuilder()
+
+        for (car in cars) {
+            stringBuilder.append("${car.carName} : ")
+            stringBuilder.repeat(DISTANCE_MARKER, car.distance)
+            stringBuilder.append('\n')
+        }
+
+        println(stringBuilder.toString())
+    }
+
+    private fun StringBuilder.repeat(char: Char, times: Int): Unit = repeat(times) {
+        append(char)
+    }
+
+
     companion object {
         private const val CAR_NAME_DELIMITER = ','
+        private const val DISTANCE_MARKER = '-'
     }
 }

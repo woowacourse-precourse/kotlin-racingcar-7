@@ -3,7 +3,7 @@ package racingcar.domain
 import racingcar.domain.random.RandomNumberGenerator
 
 class Car(
-    private val carName: CarName,
+    val carName: CarName,
     private val randomNumberGenerator: RandomNumberGenerator
 ) {
     var distance = 0
