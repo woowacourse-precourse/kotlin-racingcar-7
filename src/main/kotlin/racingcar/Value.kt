@@ -8,12 +8,14 @@ const val INPUT_CAR_NAME_MESSAGE = "경주할 자동차 이름을 입력하세�
 const val INPUT_ROUND_COUNT_MESSAGE = "시도할 횟수는 몇 회인가요?"
 const val WINNER_FRONT_MESSAGE = "최종 우승자 : "
 const val COMMA_AND_BLANK = ", "
+const val BLANK = ' '
 
 // Validation Error Message
 const val CAR_NAME_LENGTH_ERROR_MESSAGE = "자동차 이름은 5자를 초과할 수 없습니다."
 const val CAR_NAME_BLANK_ERROR_MESSAGE = "자동차 이름이 공백일 수 없습니다."
 const val CAR_NAME_ONLY_ONE_ERROR_MESSAGE = "자동차 이름은 2대 이상 입력해 주세요."
 const val CAR_NAME_DUPLICATED_ERROR_MESSAGE = "중복된 이름은 작성할 수 없습니다."
+const val CAR_NAME_CONTAIN_BLANK_ERROR_MESSAGE = "자동차 이름에 공백이 포함되어 있습니다."
 const val ROUND_COUNT_NOT_NUMBER_ERROR_MESSAGE = "숫자가 아닙니다."
 const val ROUND_COUNT_NEGATIVE_INTEGER_ERROR_MESSAGE = "1보다 작은 수는 입력할 수 없습니다."
 
