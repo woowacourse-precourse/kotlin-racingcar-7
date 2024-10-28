@@ -65,6 +65,14 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
+    fun `단위 테스트 공백 제거`() {
+        val input = "   tesla ,  audi ,  bmw  "
+        val result = processCarNames(input)
+
+        assertThat(result).containsExactly("tesla", "audi", "bmw")
+    }
+
+    @Test
     fun `예외 테스트`() {
         assertSimpleTest {
             val exception = assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
