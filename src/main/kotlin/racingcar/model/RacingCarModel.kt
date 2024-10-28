@@ -17,7 +17,8 @@ class RacingCarModel {
     }
 
     private fun runRaceAttempt(): String {
-        carForwards = carForwards.mapIndexed { _, forward -> if (getRaceResult()) "$forward-" else forward }.toMutableList()
+        carForwards =
+            carForwards.mapIndexed { _, forward -> if (getRaceResult()) "$forward-" else forward }.toMutableList()
         return carList.indices.joinToString("\n") { "${carList[it]} : ${carForwards[it]}" } + "\n\n"
     }
 

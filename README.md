@@ -1,26 +1,32 @@
 # kotlin-racingcar-precourse
 
 ---
+
 ### 기능 목록
 
 #### 입력
+
 🌱경주할 자동차 이름 : 쉼표로 구분, 5자 이하
 
 🌱시도 횟수 : 양수
 
 #### 출력
+
 🌱차수별 실행 결과
 
 🌱최종 우승자 안내
 
 #### 예외
-🌱입력시 잘못된 값을 작성한 경우 
+
+🌱입력시 잘못된 값을 작성한 경우
 
     🪴 경주할 자동차의 이름이 5보다 크거나, 아예 없는 경우
     🪴 시도 횟수가 자연수가 아닌 경우
 
 ---
+
 ## 기능 요구 사항
+
 초간단 자동차 경주 게임을 구현한다.
 
 * 주어진 횟수 동안 n대의 자동차는 전진 또는 멈출 수 있다.
@@ -36,6 +42,7 @@
 
 ***입력***
 <br>
+
 * 경주할 자동차 이름(이름은 쉼표(,) 기준으로 구분)
 
 ```
@@ -49,6 +56,7 @@ pobi,woni,jun
 ```
 
 ***출력***
+
 * 차수별 실행 결과
 
 ```
@@ -101,8 +109,8 @@ jun : -----
 최종 우승자 : pobi, jun
 ```
 
-
 ## 프로그래밍 요구 사항 1
+
 * Kotlin 1.9.24에서 실행 가능해야 한다.
 * Java 코드가 아닌 Kotlin 코드로만 구현해야 한다.
 * 프로그램 실행의 시작점은 Application의 main()이다.
@@ -113,6 +121,7 @@ jun : -----
   기본적으로 Kotlin Style Guide를 원칙으로 한다.
 
 ## 프로그래밍 요구 사항 2
+
 * indent(인덴트, 들여쓰기) depth를 3이 넘지 않도록 구현한다. 2까지만 허용한다.
 * 예를 들어 while문 안에 if문이 있으면 들여쓰기는 2이다.
 * 힌트: indent(인덴트, 들여쓰기) depth를 줄이는 좋은 방법은 함수(또는 메서드)를 분리하면 된다.
@@ -125,11 +134,13 @@ jun : -----
         * Guide to JUnit 5 Parameterized Tests
 
 ### 라이브러리
+
 * `camp.nextstep.edu.missionutils`에서 제공하는 `Randoms` 및 `Console API`를 사용하여 구현해야 한다.
     * Random 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용한다.
     * 사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다.
 
 ***사용 예시***
+
 * 0에서 9까지의 정수 중 한 개의 정수 반환
 
 ```
