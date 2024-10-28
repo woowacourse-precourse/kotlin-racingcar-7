@@ -2,6 +2,7 @@ package modelTest
 
 import camp.nextstep.edu.missionutils.Randoms
 import camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest
+import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertAll
@@ -28,6 +29,23 @@ class RaceTest {
             },
             MOVING_FORWARD, STOP
         )
+    }
+
+    @Test
+    fun `우승자를 구할 수 있다`() {
+        assertSimpleTest {
+            //given
+            val nameOfCars = "hyun, pobi, woni, jun"
+            val carsInGarage = Garage(nameOfCars).carsInGarage
+            val race = Race(carsInGarage)
+
+            //when
+            carsInGarage.first().moveForward(MOVING_FORWARD)
+            val winner = race.getWinner()
+
+            //then
+            assertThat(winner.first().name).isEqualTo(carsInGarage.first().name)
+        }
     }
 
     companion object {
