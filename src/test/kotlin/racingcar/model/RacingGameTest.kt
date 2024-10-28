@@ -1,19 +1,19 @@
 package racingcar.model
 
 import org.junit.jupiter.api.Test
-import racingcar.view.OutputViewImpl
 import org.assertj.core.api.Assertions.assertThat
+import racingcar.presenter.RacingCarPresenter
+import racingcar.view.OutputViewImpl
 
 class RacingGameTest {
 
     @Test
     fun `승자를 찾는 기능이 동작하는지 테스트`() {
-        val cars = listOf(Car("test1"), Car("test2"), Car("test3"))
-        val attemptCount = AttemptCount(5)
-        val game = RacingGame(cars, attemptCount)
-        game.startRacing(OutputViewImpl())
+        val names = listOf("test1", "test2", "test3")
+        val cars = names.map { Car(it) }
+        val game = RacingGame(cars)
 
-        val names = cars.map { it.getName() }
+        RacingCarPresenter(OutputViewImpl()).startRacing(cars.map { it.getName() }, 5)
 
         val winners = game.findWinners().split(", ")
 
