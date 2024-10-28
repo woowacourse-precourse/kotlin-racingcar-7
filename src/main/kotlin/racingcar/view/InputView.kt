@@ -1,7 +1,6 @@
 package racingcar.view
 
 import camp.nextstep.edu.missionutils.Console
-import java.util.prefs.Preferences.MAX_NAME_LENGTH
 
 class InputView {
 
@@ -78,5 +77,6 @@ class InputView {
         const val ERROR_INVALID_NUMBER = "이동 횟수는 숫자로 입력해야 합니다."
         const val ERROR_NON_POSITIVE_ROUNDS = "입력한 이동 횟수가 범위를 벗어났습니다."
         const val COMMA = ","
+        const val MAX_NAME_LENGTH = 5
     }
 }
