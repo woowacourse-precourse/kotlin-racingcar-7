@@ -18,7 +18,7 @@ class CarFactoryTest {
         assertThrows<IllegalArgumentException> {
             CarFactory.createCars(carNames, randomNumber)
         }.apply {
-            assertThat(message).isEqualTo("차가 2대 이상있어야 레이싱을 시작할 수 있습니다.")
+            assertThat(message).isEqualTo(CAR_NAMES_COUNT_ERROR_MESSAGE)
         }
     }
 
@@ -31,7 +31,7 @@ class CarFactoryTest {
         assertThrows<IllegalArgumentException> {
             CarFactory.createCars(carNames, randomNumber)
         }.apply {
-            assertThat(message).isEqualTo("차 이름은 중복입력할 수 없습니다.")
+            assertThat(message).isEqualTo(CAR_NAME_DUPLICATION_ERROR_MESSAGE)
         }
     }
 
@@ -56,6 +56,11 @@ class CarFactoryTest {
 
         // Then
         assertThat(cars.map { it.carName }).isEqualTo(carNames)
+    }
+
+    companion object {
+        private const val CAR_NAMES_COUNT_ERROR_MESSAGE = "차가 2대 이상있어야 레이싱을 시작할 수 있습니다."
+        private const val CAR_NAME_DUPLICATION_ERROR_MESSAGE = "차 이름은 중복입력할 수 없습니다."
     }
 
 }
