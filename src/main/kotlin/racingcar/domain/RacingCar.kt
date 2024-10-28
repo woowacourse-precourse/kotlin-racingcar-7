@@ -1,6 +1,7 @@
 package racingcar.domain
 
 import camp.nextstep.edu.missionutils.Randoms
+import racingcar.view.OutputView
 
 class RacingCar(
     private val name: String,
@@ -19,5 +20,9 @@ class RacingCar(
         if (number >= 4) {
             position++
         }
+    }
+
+    fun printCarPosition() {
+        OutputView.printCarPosition(name, position)
     }
 }
