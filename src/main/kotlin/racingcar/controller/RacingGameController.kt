@@ -1,5 +1,11 @@
 package racingcar.controller
 
-class RacingGameController{
+import racingcar.view.InputView
 
+class RacingGameController(
+    private val inputView: InputView = InputView()
+) {
+    fun startGame() {
+        val rounds = inputView.inputRounds()
+    }
 }
