@@ -29,7 +29,7 @@ class Validation {
     }
 
     fun checkOnlyOneCar(carName: List<Car>) {
-        if (carName.isEmpty()) {
+        if (carName.size == ONLY_ONE_CAR) {
             throw IllegalArgumentException(CAR_NAME_ONLY_ONE_ERROR_MESSAGE)
         }
     }

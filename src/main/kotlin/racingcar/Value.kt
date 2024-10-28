@@ -25,3 +25,4 @@ const val MIN_RANDOM_NUMBER = 0
 const val MAX_RANDOM_NUMBER = 9
 const val MAX_CAR_NAME_LENGTH = 5
 const val MIN_ROUND_COUNT = 1
+const val ONLY_ONE_CAR = 1
