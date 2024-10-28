@@ -5,8 +5,6 @@ class Car(val name: String) {
         private set
 
     fun move(randomValue: Int) {
-        if (randomValue >= 4) {
-            distance++
-        }
+        if (randomValue >= 4) distance++
     }
 }

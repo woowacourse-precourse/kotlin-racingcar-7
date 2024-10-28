@@ -2,7 +2,10 @@ package racingcar
 
 import camp.nextstep.edu.missionutils.Randoms
 
-class RacingGame(private val cars: List<Car>, private val attempts: Int) {
+class RacingGame(
+    private val cars: List<Car>,
+    private val attempts: Int
+) {
 
     fun start() {
         repeat(attempts) {
@@ -27,10 +30,13 @@ class RacingGame(private val cars: List<Car>, private val attempts: Int) {
     }
 
     private fun printWinners() {
-        val maxDistance = cars.maxOf { it.distance }
+        val maxDistance = findMaxDistance()
         val winners = cars.filter { it.distance == maxDistance }
             .joinToString(", ") { it.name }
         println("최종 우승자 : $winners")
     }
 
+    private fun findMaxDistance(): Int {
+        return cars.maxOf { it.distance }
+    }
 }

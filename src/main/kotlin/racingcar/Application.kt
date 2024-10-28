@@ -6,7 +6,6 @@ fun main() {
     try {
         val carNames = readCarNames()
         val attempts = readAttempts()
-
         val cars = carNames.map { Car(it) }
         val game = RacingGame(cars, attempts)
         game.start()
@@ -21,9 +20,8 @@ private fun readCarNames(): List<String> {
     val names = input.split(",").map { it.trim() }
 
     require(names.all { it.length <= 5 }) {
-        "자동차 이름은 5자 이하만 가능합니다."
+        throw IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.")
     }
-
     return names
 }
 
@@ -34,8 +32,7 @@ private fun readAttempts(): Int {
         ?: throw IllegalArgumentException("숫자를 입력해야 합니다.")
 
     require(attempts > 0) {
-        throw IllegalArgumentException("횟수는 0회 이상이어야 합니다.")
+        throw IllegalArgumentException ("횟수는 1회 이상이어야 합니다.")
     }
-
     return attempts
 }
