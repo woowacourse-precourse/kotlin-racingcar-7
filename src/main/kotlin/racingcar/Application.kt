@@ -1,5 +1,13 @@
 package racingcar
 
 fun main() {
-    // TODO: 프로그램 구현
+    val randomNumberGenerator = RandomNumberGenerator()
+    val inputView = InputView()
+    val outputView = OutputView()
+    val inputValidator = InputValidator()
+    val race = Race(numberGenerator = randomNumberGenerator, outputView = outputView)
+    val raceManager =
+        RaceManager(race = race, inputView = inputView, outputView = outputView, inputValidator = inputValidator)
+
+    raceManager.runRace()
 }
