@@ -21,7 +21,7 @@ object InputUtils {
      * @return 분리한 이름 리스트(List)
      */
     private fun String.toCarList(): List<String> {
-        return split(INPUT_CARS_SEPARATOR)
+        return split(INPUT_CARS_SEPARATOR).map { it.trim() }
     }
 
     private const val INPUT_GAME_ROUND_STR = "시도할 횟수는 몇 회인가요?"
