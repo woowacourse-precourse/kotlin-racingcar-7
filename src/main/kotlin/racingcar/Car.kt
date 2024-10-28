@@ -1,6 +1,7 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Randoms
+
 class Car(private val name: String) {
     companion object {
         const val MOVE_THRESHOLD = 4
@@ -18,5 +19,6 @@ class Car(private val name: String) {
             position++
         }
     }
+
     fun getStatus() = "$name : ${"-".repeat(position)}"
 }
