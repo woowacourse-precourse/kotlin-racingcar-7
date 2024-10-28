@@ -18,11 +18,8 @@ class RaceController {
             val roundsInput = InputView.getNumberOfRounds()
             val numberOfRounds = Validator.validateRounds(roundsInput)
 
-
-            repeat(numberOfRounds) {
-                race.raceRound { Randoms.pickNumberInRange(Constants.RANDOM_MIN, Constants.RANDOM_MAX) }
-                OutputView.printRoundResult(cars)
-            }
+            OutputView.printResult()
+            playRounds(race, cars, numberOfRounds)
 
             val winners = race.findWinners()
             OutputView.printWinners(winners)
@@ -30,6 +27,11 @@ class RaceController {
             e.message?.let { OutputView.printErrorMessage(it) }
             throw e
         }
-
+    }
+    private fun playRounds(race: Race, cars: List<Car>, numberOfRounds: Int) {
+        repeat(numberOfRounds) {
+            race.raceRound { Randoms.pickNumberInRange(Constants.RANDOM_MIN, Constants.RANDOM_MAX) }
+            OutputView.printRoundResult(cars)
+        }
     }
 }
