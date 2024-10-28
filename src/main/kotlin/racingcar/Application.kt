@@ -6,5 +6,7 @@ fun main() {
 
     println("실행 결과")
 
+    race(names, tryNumber)
+
     winner(names, tryNumber)
 }
