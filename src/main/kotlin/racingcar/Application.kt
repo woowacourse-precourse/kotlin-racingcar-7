@@ -4,13 +4,12 @@ import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
 fun checkRacerName(name: String): Pair<Boolean, List<String>> {
-    val racerNames = name.split(",")
-
+    val racerNames = name.split(",").map { it.trim() }
     if (racerNames.size <= 1) {
         throw IllegalArgumentException("레이서는 최소 2명 이어야 합니다.")
     }
-    if (racerNames.any { it.length >= 6 }) {
-        throw IllegalArgumentException("레이서의 이름은 5자 이하 이어야 합니다.")
+    if (racerNames.any { it.length > 5 }) {
+        throw IllegalArgumentException("레이서의 이름은 5자 이하이어야 합니다.")
     }
     return Pair(true, racerNames)
 }
@@ -21,6 +20,10 @@ fun checkRaceAttempts(attempts: String): Int {
     } catch (e: NumberFormatException) {
         throw IllegalArgumentException("시도 횟수는 숫자 여야 합니다.")
     }
+    if (attemptCount < 1) {
+        throw IllegalArgumentException("시도 횟수는 1 이상이어야 합니다.")
+    }
+
     return attemptCount
 }
 
