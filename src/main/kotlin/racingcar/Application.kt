@@ -6,6 +6,7 @@ fun main() {
     val userCarName = getCarName()
     val userCarList = parseCar(userCarName!!)
     val trialNumber = getTrialNumber()
+    val randomNumber = getRandomNumber()
 }
 
 fun getCarName(): String? {
@@ -21,4 +22,8 @@ fun parseCar(input: String): List<String> {
 fun getTrialNumber(): Int? {
     println("시도할 횟수는 몇 회인가요?")
     return readlnOrNull()?.toIntOrNull()
+}
+
+fun getRandomNumber(): Int {
+    return Random.nextInt(0, 10)
 }
