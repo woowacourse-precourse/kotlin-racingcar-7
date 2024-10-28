@@ -9,13 +9,53 @@ import org.junit.jupiter.api.assertThrows
 
 class ApplicationTest : NsTest() {
     @Test
-    fun `기능 테스트`() {
+    fun `단독 우승 테스트`() {
         assertRandomNumberInRangeTest(
             {
                 run("pobi,woni", "1")
                 assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi")
             },
             MOVING_FORWARD, STOP
+        )
+    }
+
+    @Test
+    fun `공동 우승 테스트`() {
+        assertRandomNumberInRangeTest(
+            {
+                run("pobi,woni,jun", "5")
+                assertThat(output()).contains(
+                    "pobi : -", "pobi : --", "pobi : ---", "pobi : ----", "pobi : -----",
+                    "woni : ", "woni : -", "woni : --", "woni : ---", "woni : ----",
+                    "jun : -", "jun : --", "jun : ---", "jun : ----", "jun : -----",
+                    "최종 우승자 : pobi, jun"
+                )
+            },
+            MOVING_FORWARD, STOP, MOVING_FORWARD, // round 1
+            MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD,
+            MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD,
+            MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD,
+            MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, // round 5
+        )
+    }
+
+    @Test
+    fun `공동 우승 중복 이름 테스트`() {
+        assertRandomNumberInRangeTest(
+            {
+                run("ark,eco,ark,deca,eco", "3")
+                assertThat(output()).contains(
+                    "ark_0 : ", "ark_0 : -", "ark_0 : -",
+                    "ark_1 : ", "ark_1 : -", "ark_1 : --",
+                    "eco_0 : -", "eco_0 : --", "eco_0 : ---",
+                    "eco_1 : -", "eco_1 : --", "eco_1 : ---",
+                    "deca : -", "deca : --", "deca : ---",
+                    "최종 우승자 : eco_0, eco_1, deca"
+                )
+            },
+            STOP, STOP, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, // round 1
+            MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD,
+            STOP, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD,// round 3
         )
     }
 
