@@ -6,10 +6,10 @@ import camp.nextstep.edu.missionutils.Randoms.pickNumberInRange
 val isCarNameValidLength = { carName: String -> carName.length <= 5 }
 
 fun main() {
-    val carMap = mutableMapOf<String, Int>()
 
     promptForCarNames()
-    initializeCarMap(carMap, processCarNames(readLine()))
+    val carList = processCarNames(readLine())
+    val carMap = initializeCarMap(carList)
 
     promptForAttemptNumber()
     val attemptNumber = processAttemptNumber(readLine())
@@ -43,11 +43,15 @@ fun processCarNames(input: String) = input.split(",")
 
 fun processAttemptNumber(input: String) = input.toInt()
 
-fun initializeCarMap(carMap: MutableMap<String, Int>, carList: List<String>) {
+fun initializeCarMap(carList: List<String>): MutableMap<String, Int> {
+    val carMap = mutableMapOf<String, Int>()
+
     for (carName in carList) {
         validateCarName(carName)
         carMap.put(carName, 0)
     }
+
+    return carMap
 }
 
 fun validateCarName(carName: String) {
