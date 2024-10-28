@@ -25,9 +25,7 @@ class RacingGame(val inputNumber: String) {
         var finalLog = ""
         // depth 가 3이므로 분리 필요
         for (i in 1..number) {//1. number 만큼 반복
-            // 아래 for 문을 number 만큼 반복한다
             for (racingCar in racingCars.keys) {//2. racingCars 의 키 갯수 만큼 반복
-                // 아래 코드를 자동차 수만큼 반복한다
                 val condition = Randoms.pickNumberInRange(0, 9)//3-1. 전진 조건에 따라 racingCar 의 value +1
                 if (condition >= 4) {
                     racingCars[racingCar] = racingCars.getOrDefault(racingCar, 0) + 1
@@ -43,6 +41,10 @@ class RacingGame(val inputNumber: String) {
             finalLog += "\n"
         }
         print(finalLog)
+        printWinner(racingCars)
+    }
+
+    fun printWinner(racingCars: MutableMap<String, Int>) {
         val maxValue = racingCars.values.max()
         val maxKeys = racingCars.filter { it.value == maxValue }.keys
         println("최종 우승자 : ${maxKeys.joinToString(",")}")
