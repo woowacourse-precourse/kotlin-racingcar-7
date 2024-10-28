@@ -1,6 +1,6 @@
 package racingcar
 
-class RacingCar(val name: String, val number: String) {
+class RacingCar(val name: String) {
     val racingCars = name.split(",")
     fun lengthCheck() {
         for (racingCar in racingCars) {
