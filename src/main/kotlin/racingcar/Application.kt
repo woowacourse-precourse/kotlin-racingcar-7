@@ -4,33 +4,21 @@ import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
-    // TODO: 프로그램 구현
-
-    /*
-    1. 입력(자동차 이름)
-    2. 타당한 입력인지 확인(이름이 5자 초과인가?)
-    3. 참가 자동차 분류(중복되는 이름은 뒤에 번호를 붙여줘야함)
-    4. 입력(n)
-    5. 타당한 입력인지 확인(자연수인가?, NaN인가?)
-    ※. 2,5 에서 타당한 입력을 확인 후 타당하지 않다면 IlleagalArgumentException을 뱉고 종료
-    6. 경주 시작
-    6-1. 참가자별 랜덤값 추출
-    6-2. 4이상의 값인 경우 1칸 전진
-    6-3. 현 상황 출력
-    6-4. 6-1~3은 4에서 입력받은 n회 반복
-    7. 경주 결과 출력(1등이 겹친다면 여러명 출력)
-     */
-
     println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
     val inputCar = Console.readLine()
     var cars = inputCar.split(",")
-    isOver5Letters(cars)
-    isNameless(cars)
+    isValidCarName(cars)
     cars = duplicateName(cars)
+
     println("시도할 횟수는 몇 회인가요?")
     val inputMove = Console.readLine()
     val move = isMovementValid(inputMove)
     race(cars, move)
+}
+
+fun isValidCarName(cars: List<String>){
+    isOver5Letters(cars)
+    isNameless(cars)
 }
 
 fun isOver5Letters(cars: List<String>) {
