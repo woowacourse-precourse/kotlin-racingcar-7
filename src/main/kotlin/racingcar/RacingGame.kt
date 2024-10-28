@@ -26,12 +26,8 @@ class RacingGame(val inputNumber: String) {
         // depth 가 3이므로 분리 필요
         for (i in 1..number) {//1. number 만큼 반복
             for (racingCar in racingCars.keys) {//2. racingCars 의 키 갯수 만큼 반복
-                val condition = Randoms.pickNumberInRange(0, 9)//3-1. 전진 조건에 따라 racingCar 의 value +1
-                if (condition >= 4) {
-                    racingCars[racingCar] = racingCars.getOrDefault(racingCar, 0) + 1
-                }
-
                 var racingLog = "$racingCar : "//3-2. 전진 횟수 만큼 "-" 추가
+                moveCar(racingCars, racingCar)
                 val movements = racingCars[racingCar] ?: 0
                 for (j in 1..movements) {
                     racingLog += "-"
@@ -42,6 +38,13 @@ class RacingGame(val inputNumber: String) {
         }
         print(finalLog)
         printWinner(racingCars)
+    }
+
+    fun moveCar(racingCars: MutableMap<String, Int>, racingCar: String) {
+        val condition = Randoms.pickNumberInRange(0, 9)
+        if (condition >= 4) {
+            racingCars[racingCar] = racingCars.getOrDefault(racingCar, 0) + 1
+        }
     }
 
     fun printWinner(racingCars: MutableMap<String, Int>) {
