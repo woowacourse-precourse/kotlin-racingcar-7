@@ -12,13 +12,12 @@ class RacingGame {
         computer.printWinner(winner)
     }
 
-    private fun determinedWinners(cars: List<Car>): List<Car> {
+    fun determinedWinners(cars: List<Car>): List<Car> {
         val winnerPosition = cars.maxOf { it.position }
         return cars.filter { it.position == winnerPosition }
     }
 
     private fun initCar(): List<Car> {
-        println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
         val inputCarNames = computer.inputCarName()
         val carName = splitCarName(inputCarNames)
         validation.validateCarName(carName)
@@ -26,14 +25,13 @@ class RacingGame {
     }
 
     private fun initRound(): Int {
-        println("시도할 횟수는 몇 회인가요?")
         val inputRoundCount = computer.inputRoundCount()
         validation.validateRoundCount(inputRoundCount)
         return inputRoundCount.toInt()
     }
 
     private fun playGame(cars: List<Car>, roundCount: Int) {
-        println("\n실행 결과")
+        printGameResultMessage()
         repeat(roundCount) {
             moveCars(cars)
             println()
@@ -45,6 +43,10 @@ class RacingGame {
             car.moving(computer.generate())
             computer.printCarPosition(car)
         }
+    }
+
+    private fun printGameResultMessage() {
+        println("\n실행 결과")
     }
 
     private fun splitCarName(carName: String): List<Car> {
