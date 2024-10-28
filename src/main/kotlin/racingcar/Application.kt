@@ -8,6 +8,7 @@ fun main() {
     val userCarList = parseCar(userCarName!!)
     val trialNumber = getTrialNumber()
     val cars = userCarList.map { Car(it) }
+    race(cars, trialNumber)
 }
 
 fun getCarName(): String? {
@@ -45,5 +46,17 @@ class Car(val name: String) {
 
     private fun checkForwardCondition(randomNumber: Int): Boolean {
         return randomNumber >= 4
+    }
+}
+
+fun race(cars: List<Car>, trialNumber: Int) {
+    println()
+    println("실행 결과")
+    for (i in 1..trialNumber) {
+        cars.forEach { car ->
+            car.move()
+            println("${car.name} : ${"-".repeat(car.position)}")
+        }
+        println()
     }
 }
