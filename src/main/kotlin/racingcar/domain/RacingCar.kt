@@ -4,8 +4,8 @@ import camp.nextstep.edu.missionutils.Randoms
 import racingcar.view.OutputView
 
 class RacingCar(
-    private val name: String,
-    private var position: Int = 0
+    val name: String,
+    var position: Int = 0
 ) {
     fun play() {
         val randomNumber = getRandomNumber()

@@ -21,6 +21,7 @@ class RacingGame(
         for (i in 1..gameRound) {
             playRound()
         }
+        OutputView.printWinners(getWinners())
     }
 
     private fun playRound() {
@@ -31,5 +32,10 @@ class RacingGame(
     private fun printRoundResult() {
         racingCars?.forEach { it.printCarPosition() }
         println()
+    }
+
+    private fun getWinners(): List<String> {
+        val maxPosition = racingCars?.maxOf { it.position }
+        return racingCars?.filter { it.position == maxPosition }?.map { it.name } ?: emptyList()
     }
 }
