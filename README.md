@@ -42,8 +42,10 @@
 ## [예외 처리 목록]
 
 - 자동차 이름이 6자 이상인 경우: IllegalArgumentException 발생
-- 자동차 이름이 빈 문자열일 경우: IllegalArgumentException 발생
+- 자동차 이름이 빈 문자열일 경우(""): IllegalArgumentException 발생
+- 자동차 이름이 공백인 경우(" "): IllegalArgumentException 발생
+- 자동차 이름 좌우로 공백이 있을 경우(" pobi "): " pobi " -> "pobi"
 - 자동차 이름에 이모티콘이 포함되어 글자 수가 더 많게 표현되는 경우: 이모티콘의 코드 포인트 수를 계산하도록 한다.
 - 자동차 이름이 중복되는 경우: IllegalArgumentException 발생
-- 이동 횟수가 양의 정수가 아닌 경우(문자열 또는 소수 또는 음수): IllegalArgumentException 발생
+- 이동 횟수가 양의 정수가 아닌 경우(문자열, 소수, 음수, 0): IllegalArgumentException 발생
 - 이동 횟수가 너무 많은 경우: 횟수 제한을 설정하고 제한을 넘길 시 IllegalArgumentException 발생
