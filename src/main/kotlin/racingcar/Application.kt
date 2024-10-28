@@ -9,9 +9,7 @@ var num = 0
 var runSizeList = mutableListOf<Int>()
 
 fun main() {
-    inputCar()
-    raceCar()
-    printWinner()
+    startRacingCar()
 }
 
 // 입력 받기
@@ -66,4 +64,10 @@ private fun printWinner() {
 
     // 우승자 리스트 출력
     println("최종 우승자 : ${winnerList.joinToString(",")}")
+}
+
+private fun startRacingCar() {
+    inputCar()
+    raceCar()
+    printWinner()
 }
