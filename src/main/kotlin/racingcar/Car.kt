@@ -15,5 +15,5 @@ class Car(val name: String, var position: Int = 0) {
         return status
     }
 
-    private fun isPossibleGoStraight(num: Int): Boolean = num >= 4
+    fun isPossibleGoStraight(num: Int): Boolean = num >= POSSIBLE_NUMBER
 }
