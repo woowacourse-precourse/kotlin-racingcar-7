@@ -8,18 +8,36 @@ import org.junit.jupiter.api.assertThrows
 class ApplicationTest : NsTest() {
 
     @Test
-    fun `이름이 유효할 때 validateName이 이름을 반환해야 한다`() {
+    fun `이름이 유효할 때 limitNameLength가 이름을 반환해야 한다`() {
         val validName = "pobi"
-        assertEquals(validName, validateName(validName))
+        assertEquals(validName, limitNameLength(validName))
     }
 
     @Test
-    fun `이름이 5자를 초과하면 validateName이 예외를 던져야 한다`() {
+    fun `이름이 5자를 초과하면 limitNameLength가 예외를 던져야 한다`() {
         val invalidName = "pobixx"
         val exception = assertThrows<IllegalArgumentException> {
-            validateName(invalidName)
+            limitNameLength(invalidName)
         }
         assertEquals("이름은 5자 이하여야 합니다.", exception.message)
+    }
+
+    @Test
+    fun `이름이 공백일 때 isNameCheck가 예외를 던져야 한다`() {
+        val invalidName = "  " // 공백만 있는 이름
+        val exception = assertThrows<IllegalArgumentException> {
+            isNameCheck(invalidName)
+        }
+        assertEquals("이름은 공백이 아니어야 합니다.", exception.message)
+    }
+
+    @Test
+    fun `중복된 이름이 있을 때 isDuplicateNames가 예외를 던져야 한다`() {
+        val duplicateNames = listOf("pobi", "crong", "pobi")
+        val exception = assertThrows<IllegalArgumentException> {
+            isDuplicateNames(duplicateNames)
+        }
+        assertEquals("중복된 이름이 존재합니다.", exception.message)
     }
 
     @Test
