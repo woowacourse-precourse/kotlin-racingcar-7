@@ -24,7 +24,8 @@ fun main() {
   var cars = inputCar.split(",")
   isOver5Letters(cars)
   cars = duplicateName(cars)
-  val movement = Console.readLine()
+  val inputMove = Console.readLine()
+  val move = isMovementValid(inputMove)
 }
 
 fun isOver5Letters(cars: List<String>) {
@@ -51,4 +52,13 @@ fun duplicateName(cars: List<String>): List<String> {
     }
   }
   return result
+}
+
+fun isMovementValid(inputMove : String) : UInt{
+  try{
+    val move = inputMove.toUInt()
+    return move
+  }catch (e : Exception){
+    throw IllegalArgumentException("부적절한 이동 횟수 입니다")
+  }
 }
