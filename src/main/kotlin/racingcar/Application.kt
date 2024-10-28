@@ -11,7 +11,7 @@ fun main() {
     promptForCarNames()
     initializeCarMap(carMap, processCarNames(readLine()))
 
-    println("시도할 횟수는 몇 회인가요?")
+    promptForAttemptNumber()
     val attemptNumber = readLine().toInt() // TODO : 위치 변경?
 
     println("실행 결과")
@@ -36,6 +36,7 @@ fun main() {
 }
 
 fun promptForCarNames() = println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
+fun promptForAttemptNumber() = println("시도할 횟수는 몇 회인가요?")
 
 fun processCarNames(input: String) = input.split(",")
     .map { it.trim() }
