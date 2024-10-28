@@ -16,7 +16,7 @@ class Race {
     private fun carList(): List<CarData> {
         println(Other.CAR_NAME)
         val carName = CarNameValidation().validateCarName(InputCarName().carNameInput())
-        return Cars().cars(CarNameSplitter().splitNames(carName))
+        return CarWithPoints().combineCarWithPoints(CarNameSplitter().splitNames(carName))
     }
 
     private fun count(): Int {
