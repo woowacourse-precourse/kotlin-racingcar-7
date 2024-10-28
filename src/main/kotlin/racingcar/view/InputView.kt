@@ -9,6 +9,8 @@ class InputView {
         val input = Console.readLine().orEmpty()
         validateEmptyInput(input)
         validateSeparator(input)
+
+        val names = splitAndTrimNames(input)
     }
 
     private fun validateEmptyInput(input: String) {
@@ -20,6 +22,10 @@ class InputView {
         require(names.isNotEmpty() && names.all { it.isNotBlank() }) {
             ERROR_INVALID_SEPARATOR
         }
+    }
+
+    private fun splitAndTrimNames(input: String): List<String> {
+        return input.split(COMMA).map { it.trim() }
     }
 
     companion object {
