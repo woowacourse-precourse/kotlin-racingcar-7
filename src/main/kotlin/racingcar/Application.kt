@@ -21,13 +21,9 @@ fun main() {
 
     println()
 
-    println("실행 결과")
-    val racingCarGame = RacingCarGame(inputNames.names)
-    repeat(inputCount.count.toInt()) {
-        racingCarGame.moveCars()
-        racingCarGame.printResults()
-        println()
-    }
-
-    racingCarGame.printWinners()
+    val racingCarGame = RacingCarGame(
+        names = inputNames.names,
+        count = inputCount.count.toInt()
+    )
+    racingCarGame.startRace()
 }
