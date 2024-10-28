@@ -34,6 +34,9 @@
 ## Racing
 - [x] 시도할 횟수 결정하기
 
+## CarDisplay
+- [x] 차 전진하는 뷰 보여주기
+
 ## Winner
 - [x] 우승한 차들을 담은 List(cars)
 
