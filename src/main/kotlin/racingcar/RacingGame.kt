@@ -17,5 +17,32 @@ class RacingGame {
         val numOfGame = Console.readLine()
 
         val trial = checkInput.checkTrial(numOfGame)
+
+        startGame(finalCarList, trial)
+    }
+
+    fun startGame(carList: List<String>, numOfGame: Int) {
+
+        val carPositions = carList.associateWith { 0 }.toMutableMap()
+
+        println("실행 결과")
+
+        for (step in 0 .. numOfGame) {
+            for (currentCar in carList) {
+                randomGameResult(carPositions, currentCar)
+            }
+            println()
+        }
+
+        printWinner(carPositions)
+    }
+
+    fun randomGameResult(carPositions: MutableMap<String, Int>, currentCar: String) {
+        if(Randoms.pickNumberInRange(0, 9) >= 4) {
+            // 전진
+            carPositions[currentCar] = carPositions[currentCar]!! + 1
+        }
+        println("${currentCar} : ${carPositions[currentCar]?.let { "-".repeat(it) }}")
+    }
     }
 }
