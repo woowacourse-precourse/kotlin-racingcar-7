@@ -46,6 +46,7 @@ Flow
 ### RacingCarPresenter
 - 자동차 객체를 생성한다
 - 시도 횟수를 생성한다
+- 레이싱 게임을 시작한다
 
 ### RacingCarGameApp
 - 자동차 경주 게임 애플리케이션을 실행한다
