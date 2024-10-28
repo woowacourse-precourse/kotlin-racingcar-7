@@ -8,24 +8,16 @@ import org.junit.jupiter.api.assertThrows
 class InputTest : NsTest() {
     @Test
     fun `이름 다섯자 이하 테스트`() {
-        camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest(
-            {
-                run("pobi,woni", "1")
-                Assertions.assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi")
-            },
-            MOVING_FORWARD, STOP
-        )
+        camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,java", "a") }
+        }
     }
 
     @Test
     fun `이름 중복 테스트`() {
-        camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest(
-            {
-                run("pobi,woni", "1")
-                Assertions.assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi")
-            },
-            MOVING_FORWARD, STOP
-        )
+        camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,pobi,pob") }
+        }
     }
 
     @Test
