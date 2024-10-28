@@ -10,6 +10,19 @@ class CarFactoryTest {
     private val randomNumber = FakeRandomNumberImpl()
 
     @Test
+    fun `비어있는 차 이름 리스트가 주어지면 예외를 발생시킨다`() {
+        // Given
+        val carNames = emptyList<String>()
+
+        // When & Then
+        assertThrows<IllegalArgumentException> {
+            CarFactory.createCars(carNames, randomNumber)
+        }.apply {
+            assertThat(message).isEqualTo(CAR_NAMES_COUNT_ERROR_MESSAGE)
+        }
+    }
+
+    @Test
     fun `주어진 차이름이 한대면 예외를 발생시킨다`() {
         // Given
         val carNames = listOf("소나타")
