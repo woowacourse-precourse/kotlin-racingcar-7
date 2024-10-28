@@ -11,4 +11,8 @@ class RaceController {
 
     private fun makeCar() = inputController.getCarNames().forEach { cars.add(Car(it)) }
     private fun moveCar() = cars.forEach { it.move(pickNumberInRange(1, 9)) }
+    private fun getWinner(): List<Car> {
+        val maxMoving = cars.maxOf { it.moving }
+        return cars.filter { car -> car.moving == maxMoving }
+    }
 }
