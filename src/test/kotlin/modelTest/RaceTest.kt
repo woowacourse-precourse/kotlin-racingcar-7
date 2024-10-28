@@ -48,6 +48,27 @@ class RaceTest {
         }
     }
 
+    @Test
+    fun `우승자는 한 명 이상일 수 있다`() {
+        assertSimpleTest {
+            //given
+            val nameOfCars = "hyun, pobi, woni, jun"
+            val carsInGarage = Garage(nameOfCars).carsInGarage
+            val race = Race(carsInGarage)
+
+            //when
+            carsInGarage.first().moveForward(MOVING_FORWARD)
+            carsInGarage.last().moveForward(MOVING_FORWARD)
+            val winner = race.getWinner()
+
+            //then
+            assertAll(
+                {assertThat(winner.first().name).isEqualTo(carsInGarage.first().name)},
+                {assertThat(winner.last().name).isEqualTo(carsInGarage.last().name)}
+            )
+        }
+    }
+
     companion object {
         private const val MOVING_FORWARD = 4
         private const val STOP: Int = 3
