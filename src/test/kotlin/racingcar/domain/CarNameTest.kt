@@ -20,6 +20,12 @@ class CarNameTest {
     }
 
     @Test
+    fun `이름을 지정하지 않을 경우 예외 발생`() {
+        // act, assert
+        assertThrows<IllegalArgumentException> { "".asCarName() }
+    }
+
+    @Test
     fun `toString시 정상적으로 지정한 이름의 문자열이 반환`() {
         // arrange
         val name = "pobi"

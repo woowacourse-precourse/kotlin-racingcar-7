@@ -4,6 +4,7 @@ package racingcar.domain
 value class CarName(private val name: String) {
     init {
         require(name.length <= MAX_CAR_NAME_LENGTH)
+        require(name.isNotEmpty())
     }
 
     override fun toString(): String = name
