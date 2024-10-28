@@ -16,7 +16,7 @@ class Validation {
 
     fun checkCarNameLength(carName: List<Car>) {
         carName.forEach {
-            if (it.name.length > 5) {
+            if (it.name.length > MAX_CAR_NAME_LENGTH) {
                 throw IllegalArgumentException(CAR_NAME_LENGTH_ERROR_MESSAGE)
             }
         }
@@ -49,7 +49,7 @@ class Validation {
 
     fun checkRoundCountNegativeInteger(inputRoundCount: String) {
         val roundCount = inputRoundCount.toInt()
-        if (roundCount < 1) throw IllegalArgumentException(ROUND_COUNT_NEGATIVE_INTEGER_ERROR_MESSAGE)
+        if (roundCount < MIN_ROUND_COUNT) throw IllegalArgumentException(ROUND_COUNT_NEGATIVE_INTEGER_ERROR_MESSAGE)
     }
 
     fun inputRoundCountIsNotInt(inputRoundCount: String): Boolean {

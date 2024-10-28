@@ -20,3 +20,5 @@ const val ROUND_COUNT_NEGATIVE_INTEGER_ERROR_MESSAGE = "1보다 작은 수는 �
 const val POSSIBLE_NUMBER = 4
 const val MIN_RANDOM_NUMBER = 0
 const val MAX_RANDOM_NUMBER = 9
+const val MAX_CAR_NAME_LENGTH = 5
+const val MIN_ROUND_COUNT = 1
