@@ -10,17 +10,17 @@ class RacingCarView {
         return Console.readLine()
     }
 
-    fun getAttempts() : String {
+    fun getAttempts() : Int {
         println(getAttemptsStr)
-        return Console.readLine()
+        return Console.readLine().toInt()
     }
 
-    fun showAttemptResult() {
-
+    fun displayAttemptResult(resultAttempts : String) {
+        print(resultAttempts)
     }
 
-    fun showResults(result : String) {
-        println("$showResults $result")
+    fun displayResult(result : String) {
+        print("$showResults $result")
     }
 
 }
