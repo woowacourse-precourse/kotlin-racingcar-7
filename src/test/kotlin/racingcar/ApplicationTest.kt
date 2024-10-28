@@ -51,6 +51,13 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `입력 예외 테스트 시도 횟수`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,javaji,jun","abc") }
+        }
+    }
+
     override fun runMain() {
         main()
     }
