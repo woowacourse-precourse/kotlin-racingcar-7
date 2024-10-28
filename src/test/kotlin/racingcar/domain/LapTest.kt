@@ -21,7 +21,7 @@ class LapTest {
             assertThrows<IllegalArgumentException> {
                 Lap(stringLapCount).count
             }.apply {
-                assertThat(message).isEqualTo("랩 카운트는 숫자를 입력해야 합니다.")
+                assertThat(message).isEqualTo(LAP_COUNT_NUMBER_ERROR_MESSAGE)
             }
         }
 
@@ -34,7 +34,7 @@ class LapTest {
             assertThrows<IllegalArgumentException> {
                 Lap(stringLapCount).count
             }.apply {
-                assertThat(message).isEqualTo("랩 카운트는 1회 이상 입력해야합니다.")
+                assertThat(message).isEqualTo(LAP_COUNT_POSITIVE_ERROR_MESSAGE)
             }
         }
 
@@ -47,7 +47,7 @@ class LapTest {
             assertThrows<IllegalArgumentException> {
                 Lap(stringLapCount).count
             }.apply {
-                assertThat(message).isEqualTo("랩 카운트는 1회 이상 입력해야합니다.")
+                assertThat(message).isEqualTo(LAP_COUNT_POSITIVE_ERROR_MESSAGE)
             }
         }
     }
@@ -65,5 +65,10 @@ class LapTest {
                 Lap(stringLapCount).count
             }
         }
+    }
+
+    companion object {
+        private const val LAP_COUNT_NUMBER_ERROR_MESSAGE = "랩 카운트는 숫자를 입력해야 합니다."
+        private const val LAP_COUNT_POSITIVE_ERROR_MESSAGE = "랩 카운트는 1회 이상 입력해야합니다."
     }
 }
