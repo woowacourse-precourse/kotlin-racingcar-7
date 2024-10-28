@@ -13,4 +13,9 @@ class OutputView {
         }
         println()
     }
+
+    fun announceWinner(cars: Cars) {
+        val winnerNames = cars.getWinners().map { it.name }
+        println("최종 우승자 : " + winnerNames.joinToString(", "))
+    }
 }

@@ -19,5 +19,6 @@ class RaceController {
             cars.move()
             outputView.announceRaceStatus(cars)
         }
+        outputView.announceWinner(cars)
     }
 }
