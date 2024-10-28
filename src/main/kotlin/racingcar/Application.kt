@@ -8,5 +8,7 @@ fun main() {
     println("시도할 횟수는 몇 회인가요?")
     val inputNumber = Console.readLine()
     println("\n실행 결과")
-    //TODO: 프로그램 구현
+    val racingCar = RacingCar(inputName)
+    val racingGame = RacingGame(inputNumber)
+    val result = racingGame.gameStart(racingCar.racingCarsWithNumber, racingGame.number)
 }
