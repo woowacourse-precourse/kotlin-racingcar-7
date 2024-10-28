@@ -11,4 +11,9 @@ data class Cars(val carNames: List<String>) {
             if (randomNumber >= 4) car.moveForward()
         }
     }
+
+    fun getWinners(): List<Car> {
+        val winnerPosition = list.maxOf { it.position }
+        return list.filter { it.position == winnerPosition }
+    }
 }
