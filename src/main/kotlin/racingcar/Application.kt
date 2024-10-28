@@ -40,6 +40,11 @@ fun startRace(racerName: List<String>, racerMove: List<Int>) {
     }
 }
 
+fun findWinners(racerNames: List<String>, racerMoves: List<Int>): List<String> {
+    val maxMove = racerMoves.maxOrNull() ?: 0
+    return racerNames.filterIndexed { index, _ -> racerMoves[index] == maxMove }
+}
+
 
 fun main() {
     // TODO: 프로그램 구현
@@ -62,6 +67,9 @@ fun main() {
             racerMove = processList(randomList, racerMove)
             startRace(racerName, racerMove)
             count ++
+
+        val winners = findWinners(racerName, racerMove)
+        println("최종 우승자 : ${winners.joinToString(", ")}")
         }
     }
 }
