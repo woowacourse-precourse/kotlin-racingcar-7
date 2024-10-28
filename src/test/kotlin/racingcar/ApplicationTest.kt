@@ -15,7 +15,32 @@ class ApplicationTest : NsTest() {
                 run("pobi,woni", "1")
                 assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi")
             },
-            MOVING_FORWARD, STOP
+            MOVING_FORWARD,
+            STOP,
+        )
+    }
+
+    @Test
+    fun `두 명의 공동 우승 테스트`() {
+        assertRandomNumberInRangeTest(
+            {
+                run("pobi,woni", "1")
+                assertThat(output()).contains("pobi : -", "woni : -", "최종 우승자 : pobi,woni")
+            },
+            MOVING_FORWARD,
+            MOVING_FORWARD,
+        )
+    }
+
+    @Test
+    fun `경주 결과 모든 자동차가 출발지에 존재하는 테스트`() {
+        assertRandomNumberInRangeTest(
+            {
+                run("pobi,woni", "1")
+                assertThat(output()).contains("pobi : ", "woni : ", "최종 우승자 :")
+            },
+            STOP,
+            STOP,
         )
     }
 
