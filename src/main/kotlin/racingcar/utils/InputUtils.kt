@@ -26,7 +26,7 @@ object InputUtils {
             ValidCheckUtils.checkValidCarName(name)
             name
         }.filter {
-            it.isBlank()
+            it.isNotBlank()
         }
     }
 
@@ -43,7 +43,7 @@ object InputUtils {
     }
 
     private fun String.toGameCount(): Int {
-        ValidCheckUtils.checkGameCount(this)
+        ValidCheckUtils.checkGameRound(this)
         return trim().toInt()
     }
 

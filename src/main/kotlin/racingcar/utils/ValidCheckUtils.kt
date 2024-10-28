@@ -20,17 +20,17 @@ object ValidCheckUtils {
      * 입력받은 실시횟수가 유효한지 확인한다.
      * @throws IllegalArgumentException
      */
-    fun checkGameCount(num: String) {
+    fun checkGameRound(num: String) {
         try {
             val validNum = num.toInt()
             if(1 > validNum) {
                 throw IllegalArgumentException("실시횟수는 1 이상의 양수만 가능합니다.")
             }
-            if(100 > validNum) {
+            if(100 < validNum) {
                 throw IllegalArgumentException("실시횟수는 100을 넘길 수 없습니다.")
             }
         } catch (e: Exception) {
-            throw IllegalArgumentException("숫자만 입력 가능합니다.")
+           throw IllegalArgumentException("숫자만 입력 가능합니다.")
         }
     }
 
