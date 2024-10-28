@@ -60,7 +60,7 @@ class Validation {
         if (roundCount < MIN_ROUND_COUNT) throw IllegalArgumentException(ROUND_COUNT_NEGATIVE_INTEGER_ERROR_MESSAGE)
     }
 
-    fun inputRoundCountIsNotInt(inputRoundCount: String): Boolean {
+    private fun inputRoundCountIsNotInt(inputRoundCount: String): Boolean {
         return inputRoundCount.toIntOrNull() == null
     }
 }
