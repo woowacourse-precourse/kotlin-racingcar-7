@@ -19,12 +19,24 @@ class ApplicationTest : NsTest() {
         )
     }
 
+
+
+
+    //예외 테스트
     @Test
     fun `예외 테스트`() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
         }
     }
+    @Test
+    fun `빈 자동차 이름`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,,woni", "1") }
+            assertThrows<IllegalArgumentException> { runException("pobi,woni,", "1") }
+        }
+    }
+
 
     override fun runMain() {
         main()
