@@ -11,4 +11,8 @@ object OutputView {
     fun printWinners(winners: List<String>) {
         println("최종 우승자 : ${winners.joinToString(", ")}")
     }
+
+    fun printErrorMessage(message: String) {
+        println("오류 : $message")
+    }
 }
