@@ -3,7 +3,7 @@ package racingcar
 import camp.nextstep.edu.missionutils.Console
 
 fun main() {
-    // TODO: 프로그램 구현
+  // TODO: 프로그램 구현
 
   /*
   1. 입력(자동차 이름)
@@ -21,15 +21,33 @@ fun main() {
    */
 
   val inputCar = Console.readLine()
-  val cars = inputCar.split(",")
+  var cars = inputCar.split(",")
   isOver5Letters(cars)
+  cars = duplicateName(cars)
 }
 
-fun isOver5Letters(cars : List<String>){
+fun isOver5Letters(cars: List<String>) {
   val carIter = cars.listIterator()
   carIter.forEach {
-    if(5 < it.length){
+    if (5 < it.length) {
       throw IllegalArgumentException("이름이 5자를 넘습니다")
     }
   }
+}
+
+fun duplicateName(cars: List<String>): List<String> {
+  val carAndNumber = mutableMapOf<String, Int>()
+  val result = mutableListOf<String>()
+
+  for (car in cars) {
+    if (carAndNumber.containsKey(car)) {
+      val carNumber = carAndNumber[car]!! + 1
+      carAndNumber[car] = carNumber
+      result.add("$car ${carNumber}호기")
+    } else {
+      carAndNumber[car] = 1
+      result.add(car)
+    }
+  }
+  return result
 }
