@@ -55,6 +55,13 @@ class ApplicationTest : NsTest() {
         )
     }
 
+    @Test
+    fun testDuplicateCarName() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,pobi", "1") }
+        }
+    }
+
     override fun runMain() {
         main()
     }

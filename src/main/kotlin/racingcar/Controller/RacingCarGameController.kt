@@ -8,8 +8,10 @@ class RacingCarGameController {
     private val racingCarGameView = RacingCarGameView(racingCars)
 
     companion object {
+        private const val MAX_CARNAME_LENGTH = 5
         private const val CARNAME_TOO_LONG = "자동차 이름은 5자를 넘을 수 없습니다."
-        private const val TRYCOUNT_NOT_POSITVIE_INTEGER_OR_ZERO = "시도 횟수는 정수여야 합니다."
+        private const val CARNAME_DUPLICATE = "자동차 이름은 중복될 수 없습니다."
+        private const val TRYCOUNT_NOT_POSITVIE_INTEGER_OR_ZERO = "시도 횟수는 양의 정수나 0이어야 합니다."
     }
 
     fun play() {
@@ -28,9 +30,12 @@ class RacingCarGameController {
     }
 
     private fun checkIfValidNames(carNames: List<String>) {
-        if (carNames.all { it.length <= 5 })
-            return
-        throw IllegalArgumentException(CARNAME_TOO_LONG)
+        if (carNames.any { it.length > MAX_CARNAME_LENGTH })
+            throw IllegalArgumentException(CARNAME_TOO_LONG)
+        val nameCounts = carNames.groupingBy { it }.eachCount()
+        if (nameCounts.maxOf { it.value } > 1)
+            throw IllegalArgumentException(CARNAME_DUPLICATE)
+        return
     }
 
     private fun makeRacingCars(carNames: List<String>) {

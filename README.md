@@ -13,6 +13,8 @@
 - [x] 각 턴의 각 자동차의 이동 현황 출력하기
 - [x] 우승자 출력하기
 
+- 이름이 중복되는 경우: 어느 자동차가 우승했는지 애매해지기 때문에 잘못된 입력으로 판단. IllegalArgumentException 발생
+
 <details>
 <summary>문제 요구 사항</summary>
 
