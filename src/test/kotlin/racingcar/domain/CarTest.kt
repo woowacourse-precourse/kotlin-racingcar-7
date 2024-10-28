@@ -20,7 +20,7 @@ class CarTest {
             assertThrows<IllegalArgumentException> {
                 Car(carName, randomNumber)
             }.apply {
-                assertThat(message).isEqualTo("자동차 이름은 다섯글자를 넘을 수 없습니다.")
+                assertThat(message).isEqualTo(CAR_NAME_LENGTH_ERROR_MESSAGE)
             }
         }
 
@@ -78,7 +78,7 @@ class CarTest {
             assertThrows<IllegalArgumentException> {
                 car.moveToForward()
             }.apply {
-                assertThat(message).isEqualTo("지정된 범위를 벗어난 랜덤숫자 입니다.")
+                assertThat(message).isEqualTo(RANDOM_NUMBER_RANGE_ERROR_MESSAGE)
             }
         }
     }
@@ -86,5 +86,7 @@ class CarTest {
     companion object {
         private const val INITIAL_DISTANCE_VALUE = ""
         private const val DASH = "-"
+        private const val RANDOM_NUMBER_RANGE_ERROR_MESSAGE = "지정된 범위를 벗어난 랜덤숫자 입니다."
+        private const val CAR_NAME_LENGTH_ERROR_MESSAGE = "자동차 이름은 다섯글자를 넘을 수 없습니다."
     }
 }
