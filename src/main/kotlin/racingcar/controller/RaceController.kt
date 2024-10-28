@@ -14,7 +14,11 @@ class RaceController(
         this.raceCount = raceCount
     }
 
-    private fun pickWinner(): List<Car> {
+    fun getRaceCount(): Int {
+        return raceCount
+    }
+
+    fun pickWinner(): List<Car> {
         val winnerList = mutableListOf<Car>()
         var maxMoveCount = 0
 

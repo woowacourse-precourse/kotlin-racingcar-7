@@ -13,7 +13,7 @@ class TurnController(
         return Randoms.pickNumberInRange(0, 9)
     }
 
-    private fun addMoveCount(randomValue: Int, carList: CarList, index: Int) {
+    fun addMoveCount(randomValue: Int, carList: CarList, index: Int) {
         if (randomValue >= 4) {
             carList.getCar(index).moveForward()
         }
