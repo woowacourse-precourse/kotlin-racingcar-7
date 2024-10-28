@@ -1,18 +1,18 @@
 package racingcar.model
 
-import racingcar.utils.ErrorMessages
+import racingcar.utils.Constants
+import racingcar.utils.Validator
 
 
 class Race(val cars: List<Car>, val numberOfRounds: Int) {
 
     init {
-        if (cars.size != cars.distinct().size) {
-            throw IllegalArgumentException(ErrorMessages.NAME_DUPLICATE_ERROR)
-        }
+        Validator.validateCarNames(cars)
     }
     fun raceRound(randomValueProvider: () -> Int) {
         cars.forEach { car ->
-            if (randomValueProvider() >= 4) car.move()
+            val num = randomValueProvider()
+            if (num >= Constants.MOVE_THRESHOLD) car.move()
         }
     }
 
