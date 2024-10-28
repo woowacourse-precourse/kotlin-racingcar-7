@@ -54,6 +54,7 @@ class RacingCarGameController {
     }
 
     private fun playAllTurns() {
+        println("\n실행결과")
         for (turn in 1..tryCount) {
             racingCars.forEach {
                 it.takeTurn()
