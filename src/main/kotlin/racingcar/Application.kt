@@ -1,6 +1,7 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Console
+import racingcar.utils.isCountInvalid
 import racingcar.utils.isNamesInvalid
 
 fun main() {
@@ -10,4 +11,5 @@ fun main() {
 
     println("시도할 횟수는 몇 회인가요?")
     val countInput = Console.readLine()
+    if (countInput.isCountInvalid()) throw IllegalArgumentException()
 }

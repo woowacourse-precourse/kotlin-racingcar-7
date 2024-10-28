@@ -16,3 +16,7 @@ private fun List<String>.hasBlankName(): Boolean {
 private fun List<String>.hasLongName(): Boolean {
     return this.any { it.length > 5 }
 }
+
+internal fun String.isCountInvalid(): Boolean {
+    return !matches("^[1-9]+$".toRegex())
+}
