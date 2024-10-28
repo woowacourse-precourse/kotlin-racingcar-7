@@ -11,6 +11,9 @@ object ValidCheckUtils {
         if(name.length > VALID_CAR_NAME_MAX_LENGTH) {
             throw IllegalArgumentException("자동차 이름은 ${VALID_CAR_NAME_MAX_LENGTH}자를 넘길 수 없습니다.")
         }
+        if(name.isBlank()) {
+            throw IllegalArgumentException("유효한 자동차 이름이 아닙니다.")
+        }
     }
 
     /**
