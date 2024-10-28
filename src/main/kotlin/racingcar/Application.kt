@@ -1,7 +1,5 @@
 package racingcar
 
-import kotlin.random.Random
-
 fun main() {
     val userCarName = getCarName()
     val userCarList = parseCar(userCarName!!)
