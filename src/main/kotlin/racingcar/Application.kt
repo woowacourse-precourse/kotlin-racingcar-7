@@ -24,6 +24,7 @@ fun main() {
   var cars = inputCar.split(",")
   isOver5Letters(cars)
   cars = duplicateName(cars)
+  val movement = Console.readLine()
 }
 
 fun isOver5Letters(cars: List<String>) {
