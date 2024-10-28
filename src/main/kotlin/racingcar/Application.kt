@@ -2,6 +2,7 @@ package racingcar
 
 import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
+import java.util.Collections.max
 
 var input: List<String>? = null
 var num = 0
@@ -10,6 +11,7 @@ var runSizeList = mutableListOf<Int>()
 fun main() {
     inputCar()
     raceCar()
+    printWinner()
 }
 
 // 입력 받기
@@ -49,4 +51,19 @@ private fun raceCar() {
         }
         println()
     }
+}
+
+// 우승자 출력하기
+private fun printWinner() {
+    // 최대값 저장
+    val maxRun = max(runSizeList)
+    // 우승자 리스트
+    val winnerList =
+        runSizeList
+            .mapIndexedNotNull { index, it ->
+                if (it == maxRun) index else null
+            }.map { input!![it] }
+
+    // 우승자 리스트 출력
+    println("최종 우승자 : ${winnerList.joinToString(",")}")
 }
