@@ -1,7 +1,6 @@
 package racingcar
 
-import racingcar.Validation
-object Process {
+object GameManager {
     private val validation = Validation()
     private lateinit var carNames: List<String>
     private var attemptTimes: Int = 0
