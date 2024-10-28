@@ -7,4 +7,7 @@ object RacingCarText {
 
     /** 시도할 횟수 입력 받기 전 텍스트 */
     const val INPUT_TRY_COUNT = "시도할 횟수는 몇 회인가요?"
+
+    /** 최종 우승자를 출력 텍스트 */
+    const val FINAL_WINNERS = "최종 우승자"
 }

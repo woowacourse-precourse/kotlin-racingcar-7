@@ -22,7 +22,9 @@ class RacingCarGame(
         val winnerScore = winners.maxBy { it.value }
         val winners = winners.filter { it.value == winnerScore.value }
         val winnersName = winners.joinKeysAsString()
-        println(winnersName)
+        val winnerResultText =
+            "${RacingCarText.FINAL_WINNERS} ${RacingCarDelimiters.CAR_NAME_CONTENT_DELIMITER} $winnersName"
+        println(winnerResultText)
     }
 
     private fun processGame(cars: List<Car>) {
@@ -53,7 +55,7 @@ class RacingCarGame(
         private const val RANDOM_NUMBER_MIN = 0
         private const val RANDOM_NUMBER_MAX = 9
         private const val CAR_FORWARD_DASH = "-"
-        private const val GAME_START_TEXT = "실행결과"
+        private const val GAME_START_TEXT = "\n실행결과"
     }
 }
 
