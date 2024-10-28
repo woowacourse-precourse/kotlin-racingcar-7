@@ -17,9 +17,12 @@ class InputView {
         return names
     }
 
-    fun inputRounds() {
+    fun inputRounds(): Int {
         println(MESSAGE_ENTER_ROUNDS)
         val input = Console.readLine().orEmpty()
+        println()
+
+        return parseRounds(input)
     }
 
     private fun validateEmptyInput(input: String) {
@@ -54,6 +57,12 @@ class InputView {
         }
     }
 
+    private fun parseRounds(input: String): Int {
+        val rounds = input.toIntOrNull() ?: throw IllegalArgumentException(ERROR_INVALID_NUMBER)
+
+        return rounds
+    }
+
     companion object {
         const val MESSAGE_ENTER_CAR_NAMES = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
         const val MESSAGE_ENTER_ROUNDS = "시도할 횟수는 몇 회인가요?"
@@ -61,6 +70,7 @@ class InputView {
         const val ERROR_INVALID_SEPARATOR = "자동차 이름은 쉼표(,)로 구분해야 합니다."
         const val ERROR_NAME_LENGTH = "자동차 이름은 1자 이상 5자 이하여야 합니다."
         const val ERROR_DUPLICATE_NAMES = "자동차 이름은 중복될 수 없습니다."
+        const val ERROR_INVALID_NUMBER = "이동 횟수는 숫자로 입력해야 합니다."
         const val COMMA = ","
     }
 }
