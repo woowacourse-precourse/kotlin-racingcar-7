@@ -1,10 +1,17 @@
 package racingcar
 
+import camp.nextstep.edu.missionutils.Randoms
+
+class Car(val name: String, var position: Int = 0)
+
 fun main() {
     // TODO: 프로그램 구현
 
     val carNames = Input.getCarNames()
     val attempts = Input.getNumberOfAttempts()
+
+    val cars = carNames.map { Car(it) }
+    val game = CarRacingGame(cars, attempts)
 
 }
 
@@ -23,6 +30,32 @@ object Input {
         val input = readLine()?.toIntOrNull() ?: throw IllegalArgumentException("정수 값만 입력 가능합니다.")
         require(input > 0) { "시도 횟수는 1회 이상이어야 합니다." }
         return input
+    }
+}
+
+// # 자동차 경주 진행
+class CarRacingGame(private val cars: List<Car>, private val attempts: Int) {
+    fun play() {
+        repeat(attempts) {
+            cars.forEach { car ->
+                if (Randoms.pickNumberInRange(0, 9) >= 4) {
+                    car.position++
+                }
+            }
+            printRaceStatus()
+        }
+    }
+
+    private fun printRaceStatus() {
+        cars.forEach { car ->
+            println("${car.name} : ${"-".repeat(car.position)}")
+        }
+        println()
+    }
+
+    fun getWinners(): List<String> {
+        val maxPosition = cars.maxOf { it.position }
+        return cars.filter { it.position == maxPosition }.map { it.name }
     }
 }
 
