@@ -3,12 +3,29 @@ package racingcar
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
 
 class RacingGameTest {
     @Test
     fun `횟수를 입력받는다`() {
         val inputNumber = "5"
         val racingGame = RacingGame(inputNumber)
-        assertThat(racingGame.number).isEqualTo("5")
+        assertThat(racingGame.inputnumber).isEqualTo("5")
+    }
+
+    @Test
+    fun `숫자가 아닌 횟수를 입력한 경우 에러가 발생한다` () {
+        val nonNumeric = RacingGame("12a")
+        assertThrows<IllegalArgumentException> {
+            nonNumeric.NumericCheck()
+        }
+    }
+    @Test
+    fun `1 미만의 횟수를 입력한 경우 에러가 발생한다` () {
+        val lessThanOne = RacingGame("0")
+        lessThanOne.NumericCheck()
+        assertThrows<IllegalArgumentException> {
+            lessThanOne.MinCheck()
+        }
     }
 }
