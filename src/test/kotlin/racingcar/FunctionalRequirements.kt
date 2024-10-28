@@ -3,6 +3,7 @@ package racingcar
 
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.assertThrows
 import racingcar.domain.Car
 import racingcar.domain.Stadium
 
@@ -35,7 +36,10 @@ class FunctionalRequirements {
 
     @Test
     fun `자동차 이름은 쉼표(,)를 기준으로 구분하며 이름은 5자 이하만 가능하다`() {
-
+        assertThrows<IllegalArgumentException> {
+            setInput("123456")
+            application.run()
+        }
     }
 
     @Test
@@ -66,5 +70,9 @@ class FunctionalRequirements {
     @Test
     fun `사용자가 잘못된 값을 입력할 경우 IllegalArgumentException을 발생시킨 후 애플리케이션은 종료되어야 한다`() {
 
+    }
+
+    private fun setInput(input: String) {
+        System.setIn(input.byteInputStream())
     }
 }
