@@ -6,30 +6,30 @@ import camp.nextstep.edu.missionutils.Randoms
 class Game {
     // 게임 시작
     fun start() {
-        val cars = inputCarNames()
-        val roundCount = inputRoundCount()
+        println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
+        val cars = inputCarNames(Console.readLine())
+        println("시도할 횟수는 몇 회인가요?")
+        val roundCount = inputRoundCount(Console.readLine())
         val race= Race(cars, roundCount)
         race.runStart()
     }
     // 자동차 이름 입력
-    private fun inputCarNames(): List<Car> {
-        println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
-        val carNames = Console.readLine().split(",").map{it.trim()}
+    internal fun inputCarNames(input: String): List<Car> {
+        val carNames = input.split(",").map{it.trim()}
         inputNameException(carNames)
         return carNames.map {Car(it)}
     }
-    // 시도할 횟수 입력
-    private fun inputRoundCount(): Int {
-        println("시도할 횟수는 몇 회인가요?")
-        val roundCount = Console.readLine().toIntOrNull()
-        Exceptions.validateRoundCount(roundCount)
-        return roundCount!!
-    }
     // 입력 받은 이름의 유효성 검사
-    private fun inputNameException(carNames: List<String>) {
+    internal fun inputNameException(carNames: List<String>) {
         Exceptions.nameLengthError(carNames)
         Exceptions.blankNameError(carNames)
         Exceptions.duplicateNameError(carNames)
+    }
+    // 시도할 횟수 입력
+    internal fun inputRoundCount(input: String): Int {
+        val roundCount = input.toIntOrNull()
+        Exceptions.validateRoundCount(roundCount)
+        return roundCount!!
     }
 }
 
@@ -51,15 +51,15 @@ class Race(private val cars: List<Car>, private val roundCount: Int) {
         announceWinner()
     }
     // 가장 멀리 이동한 거리 찾기
-    private fun findLongest(): Int {
+    internal fun findLongest(): Int {
         return cars.maxByOrNull {it.getMoveDistance()}?.getMoveDistance() ?: 0
     }
     // 가장 멀리 간 우승자 리스트 찾기
-    private fun findWinners(longest: Int): List<String> {
+    internal fun findWinners(longest: Int): List<String> {
         return cars.filter {it.getMoveDistance()==longest}.map { it.name }
     }
     // 최종 우승자 발표
-    private fun announceWinner() {
+    internal fun announceWinner() {
         val longest = findLongest()
         val winners = findWinners(longest)
         println("최종 우승자 : ${winners.joinToString(", ")}")
