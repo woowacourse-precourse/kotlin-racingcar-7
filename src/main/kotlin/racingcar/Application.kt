@@ -24,14 +24,6 @@ fun main() {
 
             println("$key : " + "-".repeat(carMap[key]!!))
         }
-        println(carMap)  // TODO : 테스트용 출력 ; 삭제할 것
         println()
     }
-
-    // TODO: 함수 분리할 것
-    println(
-        "최종 우승자 : " + carMap.filterValues { it == carMap.values.maxOrNull() }
-            .keys
-            .joinToString(", ")
-    )
 }
