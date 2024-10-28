@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms
 import racingcar.domain.Car
 import racingcar.domain.tryMove
 import racingcar.ui.Ui
+import racingcar.util.repeat
 
 fun main() {
     val ui = Ui()
@@ -13,6 +14,8 @@ fun main() {
 
     val tryNumber = ui.requestTryNumber()
 
-    cars.tryMove()
-    ui.displayTryResult(cars)
+    repeat(tryNumber) {
+        cars.tryMove()
+        ui.displayTryResult(cars)
+    }
 }
