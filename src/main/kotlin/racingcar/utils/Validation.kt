@@ -14,7 +14,7 @@ class Validation {
     }
     private fun checkCarNameLength(names:List<String>){
         for (name in names){
-            if (name.length > 5){
+            if (name.length > 5 || name.isEmpty()){
                 throw IllegalArgumentException(Constants().ERROR_NAME_LENGTH)
             }
         }
