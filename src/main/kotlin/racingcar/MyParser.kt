@@ -6,7 +6,7 @@ class MyParser {
             .split(NAME_DELIMITER)
             .map(String::trim)
             .takeIf { isValidNames(it) }
-            ?: throw IllegalArgumentException()
+            ?: throw IllegalArgumentException("이름은 5글자 이하여야 합니다")
     }
 
     private fun isValidNames(names: List<String>): Boolean {
@@ -16,7 +16,7 @@ class MyParser {
     fun parseTurns(input: String): Int {
         return input
             .toIntOrNull()
-            ?: throw IllegalArgumentException()
+            ?: throw IllegalArgumentException("숫자가 아닙니다")
     }
 
     companion object {
