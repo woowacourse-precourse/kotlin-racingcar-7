@@ -10,4 +10,12 @@ class ResultView {
         }
         println()
     }
+
+    fun printWinners(winners: List<String>) {
+        println("$MESSAGE_WINNERS: ${winners.joinToString(", ")}")
+    }
+
+    companion object {
+        const val MESSAGE_WINNERS = "최종 우승자"
+    }
 }
