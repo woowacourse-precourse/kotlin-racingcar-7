@@ -6,7 +6,7 @@
 
 **시도 할 횟수를 입력받는 기능**
  - 시도할 횟수를 입력 받는다
- - 숫자가 아니면 IllegalArgumentException를 발생시킨다
+ - 숫자가 아니거나 입력값이 비어있으면 IllegalArgumentException를 발생시킨다
 
 **차의 위치를 조절하는 기능**
  - 무작위 값이 4 이상일 경우 인덱스의 second에  1을 더해준다
@@ -20,3 +20,6 @@
 
 **자동차 이름의 길이를 검사하는 기능**
 - 입력받은 이름이 비어있거나 길이가 5보다 크면 IllegalArgumentException를 발생시킨다
+
+  **자동차 이름의 중복을 검사하는 기능**
+- 입력받은 이름에 중복이 있다면  IllegalArgumentException를 발생시킨다
