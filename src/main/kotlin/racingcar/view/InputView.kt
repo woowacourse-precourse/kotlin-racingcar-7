@@ -35,11 +35,18 @@ class InputView {
         }
     }
 
+    private fun validateDuplicateNames(names: List<String>) {
+        require(names.distinct().size == names.size) {
+            ERROR_DUPLICATE_NAMES
+        }
+    }
+
     companion object {
         const val MESSAGE_ENTER_CAR_NAMES = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
         const val ERROR_EMPTY_INPUT = "자동차 이름을 입력해야 합니다."
         const val ERROR_INVALID_SEPARATOR = "자동차 이름은 쉼표(,)로 구분해야 합니다."
         const val ERROR_NAME_LENGTH = "자동차 이름은 1자 이상 5자 이하여야 합니다."
+        const val ERROR_DUPLICATE_NAMES = "자동차 이름은 중복될 수 없습니다."
         const val COMMA = ","
     }
 }
