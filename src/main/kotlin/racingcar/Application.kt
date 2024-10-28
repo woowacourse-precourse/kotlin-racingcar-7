@@ -22,15 +22,15 @@ fun isValidCarName(cars: List<String>){
 }
 
 fun isOver5Letters(cars: List<String>) {
-    cars.forEach{
-        if (5 < it.length) {
+    cars.forEach{ car ->
+        if (5 < car.length) {
             throw IllegalArgumentException("이름이 5자를 넘습니다")
         }
     }
 }
 
 fun isNameless(cars: List<String>) {
-    for (car in cars) {
+    cars.forEach{ car ->
         if (car.isBlank()) {
             throw IllegalArgumentException("이름이 없는 참가자가 있습니다")
         }
@@ -41,7 +41,7 @@ fun duplicateName(cars: List<String>): List<String> {
     val carAndNumber = mutableMapOf<String, Int>()
     val result = mutableListOf<String>()
 
-    for (car in cars) {
+    cars.forEach{car ->
         if (carAndNumber.containsKey(car)) {
             val carNumber = carAndNumber[car]!! + 1
             carAndNumber[car] = carNumber
