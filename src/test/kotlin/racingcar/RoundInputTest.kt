@@ -2,7 +2,6 @@ package racingcar
 
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
-import racingcar.util.ValidatorUtil.validateCarLength
 import racingcar.util.ValidatorUtil.validateRoundRange
 import racingcar.util.ValidatorUtil.validateRoundType
 
