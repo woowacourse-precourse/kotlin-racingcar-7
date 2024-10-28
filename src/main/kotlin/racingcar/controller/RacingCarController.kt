@@ -38,7 +38,7 @@ class RacingCarController {
             throw IllegalArgumentException("이름이 전부 입력되지 않았습니다.")
         } else if (carNames.any { it.length > 5 }) {
             throw IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.")
-        } else if (carNames.size != carNames.toSet().size){
+        } else if (carNames.size != carNames.toSet().size) {
             outputView.displayDup()
             return carNames.toSet()
         }
@@ -61,10 +61,14 @@ class RacingCarController {
 
     private fun playRace(attempts: Int) {
         repeat(attempts) {
-            cars.forEach { car ->
-                car.move(RandomUtils.canMove())
-            }
+            moveCars()
             outputView.displayCarStatus(cars)
+        }
+    }
+
+    private fun moveCars() {
+        cars.forEach { car ->
+            car.move(RandomUtils.canMove())
         }
     }
 
