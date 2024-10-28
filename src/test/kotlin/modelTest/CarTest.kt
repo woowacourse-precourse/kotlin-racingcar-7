@@ -41,6 +41,25 @@ class CarTest {
         }
     }
 
+    @CsvSource("0, 0", "4, 1", "9, 1")
+    @ParameterizedTest
+    fun `무작위 값이 4 이상인 경우 전진하고 아니면 멈춰있는다`(randomNumber: Int, expectedPosition: Int) {
+        assertRandomNumberInRangeTest(
+            {
+                //given
+                val car = Car("hyun")
+
+                //when
+                car.moveForward(randomNumber)
+
+                //then
+                assertThat(car.position).isEqualTo(expectedPosition)
+
+        },
+            MOVING_FORWARD, STOP
+        )
+    }
+
     @Test
     fun `자동차는 본인의 위치를 가질 수 있다`() {
         assertRandomNumberInRangeTest(

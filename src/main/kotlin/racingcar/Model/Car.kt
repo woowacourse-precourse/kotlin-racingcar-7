@@ -9,10 +9,13 @@ class Car(val name: String) {
         private set
 
     fun moveForward(randomValue: Int) {
-        position++
+        if (randomValue >= MOVING_POINT) {
+            position++
+        }
     }
 
     companion object {
         private const val CANT_BE_LONGER_THAN_5 = " -> 자동차 이름은 5자 이하이어야 합니다."
+        private const val MOVING_POINT = 4
     }
 }
