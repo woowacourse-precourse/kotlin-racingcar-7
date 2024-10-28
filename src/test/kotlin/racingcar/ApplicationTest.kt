@@ -134,6 +134,14 @@ class ApplicationTest : NsTest() {
 
     }
 
+    @Test
+    fun `자동차 이름이 입력되지 않은 경우`(){
+        assertSimpleTest {
+            val exception = assertThrows<IllegalArgumentException> { runException("\n", "1") }
+            assertThat(exception.message).isEqualTo(ErrorMessages.NAME_EMPTY_ERROR)
+        }
+    }
+
 
     override fun runMain() {
         main()
