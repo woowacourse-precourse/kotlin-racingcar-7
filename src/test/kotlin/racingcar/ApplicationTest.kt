@@ -20,20 +20,30 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
-    fun `이름 중복테스트`() {
-        assertRandomNumberInRangeTest(
-            {
-                run("pobi,woni", "1")
-                assertThat(output()).contains("pobi : -", "pobi : ", "최종 우승자 : pobi")
-            },
-            MOVING_FORWARD, STOP
-        )
+    fun `예외 테스트 - 이름이 5글자를 넘을 때`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
+        }
     }
 
     @Test
-    fun `예외 테스트`() {
+    fun `예외 테스트 - 이름에 공백이 있을 때`() {
         assertSimpleTest {
-            assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
+            assertThrows<IllegalArgumentException> { runException("pobi,  ,woni", "1") }
+        }
+    }
+
+    @Test
+    fun `예외 테스트 - 시도 횟수가 숫자가 아닐 때`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,woni", "abc") }
+        }
+    }
+
+    @Test
+    fun `예외 테스트 - 시도 횟수가 음수일 때`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,woni", "-1") }
         }
     }
 

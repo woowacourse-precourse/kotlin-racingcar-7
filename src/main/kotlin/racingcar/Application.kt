@@ -69,7 +69,7 @@ fun printWinner(cars: MutableList<Pair<String, Int>>){
 }
 
 fun checkInputLength(carName : String){
-    if(carName.length > 5){
+    if(carName.length > 5 || carName.isEmpty()){
         throw IllegalArgumentException("이름이 5글자를 넘습니다")
     }
 }
