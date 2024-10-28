@@ -12,7 +12,7 @@ class Validation {
             }
         }
     }
-    
+
     fun getAttemptTimes(attemptTimes: String): Int =
         attemptTimes.toIntOrNull() ?: throw IllegalArgumentException("시도 횟수를 입력해주세요.")
 }
