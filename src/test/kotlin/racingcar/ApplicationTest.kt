@@ -11,6 +11,17 @@ import racingcar.utils.ErrorMessages
 class ApplicationTest : NsTest() {
 
     @Test
+    fun `한개의 자동차만 존재하는 경우`() {
+        assertRandomNumberInRangeTest(
+            {
+                run("pobi", "1")
+                assertThat(output()).contains("pobi : -", "최종 우승자 : pobi")
+            },
+            MOVING_FORWARD
+        )
+    }
+
+    @Test
     fun `두 개의 자동차가 단일 라운드에서 우승자를 가리는 경우`() {
         assertRandomNumberInRangeTest(
             {
@@ -121,6 +132,14 @@ class ApplicationTest : NsTest() {
     fun `라운드 수가 음수인 경우`() {
         assertSimpleTest {
             val exception = assertThrows<IllegalArgumentException> { runException("pobi,woni", "-1") }
+            assertThat(exception.message).isEqualTo(ErrorMessages.ROUND_NUMBER_ERROR)
+        }
+    }
+
+    @Test
+    fun `라운드 수가 0인 경우`() {
+        assertSimpleTest {
+            val exception = assertThrows<IllegalArgumentException> { runException("pobi,woni", "0") }
             assertThat(exception.message).isEqualTo(ErrorMessages.ROUND_NUMBER_ERROR)
         }
     }
