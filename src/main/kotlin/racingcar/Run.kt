@@ -10,6 +10,13 @@ class Run {
         Process.setAttemptTimes(Console.readLine())
         Process.getRound()
     }
-    
 
+    fun play() {
+        Process.playRound()
+    }
+    
+    fun printWinners() {
+        val winners = Process.getWinners().joinToString(separator = ",")
+        println("최종 우승자 : ")
+    }
 }
