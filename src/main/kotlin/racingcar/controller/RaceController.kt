@@ -1,8 +1,8 @@
 package racingcar.controller
 
 import camp.nextstep.edu.missionutils.Randoms
-import racingcar.domain.Car
-import racingcar.domain.Race
+import racingcar.model.Car
+import racingcar.model.Race
 import racingcar.view.InputView
 import racingcar.view.OutputView
 

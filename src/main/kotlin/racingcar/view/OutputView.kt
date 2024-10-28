@@ -1,6 +1,6 @@
 package racingcar.view
 
-import racingcar.domain.Car
+import racingcar.model.Car
 
 object OutputView {
     fun printRoundResult(cars: List<Car>) {

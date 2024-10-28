@@ -1,4 +1,4 @@
-package racingcar.domain
+package racingcar.model
 
 class Race(val cars: List<Car>, val numberOfRounds: Int) {
     fun raceRound(randomValueProvider: () -> Int) {
