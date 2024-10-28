@@ -22,8 +22,8 @@ fun main() {
     printWinners(carMap)
 }
 
-fun promptForCarNames() = println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
-fun promptForAttemptNumber() = println("시도할 횟수는 몇 회인가요?")
+fun promptForCarNames() = println(Strings.MESSAGE_INPUT_CAR_NAME)
+fun promptForAttemptNumber() = println(Strings.MESSAGE_INPUT_ATTEMPT_NUMBER)
 
 fun processCarNames(input: String): List<String> = input.split(",")
     .map { it.trim() }
@@ -42,7 +42,7 @@ fun initializeCarMap(carList: List<String>): MutableMap<String, Int> {
 }
 
 fun printAllRaceResults(carMap: MutableMap<String, Int>, attemptNumber: Int) {
-    println("실행 결과")
+    println(Strings.MESSAGE_OUTPUT_RESULT)
 
     for (i in 0 until attemptNumber) {
         printRaceResult(carMap)
@@ -65,11 +65,11 @@ fun moveForwardIfVaild(carMap: MutableMap<String, Int>, key: String, value: Int)
 }
 
 fun printWinners(carMap: MutableMap<String, Int>) = println(
-    "최종 우승자 : " + filterWinners(carMap).joinToString(", ")
+    Strings.MESSAGE_OUTPUT_WINNER + filterWinners(carMap).joinToString(", ")
 )
 
 fun filterWinners(carMap: MutableMap<String, Int>) = carMap.filterValues { isWinnerValid(carMap, it) }.keys
 
 fun validateCarName(carName: String) {
-    require(isCarNameValidLength(carName)) { "자동차 이름은 5자 이하만 가능하다." }
+    require(isCarNameValidLength(carName)) { Strings.MESSAGE_EXCEPTION_CAR_NAME_LENGTH }
 }
