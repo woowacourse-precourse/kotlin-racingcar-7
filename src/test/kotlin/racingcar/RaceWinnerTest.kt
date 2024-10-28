@@ -56,6 +56,28 @@ class RaceWinnerTest : NsTest() {
         }
     }
 
+    @Test
+    fun `자동차 및 시도횟수 입력_모두 출발선에서 안 움직이고 경주 완료_전원 우승자 정상출력`() {
+        val numberGenerator = RandomNumberGeneratorStub(arrayListOf(1, 1, 1, 1, 1, 1, 1, 1, 1))
+        val race = Race(numberGenerator, outputStub)
+        val raceManager =
+            RaceManager(race = race, inputView = inputView, outputView = outputStub, inputValidator = inputValidator)
+        race.initializeRace(
+            listOf(
+                Car(name = "pobi", position = 0),
+                Car(name = "woni", position = 0),
+                Car(name = "jun", position = 0)
+            ),
+            tryCount = 3
+        )
+        race.startRace()
+        raceManager.printFinalResult()
+
+        assertSimpleTest {
+            assertThat(output()).contains("최종 우승자 : pobi, woni, jun")
+        }
+    }
+
     override fun runMain() {
         TODO("Not yet implemented")
     }
