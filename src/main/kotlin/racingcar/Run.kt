@@ -4,24 +4,12 @@ import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 class Run {
     fun inputData(){
-
-    }
-
-    fun generateCars():List<String> {
         println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
-        val carNames = Console.readLine().split(",").map { it.trim() }
-        return carNames
+        Process.generateCars(Console.readLine())
+        println("시도할 횟수는 몇 회인가요?")
+        Process.setAttemptTimes(Console.readLine())
+        Process.getRound()
     }
+    
 
-
-    fun race() {
-        val roundTimes = getAttemptTimes()
-        repeat(roundTimes) { playRound() }
-    }
-
-    fun playRound(cars: List<generateCars>) {
-        cars.forEach {
-            moveForward()
-        }
-    }
 }
