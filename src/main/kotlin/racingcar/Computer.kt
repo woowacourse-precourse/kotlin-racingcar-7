@@ -26,11 +26,12 @@ class Computer {
     }
 
     fun makeWinnerMessage(cars: List<Car>): String {
-        var winnerFrontMessage = WINNER_FRONT_MESSAGE
+        val winnerFrontMessage = WINNER_FRONT_MESSAGE
+        val winner = mutableListOf<String>()
         cars.forEach {
-            winnerFrontMessage += it.name
+            winner.add(it.name)
         }
-        return winnerFrontMessage
+        return winnerFrontMessage + winner.joinToString(COMMA_AND_BLANK)
     }
 
     private fun printInputCarNameMessage() {
