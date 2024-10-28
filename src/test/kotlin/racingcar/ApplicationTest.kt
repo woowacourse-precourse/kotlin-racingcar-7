@@ -30,6 +30,55 @@ class ApplicationTest : NsTest() {
         )
     }
 
+    @Test
+    fun `예외 테스트(5글자 초과)`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
+        }
+    }
+
+    @Test
+    fun `예외 테스트(영어가 아닌 이름 입력)`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi3,woniㄱ", "1") }
+        }
+    }
+
+    @Test
+    fun `예외 테스트(이름 입력 시 비어있는 자동차 이름 존재)`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,woni,", "1") }
+        }
+    }
+
+    @Test
+    fun `예외 테스트(중복 이름)`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,pobi", "1") }
+        }
+    }
+
+    @Test
+    fun `예외 테스트(횟수를 음수로 입력)`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,woni", "-1") }
+        }
+    }
+
+    @Test
+    fun `예외 테스트(횟수를 0으로 입력)`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,woni", "0") }
+        }
+    }
+
+    @Test
+    fun `예외 테스트(횟수가 입력되지 않음)`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,woni", "\n") }
+        }
+    }
+
     override fun runMain() {
         main()
     }
