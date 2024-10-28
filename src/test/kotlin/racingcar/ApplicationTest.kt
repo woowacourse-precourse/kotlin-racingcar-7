@@ -26,6 +26,42 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `이름이 5자를 초과하는 경우 예외 테스트`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
+        }
+    }
+
+    @Test
+    fun `자동차 이름에 공백이 포함된 경우 예외 테스트`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi, ,woni", "1") }
+        }
+    }
+
+    @Test
+    fun `자동차 이름이 중복된 경우 예외 테스트`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,woni,pobi", "1") }
+        }
+    }
+
+    @Test
+    fun `이동 횟수가 0 이하인 경우 예외 테스트`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,woni", "0") }
+        }
+    }
+
+    @Test
+    fun `이동 횟수가 숫자가 아닌 경우 예외 테스트`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,woni", "abc") }
+        }
+    }
+
+
     override fun runMain() {
         main()
     }
