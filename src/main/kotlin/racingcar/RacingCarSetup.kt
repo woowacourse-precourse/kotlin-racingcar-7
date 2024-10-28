@@ -13,14 +13,13 @@ class RacingCarSetup {
 
     private fun setUp() {
         println(RacingCarText.INPUT_CAR_NAME)
-        val cars = inputCars()
+        val cars = inputCars().asCar()
         println(RacingCarText.INPUT_TRY_COUNT)
         val tryCount = inputTryCount()
-        println("$cars, $tryCount") // TODO 삭제 예정
     }
 
     private fun inputCars(): List<String> {
-        val carsText = readLine()
+        val carsText = readLine().validateCarNaming()
         val cars = carsText.split(RacingCarDelimiters.NAME_DELIMITER)
         return cars
     }
@@ -32,7 +31,16 @@ class RacingCarSetup {
         return tryCount
     }
 
+    private fun String.validateCarNaming(): String {
+        if (this.length > CAR_NAME_MAX_LENGTH) {
+            throw IllegalArgumentException(CAR_NAME_MAX_LENGTH_EXCEPTION)
+        }
+        return this
+    }
+
     companion object {
+        private const val CAR_NAME_MAX_LENGTH = 5
+        private const val CAR_NAME_MAX_LENGTH_EXCEPTION = "자동차 이름은 5자 이하만 가능 합니다."
         private const val TRY_COUNT_IS_NOT_NUMBER_EXCEPTION = "시도할 횟수는 숫자만 입력 받을 수 있습니다."
     }
 }
