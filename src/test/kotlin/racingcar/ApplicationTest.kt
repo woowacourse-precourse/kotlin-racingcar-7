@@ -31,6 +31,28 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
+    fun `기능 테스트 - 시도 횟수 2회 이상`() {
+        assertRandomNumberInRangeTest(
+            {
+                run("pobi,woni", "2")
+                assertThat(output()).contains("pobi : --", "woni : ", "최종 우승자 : pobi")
+            },
+            MOVING_FORWARD, STOP, MOVING_FORWARD, STOP
+        )
+    }
+
+    @Test
+    fun `기능 테스트 - 게임 참가자 3명 이상`() {
+        assertRandomNumberInRangeTest(
+            {
+                run("pobi,woni,jun", "1")
+                assertThat(output()).contains("pobi : ", "woni : -", "jun : ", "최종 우승자 : woni")
+            },
+            STOP, MOVING_FORWARD, STOP
+        )
+    }
+
+    @Test
     fun `예외 테스트 - 자동차 이름이 5자 초과인 경우`() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
