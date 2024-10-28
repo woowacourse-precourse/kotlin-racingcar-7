@@ -1,5 +1,8 @@
 package racingcar
 
+import racingcar.view.InputView
+import racingcar.view.OutputView
+
 fun main() {
-    // TODO: 프로그램 구현
+    RacingGame(InputView(), OutputView()).startGame()
 }
