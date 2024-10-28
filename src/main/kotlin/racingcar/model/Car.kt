@@ -1,7 +1,10 @@
 package racingcar.model
 
-class Car(val name: String) {
-    var position: Int = INITIAL_VALUE
+class Car(
+    val name: String,
+    initialPosition: Int = INITIAL_VALUE
+) {
+    var position: Int = initialPosition
         private set
 
     fun moveForward() {
