@@ -3,4 +3,34 @@ package racingcar
 import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 class Car(private val name: String) {
+    private var position = 0
+    private var result: Result = Result()
+
+    fun getName(): String {
+        return name
+    }
+
+    fun getPosition(): Int {
+        return position
+    }
+
+    fun moveForward() {
+        val randomNumber = Randoms.pickNumberInRange(0, 9)
+        if (randomNumber >= 4) {
+            position += 1
+            result.printResult()
+        }
+    }
+}
+
+class Result {
+    private var printPosition = ""
+
+    fun getCurrentPosition(): String {
+        return printPosition
+    }
+
+    fun printResult() {
+        printPosition += "-"
+    }
 }

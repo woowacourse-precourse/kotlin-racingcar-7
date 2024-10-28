@@ -14,14 +14,6 @@ class Run {
     }
 
 
-    fun moveForward():Int {
-        var position: Int = 0
-        if(Randoms.pickNumberInRange(0,9) >= 4) {
-            position++
-        }
-        return position
-    }
-
     fun race() {
         val roundTimes = getAttemptTimes()
         repeat(roundTimes) { playRound() }
