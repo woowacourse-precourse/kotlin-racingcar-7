@@ -22,5 +22,14 @@ class RacingController {
             cars.forEach { it.move() }
             outputView.printRoundResult(cars)
         }
+
+        val winners = findWinners(cars)
+
+        outputView.printWinners(winners)
+    }
+
+    private fun findWinners(cars: List<Car>): List<String> {
+        val maxPosition = cars.maxOf { it.position }
+        return cars.filter { it.position == maxPosition }.map { it.name }
     }
 }
