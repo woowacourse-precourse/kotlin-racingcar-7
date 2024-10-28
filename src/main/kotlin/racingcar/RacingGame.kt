@@ -2,9 +2,42 @@ package racingcar
 
 import camp.nextstep.edu.missionutils.Randoms
 
-class RacingGame {
+class RacingGame(
+    private val carList: String,
+    private val totalRound: Int,
+) {
 
-    fun getPlayResult(): PlayResult {
+    private val playCars: MutableMap<String, Int> = getCarMap()
+
+    private fun getCarMap(): MutableMap<String, Int> {
+        val carList = carList.split(",")
+        val carMap = carList.associateWith { 0 }.toMutableMap()
+        return carMap
+    }
+
+    fun play() {
+        repeat(totalRound) {
+            playRound()
+        }
+    }
+
+    private fun playRound() {
+        playCars.forEach { (car, _) ->
+            val roundResult = getPlayResult()
+            updateGameScore(
+                carName = car,
+                result = roundResult
+            )
+        }
+    }
+
+    private fun updateGameScore(carName: String, result: PlayResult) {
+        if(result == PlayResult.GO) {
+            playCars[carName] = playCars[carName]!! + 1
+        }
+    }
+
+    private fun getPlayResult(): PlayResult {
         val playNum = getPlayNum()
         val playResult = if(playNum < GAME_CRITICAL_POINT) PlayResult.STOP else PlayResult.GO
         return playResult
