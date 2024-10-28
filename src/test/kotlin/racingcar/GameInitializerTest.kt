@@ -6,9 +6,9 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertDoesNotThrow
 import org.junit.jupiter.api.assertThrows
 
-class InitializerTest : NsTestCopy() {
+class GameInitializerTest : NsTestCopy() {
     override fun runFunction() {
-        Initializer()
+        GameInitializer()
     }
 
     @Test

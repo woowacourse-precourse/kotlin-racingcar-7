@@ -1,9 +1,9 @@
 package racingcar
 
 fun main() {
-    val initializer = Initializer()
-    val cars = initializer.cars
-    val gameCount = initializer.gameCount
+    val gameInitializer = GameInitializer()
+    val cars = gameInitializer.cars
+    val gameCount = gameInitializer.gameCount
 
     val game = Game(cars, gameCount)
 
