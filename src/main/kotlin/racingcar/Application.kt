@@ -1,8 +1,11 @@
 package racingcar
 
+import kotlin.random.Random
+
 fun main() {
     val userCarName = getCarName()
     val userCarList = parseCar(userCarName!!)
+    val trialNumber = getTrialNumber()
 }
 
 fun getCarName(): String? {
@@ -13,4 +16,9 @@ fun getCarName(): String? {
 fun parseCar(input: String): List<String> {
     val userCarList: List<String> = input.split(",")
     return userCarList
+}
+
+fun getTrialNumber(): Int? {
+    println("시도할 횟수는 몇 회인가요?")
+    return readlnOrNull()?.toIntOrNull()
 }
