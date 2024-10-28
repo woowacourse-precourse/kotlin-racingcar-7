@@ -9,11 +9,7 @@ fun main() {
     val carMap = mutableMapOf<String, Int>()
 
     promptForCarNames()
-
-    for (carName in processCarNames(readLine())) {
-        validateCarName(carName)
-        carMap.put(carName, 0)
-    }
+    initializeCarMap(carMap, processCarNames(readLine()))
 
     println("시도할 횟수는 몇 회인가요?")
     val attemptNumber = readLine().toInt() // TODO : 위치 변경?
@@ -43,6 +39,13 @@ fun promptForCarNames() = println("경주할 자동차 이름을 입력하세요
 
 fun processCarNames(input: String) = input.split(",")
     .map { it.trim() }
+
+fun initializeCarMap(carMap: MutableMap<String, Int>, carList: List<String>) {
+    for (carName in carList) {
+        validateCarName(carName)
+        carMap.put(carName, 0)
+    }
+}
 
 fun validateCarName(carName: String) {
     require(isCarNameValidLength(carName)) { "자동차 이름은 5자 이하만 가능하다." }
