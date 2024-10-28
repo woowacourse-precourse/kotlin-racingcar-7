@@ -39,6 +39,7 @@ fun startGame(count: Int, carList: List<Car>) {
     println("실행 결과")
     repeat(count) {
         increaseDistance(carList)
+        printCurrentDistance(carList)
     }
 }
 
@@ -51,3 +52,10 @@ fun increaseDistance(list: List<Car>) =
         if (randomN >= 4) car.increaseDistance(1)
         else car
     }
+
+fun printCurrentDistance(list: List<Car>) {
+    for (car in list) {
+        println(car)
+    }
+    println()
+}
