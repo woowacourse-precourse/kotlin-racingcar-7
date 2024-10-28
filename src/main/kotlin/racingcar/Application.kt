@@ -7,8 +7,8 @@ fun main() {
     val carMap = mutableMapOf<String, Int>()
 
     promptForCarNames()
-    // TODO : trim() ? 으로 공백 제거? // 커밋 body에 올렸다 PR 설명에 적기
-    for (carName in readLine().split(",")) {
+
+    for (carName in readLine().split(",").map { it.trim() }) {
         require(carName.length <= 5) { "자동차 이름은 5자 이하만 가능하다." }  // TODO: 조건식 변수화
         carMap.put(carName, 0)
     }
