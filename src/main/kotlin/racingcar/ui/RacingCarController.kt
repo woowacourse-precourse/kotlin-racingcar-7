@@ -1,14 +1,14 @@
 package racingcar.ui
 
 import racingcar.domain.entity.Car
-import racingcar.domain.usecase.CreateCarUseCase
+import racingcar.domain.usecase.CreateCarsUseCase
 import racingcar.domain.usecase.GetWinnersUseCase
 import racingcar.domain.usecase.PlayRaceUseCase
 
 class RacingCarController(
     private val racingInputView: RacingInputView,
     private val racingResultView: RacingResultView,
-    private val createCarUseCase: CreateCarUseCase,
+    private val createCarsUseCase: CreateCarsUseCase,
     private val getWinnersUseCase: GetWinnersUseCase,
     private val playRaceUseCase: PlayRaceUseCase,
 ) {
@@ -25,7 +25,7 @@ class RacingCarController(
         return createCars(input)
     }
 
-    private fun createCars(input: String) = createCarUseCase.execute(input)
+    private fun createCars(input: String) = createCarsUseCase.execute(input)
 
 
     private fun getRaceCount(): Int {

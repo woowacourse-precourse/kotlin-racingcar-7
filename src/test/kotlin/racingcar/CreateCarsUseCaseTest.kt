@@ -4,22 +4,22 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import racingcar.domain.entity.Car
-import racingcar.domain.usecase.CreateCarUseCase
+import racingcar.domain.usecase.CreateCarsUseCase
 
-class CreateCarUseCaseTest {
+class CreateCarsUseCaseTest {
 
-    private val createCarUseCase = CreateCarUseCase()
+    private val createCarsUseCase = CreateCarsUseCase()
 
     @Test
     fun `자동차 생성 테스트`() {
-        val cars = createCarUseCase.execute("red,blue")
+        val cars = createCarsUseCase.execute("red,blue")
         val expect = listOf(Car("red"), Car("blue"))
         assertEquals(expect, cars)
     }
 
     @Test
     fun `자동차 익명 생성 테스트`() {
-        val cars = createCarUseCase.execute("red,  ,   ,")
+        val cars = createCarsUseCase.execute("red,  ,   ,")
         val expect = listOf(Car("red"), Car("익명1"), Car("익명2"), Car("익명3"))
         assertEquals(expect, cars)
     }
@@ -27,7 +27,7 @@ class CreateCarUseCaseTest {
     @Test
     fun `익명 자동차 1000명 생성 테스트`() {
         assertThrows<IllegalArgumentException> {
-            createCarUseCase.execute(",".repeat(999))
+            createCarsUseCase.execute(",".repeat(999))
         }
     }
 
@@ -35,7 +35,7 @@ class CreateCarUseCaseTest {
     fun `자동차를 생성할때 이름이 5자 초과일 경우 예외 처리 테스트`() {
         val input = "red,blue,white,yellow"
         assertThrows<IllegalArgumentException> {
-            createCarUseCase.execute(input)
+            createCarsUseCase.execute(input)
         }
     }
 
@@ -43,7 +43,7 @@ class CreateCarUseCaseTest {
     fun `자동차들의 이름에 중복이 있을 경우 예외 처리 테스트`() {
         val input = "red,blue,white,blue"
         assertThrows<IllegalArgumentException> {
-            createCarUseCase.execute(input)
+            createCarsUseCase.execute(input)
         }
     }
 }
