@@ -12,11 +12,6 @@ class RacingGame {
         computer.printWinner(winner)
     }
 
-    fun determinedWinners(cars: List<Car>): List<Car> {
-        val winnerPosition = cars.maxOf { it.position }
-        return cars.filter { it.position == winnerPosition }
-    }
-
     private fun initCar(): List<Car> {
         val inputCarNames = computer.inputCarName()
         val carName = splitCarName(inputCarNames)
@@ -45,11 +40,16 @@ class RacingGame {
         }
     }
 
+    fun determinedWinners(cars: List<Car>): List<Car> {
+        val winnerPosition = cars.maxOf { it.position }
+        return cars.filter { it.position == winnerPosition }
+    }
+
     private fun printGameResultMessage() {
-        println("\n실행 결과")
+        println(EXECUTION_RESULT)
     }
 
     private fun splitCarName(carName: String): List<Car> {
-        return carName.split(",").map { Car(it) }
+        return carName.split(COMMA).map { Car(it) }
     }
 }
