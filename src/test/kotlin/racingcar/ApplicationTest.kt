@@ -52,6 +52,8 @@ class ApplicationTest : NsTest() {
     fun `예외 테스트-자동차 이름이 공백일 때`() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("pobi,,", "1") }
+            assertThrows<IllegalArgumentException> { runException(",", "1") }
+            assertThrows<IllegalArgumentException> { runException("", "1") }
         }
     }
 
