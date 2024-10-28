@@ -13,6 +13,9 @@ fun main() {
     val carPositions = initializeCarPositions(carNames)
     println("실행 결과")
     startRacing(carPositions, tryCount)
+
+    val winnerNames = getWinnerNames(carPositions)
+    println("최종 우승자 : ${winnerNames.joinToString(", ")}")
 }
 
 
@@ -73,4 +76,10 @@ private fun printCurrentPositions(carPositions: Map<String, Int>) {
 private fun randomMove(): Boolean {
     val randomNumber = Randoms.pickNumberInRange(0, 9)
     return randomNumber >= 4
+}
+
+
+private fun getWinnerNames(carPositions: Map<String, Int>): List<String> {
+    val maxPosition = carPositions.values.maxOrNull() ?: 0
+    return carPositions.filterValues { it == maxPosition }.keys.toList()
 }
