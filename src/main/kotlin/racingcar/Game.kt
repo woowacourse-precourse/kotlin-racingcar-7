@@ -1,8 +1,8 @@
 package racingcar
 
-import camp.nextstep.edu.missionutils.Console
-
 class Game {
+    val reader = Reader()
+    val monitor = Monitor()
 
     fun startGame() {
         val carList = getCarList()
@@ -16,29 +16,19 @@ class Game {
         return carList.map { Car(it) }
     }
 
-    private fun displayInputCar() {
-        println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
-    }
 
     private fun getCarList(): List<Car> {
-        displayInputCar()
+        monitor.displayInputCar()
         return createCars()
     }
 
-    private fun displayTryCount() {
-        println("시도할 횟수는 몇 회인가요?")
-    }
 
     private fun validCarCount(): Int {
-        return inputNum().toIntOrNull() ?: throw IllegalArgumentException("숫자를 입력해주세요")
-    }
-
-    private fun inputNum(): String {
-        return Console.readLine()
+        return reader.inputNum().toIntOrNull() ?: throw IllegalArgumentException(ERROR_INPUT_INT)
     }
 
     private fun getTryCount(): Int {
-        displayTryCount()
+        monitor.displayTryCount()
         return validCarCount()
     }
 
@@ -51,8 +41,11 @@ class Game {
         println("최종 우승자 : $winners")
     }
 
-
     private fun findWinner(cars: List<Car>, maxDistance: Int): String {
-        return cars.filter { it.distance == maxDistance }.joinToString(", ") { it.name }
+        return cars.filter { it.distance == maxDistance }.joinToString(",") { it.name }
+    }
+
+    companion object {
+        const val ERROR_INPUT_INT = "숫자를 입력해주세요"
     }
 }

@@ -37,6 +37,12 @@
 ## CarDisplay
 - [x] 차 전진하는 뷰 보여주기
 
+## Monitor
+- [x] 출력문구 보여주기
+
+## Reader
+- [x] 입력받기
+
 ## Winner
 - [x] 우승한 차들을 담은 List(cars)
 
