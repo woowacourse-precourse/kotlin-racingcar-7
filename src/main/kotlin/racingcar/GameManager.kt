@@ -7,6 +7,7 @@ object GameManager {
     private lateinit var round: Round
 
     fun generateCars(input: String) {
+        validation.validateInputHasComma(input)
         carNames = validation.validateCarNames(input.split(",").map { it.trim() })
         initializeRound()
     }
