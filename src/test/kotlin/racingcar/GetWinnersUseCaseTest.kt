@@ -16,7 +16,7 @@ class GetWinnersUseCaseTest {
 
     @Test
     fun `우승자가 다수일 경우 테스트`() {
-        val cars = listOf(Car("red", 4), Car("blue", 5), Car("white", 5))
+        val cars = listOf(Car("red", _position = 4), Car("blue", 5), Car("white", _position = 5))
         val result = GetWinnersUseCase().execute(cars)
         val expect = listOf("blue", "white")
         assertEquals(expect, result)
