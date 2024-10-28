@@ -1,11 +1,12 @@
 package racingcar.model
 
-class Car (val name:String){
+class Car(val name: String) {
     private var status = 0
-    fun getStatus():Int{
+    fun getStatus(): Int {
         return status
     }
-    fun go(){
+
+    fun go() {
         if (Random().randomGenerator())
             status++
     }

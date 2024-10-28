@@ -5,9 +5,9 @@ import racingcar.utils.Validation
 import racingcar.view.Input
 
 class RacingController {
-    fun playGame(){
+    fun playGame() {
         val carName = Input().getCars()
         val tryCount = Input().getCount()
-        Racing().race(tryCount,Racing().readyToRace(carName))
+        Racing().race(tryCount, Racing().readyToRace(carName))
     }
 }
