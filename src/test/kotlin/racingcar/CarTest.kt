@@ -42,7 +42,7 @@ class CarTest {
     companion object {
         private const val TEST_CAR = "car"
         private const val POSSIBLE = true
-        private const val IMPOSSIBLE = true
+        private const val IMPOSSIBLE = false
         private const val GO = 4
         private const val STOP = 1
         private const val POSITION_GO = 1
