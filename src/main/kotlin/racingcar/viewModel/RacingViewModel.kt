@@ -2,10 +2,10 @@ package racingcar.viewModel
 
 import racingcar.constans.Constants.SEPARATOR
 import racingcar.delegate.ValidationDelegator
-import racingcar.intent.UserInputIntent
-import racingcar.intent.UserInputIntent.EnterPlayerNameIntent
-import racingcar.intent.UserInputIntent.EnterPlayCountIntent
+import racingcar.event.RacingViewEvent.InputPlayerName
+import racingcar.event.RacingViewEvent.InputPlayCount
 import racingcar.PlayGround
+import racingcar.event.RacingViewEvent
 import racingcar.model.CarRacingState.PlayerState
 import racingcar.model.CarRacingState.PlayResultState
 
@@ -16,15 +16,15 @@ class RacingViewModel(
     private val state = mutableListOf<PlayerState>()
     private var playCount: Int = 0
 
-    fun onCompleteInput(intent: UserInputIntent) {
-        when (intent) {
-            is EnterPlayerNameIntent -> onCompleteInputPlayerNames(intent)
-            is EnterPlayCountIntent -> onCompleteInputPlayCount(intent)
+    fun onCompleteInput(event: RacingViewEvent) {
+        when (event) {
+            is InputPlayerName -> onCompleteInputPlayerNames(event)
+            is InputPlayCount -> onCompleteInputPlayCount(event)
         }
     }
 
-    private fun onCompleteInputPlayerNames(intent: EnterPlayerNameIntent) {
-        val userNames = intent.userNames
+    private fun onCompleteInputPlayerNames(event: InputPlayerName) {
+        val userNames = event.userNames
         validationDelegator.handleUserNameInput(userNames)
         val separatedNames = userNames
             .split(SEPARATOR)
@@ -32,8 +32,8 @@ class RacingViewModel(
         readyForPlayers(separatedNames)
     }
 
-    private fun onCompleteInputPlayCount(intent: EnterPlayCountIntent) {
-        val playCount = intent.playCount
+    private fun onCompleteInputPlayCount(event: InputPlayCount) {
+        val playCount = event.playCount
         validationDelegator.checkPlayCountIsValidNumeric(playCount)
         validationDelegator.handlePlayCountInput(playCount.toInt())
         readyForPlayCount(playCount.toInt())
