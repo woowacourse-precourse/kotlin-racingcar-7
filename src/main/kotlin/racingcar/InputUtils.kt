@@ -12,3 +12,9 @@ fun inputAttemptCount(): Int {
     println("시도할 횟수는 몇 회인가요?")
     return Console.readLine().toInt()
 }
+
+fun validateCarNames(carNames: List<String>) {
+    if (carNames.any { it.length > 5 }) {
+        throw IllegalArgumentException("자동차 이름은 5글자 이하만 가능합니다.")
+    }
+}
