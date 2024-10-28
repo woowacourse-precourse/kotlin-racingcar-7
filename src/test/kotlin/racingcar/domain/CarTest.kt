@@ -11,7 +11,7 @@ class CarTest {
     @Test
     fun `4보다 작은 수가 생성됐을 경우 이동하지 않음`() {
         // arrange
-        sut = createCar(randomNumberGenerator = { _, _ -> 3 })
+        sut = createCar(randomNumberGenerator = { _, _ -> STOP })
         val previousDistance = sut.distance
 
         // act
@@ -25,7 +25,7 @@ class CarTest {
     @Test
     fun `4이상의 수가 생성됐을 경우 이동`() {
         // arrange
-        sut = createCar(randomNumberGenerator = { _, _ -> 4 })
+        sut = createCar(randomNumberGenerator = { _, _ -> MOVE })
         val previousDistance = sut.distance
 
         // act
@@ -40,4 +40,9 @@ class CarTest {
         carName: CarName = "name".asCarName(),
         randomNumberGenerator: RandomNumberGenerator,
     ) = Car(carName, randomNumberGenerator)
+
+    companion object {
+        private const val MOVE = 4
+        private const val STOP = 3
+    }
 }

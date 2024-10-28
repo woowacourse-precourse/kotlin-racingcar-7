@@ -54,6 +54,11 @@ class GetWinnersKtTest {
 
     private fun createCar(carName: CarName, shouldBeWinner: Boolean): Car = Car(
         carName = carName,
-        randomNumberGenerator = if (shouldBeWinner) { _, _ -> 4 } else { _, _ -> 3 }
+        randomNumberGenerator = if (shouldBeWinner) { _, _ -> MOVE } else { _, _ -> STOP }
     )
+    
+    companion object {
+        private const val MOVE = 4
+        private const val STOP = 3
+    }
 }
