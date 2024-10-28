@@ -50,6 +50,18 @@ class ValidationTest {
         }
     }
 
+    @Test
+    fun `자동차 이름 유효성 검사 (이름에 공백이 있을 경우)`() {
+        val carList = listOf(
+            Car("Ci er"),
+            Car("Cola"),
+        )
+
+        assertThrows<IllegalArgumentException> {
+            validation.checkContainBlank(carList)
+        }
+    }
+
     @ParameterizedTest
     @ValueSource(strings = ["a", "-", "cola", "콜라"])
     fun `시도 횟수 유효성 검사 (숫자가 아닐 경우)`(input: String) {
