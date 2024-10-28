@@ -1,7 +1,6 @@
 package racingcar.utils
 
 import racingcar.model.Car
-import racingcar.utils.ErrorMessages
 
 object Validator {
 
