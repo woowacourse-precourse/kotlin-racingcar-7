@@ -7,21 +7,18 @@ fun main() {
     println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
     val input = Console.readLine()
 
-    // List형태로 split 한 값 받아오기
     val carNames = splitCarNames(input)
 
     println("시도할 횟수는 몇 회인가요?")
     val num = Console.readLine()
     checkNum(num)
 
-    // 자동차 경주 시작
     print("\n실행 결과")
     val cars = makeCarKey(carNames)
     val finalPositions = race(cars, num.toInt())
 
     val winners = findWinners(finalPositions)
     println("\n최종 우승자 : ${winners.joinToString(", ")}")
-
 }
 
 fun splitCarNames(input: String): List<String> {
