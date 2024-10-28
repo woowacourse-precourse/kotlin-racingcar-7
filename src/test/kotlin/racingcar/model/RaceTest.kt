@@ -1,8 +1,8 @@
 package racingcar.model
 
-import camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
 
 class RaceTest {
 
@@ -32,6 +32,19 @@ class RaceTest {
         // 각 자동차의 위치가 그대로인지 확인
         assertThat(car1.position).isEqualTo(0)
         assertThat(car2.position).isEqualTo(0)
+    }
+
+    @Test
+    fun `race에 참여하는 자동차 간 이름이 같은 경우`() {
+        // 중복된 이름을 가진 자동차 생성
+        val car1 = Car("pobi")
+        val car2 = Car("pobi")
+        val car3 = Car("woni")
+
+        //오류 발생
+        assertThrows<IllegalArgumentException> {
+            Race(listOf(car1, car2, car3), 5)
+        }
     }
 
 

@@ -37,6 +37,13 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `자동차 이름이 서로 같은 경우`(){
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,pobi,woni", "1") }
+        }
+    }
+
 
     override fun runMain() {
         main()
