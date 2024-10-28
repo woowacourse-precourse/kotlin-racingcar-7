@@ -21,7 +21,7 @@ class CommandLineView(private val viewModel: ViewModel = ViewModel()) : View {
         println(result.joinToString(separator = "\n") { roundResult ->
             roundResult.joinToString(
                 separator = "\n", postfix = "\n"
-            )
+            ) { car -> "${car.name} : ${"-".repeat(car.movedDistance)}" }
         })
     }
 

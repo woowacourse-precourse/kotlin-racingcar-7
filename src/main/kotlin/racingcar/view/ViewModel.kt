@@ -27,5 +27,5 @@ class ViewModel(private val stadium: Stadium = Stadium()) {
         this.round = input
     }
 
-    fun race(): List<List<String>> = stadium.race(cars, round ?: throw IllegalArgumentException())
+    fun race(): List<List<Car>> = stadium.race(cars, round ?: throw IllegalArgumentException())
 }
