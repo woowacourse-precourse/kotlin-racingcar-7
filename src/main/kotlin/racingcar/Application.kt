@@ -37,13 +37,23 @@ fun raceCars(carNames: List<String>, moveCount: Int) {
                 results[name] = results[name]!! + 1 // 전진
             }
         }
-        displayResults(results, moveIndex + 1) // 이동 결과 출력
+        displayResults(results) // 이동 결과 출력
     }
+
+    // 우승자 판별
+    determineWinners(results)
 }
 
-fun displayResults(results: Map<String, Int>, moveIndex: Int) {
+fun displayResults(results: Map<String, Int>) {
     results.forEach { (name, distance) ->
         println("$name : ${"-".repeat(distance)}")
     }
     println() // 결과 간격 추가
+}
+
+fun determineWinners(results: Map<String, Int>) {
+    val maxDistance = results.values.maxOrNull() ?: 0 // 가장 많이 전진한 거리
+    val winners = results.filter { it.value == maxDistance }.keys // 우승자 필터링
+
+    println("최종 우승자 : ${winners.joinToString(", ")}") // 우승자 출력
 }
