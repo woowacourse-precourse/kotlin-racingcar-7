@@ -12,7 +12,7 @@ fun main() {
     initializeCarMap(carMap, processCarNames(readLine()))
 
     promptForAttemptNumber()
-    val attemptNumber = readLine().toInt() // TODO : 위치 변경?
+    val attemptNumber = processAttemptNumber(readLine())
 
     println("실행 결과")
     for (i in 0 until attemptNumber) {
@@ -40,6 +40,8 @@ fun promptForAttemptNumber() = println("시도할 횟수는 몇 회인가요?")
 
 fun processCarNames(input: String) = input.split(",")
     .map { it.trim() }
+
+fun processAttemptNumber(input: String) = input.toInt()
 
 fun initializeCarMap(carMap: MutableMap<String, Int>, carList: List<String>) {
     for (carName in carList) {
