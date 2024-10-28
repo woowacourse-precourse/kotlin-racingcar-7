@@ -6,7 +6,7 @@ import camp.nextstep.edu.missionutils.Randoms.pickNumberInRange
 fun main() {
     val carMap = mutableMapOf<String, Int>()
 
-    println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
+    promptForCarNames()
     // TODO : trim() ? 으로 공백 제거? // 커밋 body에 올렸다 PR 설명에 적기
     for (carName in readLine().split(",")) {
         require(carName.length <= 5) { "자동차 이름은 5자 이하만 가능하다." }  // TODO: 조건식 변수화
@@ -35,4 +35,8 @@ fun main() {
             .keys
             .joinToString(", ")
     )
+}
+
+fun promptForCarNames() {
+    println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
 }
