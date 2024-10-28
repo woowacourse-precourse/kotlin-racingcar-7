@@ -9,6 +9,7 @@ fun main() {
     val trialNumber = getTrialNumber()
     val cars = userCarList.map { Car(it) }
     race(cars, trialNumber)
+    val winners = findWinners(cars)
 }
 
 fun getCarName(): String? {
@@ -59,4 +60,9 @@ fun race(cars: List<Car>, trialNumber: Int) {
         }
         println()
     }
+}
+
+fun findWinners(cars: List<Car>): List<String> {
+    val maxPosition = cars.maxOf { it.position }
+    return cars.filter { it.position == maxPosition }.map { it.name }
 }
