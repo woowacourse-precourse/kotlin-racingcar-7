@@ -67,6 +67,13 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
+    fun `예외 테스트 - 시도할 횟수를 입력하지 않은 경우 (공백 입력)`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,woni", " ") }
+        }
+    }
+
+    @Test
     fun `예외 테스트 - 시도할 횟수 입력시 정수가 아닌 다른 값이 입력된 경우`() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("pobi,woni", "1.1")}
