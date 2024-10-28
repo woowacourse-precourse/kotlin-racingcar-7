@@ -73,7 +73,7 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
-    fun `예외 테스트`() {
+    fun `예외 테스트 자동차 이름 5자 초과`() {
         assertSimpleTest {
             val exception = assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
 
