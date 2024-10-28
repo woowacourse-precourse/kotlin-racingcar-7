@@ -7,6 +7,8 @@ import racingcar.constant.PrintMessage
 import racingcar.view.OutputView
 import racingcar.constant.ErrorMessage
 import racingcar.constant.GameSettings
+import racingcar.validator.AttemptCountValidator
+import racingcar.validator.RacingCarNameValidator
 
 class RacingCarController {
     private val inputView = InputView()
@@ -28,7 +30,7 @@ class RacingCarController {
 
     fun createRacingCars(input: String): List<RacingCar> {
         val racingCarNames = parseRacingCarNames(input)
-        if (validateRacingCarNames(racingCarNames)) {
+        if (RacingCarNameValidator.validate(racingCarNames)) {
             return racingCarNames.map { racingCarName ->
                 RacingCar(racingCarName)
             }
@@ -38,39 +40,12 @@ class RacingCarController {
 
     private fun parseRacingCarNames(input: String) = input.split(GameSettings.PARSE_DELIMITER).map { it.trim() }
 
-    private fun validateRacingCarNames(racingCarNames: List<String>): Boolean {
-        return when {
-            hasDuplicateNames(racingCarNames) -> throw IllegalArgumentException(ErrorMessage.HAS_DUPLICATE_NAMES)
-            isNameEmpty(racingCarNames) -> throw IllegalArgumentException(ErrorMessage.IS_NAME_EMPTY)
-            isOverMaxLength(racingCarNames) -> throw IllegalArgumentException(ErrorMessage.IS_OVER_MAX_LENGTH)
-            else -> true
-        }
-    }
-
-    private fun hasDuplicateNames(names: List<String>) = names.size != names.distinct().size
-
-    private fun isNameEmpty(names: List<String>) = names.any { name -> name.isEmpty() }
-
-    private fun isOverMaxLength(names: List<String>) = names.any { name -> name.length > GameSettings.MAX_LENGTH }
-
     fun convertToAttemptCount(input: String): Int {
-        if (validateAttemptCount(input)) {
+        if (AttemptCountValidator.validate(input)) {
             return input.toInt()
         }
         throw IllegalArgumentException(ErrorMessage.FAIL_CONVERT_TO_ATTEMPT_COUNT)
     }
-
-    private fun validateAttemptCount(attemptCount: String): Boolean  {
-        return when {
-            isNonNumber(attemptCount) -> throw IllegalArgumentException(ErrorMessage.IS_NON_NUMBER)
-            isNonPositiveNumber(attemptCount) -> throw IllegalArgumentException(ErrorMessage.IS_NON_POSITIVE_NUMBER)
-            else -> true
-        }
-    }
-
-    private fun isNonNumber(input: String) = input.toIntOrNull() == null
-
-    private fun isNonPositiveNumber(input: String) = input.toInt() <= GameSettings.NON_POSITIVE_STANDARD
 
     private fun createRandomNumber() = Randoms.pickNumberInRange(GameSettings.RANDOM_NUMBER_MIN, GameSettings.RANDOM_NUMBER_MAX)
 
