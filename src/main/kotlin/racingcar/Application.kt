@@ -7,7 +7,7 @@ fun main() {
     checkCarNameCondition(userCarName)
     val userCarList = parseCar(userCarName!!)
     val trialNumber = getTrialNumber()
-    val randomNumber = getRandomNumber()
+    val cars = userCarList.map { Car(it) }
 }
 
 fun getCarName(): String? {
@@ -30,6 +30,10 @@ fun getTrialNumber(): Int {
     return readlnOrNull()?.toIntOrNull() ?: throw IllegalArgumentException("잘못된 값을 입력했습니다.")
 }
 
-fun getRandomNumber(): Int {
-    return Random.nextInt(0, 10)
+class Car(val name: String) {
+    var position = 0
+
+    private fun getRandomNumber(): Int {
+        return Random.nextInt(0, 10)
+    }
 }
