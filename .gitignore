@@ -33,3 +33,8 @@ out/
 
 ### Mac OS ###
 .DS_Store
+
+### 추가된 항목 ###
+*.class
+.metadata/
+/local.properties
