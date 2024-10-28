@@ -62,6 +62,14 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `입력된 시행 횟수가 양수가 아닐 시 예외 처리`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("car", "0") }
+            assertThrows<IllegalArgumentException> { runException("car", "-1") }
+        }
+    }
+
     override fun runMain() {
         main()
     }
