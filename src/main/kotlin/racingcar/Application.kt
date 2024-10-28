@@ -9,6 +9,7 @@ import racingcar.view.OutputView
 fun main() {
     val inputView = InputView()
     val outputView = OutputView()
+
     val carNames = inputView.getCarNames()
     val roundCount = inputView.getRoundCount()
 

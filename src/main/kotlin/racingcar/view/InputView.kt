@@ -1,16 +1,22 @@
 package racingcar.view
 
 import camp.nextstep.edu.missionutils.Console
+import racingcar.utils.Validator
 
 class InputView {
+    private val validator = Validator()
+
     fun getCarNames(): List<String> {
         println(GET_CAR_NAMES)
-        return Console.readLine().split(",").map { it.trim() }
+        val carNames = Console.readLine().split(",").map { it.trim() }
+        validator.validateCarNames(carNames)
+        return carNames
     }
 
     fun getRoundCount(): Int {
         println(GET_ROUND_COUNT)
-        return Console.readLine().toInt()
+        val input = Console.readLine()
+        return validator.validateRoundCount(input)
     }
 
     companion object {
