@@ -1,11 +1,10 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.test.NsTest
-import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
-class InputTest : NsTest() {
+class ListTest : NsTest() {
     @Test
     fun `이름 다섯자 이하 테스트`() {
         camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest {
