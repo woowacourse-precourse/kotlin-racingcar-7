@@ -41,3 +41,7 @@ fun startGame(count: Int, carList: List<Car>) {
 
     }
 }
+
+fun getRandomNumber(min: Int, max: Int): Int =
+    camp.nextstep.edu.missionutils.Randoms.pickNumberInRange(min, max)
+
