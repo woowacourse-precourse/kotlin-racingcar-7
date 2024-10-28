@@ -20,6 +20,17 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
+    fun `이름 중복테스트`() {
+        assertRandomNumberInRangeTest(
+            {
+                run("pobi,woni", "1")
+                assertThat(output()).contains("pobi : -", "pobi : ", "최종 우승자 : pobi")
+            },
+            MOVING_FORWARD, STOP
+        )
+    }
+
+    @Test
     fun `예외 테스트`() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
