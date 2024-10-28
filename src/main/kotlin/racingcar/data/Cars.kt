@@ -14,6 +14,7 @@ class Cars(
     companion object {
         private const val MINIMUM_CAR_COUNT = 2
         private const val DELIMITER = ","
+
         private fun String.toCars() = this.split(DELIMITER).map { Car(it) }
         fun Cars.toList() = input.toCars()
     }
