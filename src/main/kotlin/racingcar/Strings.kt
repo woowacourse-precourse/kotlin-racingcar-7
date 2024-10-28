@@ -6,4 +6,5 @@ object Strings {
     const val MESSAGE_OUTPUT_RESULT = "실행 결과"
     const val MESSAGE_OUTPUT_WINNER = "최종 우승자 : "
     const val MESSAGE_EXCEPTION_CAR_NAME_LENGTH = "자동차 이름은 5자 이하만 가능합니다."
+    const val MESSAGE_EXCEPTION_INPUT_ATTEMPT_NUMBER = "입력 횟수는 정수값이여야 합니다."
 }

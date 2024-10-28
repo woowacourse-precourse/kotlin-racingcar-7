@@ -28,7 +28,9 @@ fun promptForAttemptNumber() = println(Strings.MESSAGE_INPUT_ATTEMPT_NUMBER)
 fun processCarNames(input: String): List<String> = input.split(",")
     .map { it.trim() }
 
-fun processAttemptNumber(input: String) = input.toInt()
+fun processAttemptNumber(input: String) =
+    input.toIntOrNull() ?: throw IllegalArgumentException(Strings.MESSAGE_EXCEPTION_INPUT_ATTEMPT_NUMBER)
+
 
 fun initializeCarMap(carList: List<String>): MutableMap<String, Int> {
     val carMap = mutableMapOf<String, Int>()
