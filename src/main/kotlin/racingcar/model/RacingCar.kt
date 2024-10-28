@@ -3,6 +3,7 @@ package racingcar.model
 import camp.nextstep.edu.missionutils.Randoms
 import racingcar.util.ConstantsUtil.MAX_RANDOM_NUMBER
 import racingcar.util.ConstantsUtil.MIN_RANDOM_NUMBER
+import racingcar.util.ConstantsUtil.MOVE_MIN_NUMBER
 
 class RacingCar(
     private val cars: List<Car>
@@ -16,7 +17,7 @@ class RacingCar(
     }
 
     private fun isMove(): Boolean {
-        return Randoms.pickNumberInRange(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER) >= 4
+        return Randoms.pickNumberInRange(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER) >= MOVE_MIN_NUMBER
     }
 
     fun findWinners(): List<Car> {
