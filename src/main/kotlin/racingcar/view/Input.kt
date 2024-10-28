@@ -1,10 +1,19 @@
 package racingcar.view
 
 import camp.nextstep.edu.missionutils.Console
+import racingcar.validation.InputValidation
 
 class Input {
-    fun raceRound(): String = readLine()
-    fun carNames(): String = readLine()
+    private val inputValidation = InputValidation()
+
+    fun getCarNames(): List<String> = readLine()
+        .split(",")
+        .map {
+            inputValidation.carName(it)
+            it.trim()
+        }
+
+    fun getRaceRound(): Int = readLine().also { inputValidation.raceRound(it) }.toInt()
 
     private fun readLine(): String = Console.readLine()
 }
