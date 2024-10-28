@@ -9,7 +9,7 @@ import org.junit.jupiter.api.assertThrows
 
 class ApplicationTest : NsTest() {
     @Test
-    fun `기능 테스트`() {
+    fun `통합 테스트`() {
         assertRandomNumberInRangeTest(
             {
                 run("pobi,woni", "1")
@@ -20,7 +20,7 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
-    fun `기능 테스트 3명 이상`() {
+    fun `통합 테스트 3명 이상`() {
         assertRandomNumberInRangeTest(
             {
                 run("pobi,woni,jun", "5")
@@ -31,7 +31,7 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
-    fun `기능 테스트 2명 이상의 우승자`() {
+    fun `통합 테스트 2명 이상의 우승자`() {
         assertRandomNumberInRangeTest(
             {
                 run("pobi,woni,jun,a,b", "3")
@@ -49,7 +49,7 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
-    fun `기능 테스트 공백 제거`() {
+    fun `통합 테스트 공백 제거`() {
         assertRandomNumberInRangeTest(
             {
                 run("  a , b , c", "3")
