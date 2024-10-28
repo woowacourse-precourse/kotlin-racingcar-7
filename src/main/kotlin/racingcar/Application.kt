@@ -1,5 +1,7 @@
 package racingcar
 
+import racingcar.view.carnameinputview
+
 fun main() {
-    // TODO: 프로그램 구현
+    val carname = carnameinputview()
 }
