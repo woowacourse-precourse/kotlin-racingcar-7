@@ -6,6 +6,8 @@ object OutputView {
     private const val RESULT_TITLE_MESSAGE = "실행 결과"
     private const val RESULT_DELIMITER = " : "
     private const val DISTANCE_SYMBOL = "-"
+    private const val WINNER_MESSAGE = "최종 우승자"
+    private const val WINNER_DELIMITER = ", "
 
     fun printCarsNameInput() = println(CARS_NAME_INPUT_MESSAGE)
 
@@ -17,4 +19,7 @@ object OutputView {
 
     fun printRoundResult(name: String, distance: Int) =
         println("$name$RESULT_DELIMITER${DISTANCE_SYMBOL.repeat(distance)}")
+
+    fun printWinner(winners: List<String>) =
+        print("$WINNER_MESSAGE$RESULT_DELIMITER${winners.joinToString(WINNER_DELIMITER)}")
 }

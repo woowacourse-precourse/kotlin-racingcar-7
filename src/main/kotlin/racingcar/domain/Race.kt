@@ -6,6 +6,7 @@ import racingcar.data.Round.Companion.toInt
 import racingcar.ui.InputView
 import racingcar.ui.OutputView
 import racingcar.utils.Random
+import racingcar.utils.Winner
 
 class Race(
     private val inputView: InputView,
@@ -15,6 +16,7 @@ class Race(
         val cars = buildCars()
         val round = buildRound()
         repeatRounds(cars, round)
+        printWinner(cars)
     }
 
     private fun buildCars(): List<Car> {
@@ -41,4 +43,6 @@ class Race(
         }
         outputView.printNewLine()
     }
+
+    private fun printWinner(cars: List<Car>) = outputView.printWinner(Winner.calculate(cars))
 }
