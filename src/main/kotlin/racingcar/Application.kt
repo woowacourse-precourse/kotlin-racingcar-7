@@ -1,14 +1,17 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Console
+import racingcar.feature.InputNames
 import racingcar.feature.RacingCarGame
 import racingcar.utils.isCountInvalid
-import racingcar.utils.isNamesInvalid
 
 fun main() {
-    println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
-    val namesInput = Console.readLine()
-    if (namesInput.isNamesInvalid()) throw IllegalArgumentException()
+    val inputNames = InputNames()
+    inputNames.run {
+        printInputNamesMessage()
+        readNames()
+        validateNames()
+    }
 
     println("시도할 횟수는 몇 회인가요?")
     val countInput = Console.readLine()
@@ -16,7 +19,7 @@ fun main() {
 
     println()
 
-    val racingCarGame = RacingCarGame(namesInput)
+    val racingCarGame = RacingCarGame(inputNames.names)
 
     println("실행 결과")
     repeat(countInput.toInt()) {
