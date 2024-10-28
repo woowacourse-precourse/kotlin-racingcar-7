@@ -10,13 +10,13 @@ class RacingGame(
     fun startRacing(outputView: OutputView) {
         outputView.printRaceResult()
         repeat(attemptCount.getNumber()) {
-            playRound(cars)
-            displayRoundResult(cars, outputView)
+            playRound()
+            displayRoundResult(outputView)
         }
         displayWinners(outputView)
     }
 
-    private fun playRound(cars: List<Car>) {
+    private fun playRound() {
         for (car in cars) {
             if (car.canMove()) {
                 car.moveForward()
@@ -24,7 +24,7 @@ class RacingGame(
         }
     }
 
-    private fun displayRoundResult(cars: List<Car>, outputView: OutputView) {
+    private fun displayRoundResult(outputView: OutputView) {
         for (car in cars) {
             outputView.printCarRoundInfo(car)
         }
