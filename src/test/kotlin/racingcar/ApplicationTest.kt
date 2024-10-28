@@ -81,6 +81,15 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `예외 테스트 공백으로 이뤄진 자동차 이름`() {
+        assertSimpleTest {
+            val exception = assertThrows<IllegalArgumentException> { runException("  , ,", "1") }
+
+            exception.printStackTrace()
+        }
+    }
+
     override fun runMain() {
         main()
     }
