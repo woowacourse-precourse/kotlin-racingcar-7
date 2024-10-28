@@ -17,6 +17,10 @@ class Game(carNames: List<String>) {
         return Randoms.pickNumberInRange(MIN_MOVE_THRESHOLD, MAX_MOVE_THRESHOLD) >= MOVE_THRESHOLD
     }
 
+    fun getCars(): List<Car> {
+        return cars
+    }
+
     companion object {
         const val MOVE_THRESHOLD = 4
         const val MIN_MOVE_THRESHOLD = 0
