@@ -2,18 +2,30 @@ package racingcar
 
 
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.assertDoesNotThrow
-import org.junit.jupiter.api.assertThrows
+import org.junit.jupiter.api.*
 import racingcar.domain.Car
 import racingcar.domain.Stadium
-import racingcar.view.CommandLineView
-import racingcar.view.View
+import java.io.ByteArrayOutputStream
+import java.io.PrintStream
 
 class FunctionalRequirements {
     private val application = Application()
     private val stadium = Stadium()
-    private val view: View = CommandLineView()
+    private val captor = ByteArrayOutputStream()
+
+    @BeforeEach
+    fun init() {
+        System.setOut(PrintStream(captor))
+    }
+
+    @AfterEach
+    fun printOutput() {
+        System.setOut(System.out)
+    }
+
+    private fun output(): String {
+        return captor.toString().trim()
+    }
 
     @Test
     fun `주어진 횟수 동안 n대의 자동차는 전진 또는 멈출 수 있다`() {
@@ -71,7 +83,10 @@ class FunctionalRequirements {
 
     @Test
     fun `우승자가 여러 명일 경우 쉼표(,)를 이용하여 구분한다`() {
-
+        setInput("pobi,crong\n5")
+        application.run()
+        val output = output()
+        assert(output.contains("최종 우승자 : pobi, crong"))
     }
 
     @Test
