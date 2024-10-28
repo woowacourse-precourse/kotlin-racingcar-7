@@ -1,6 +1,7 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Console
+import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
     // TODO: 프로그램 구현
@@ -30,6 +31,13 @@ class Car(val name: String) {
 
     fun move() {
         position++
+    }
+}
+
+class RandomMoveCondition {
+    fun shouldMove(): Boolean {
+        val randomValue = Randoms.pickNumberInRange(0, 9)
+        return randomValue >= 4
     }
 }
 
