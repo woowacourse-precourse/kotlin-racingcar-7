@@ -10,7 +10,8 @@ class CarFactory() {
             if (max != null && max > maxDistance) {
                 maxDistance = max
             }
-            car.forEach { println(it.display()) }
+
+            car.forEach { println(CarDisplay().display(it)) }
             println()
         }
         return maxDistance
