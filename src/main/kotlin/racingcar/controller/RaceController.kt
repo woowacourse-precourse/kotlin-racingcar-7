@@ -3,6 +3,7 @@ package racingcar.controller
 import camp.nextstep.edu.missionutils.Randoms
 import racingcar.model.Car
 import racingcar.model.Race
+import racingcar.utils.Constants
 import racingcar.view.InputView
 import racingcar.view.OutputView
 
@@ -16,7 +17,7 @@ class RaceController {
             val race = Race(cars, numberOfRounds)
 
             repeat(numberOfRounds) {
-                race.raceRound { Randoms.pickNumberInRange(0, 9) }
+                race.raceRound { Randoms.pickNumberInRange(Constants.RANDOM_MIN, Constants.RANDOM_MAX) }
                 OutputView.printRoundResult(cars)
             }
 
