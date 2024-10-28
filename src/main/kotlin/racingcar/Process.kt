@@ -1,5 +1,4 @@
 package racingcar
 
-class Process {
-
+object Process {
 }

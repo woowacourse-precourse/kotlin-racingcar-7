@@ -14,19 +14,6 @@ class Run {
     }
 
 
-    fun isValidCarNames(carNames:String ):Boolean {
-        if(carNames.isBlank()) throw IllegalArgumentException ("이름을 입력해 주세요.")
-        if(carNames.isEmpty()) throw IllegalArgumentException ("이름을 입력해 주세요.")
-        if( carNames.length < 1 && carNames.length > 5) throw IllegalArgumentException ("이름은 1자 이상 5자 이하로 입력해 주세요.")
-        return true
-    }
-
-    fun getAttemptTimes(): Int {
-        val attemptTimes=
-            Console.readLine().toIntOrNull() ?: throw IllegalArgumentException("시도 횟수를 입력해 주세요.")
-        return attemptTimes
-    }
-
     fun moveForward():Int {
         var position: Int = 0
         if(Randoms.pickNumberInRange(0,9) >= 4) {
