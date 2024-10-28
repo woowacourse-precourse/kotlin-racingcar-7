@@ -7,10 +7,13 @@ import org.junit.jupiter.api.assertDoesNotThrow
 import org.junit.jupiter.api.assertThrows
 import racingcar.domain.Car
 import racingcar.domain.Stadium
+import racingcar.view.CommandLineView
+import racingcar.view.View
 
 class FunctionalRequirements {
     private val application = Application()
     private val stadium = Stadium()
+    private val view: View = CommandLineView()
 
     @Test
     fun `주어진 횟수 동안 n대의 자동차는 전진 또는 멈출 수 있다`() {
@@ -73,7 +76,10 @@ class FunctionalRequirements {
 
     @Test
     fun `사용자가 잘못된 값을 입력할 경우 IllegalArgumentException을 발생시킨 후 애플리케이션은 종료되어야 한다`() {
-
+        assertThrows<IllegalArgumentException> {
+            setInput("car1,car2\nfive")
+            application.run()
+        }
     }
 
     private fun setInput(input: String) {
