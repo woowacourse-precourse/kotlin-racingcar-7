@@ -4,7 +4,7 @@ import racingcar.utils.Constants
 import racingcar.utils.Validator
 
 
-class Race(val cars: List<Car>, val numberOfRounds: Int) {
+class Race(private val cars: List<Car>) {
 
     init {
         Validator.validateCarNames(cars)

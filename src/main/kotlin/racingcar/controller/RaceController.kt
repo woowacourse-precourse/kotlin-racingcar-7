@@ -13,8 +13,9 @@ class RaceController {
             val carNames = InputView.getCarNames().map { it.trim() }
             val cars = carNames.map { Car(it) }
 
+            val race = Race(cars)
             val numberOfRounds = InputView.getNumberOfRounds()
-            val race = Race(cars, numberOfRounds)
+
 
             repeat(numberOfRounds) {
                 race.raceRound { Randoms.pickNumberInRange(Constants.RANDOM_MIN, Constants.RANDOM_MAX) }

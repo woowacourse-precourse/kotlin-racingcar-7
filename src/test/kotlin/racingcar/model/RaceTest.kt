@@ -10,7 +10,7 @@ class RaceTest {
     fun `raceRound 호출 시 4 이상의 값이 전달되면 자동차가 이동한다`() {
         val car1 = Car("pobi")
         val car2 = Car("woni")
-        val race = Race(listOf(car1, car2), 5)
+        val race = Race(listOf(car1, car2))
 
         // 4 이상의 고정된 값을 반환하여 자동차가 이동하도록 설정
         race.raceRound { MOVING_FORWARD }
@@ -24,7 +24,7 @@ class RaceTest {
     fun `raceRound 호출 시 4 미만의 값이 전달되면 자동차가 이동하지 않는다`() {
         val car1 = Car("pobi")
         val car2 = Car("woni")
-        val race = Race(listOf(car1, car2), 5)
+        val race = Race(listOf(car1, car2))
 
         race.raceRound { STOP }
 
@@ -42,7 +42,7 @@ class RaceTest {
 
         //오류 발생
         assertThrows<IllegalArgumentException> {
-            Race(listOf(car1, car2, car3), 5)
+            Race(listOf(car1, car2, car3))
         }
     }
 
@@ -52,7 +52,7 @@ class RaceTest {
         val car1 = Car("pobi", position = 3)
         val car2 = Car("woni", position = 5)
         val car3 = Car("jun", position = 5)
-        val race = Race(listOf(car1, car2, car3), 5)
+        val race = Race(listOf(car1, car2, car3))
 
         // 우승자 목록 검증
         val winners = race.findWinners()
