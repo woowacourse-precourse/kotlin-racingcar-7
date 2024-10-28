@@ -7,6 +7,11 @@ class RacingCarGameController {
     private var tryCount = 0
     private val racingCarGameView = RacingCarGameView(racingCars)
 
+    companion object {
+        private const val CARNAME_TOO_LONG = "자동차 이름은 5자를 넘을 수 없습니다."
+        private const val TRYCOUNT_NOT_POSITVIE_INTEGER_OR_ZERO = "시도 횟수는 정수여야 합니다."
+    }
+
     fun play() {
         getCarNamesAndTryCount()
         playAllTurns()
@@ -25,7 +30,7 @@ class RacingCarGameController {
     private fun checkIfValidNames(carNames: List<String>) {
         if (carNames.all { it.length <= 5 })
             return
-        throw IllegalArgumentException()
+        throw IllegalArgumentException(CARNAME_TOO_LONG)
     }
 
     private fun makeRacingCars(carNames: List<String>) {
@@ -45,7 +50,7 @@ class RacingCarGameController {
         if (tryCount.all { it.isDigit() }) {
             return
         }
-        throw IllegalArgumentException()
+        throw IllegalArgumentException(TRYCOUNT_NOT_POSITVIE_INTEGER_OR_ZERO)
     }
 
     private fun playAllTurns() {
