@@ -5,9 +5,15 @@ import camp.nextstep.edu.missionutils.Randoms
 
 class Computer {
 
-    fun inputCarName(): String = Console.readLine()
+    fun inputCarName(): String {
+        printInputCarNameMessage()
+        return Console.readLine()
+    }
 
-    fun inputRoundCount(): String = Console.readLine()
+    fun inputRoundCount(): String {
+        printInputRoundCountMessage()
+        return Console.readLine()
+    }
 
     fun generate() = Randoms.pickNumberInRange(0, 9)
 
@@ -16,10 +22,18 @@ class Computer {
     }
 
     fun printWinner(cars: List<Car>) {
-        var winnerFrontMessage = "최종 우승자 : "
+        var winnerFrontMessage = WINNER_FRONT_MESSAGE
         cars.forEach {
             winnerFrontMessage += it.name
         }
         println(winnerFrontMessage)
+    }
+
+    private fun printInputCarNameMessage() {
+        println(INPUT_CAR_NAME_MESSAGE)
+    }
+
+    private fun printInputRoundCountMessage() {
+        println(INPUT_ROUND_COUNT_MESSAGE)
     }
 }
