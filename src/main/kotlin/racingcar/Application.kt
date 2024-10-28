@@ -56,7 +56,7 @@ private fun inputCarNames() : List<String> {
         }
     }
 
-    if (carNames.size != carNames.distinct().size) {
+    if (carNames.size != carNames.toSet().size) {
         throw IllegalArgumentException("중복된 이름은 사용할 수 없습니다.")
     }
 
