@@ -21,15 +21,14 @@ class InputView {
         if (nameOfCar != null) {
             val regex = Regex(".+,.+")
             return regex.containsMatchIn(nameOfCar)
-        }
-        else
+        } else
             return false
     }
 
     fun getTryCounts(): Any {
         outputView.enterTryCounts()
         val tryCounts = Console.readLine().toIntOrNull() ?: 0
-        return if(isTryCountsValid(tryCounts)) {
+        return if (isTryCountsValid(tryCounts)) {
             tryCounts
         } else {
             exception.errorComesUpWith(INVAID_TRY_COUNTS_INPUT)

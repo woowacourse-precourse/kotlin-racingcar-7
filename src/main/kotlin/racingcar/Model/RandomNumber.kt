@@ -9,7 +9,7 @@ fun interface RandomNumberGenerator {
     fun generateRandomNumber(): Int
 }
 
-object RandomNumber: RandomNumberGenerator {
+object RandomNumber : RandomNumberGenerator {
     override fun generateRandomNumber(): Int {
         return Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER)
     }
