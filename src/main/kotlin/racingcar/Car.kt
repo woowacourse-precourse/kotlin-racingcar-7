@@ -21,6 +21,9 @@ class Car(private val name: String) {
             result.printResult()
         }
     }
+    fun movingState(): String {
+        return "$name : ${result.getCurrentPosition()}"
+    }
 }
 
 class Result {
