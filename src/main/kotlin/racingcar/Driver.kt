@@ -3,7 +3,6 @@ package racingcar
 import camp.nextstep.edu.missionutils.Console
 
 class Driver {
-    lateinit var carList: List<String>
 
     fun inputCarName(): List<String> {
         val carName = Console.readLine().split(",")
@@ -14,8 +13,8 @@ class Driver {
         if (carName.any { it.isBlank() }) {
             throw IllegalArgumentException(ERROR_CAR_NAME_EMPTY)
         }
-        for (carName in carList) {
-            if (carName.length !in 0..5) {
+        for (carList in carName) {
+            if (carList.length !in 0..5) {
                 throw IllegalArgumentException(ERROR_CAR_NAME_LENGTH)
             }
         }
