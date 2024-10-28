@@ -41,10 +41,11 @@ class InputView {
         if (countInput.toInt() < 1) throw IllegalArgumentException("시행 횟수는 1 이상이어야 합니다.")
     }
 
-    fun readTrialCount() {
+    fun readTrialCount(): Int {
         println("시도할 횟수는 몇 회인가요?")
         val input = Console.readLine()
         validateCountIsNumeric(input)
         validateCountIsPositive(input)
+        return input.toInt()
     }
 }
