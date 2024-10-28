@@ -16,7 +16,7 @@ class RacingCar(
         return Randoms.pickNumberInRange(0, 9)
     }
 
-    private fun moveForward(number: Int) {
+    fun moveForward(number: Int) {
         if (number >= 4) {
             position++
         }
