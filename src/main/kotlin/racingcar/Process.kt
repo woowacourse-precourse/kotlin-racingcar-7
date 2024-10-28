@@ -9,6 +9,10 @@ object Process {
 
     fun generateCars(input: String) {
         carNames = validation.validateCarNames(input.split(",").map { it.trim() })
+        initializeRound()
+    }
+
+    private fun initializeRound() {
         round = Round(carNames)
     }
 
