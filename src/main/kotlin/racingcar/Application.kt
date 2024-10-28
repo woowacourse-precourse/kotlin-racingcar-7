@@ -25,6 +25,12 @@ fun inputCount(): Int{
     return count
 }
 
+fun findWinners(cars: List<Car>): String {
+    val maxPosition = cars.maxOf { it.position }
+    return cars.filter { it.position == maxPosition }
+        .joinToString(", ") { it.name }
+}
+
 fun raceCar(carNames: List<String>, count: Int){
     var cars: List<Car> = carNames.map{Car(it)}
 
@@ -34,7 +40,7 @@ fun raceCar(carNames: List<String>, count: Int){
         cars.forEach { car -> println(car.getRaceStatus()) }
         println()
     }
-
+    println("최종 우승자 : ${findWinners(cars)}")
 }
 
 class Car(val name: String){
