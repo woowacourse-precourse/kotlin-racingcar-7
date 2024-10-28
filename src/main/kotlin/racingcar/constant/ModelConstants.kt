@@ -21,5 +21,5 @@ object ModelConstants {
     const val CAR_NAME_LENGTH_MIN = 1
     const val CAR_NAME_LENGTH_MAX = 5
     const val TRY_COUNT_MIN = 1
-    const val TRY_COUNT_MAX = 15
+    const val TRY_COUNT_MAX = 16
 }

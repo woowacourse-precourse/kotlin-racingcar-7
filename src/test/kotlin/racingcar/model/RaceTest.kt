@@ -31,9 +31,9 @@ class RaceTest {
 
             @Test
             @DisplayName("시도할 횟수가 최대 범위를 벗어나는 경우")
-            // 최대 범위는 15
-            fun `시도할 횟수가 15초과일 경우`() {
-                val input = 16
+            // 최대 범위는 16
+            fun `시도할 횟수가 16초과일 경우`() {
+                val input = 17
                 assertThrows<IllegalArgumentException> { InputException.outOfTryCountRange(input) }
             }
         }
