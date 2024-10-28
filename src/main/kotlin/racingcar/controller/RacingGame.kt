@@ -2,6 +2,7 @@ package racingcar
 
 import racingcar.model.CarMovement
 import racingcar.model.StringNamesParser
+import racingcar.model.WinnerCheck
 import racingcar.view.InputView
 import racingcar.view.OutputView
 
@@ -16,5 +17,6 @@ class RacingGame {
             val racingResult = carMovement.carAction()
             OutputView.currentStatusPrint(racingResult)
         }
+        val winners = WinnerCheck.pickWinner(stringNamesParser.currentStatus)
     }
 }

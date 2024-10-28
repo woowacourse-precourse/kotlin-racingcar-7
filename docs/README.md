@@ -17,7 +17,7 @@
 - [x] `true`를 반환받은 경우, 자동차를 한 칸 전진시킨 값을 레이싱 상황 리스트에 저장한다.
 
 ### WinnerCheck.kt (model/WinnerCheck.kt)
-- [ ] 레이싱 상황 리스트를 통해 우승자를 선정하여, 우승자 리스트를 반환한다.
+- [x] 레이싱 상황 리스트를 통해 우승자를 선정하여, 우승자 리스트를 반환한다.
 
 ## View (결과 출력 및 사용자 입력)
 ### InputView.kt (view/InputView.kt)
@@ -35,7 +35,7 @@
 - [x] `StringNamesParser`를 사용해 자동차 이름을 파싱한다.
 - [x] 시도 횟수만큼 `CarMovement`을 반복 실행한다.
 - [x] 각 라운드 결과를 `OutputView`를 통해 레이싱 상황을 출력한다.
-- [ ] 모든 라운드가 종료된 후, `WinnerCheck`를 통해 최종 우승자를 선정한다.
+- [x] 모든 라운드가 종료된 후, `WinnerCheck`를 통해 최종 우승자를 선정한다.
 - [ ] 최종 우승자를 `OutputView`를 통해 출력한다.
 
 ## Main Application (프로그램 진입점)
