@@ -9,7 +9,7 @@ class InputTest : NsTest() {
     @Test
     fun `이름 다섯자 이하 테스트`() {
         camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest {
-            assertThrows<IllegalArgumentException> { runException("pobi,java", "a") }
+            assertThrows<IllegalArgumentException> { runException("pobidd,java") }
         }
     }
 
