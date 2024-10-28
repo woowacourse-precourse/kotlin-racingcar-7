@@ -7,3 +7,8 @@ fun inputCarNames(): List<String> {
     val input = Console.readLine()
     return input.split(",").map { it.trim() }
 }
+
+fun inputAttemptCount(): Int {
+    println("시도할 횟수는 몇 회인가요?")
+    return Console.readLine().toInt()
+}
