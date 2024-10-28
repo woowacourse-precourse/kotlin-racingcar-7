@@ -4,6 +4,6 @@ import racingcar.view.InputView
 
 fun main() {
     val inputView = InputView()
-    inputView.readCarNames()
+    val carNames = inputView.readCarNames()
     inputView.readTrialCount()
 }

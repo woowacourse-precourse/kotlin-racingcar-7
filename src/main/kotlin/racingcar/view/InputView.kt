@@ -23,12 +23,13 @@ class InputView {
         if (cars.toSet().size < cars.size) throw IllegalArgumentException("중복된 자동차 이름이 있습니다.")
     }
 
-    fun readCarNames() {
+    fun readCarNames(): List<String> {
         println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
-        val input = splitNamesByDelimiter(Console.readLine())
-        validateNameNotNull(input)
-        validateNameLength(input)
-        validateNameUniqueness(input)
+        val carNames = splitNamesByDelimiter(Console.readLine())
+        validateNameNotNull(carNames)
+        validateNameLength(carNames)
+        validateNameUniqueness(carNames)
+        return carNames
     }
 
 
