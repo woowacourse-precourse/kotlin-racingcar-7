@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms
 import racingcar.model.Car
 import racingcar.model.Race
 import racingcar.utils.Constants
+import racingcar.utils.Validator
 import racingcar.view.InputView
 import racingcar.view.OutputView
 
@@ -14,7 +15,8 @@ class RaceController {
             val cars = carNames.map { Car(it) }
 
             val race = Race(cars)
-            val numberOfRounds = InputView.getNumberOfRounds()
+            val roundsInput = InputView.getNumberOfRounds()
+            val numberOfRounds = Validator.validateRounds(roundsInput)
 
 
             repeat(numberOfRounds) {
@@ -24,7 +26,7 @@ class RaceController {
 
             val winners = race.findWinners()
             OutputView.printWinners(winners)
-        }catch (e: IllegalArgumentException) {
+        } catch (e: IllegalArgumentException) {
             e.message?.let { OutputView.printErrorMessage(it) }
             throw e
         }

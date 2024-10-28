@@ -110,6 +110,31 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `라운드 수가 숫자가 아닌 경우`() {
+        assertSimpleTest {
+            val exception = assertThrows<IllegalArgumentException> { runException("pobi,woni", "a") }
+            assertThat(exception.message).isEqualTo(ErrorMessages.ROUND_NUMBER_ERROR)
+        }
+    }
+    @Test
+    fun `라운드 수가 음수인 경우`() {
+        assertSimpleTest {
+            val exception = assertThrows<IllegalArgumentException> { runException("pobi,woni", "-1") }
+            assertThat(exception.message).isEqualTo(ErrorMessages.ROUND_NUMBER_ERROR)
+        }
+    }
+
+    @Test
+    fun `라운드 수가 입력되지 않은 경우`(){
+        assertSimpleTest {
+            val exception = assertThrows<IllegalArgumentException> { runException("pobi,woni", "\n") }
+            assertThat(exception.message).isEqualTo(ErrorMessages.ROUND_NUMBER_ERROR)
+        }
+
+    }
+
+
     override fun runMain() {
         main()
     }

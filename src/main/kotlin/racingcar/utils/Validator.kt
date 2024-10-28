@@ -4,6 +4,16 @@ import racingcar.model.Car
 
 object Validator {
 
+    fun validateRounds(input: String?): Int {
+        return when {
+            input.isNullOrEmpty() -> throw IllegalArgumentException(ErrorMessages.ROUND_NUMBER_ERROR)
+            input.toIntOrNull() == null -> throw IllegalArgumentException(ErrorMessages.ROUND_NUMBER_ERROR)
+            input.toInt() <= 0 -> throw IllegalArgumentException(ErrorMessages.ROUND_NUMBER_ERROR)
+            else -> input.toInt()
+        }
+    }
+
+
     // 자동차 이름 중복 여부 검증
     fun validateCarNames(cars: List<Car>) {
         val carNames = cars.map { it.name }
