@@ -11,7 +11,7 @@ class Organizer {
     fun prepareRace() {
         val appliedCars = inputCarNames()
         val raceCount = inputRaceCount()
-        val raceCars = appliedCars.map { Car.of(it) }
+        val raceCars = appliedCars.map { Car.from(it) }
 
         startRace(raceCars, raceCount)
     }
@@ -64,7 +64,7 @@ class Organizer {
         raceCars.forEachIndexed { index, car ->
             val randomValue = pickNumberInRange(MINIMUM_RANDOM_VALUE, MAXIMUM_RANDOM_VALUE)
             if (validator.isPossibleForward(randomValue)) {
-                updatedRaceCars[index] = car.copy(location = car.location + FORWARD)
+                car.forward()
             }
             outputView.printNotice("${updatedRaceCars[index].name} : ${"-".repeat(updatedRaceCars[index].location)}")
         }
@@ -79,6 +79,5 @@ class Organizer {
     companion object {
         private const val MINIMUM_RANDOM_VALUE = 0
         private const val MAXIMUM_RANDOM_VALUE = 9
-        private const val FORWARD = 1
     }
 }

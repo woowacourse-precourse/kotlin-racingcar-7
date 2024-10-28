@@ -15,26 +15,66 @@ class JudgeTest {
 
         @Test
         fun `경기에 참여한 자동차의 전진 횟수가 2로 모두 같을 경우 경기에 참여한 모든 자동차의 이름을 반환한다`() {
-            val raceCars = listOf(Car("pobi", 2), Car("woni", 2))
+            val pobiCar = Car("pobi").run {
+                repeat(2) {
+                    forward()
+                }
+                this
+            }
 
+            val woniCar = Car("woni").run {
+                repeat(2) {
+                    forward()
+                }
+                this
+            }
+            val raceCars = listOf(pobiCar, woniCar)
             val result = judge.findWinnerName(raceCars)
 
             assertEquals(listOf("pobi", "woni"), result)
         }
 
         @Test
-        fun `세 자동차에서 각 전진 횟수가 1,2,3으로 상이할 경우 세 자동차 중 전진 횟수가 3으로 가장 높은 자동차의 이름을 반환한다`() {
-            val raceCars = listOf(Car("pobi", 1), Car("woni", 2), Car("jason", 3))
+        fun `세 자동차에서 각 전진 횟수가 1, 2, 3으로 상이할 경우 가장 많이 전진한 자동차의 이름을 반환한다`() {
+            val pobiCar = Car("pobi").run {
+                forward()
+                this
+            }
 
+            val woniCar = Car("woni").run {
+                repeat(2) { forward() }
+                this
+            }
+
+            val jasonCar = Car("jason").run {
+                repeat(3) { forward() }
+                this
+            }
+
+            val raceCars = listOf(pobiCar, woniCar, jasonCar)
             val result = judge.findWinnerName(raceCars)
 
             assertEquals(listOf("jason"), result)
         }
 
         @Test
-        fun `세 자동차에서 각 전진 횟수가 3,3,2일 경우 세 자동차 중 전진 횟수가 3으로 가장 높은 두 자동차의 이름을 반환한다`() {
-            val raceCars = listOf(Car("pobi", 3), Car("woni", 3), Car("jason", 2))
+        fun `세 자동차에서 각 전진 횟수가 3, 3, 2일 경우 가장 많이 전진한 두 자동차의 이름을 반환한다`() {
+            val pobiCar = Car("pobi").run {
+                repeat(3) { forward() }
+                this
+            }
 
+            val woniCar = Car("woni").run {
+                repeat(3) { forward() }
+                this
+            }
+
+            val jasonCar = Car("jason").run {
+                repeat(2) { forward() }
+                this
+            }
+
+            val raceCars = listOf(pobiCar, woniCar, jasonCar)
             val result = judge.findWinnerName(raceCars)
 
             assertEquals(listOf("pobi", "woni"), result)
@@ -42,8 +82,12 @@ class JudgeTest {
 
         @Test
         fun `경기에 참여한 자동차가 1대일 경우 그 자동차의 이름을 반환한다`() {
-            val raceCars = listOf(Car("pobi", 7))
+            val pobiCar = Car("pobi").run {
+                repeat(7) { forward() }
+                this
+            }
 
+            val raceCars = listOf(pobiCar)
             val result = judge.findWinnerName(raceCars)
 
             assertEquals(listOf("pobi"), result)

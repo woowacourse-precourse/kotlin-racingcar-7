@@ -11,8 +11,8 @@ class CarTest {
     fun `자동차 이름을 넘겨줄 경우 전진 횟수가 0인 자동차 객체를 반환한다`() {
         val carName = "loopy"
 
-        val car = Car.of(carName)
+        val car = Car.from(carName)
 
-        assertEquals(Car("loopy", 0), car)
+        assertEquals(Car("loopy"), car)
     }
 }
