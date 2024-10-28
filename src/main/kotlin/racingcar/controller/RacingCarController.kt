@@ -5,11 +5,15 @@ import racingcar.view.InputView
 import racingcar.view.OutputView
 import racingcar.model.Car
 import racingcar.utils.RandomUtils
+import racingcar.utils.ValidateCarNames
+import racingcar.utils.ValidateAttempts
 
 class RacingCarController {
     private val inputView = InputView
     private val errorView = ErrorView
     private val outputView = OutputView
+    private val validateCarNames = ValidateCarNames
+    private val validateAttempts = ValidateAttempts
     private val cars = mutableListOf<Car>()
 
     fun start() {
@@ -34,23 +38,17 @@ class RacingCarController {
 
         val carNames = input.split(",").map { it.trim() }
 
-        if (carNames.any { it.isEmpty() }) {
-            throw IllegalArgumentException("이름이 전부 입력되지 않았습니다.")
-        } else if (carNames.any { it.length > 5 }) {
-            throw IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.")
-        } else if (carNames.size != carNames.toSet().size) {
-            outputView.displayDup()
-            return carNames.toSet()
-        }
+        validateCarNames.checkIfEmpty(carNames)
+        validateCarNames.checkLength(carNames)
 
-        return carNames
+        return validateCarNames.checkDuplicates(carNames)
     }
 
     private fun getNumberOfAttempts(): Int {
         val input = inputView.askForNumberOfAttempts()
 
-        val numberOfAttempts = input.toIntOrNull() ?: throw IllegalArgumentException("숫자를 입력해주세요.")
-        require(numberOfAttempts > 0) { "시도 횟수는 1회 이상이어야 합니다." }
+        val numberOfAttempts = validateAttempts.checkIfEmpty(input)
+        validateAttempts.validatePositiveAttempts(numberOfAttempts)
 
         return numberOfAttempts
     }
