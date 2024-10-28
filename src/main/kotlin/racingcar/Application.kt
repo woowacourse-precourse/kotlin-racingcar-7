@@ -1,6 +1,7 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Console
+import camp.nextstep.edu.missionutils.Randoms
 
 var input: List<String>? = null
 var num = 0
@@ -8,6 +9,7 @@ var runSizeList = mutableListOf<Int>()
 
 fun main() {
     inputCar()
+    raceCar()
 }
 
 // 입력 받기
@@ -29,4 +31,22 @@ private fun inputCar() {
         }
     }
     runSizeList = MutableList(input!!.size) { 0 }
+}
+
+// 자동차 경주 로직
+private fun raceCar() {
+    println("실행 결과")
+    repeat(num) {
+        // 출력 받기
+        input?.forEachIndexed { index, name ->
+            val run = Randoms.pickNumberInRange(0, 9)
+            if (run >= 4) {
+                runSizeList[index] += 1
+                println("$name : ${"-".repeat(runSizeList[index])}")
+            } else {
+                println("$name : ${"-".repeat(runSizeList[index])}")
+            }
+        }
+        println()
+    }
 }
