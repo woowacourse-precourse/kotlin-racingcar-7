@@ -10,4 +10,10 @@ class Constants {
     val COLON = " : "
 
     val ERROR_NAME_LENGTH = "자동차 이름은 5자 이하입니다."
+    val ERROR_NAME_DUPLICATION = "자동차 이름이 중복되었습니다."
+    val ERROR_COUNT_NUM = "시도 횟수는 숫자여야 합니다."
+    val ERROR_CAR_MINIMUM = "자동차는 2대 이상 입력해야 합니다."
+    val ERROR_NAME_EMPTY = "자동차 이름이 공백입니다."
+    val ERROR_COUNT_EMPTY = "시도 횟수가 공백입니다."
+
 }
