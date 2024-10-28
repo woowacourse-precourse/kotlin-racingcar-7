@@ -4,7 +4,6 @@ import kotlin.random.Random
 
 fun main() {
     val userCarName = getCarName()
-    checkCarNameCondition(userCarName)
     val userCarList = parseCar(userCarName!!)
     val trialNumber = getTrialNumber()
     val cars = userCarList.map { Car(it) }
@@ -18,19 +17,22 @@ fun getCarName(): String? {
     return readlnOrNull()
 }
 
-fun checkCarNameCondition(userCarName: String?) {
-    if (userCarName.isNullOrEmpty()) {
-        throw IllegalArgumentException("잘못된 값을 입력했습니다.")
-    }
-}
 fun parseCar(input: String): List<String> {
-    val userCarList: List<String> = input.split(",")
+    val userCarList: List<String> = input.split(",").map { it.trim() }
+    userCarList.forEach {
+        if (it.isNullOrEmpty()) {
+            throw IllegalArgumentException("자동차 이름을 입력하지 않았습니다.")
+        }
+        else if (it.length > 5) {
+            throw IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.")
+        }
+    }
     return userCarList
 }
 
 fun getTrialNumber(): Int {
     println("시도할 횟수는 몇 회인가요?")
-    return readlnOrNull()?.toIntOrNull() ?: throw IllegalArgumentException("잘못된 값을 입력했습니다.")
+    return readlnOrNull()?.toIntOrNull() ?: throw IllegalArgumentException("시도할 횟수를 잘못 입력했습니다.")
 }
 
 class Car(val name: String) {
