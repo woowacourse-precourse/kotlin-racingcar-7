@@ -19,8 +19,11 @@ class RacingCarSetup {
     }
 
     private fun inputCars(): List<String> {
-        val carsText = readLine().validateCarNaming()
-        val cars = carsText.split(RacingCarDelimiters.NAME_DELIMITER)
+        val carsText = readLine()
+        val cars =
+            carsText
+                .split(RacingCarDelimiters.NAME_DELIMITER)
+                .validateCarNaming()
         return cars
     }
 
@@ -31,9 +34,11 @@ class RacingCarSetup {
         return tryCount
     }
 
-    private fun String.validateCarNaming(): String {
-        if (this.length > CAR_NAME_MAX_LENGTH) {
-            throw IllegalArgumentException(CAR_NAME_MAX_LENGTH_EXCEPTION)
+    private fun List<String>.validateCarNaming(): List<String> {
+        this.forEach {
+            if (it.length > CAR_NAME_MAX_LENGTH) {
+                throw IllegalArgumentException(CAR_NAME_MAX_LENGTH_EXCEPTION)
+            }
         }
         return this
     }
