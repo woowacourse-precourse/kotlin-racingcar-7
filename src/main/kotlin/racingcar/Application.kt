@@ -1,5 +1,9 @@
 package racingcar
+import camp.nextstep.edu.missionutils.Console.readLine
 
 fun main() {
-    // TODO: 프로그램 구현
+    Printer.printInputCarNames()
+    val inputCarNames = readLine()
+    val carRacing = CarRacing(inputCarNames)
+    carRacing.racing()
 }
