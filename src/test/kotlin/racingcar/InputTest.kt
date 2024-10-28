@@ -41,13 +41,9 @@ class InputTest : NsTest() {
 
     @Test
     fun `자동차 1대 이하 입력 테스트`() {
-        camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest(
-            {
-                run("pobi,woni", "1")
-                Assertions.assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi")
-            },
-            MOVING_FORWARD, STOP
-        )
+        camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi") }
+        }
     }
 
     @Test
