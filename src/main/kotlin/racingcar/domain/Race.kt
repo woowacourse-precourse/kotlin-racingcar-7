@@ -32,10 +32,8 @@ class Race(
     private fun repeatRounds(cars: List<Car>, round: Int) {
         outputView.printNewLine()
         outputView.printResultTitle()
-        repeat(round) { startRound(cars) }
+        repeat(round) { showRoundResult(cars) }
     }
-
-    private fun startRound(cars: List<Car>) = showRoundResult(cars)
 
     private fun showRoundResult(cars: List<Car>) {
         for (car in cars) {
