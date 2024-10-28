@@ -1,8 +1,8 @@
 package racingcar
 
 fun main() {
-    val run = Run()
-    run.inputData()
-    run.play()
-    run.printWinners()
+    val game = Game()
+    game.inputData()
+    game.play()
+    game.printWinners()
 }
