@@ -59,3 +59,8 @@ fun printCurrentDistance(list: List<Car>) {
     }
     println()
 }
+
+fun getWinner(list: List<Car>): List<Car> {
+    val maxDistance = list.maxOf { it.distance }
+    return list.filter { it.distance == maxDistance }
+}
