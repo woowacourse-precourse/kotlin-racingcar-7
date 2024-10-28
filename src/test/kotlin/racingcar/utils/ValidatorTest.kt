@@ -44,4 +44,24 @@ class ValidatorTest {
             Validator.validateName(testName2)
         }
     }
+
+    @Test
+    fun `숫자 대신 문자가 입력되면 에러를 발생시키는지 확인하는 테스트`() {
+        assertThrows<IllegalArgumentException> {
+            val testCount1 = "a"
+            val testCount2 = "a4"
+            Validator.validateAttemptCount(testCount1)
+            Validator.validateAttemptCount(testCount2)
+        }
+    }
+
+    @Test
+    fun `숫자에 공백이 포함되면 에러를 발생시키는지 확인하는 테스트`() {
+        assertThrows<IllegalArgumentException> {
+            val testCount1 = "1 2"
+            val testCount2 = "4 "
+            Validator.validateAttemptCount(testCount1)
+            Validator.validateAttemptCount(testCount2)
+        }
+    }
 }
