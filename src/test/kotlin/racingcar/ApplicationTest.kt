@@ -21,8 +21,32 @@ class ApplicationTest : NsTest() {
 
     @Test
     fun `예외 테스트`() {
+    @Test
+    fun `예외 테스트 - 자동차 이름이 5자 초과인 경우`() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
+        }
+    }
+
+    @Test
+    fun `예외 테스트 - 경주할 자동차 이름을 입력하지 않은 경우 (공백 입력)`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("", "1") }
+        }
+    }
+
+    @Test
+    fun `예외 테스트 - 시도할 횟수 입력시 정수가 아닌 다른 값이 입력된 경우`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,woni", "1.1")}
+            assertThrows<IllegalArgumentException> { runException("pobi,woni", "abcd")}
+        }
+    }
+
+    @Test
+    fun `예외 테스트 - 시도할 횟수 입력시 음수가 입력된 경우`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,woni", "-1") }
         }
     }
 
