@@ -42,6 +42,9 @@ class RacingGame(val inputNumber: String) {
             }
             finalLog += "\n"
         }
-        println(finalLog)
+        print(finalLog)
+        val maxValue = racingCars.values.max()
+        val maxKeys = racingCars.filter { it.value == maxValue }.keys
+        println("최종 우승자 : ${maxKeys.joinToString(",")}")
     }
 }
