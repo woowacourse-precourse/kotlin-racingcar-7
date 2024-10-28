@@ -1,3 +1,5 @@
+package racingcar
+
 import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
@@ -106,7 +108,7 @@ fun checkNum(num: String) {
 // num이 비어있거나 숫자가 아닌 값이 포함된 경우 검사
 fun checkIfNotNumeric(num: String) {
     if (num.isBlank() || num.any { !it.isDigit() }) {
-        throw IllegalArgumentException("시도 횟수는 숫자로만 이루어져야 합니다.")
+        throw IllegalArgumentException("시도 횟수는 비어있으면 안되며, 숫자로만 이루어져야 합니다.")
     }
 }
 
