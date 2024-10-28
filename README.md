@@ -7,10 +7,19 @@
 
 ---
 
-- 자동차 이름을 쉼표(,)를 기준으로 구분하고, 5자 이하로 제한한다.
+- 자동차 이름을 입력받는다.
+ - 이름 값이 공백일 때 `IllegalArgumentException` 예외 발생
+ - 이름이 5자 이상일 때 `IllegalArgumentException` 예외 발생
+ - 중복된 자동차 이름이 있을 때 `IllegalArgumentException` 예외 발생
+- 경기 횟수를 입력받는다.
+ - 입력된 횟수가 숫자가 아닐 때 `IllegalArgumentException` 예외 발생
+ - 입력된 횟수가 음수일 때 `IllegalArgumentException` 예외 발생
+ - null 값이 입력되었을 때 `IllegalArgumentException` 예외 발생
+- 자동차 이름을 쉼표(,)를 기준으로 구분한다.
 - 무작위 값(0에서 9사이의 숫자)을 구해 무작위 값이 4 이상인 각 자동차가 전진한다.
+- 자동차들의 현재 위치를 출력한다.
+- 입력된 횟수만큼 전진하고 현재 위치를 출력하는 기능을 반복하고 마지막 위치를 반환한다.
 - 가장 많이 전진한 사용자를 우승자로 선정한다.
-- 사용자가 잘못된 값을 입력한 경우 `IllegalArgumentException`를 발생시킨다.
 
 ## 기능 요구 사항
 
