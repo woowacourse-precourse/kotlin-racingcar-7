@@ -47,6 +47,14 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `자동차 이름 중 중복되는 것이 있을 시 예외 처리`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("car1,car1", "1") }
+            assertThrows<IllegalArgumentException> { runException("car1,car1,car2", "1") }
+        }
+    }
+
     override fun runMain() {
         main()
     }
