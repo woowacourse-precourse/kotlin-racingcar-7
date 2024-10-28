@@ -1,26 +1,33 @@
 package racingcar.presenter
 
-import racingcar.model.AttemptCount
 import racingcar.model.Car
 import racingcar.model.RacingGame
 import racingcar.view.OutputView
 
-class RacingCarPresenter {
+class RacingCarPresenter(private val outputView: OutputView) {
 
-    fun createRacingCars(carNames: List<String>): List<Car> {
-        val cars = carNames.map { name ->
-            Car(name)
+    fun startRacing(carNames: List<String>, attemptCount: Int) {
+        val cars = carNames.map { Car(it) }
+        val game = RacingGame(cars)
+
+        outputView.printRaceResult()
+        repeat(attemptCount) {
+            game.playRound()
+            displayRoundResult(cars)
         }
-        return cars
+
+        val winners = game.findWinners()
+        displayWinners(winners)
     }
 
-    fun createAttemptCount(number: Int): AttemptCount {
-        val attemptCount = AttemptCount(number)
-        return attemptCount
+    private fun displayRoundResult(cars: List<Car>) {
+        for (car in cars) {
+            outputView.printCarRoundInfo(car)
+        }
+        outputView.printNewLine()
     }
 
-    fun startRacing(cars: List<Car>, attemptCount: AttemptCount, outputView: OutputView) {
-        val game = RacingGame(cars, attemptCount)
-        game.startRacing(outputView)
+    private fun displayWinners(winnerNames: String) {
+        outputView.printWinners(winnerNames)
     }
 }
