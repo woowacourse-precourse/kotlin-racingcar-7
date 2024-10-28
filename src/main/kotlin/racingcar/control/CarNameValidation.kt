@@ -26,10 +26,10 @@ class CarNameValidation {
                 throw IllegalArgumentException(InvalidCarNameException.GAP_DELIMITER_INPUT)
             }
             if (i.length > SettingValue.MAXIMUM_NUMBER_OF_CHARACTERS) {
-                throw IllegalArgumentException(InvalidCarNameException.EXCEEDED_CHARACTER_COUNT_)
+                throw IllegalArgumentException(InvalidCarNameException.EXCEEDED_CHARACTER_COUNT)
             }
         }
-        if (carNameInput.contains(SettingValue.DELIMITER) && carNameInput.split(SettingValue.DELIMITER).size == 1) {
+        if (!carNameInput.contains(SettingValue.DELIMITER) || carNameInput.split(SettingValue.DELIMITER).size == 1) {
             throw IllegalArgumentException(InvalidCarNameException.CANT_RACE_ALONE)
         }
         return carNameInput
