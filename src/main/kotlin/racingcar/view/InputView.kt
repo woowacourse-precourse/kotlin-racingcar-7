@@ -12,6 +12,7 @@ class InputView {
         validateSeparator(input)
 
         val names = splitAndTrimNames(input)
+        validateCarNames(names)
     }
 
     private fun validateEmptyInput(input: String) {
@@ -27,6 +28,11 @@ class InputView {
 
     private fun splitAndTrimNames(input: String): List<String> {
         return input.split(COMMA).map { it.trim() }
+    }
+
+    private fun validateCarNames(names: List<String>) {
+        validateNameLength(names)
+        validateDuplicateNames(names)
     }
 
     private fun validateNameLength(names: List<String>) {
