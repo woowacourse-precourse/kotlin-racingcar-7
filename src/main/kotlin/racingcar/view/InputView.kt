@@ -7,7 +7,21 @@ class InputView {
 
     fun getNameOfCars(): String? {
         outputView.enterNameOfCars()
-        return Console.readLine()
+        val nameOfCars = Console.readLine()
+        return if (isNameOfCarsValid(nameOfCars)) {
+            nameOfCars
+        } else {
+            throw IllegalArgumentException("Name of cars invalid")
+        }
+    }
+
+    fun isNameOfCarsValid(nameOfCar: String?): Boolean {
+        if (nameOfCar != null) {
+            val regex = Regex(".+,.+")
+            return regex.containsMatchIn(nameOfCar)
+        }
+        else
+            return false
     }
 
     fun getTryCounts(): Int {
