@@ -18,5 +18,6 @@ class RacingGame {
             OutputView.currentStatusPrint(racingResult)
         }
         val winners = WinnerCheck.pickWinner(stringNamesParser.currentStatus)
+        OutputView.winnerPrint(winners)
     }
 }

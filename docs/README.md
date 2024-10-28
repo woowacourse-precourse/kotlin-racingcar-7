@@ -1,7 +1,7 @@
 # 🔨 과제 진행 요구 사항
 - [x] `gitignore`에 클래스 파일 `*.class`와 vim 백업 파일 `*~`를 추가
 - [x] 기능 구현하기 전 기능 목록 정리
-- [ ] 기능 목록 단위로 커밋
+- [x] 기능 목록 단위로 커밋
 
 
 # 🔗 기능 목록
@@ -27,7 +27,7 @@
 
 ### OutputView.kt (view/OutputView.kt)
 - [x] 각 자동차의 **이름**과 **전진 상태**를 출력한다.
-- [ ] 최종 우승자를 쉼표로 구분하여 출력한다.
+- [x] 최종 우승자를 쉼표로 구분하여 출력한다.
 
 ## Controller (연산 및 흐름 제어)
 ### RacingGame.kt (controller/RacingGame.kt)
@@ -36,7 +36,7 @@
 - [x] 시도 횟수만큼 `CarMovement`을 반복 실행한다.
 - [x] 각 라운드 결과를 `OutputView`를 통해 레이싱 상황을 출력한다.
 - [x] 모든 라운드가 종료된 후, `WinnerCheck`를 통해 최종 우승자를 선정한다.
-- [ ] 최종 우승자를 `OutputView`를 통해 출력한다.
+- [x] 최종 우승자를 `OutputView`를 통해 출력한다.
 
 ## Main Application (프로그램 진입점)
 ### Application.kt
