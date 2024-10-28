@@ -20,4 +20,12 @@ class RacingCarTest {
         }.withMessageContaining("이름은 5자 이하로 입력해주세요.")
     }
 
+    @Test
+    fun `시도 횟수에 숫자가 아닌 값을 입력하면 예외가 발생한다`() {
+        val validation = Validation()
+        assertThatIllegalArgumentException().isThrownBy {
+            validation.getAttemptTimes("abc")
+        }.withMessageContaining("시도 횟수를 입력해주세요.")
+    }
+
 }
