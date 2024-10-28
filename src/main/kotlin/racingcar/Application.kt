@@ -22,7 +22,7 @@ fun main() {
 
     println()
 
-    var race = ArrayList<String>()
+    val race = ArrayList<String>()
     for (i in cars.indices) {
         race.add("")
     }
@@ -31,9 +31,9 @@ fun main() {
     for (i in 0 until count) {
         for (j in cars.indices) {
             if (Randoms.pickNumberInRange(0, 9) >= 4) {
-                race[i] += "-"
+                race[j] += "-"
             }
-            println(cars[i] + " : " + race[i])
+            println(cars[j] + " : " + race[j])
         }
         println()
     }
