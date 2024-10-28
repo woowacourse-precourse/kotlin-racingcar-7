@@ -6,38 +6,37 @@ import camp.nextstep.edu.missionutils.Console.readLine
  * 자동차 경주 게임 시작 전 세팅을 해준다.
  * 자동차 이름과 시도할 횟수를 입력 받고 사용할 데이터를 반환한다.
  */
-class Setup {
-    var cars: List<Car> = emptyList()
+class Initializer {
+    lateinit var cars: List<Car>
         private set
-    var tryCount: Int = 0
+    var gameCount = 0
         private set
 
     init {
-        setUp()
+        setup()
     }
 
-    private fun setUp() {
+    private fun setup() {
         println(InputOutputText.INPUT_CAR_NAME)
-        cars = inputCars().asCar()
+        cars = setupCars()
         println(InputOutputText.INPUT_TRY_COUNT)
-        tryCount = inputTryCount()
+        gameCount = setupGameCount()
     }
 
-    private fun inputCars(): List<String> {
-        val carsText = readLine()
-        val cars =
-            carsText
-                .split(Delimiters.NAME_DELIMITER)
-                .validateCarNaming()
+    private fun setupCars(): List<Car> {
+        val carInput = readLine()
+        val carStringList = splitCarInput(carInput).validateCarNaming()
+        val cars = carStringList.asCar()
         return cars
     }
 
-    private fun inputTryCount(): Int {
-        val tryCount =
-            readLine().toIntOrNull()
-                ?: throw IllegalArgumentException(TRY_COUNT_IS_NOT_NUMBER_EXCEPTION)
-        return tryCount
+    private fun setupGameCount(): Int {
+        val gameCountInput = readLine()
+        val gameCountInt = gameCountInput.toIntAndValidateGameCount()
+        return gameCountInt
     }
+
+    private fun splitCarInput(carInput: String): List<String> = carInput.split(Delimiters.NAME_DELIMITER)
 
     private fun List<String>.validateCarNaming(): List<String> {
         this.forEach {
@@ -46,6 +45,13 @@ class Setup {
             }
         }
         return this
+    }
+
+    private fun String.toIntAndValidateGameCount(): Int {
+        val gameCount =
+            this.toIntOrNull()
+                ?: throw IllegalArgumentException(TRY_COUNT_IS_NOT_NUMBER_EXCEPTION)
+        return gameCount
     }
 
     companion object {

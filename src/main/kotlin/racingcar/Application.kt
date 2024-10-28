@@ -1,10 +1,12 @@
 package racingcar
 
 fun main() {
-    val racingCarSetup = Setup()
-    val cars = racingCarSetup.cars
-    val tryCount = racingCarSetup.tryCount
-    val racingCarGame = Game(cars, tryCount)
-    racingCarGame.start()
-    racingCarGame.printWinnerResult()
+    val initializer = Initializer()
+    val cars = initializer.cars
+    val gameCount = initializer.gameCount
+
+    val game = Game(cars, gameCount)
+
+    game.start()
+    game.printWinnerResult()
 }
