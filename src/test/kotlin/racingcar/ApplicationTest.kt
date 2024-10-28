@@ -26,6 +26,26 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `자동차 전진 테스트`() {
+        val car = Car("gong")
+        car.moveToForward()
+    }
+
+    @Test
+    fun `글자수 제한 테스트`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("daniel,giri", "5") }
+        }
+    }
+
+    @Test
+    fun `유효 숫자 테스트`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("daniel,giri", "hi") }
+        }
+    }
+
     override fun runMain() {
         main()
     }
