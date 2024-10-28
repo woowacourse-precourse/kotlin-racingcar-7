@@ -1,9 +1,15 @@
 package racingcar.utils
 
+import java.lang.NumberFormatException
+
 class Validation {
     fun checkCarName(names:List<String>){
         checkCarNameLength(names)
         checkCarNameDuplication(names)
+    }
+
+    fun checkCount(count:String){
+        checkCountIsNum(count)
     }
     private fun checkCarNameLength(names:List<String>){
         for (name in names){
@@ -19,6 +25,14 @@ class Validation {
             if (cars.contains(name))
                 throw IllegalArgumentException(Constants().ERROR_NAME_DUPLICATION)
             cars.add(name)
+        }
+    }
+
+    private fun checkCountIsNum(count: String){
+        try {
+            count.toInt()
+        } catch (e: NumberFormatException) {
+            throw IllegalArgumentException(Constants().ERROR_COUNT_IS_NUM)
         }
     }
 }

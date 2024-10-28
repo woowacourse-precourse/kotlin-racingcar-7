@@ -1,6 +1,7 @@
 package racingcar.controller
 
 import racingcar.model.Racing
+import racingcar.utils.Validation
 import racingcar.view.Input
 
 class RacingController {
