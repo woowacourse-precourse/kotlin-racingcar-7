@@ -53,6 +53,13 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
+    fun `에외 테스트 - 시도 횟수 입력시 0이 입력된 경우`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,woni", "0") }
+        }
+    }
+
+    @Test
     fun `예외 테스트 - 시도할 횟수 입력시 음수가 입력된 경우`() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("pobi,woni", "-1") }
