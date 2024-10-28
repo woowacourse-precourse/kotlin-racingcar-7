@@ -34,8 +34,8 @@
 - [x] 결정된 우승자 출력하기
 
 ## 요구사항 확인하기
-- [ ] `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()` 메소드를 사용하여 0에서 9 사이의 무작위 값을 생성
-- [ ] 사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console의 readLine()`을 활용
-- [ ] 테스트 도구를 활용하여 기능이 정상적으로 작동하는 지 테스트 코드로 확인하기
-- [ ] indent depth가 3을 넘지 않도록 구현한다. 2까지만 허용함
-- [ ] 함수가 한가지 일만 하도록 최대한 작게 만들기
+- [x] `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()` 메소드를 사용하여 0에서 9 사이의 무작위 값을 생성
+- [x] 사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console의 readLine()`을 활용
+- [x] 테스트 도구를 활용하여 기능이 정상적으로 작동하는 지 테스트 코드로 확인하기
+- [x] indent depth가 3을 넘지 않도록 구현한다. 2까지만 허용함
+- [x] 함수가 한가지 일만 하도록 최대한 작게 만들기
