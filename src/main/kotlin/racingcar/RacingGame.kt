@@ -4,6 +4,14 @@ import camp.nextstep.edu.missionutils.Randoms
 
 class RacingGame(private val cars: List<Car>, private val attempts: Int) {
 
+    fun start() {
+        repeat(attempts) {
+            race()
+            printRaceStatus()
+        }
+        printWinners()
+    }
+
     private fun race() {
         cars.forEach { car ->
             val randomValue = Randoms.pickNumberInRange(0, 9)
