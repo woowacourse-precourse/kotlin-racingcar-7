@@ -17,6 +17,7 @@ class Run {
 
     fun printWinners() {
         val winners = Process.getWinners().joinToString(separator = ",")
-        println("최종 우승자 : ")
+        println("최종 우승자 : $winners")
+
     }
 }

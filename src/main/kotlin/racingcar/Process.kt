@@ -31,5 +31,4 @@ object Process {
         return round.getWinners()
     }
 
-
 }
