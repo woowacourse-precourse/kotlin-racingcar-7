@@ -28,9 +28,10 @@ class Racing {
         repeat(count){
             racingCars = eachRace(cars)
         }
+        judgeWinner(racingCars)
     }
 
-    fun judgeWinner(cars:List<Car>){
+    private fun judgeWinner(cars:List<Car>){
         var winner = mutableMapOf<String,Int>()
         for (car in cars){
             if (winner.isEmpty()){
