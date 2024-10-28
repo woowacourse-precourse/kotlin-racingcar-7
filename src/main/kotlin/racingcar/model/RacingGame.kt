@@ -31,7 +31,7 @@ class RacingGame(
         outputView.printNewLine()
     }
 
-    private fun findWinners(): String {
+    fun findWinners(): String {
         val maxDistance = cars.maxOf { it.currentDistance }
         return cars
             .filter { it.currentDistance == maxDistance }
