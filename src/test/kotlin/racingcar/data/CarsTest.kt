@@ -23,6 +23,13 @@ class CarsTest {
         assertThrows<IllegalArgumentException> { Cars(input) }
     }
 
+    @DisplayName("레이스에 참가하는 자동차 수가 20대 보다 많을 경우")
+    @ParameterizedTest
+    @ValueSource(strings = ["1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21"])
+    fun carsMaximumLimitOver(input: String) {
+        assertThrows<IllegalArgumentException> { Cars(input) }
+    }
+
     @DisplayName("레이스에 참가하는 자동차 정보를 입력하지 않았을 경우")
     @ParameterizedTest
     @EmptySource

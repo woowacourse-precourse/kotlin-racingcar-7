@@ -8,11 +8,12 @@ class Cars(
     init {
         require(input.isNotEmpty())
         require(cars.map { it.name }.distinct().size == cars.size)
-        require(cars.size >= MINIMUM_CAR_COUNT)
+        require(cars.size in MINIMUM_CAR_COUNT .. MAXIMUM_CAR_COUNT)
     }
 
     companion object {
         private const val MINIMUM_CAR_COUNT = 2
+        private const val MAXIMUM_CAR_COUNT = 20
         private const val DELIMITER = ","
 
         private fun String.toCars() = this.split(DELIMITER).map { Car(it) }
