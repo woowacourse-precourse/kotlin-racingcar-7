@@ -59,8 +59,13 @@ class InputView {
 
     private fun parseRounds(input: String): Int {
         val rounds = input.toIntOrNull() ?: throw IllegalArgumentException(ERROR_INVALID_NUMBER)
+        validatePositiveRounds(rounds)
 
         return rounds
+    }
+
+    private fun validatePositiveRounds(rounds: Int) {
+        require(rounds in 1..Int.MAX_VALUE) { ERROR_NON_POSITIVE_ROUNDS }
     }
 
     companion object {
@@ -71,6 +76,7 @@ class InputView {
         const val ERROR_NAME_LENGTH = "자동차 이름은 1자 이상 5자 이하여야 합니다."
         const val ERROR_DUPLICATE_NAMES = "자동차 이름은 중복될 수 없습니다."
         const val ERROR_INVALID_NUMBER = "이동 횟수는 숫자로 입력해야 합니다."
+        const val ERROR_NON_POSITIVE_ROUNDS = "입력한 이동 횟수가 범위를 벗어났습니다."
         const val COMMA = ","
     }
 }
