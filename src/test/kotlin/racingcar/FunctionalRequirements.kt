@@ -1,13 +1,25 @@
 package racingcar
 
 
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test;
+import racingcar.domain.Car
+import racingcar.domain.Stadium
 
 class FunctionalRequirements {
+    private val application = Application()
+    private val stadium = Stadium()
 
     @Test
     fun `주어진 횟수 동안 n대의 자동차는 전진 또는 멈출 수 있다`() {
-
+        val cars = listOf(Car("car1"), Car("car2"))
+        val rounds = 5
+        val raceResults = stadium.race(cars, rounds)
+        raceResults.forEach { roundResult ->
+            roundResult.forEach { car ->
+                assertThat(car.movedDistance).isGreaterThanOrEqualTo(0)
+            }
+        }
     }
 
     @Test
