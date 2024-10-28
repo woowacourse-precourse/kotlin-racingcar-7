@@ -1,9 +1,13 @@
 package modelTest
 
+import camp.nextstep.edu.missionutils.Randoms
+import camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest
 import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.CsvSource
 import racingcar.Model.Car
 
 private const val CANT_BE_LONGER_THAN_5 = " -> 자동차 이름은 5자 이하이어야 합니다."
@@ -35,5 +39,30 @@ class CarTest {
             //then
             assertThat(error.message).isEqualTo(nameOfCar + CANT_BE_LONGER_THAN_5)
         }
+    }
+
+    @Test
+    fun `자동차는 본인의 위치를 가질 수 있다`() {
+        assertRandomNumberInRangeTest(
+            {
+                //given
+                val car = Car("hyun")
+                val moveCounts = Randoms.pickNumberInRange(1, Int.MAX_VALUE)
+
+                //when
+                repeat(moveCounts) {
+                    car.moveForward(MOVING_FORWARD)
+                }
+
+                //then
+                assertThat(car.position).isEqualTo(moveCounts)
+            },
+            MOVING_FORWARD, STOP
+        )
+    }
+
+    companion object {
+        private const val MOVING_FORWARD = 4
+        private const val STOP: Int = 3
     }
 }
