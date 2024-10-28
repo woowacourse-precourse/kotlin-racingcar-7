@@ -3,6 +3,7 @@ package racingcar
 import racingcar.model.CarMovement
 import racingcar.model.StringNamesParser
 import racingcar.view.InputView
+import racingcar.view.OutputView
 
 class RacingGame {
     fun run() {
@@ -13,7 +14,7 @@ class RacingGame {
         val carMovement = CarMovement(stringNamesParser.currentStatus)
         repeat(tryCount) {
             val racingResult = carMovement.carAction()
-            //TODO: 라운드 출력 구현
+            OutputView.currentStatusPrint(racingResult)
         }
     }
 }
