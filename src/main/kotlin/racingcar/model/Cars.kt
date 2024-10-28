@@ -8,7 +8,7 @@ data class Cars(val carNames: List<String>) {
     fun move() {
         for (car in cars) {
             val randomNumber = Randoms.pickNumberInRange(0, 9)
-            if (randomNumber >= 4) car.moveForWard()
+            if (randomNumber >= 4) car.moveForward()
         }
     }
 }
