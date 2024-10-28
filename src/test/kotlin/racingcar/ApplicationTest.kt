@@ -9,12 +9,24 @@ import org.junit.jupiter.api.assertThrows
 
 class ApplicationTest : NsTest() {
     @Test
-    fun `기능 테스트`() {
+    fun `기능 테스트-단독 우승`() {
         assertRandomNumberInRangeTest(
             {
                 run("pobi,woni", "1")
+                assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi")
             },
             MOVING_FORWARD, STOP
+        )
+    }
+
+    @Test
+    fun `기능 테스트-공동 우승`() {
+        assertRandomNumberInRangeTest(
+            {
+                run("pobi,woni", "1")
+                assertThat(output()).contains("pobi : -", "woni : -", "최종 우승자 : pobi, woni")
+            },
+            MOVING_FORWARD, MOVING_FORWARD
         )
     }
 
@@ -32,12 +44,11 @@ class ApplicationTest : NsTest() {
         }
     }
 
-
     @Test
     fun `예외 테스트-실시횟수가 1보다 작을 때`() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("pobi,woni", "0") }
-         //   assertThrows<IllegalArgumentException> { runException("pobi,woni", "-1") }
+            assertThrows<IllegalArgumentException> { runException("pobi,woni", "-1") }
         }
     }
 
