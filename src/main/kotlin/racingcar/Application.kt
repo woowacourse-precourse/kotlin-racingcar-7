@@ -12,4 +12,19 @@ fun main() {
     println("시도할 횟수는 몇 회인가요?")
     val countInput = Console.readLine()
     if (countInput.isCountInvalid()) throw IllegalArgumentException()
+
+    println()
+
+    val names = namesInput.split(',')
+    val count = countInput.toInt()
+    val racingCarGame = RacingCarGame(names)
+
+    println("실행 결과")
+    repeat(count) {
+        racingCarGame.moveCars()
+        racingCarGame.printResults()
+        println()
+    }
+
+    racingCarGame.printWinners()
 }
