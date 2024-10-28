@@ -8,7 +8,7 @@ fun main() {
 
     promptForCarNames()
 
-    for (carName in readLine().split(",").map { it.trim() }) {
+    for (carName in processCarNames(readLine())) {
         require(carName.length <= 5) { "자동차 이름은 5자 이하만 가능하다." }  // TODO: 조건식 변수화
         carMap.put(carName, 0)
     }
@@ -38,3 +38,6 @@ fun main() {
 }
 
 fun promptForCarNames() = println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
+
+fun processCarNames(input: String) = input.split(",")
+    .map { it.trim() }
