@@ -17,12 +17,32 @@ class ApplicationTest : NsTest() {
             },
             MOVING_FORWARD, STOP
         )
+        assertRandomNumberInRangeTest(
+            {
+                run("pobi,woni,jiji", "1")
+                assertThat(output()).contains("pobi : -", "woni : -", "jiji : ", "최종 우승자 : pobi, woni")
+            },
+        MOVING_FORWARD, MOVING_FORWARD, STOP
+        )
     }
 
     @Test
     fun `예외 테스트`() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
+        }
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("", "1") }
+        }
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,pobi,woni", "3") }
+        }
+
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,woni", "a") }
+        }
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,woni", "1.1") }
         }
     }
 
