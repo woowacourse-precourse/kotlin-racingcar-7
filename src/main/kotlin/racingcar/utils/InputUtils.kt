@@ -21,12 +21,12 @@ object InputUtils {
      * @return 분리한 이름 리스트(List)
      */
     private fun String.toCarList(): List<String> {
-        return split(INPUT_CARS_SEPARATOR).map {
-            val name = it.trim()
-            ValidCheckUtils.checkValidCarName(name)
+        return split(INPUT_CARS_SEPARATOR).mapIndexed { index, s ->
+            val name = s.trim()
+            ValidCheckUtils.checkValidCarName(name, index)
             name
         }.filter {
-            it.isNotBlank()
+            it.isNotEmpty()
         }
     }
 
@@ -43,7 +43,7 @@ object InputUtils {
     }
 
     private fun String.toGameCount(): Int {
-        ValidCheckUtils.checkGameRound(this)
+        ValidCheckUtils.checkValidGameRound(this)
         return trim().toInt()
     }
 

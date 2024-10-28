@@ -7,11 +7,12 @@ object ValidCheckUtils {
      * 자동차 이름이 유효한 양식인지 확인한다. 이름은 반드시 [VALID_CAR_NAME_MAX_LENGTH] 이하만 가능하다.
      * @throws IllegalArgumentException
      */
-    fun checkValidCarName(name: String) {
+    fun checkValidCarName(name: String, index: Int) {
         if(name.length > VALID_CAR_NAME_MAX_LENGTH) {
             throw IllegalArgumentException("자동차 이름은 ${VALID_CAR_NAME_MAX_LENGTH}자를 넘길 수 없습니다.")
         }
-        if(name.isBlank()) {
+        // 주의: input 값이 "xxx,"형태일 경우 index가 1일 때 name은 Empty형태지만 이 경우 예외가 발생해서는 안된다.
+        if(name.isEmpty() && index > 1) {
             throw IllegalArgumentException("유효한 자동차 이름이 아닙니다.")
         }
     }
@@ -20,7 +21,7 @@ object ValidCheckUtils {
      * 입력받은 실시횟수가 유효한지 확인한다.
      * @throws IllegalArgumentException
      */
-    fun checkGameRound(num: String) {
+    fun checkValidGameRound(num: String) {
         try {
             val validNum = num.toInt()
             if(1 > validNum) {

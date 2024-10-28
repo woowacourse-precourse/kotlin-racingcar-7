@@ -31,6 +31,17 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
+    fun `정상 테스트-입력받은 자동차 이름이 1개이고 ','로 끝날 때`() {
+        assertRandomNumberInRangeTest(
+            {
+                run("pobi,", "1")
+                assertThat(output()).contains("pobi : -", "최종 우승자 : pobi")
+            },
+            MOVING_FORWARD
+        )
+    }
+
+    @Test
     fun `예외 테스트-자동차 이름이 5글자를 넘길 때`() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
