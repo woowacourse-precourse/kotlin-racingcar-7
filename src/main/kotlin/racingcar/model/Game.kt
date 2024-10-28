@@ -21,6 +21,12 @@ class Game(carNames: List<String>) {
         return cars
     }
 
+    fun getWinners(): List<String> {
+        val maxDistance = cars.maxOf { it.distance }
+
+        return cars.filter { it.distance == maxDistance }.map { it.name }
+    }
+
     companion object {
         const val MOVE_THRESHOLD = 4
         const val MIN_MOVE_THRESHOLD = 0
