@@ -2,6 +2,14 @@ package racingcar
 
 class RacingCar(val name: String) {
     val racingCars = name.split(",")
+    val racingCarsWithNumber = mutableMapOf<String, Int>()
+
+    fun getRacingCarsWithNumber() {
+        for (racingCar in racingCars) {
+            racingCarsWithNumber[racingCar] = 0
+        }
+    }
+
     fun lengthCheck() {
         for (racingCar in racingCars) {
             if (racingCar.length > 5) {

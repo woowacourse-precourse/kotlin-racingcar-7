@@ -28,4 +28,12 @@ class RacingCarTest {
             lessThanTwo.numberCheck()
         }
     }
+
+    @Test
+    fun `전진 횟수(기본값 0)를 Value로 갖는 Map을 생성한다`() {
+        val inputName = "pobi,woni,jun"
+        val racingCar = RacingCar(inputName)
+        racingCar.getRacingCarsWithNumber()
+        assertThat(racingCar.racingCarsWithNumber).isEqualTo(mapOf("pobi" to 0, "woni" to 0, "jun" to 0))
+    }
 }
