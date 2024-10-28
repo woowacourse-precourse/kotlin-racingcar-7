@@ -23,4 +23,15 @@ class CarTest {
 
         assertThat(car.currentDistance).isEqualTo("---")
     }
+
+    @Test
+    fun `전진 판단 테스트`() {
+        val car = Car("test")
+        if (car.canMove()) {
+            car.moveForward()
+            assertThat(car.currentDistance).isEqualTo("-")
+        } else {
+            assertThat(car.currentDistance).isEqualTo("")
+        }
+    }
 }
