@@ -10,6 +10,11 @@ class RacingCarView {
         return Console.readLine()
     }
 
+    fun getAttempts() : String {
+        println(getAttemptsStr)
+        return Console.readLine()
+    }
+
 
 
 }
