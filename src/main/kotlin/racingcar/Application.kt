@@ -77,6 +77,8 @@ fun race(cars: List<String>, move: UInt) {
     turnDisplay(cars, m, turn)
     turn++
   }
+
+  winnerDisplay(m)
 }
 
 fun turnAction(cars: List<String>, m: MutableMap<String, UInt>) {
@@ -99,4 +101,10 @@ fun turnDisplay(cars: List<String>, m: MutableMap<String, UInt>, turn : UInt) {
     println()
   }
   println()
+}
+
+fun winnerDisplay(m : MutableMap<String, UInt>){
+  val maxMove = m.maxBy { it.value }.value
+  val winners = m.filterValues { it == maxMove }.keys
+  println("최종 우승자 : ${winners.joinToString()}")
 }
