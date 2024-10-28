@@ -73,7 +73,10 @@ class FunctionalRequirements {
 
     @Test
     fun `자동차 경주 게임을 완료한 후 누가 우승했는지를 알려준다`() {
-
+        setInput("pobi,crong\n5")
+        application.run()
+        val output = output()
+        assert(output.contains("최종 우승자 :"))
     }
 
     @Test
