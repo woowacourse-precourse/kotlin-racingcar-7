@@ -4,18 +4,22 @@ import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
-    // TODO: 프로그램 구현
-    val carList = getCarNames()
-    val attemptCount = getAttemptCount()
+   try {
+       // TODO: 프로그램 구현
+       val carList = getCarNames()
+       val attemptCount = getAttemptCount()
 
-    println("\n실행 결과")
+       println("\n실행 결과")
 
-    repeat(attemptCount) {
-        updateCarsPosition(carList)
-        printCarsPosition(carList)
-    }
+       repeat(attemptCount) {
+           updateCarsPosition(carList)
+           printCarsPosition(carList)
+       }
 
-    printWinner(carList)
+       printWinner(carList)
+   }catch (e : Exception){
+       throw IllegalArgumentException()
+   }
 }
 
 fun getCarNames(): MutableList<Pair<String,Int>> {
@@ -23,9 +27,7 @@ fun getCarNames(): MutableList<Pair<String,Int>> {
     val input = Console.readLine() ?: throw IllegalArgumentException()
     val carNames = input.split(",").map { it.trim() }
     carNames.forEach { name ->
-        if (name.length > 5) {
-            throw IllegalArgumentException()
-        }
+       checkInputLength(name)
     }
     return carNames.map { Pair(it,0) }.toMutableList()
 }
@@ -54,6 +56,12 @@ fun printWinner(cars: MutableList<Pair<String, Int>>){
     val maxSecond = cars.maxOf { it.second }
     val winner = cars.filter { it.second == maxSecond }.joinToString(", ") {it.first}
     println("최종 우승자 : $winner")
+}
+
+fun checkInputLength(carName : String){
+    if(carName.length > 5){
+        throw IllegalArgumentException()
+    }
 }
 
 
