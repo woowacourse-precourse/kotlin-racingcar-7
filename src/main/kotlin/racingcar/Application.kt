@@ -8,4 +8,21 @@ fun main() {
     val cars = Console.readLine().split(",")
     println("시도할 횟수는 몇 회인가요?")
     val count: Int = Console.readLine().toInt()
+    println()
+
+    var race = ArrayList<String>()
+    for (i in cars.indices) {
+        race.add("")
+    }
+
+    println("실행 결과")
+    for (i in 0 until count) {
+        for (i in cars.indices) {
+            if (Randoms.pickNumberInRange(0, 9) >= 4) {
+                race[i] += "-"
+            }
+            println(cars[i] + " : " + race[i])
+        }
+        println()
+    }
 }
