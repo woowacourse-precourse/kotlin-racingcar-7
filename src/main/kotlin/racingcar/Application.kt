@@ -48,6 +48,9 @@ fun raceCars(carNames: List<String>, moveCount: Int) {
     
     printRacingResults(racingResults) // 이동 결과 출력
   }
+  
+  // 최종 우승자 출력
+  printFinalWinner(racingResults)
 }
 
 fun printRacingResults(racingResults: Map<String, Int>) {
@@ -56,4 +59,13 @@ fun printRacingResults(racingResults: Map<String, Int>) {
   }
   
   println()
+}
+
+fun printFinalWinner(racingResults: Map<String, Int>) {
+  val maxDistance = racingResults.values.maxOrNull() ?: 0 // 가장 많이 전진한 거리
+  val winners = racingResults.filter { racingResult ->
+    racingResult.value == maxDistance
+  }.keys // 가장 많이 전진한 사람을 우승자로
+  
+  println("최종 우승자 : ${winners.joinToString(", ")}") // 최종 우승자 출력
 }
