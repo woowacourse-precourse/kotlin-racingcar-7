@@ -53,7 +53,7 @@ class RacingGame(
     }
 
     fun getWinners(): Set<String> {
-        val maxScore = scoreMap.values.max()
+        val maxScore = scoreMap.values.maxOrNull()
         val winners = scoreMap.filter { it.value == maxScore }.keys
         return winners
     }

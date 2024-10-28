@@ -23,21 +23,10 @@ object InputUtils {
     private fun String.toCarList(): List<String> {
         return split(INPUT_CARS_SEPARATOR).map {
             val name = it.trim()
-            checkValidCarName(name)
+            ValidCheckUtils.checkValidCarName(name)
             name
         }.filter {
             it.isBlank()
-        }
-    }
-
-    private const val VALID_CAR_NAME_MAX_LENGTH = 5
-    /**
-     * 자동차 이름이 유효한 양식인지 확인한다. 이름은 반드시 [VALID_CAR_NAME_MAX_LENGTH] 이하만 가능하다.
-     * @throws IllegalArgumentException
-     */
-    private fun checkValidCarName(name: String) {
-        if(name.length > VALID_CAR_NAME_MAX_LENGTH) {
-            throw IllegalArgumentException("자동차 이름은 ${VALID_CAR_NAME_MAX_LENGTH}자를 넘길 수 없습니다.")
         }
     }
 
@@ -54,11 +43,8 @@ object InputUtils {
     }
 
     private fun String.toGameCount(): Int {
-        return try {
-            trim().toInt()
-        } catch (e: Exception) {
-            throw IllegalArgumentException("숫자만 입력 가능합니다.")
-        }
+        ValidCheckUtils.checkGameCount(this)
+        return trim().toInt()
     }
 
 }
