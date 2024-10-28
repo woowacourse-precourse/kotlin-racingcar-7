@@ -4,17 +4,12 @@ class Round(carNames: List<String>) {
     private var cars: MutableList<Car> = carNames.map { Car(it) }.toMutableList()
 
     fun start() {
-        cars.forEach {
-            it.moveForward()
-        }
-        println()
+        cars.forEach { it.moveForward() }
     }
 
     fun printRound() {
-        cars.forEach {
-            val currentPosition = it.movingState()
-            println(currentPosition)
-        }
+        cars.forEach { println(it.getStatus()) }
+        println()
     }
 
     fun getWinners(): List<String> {
