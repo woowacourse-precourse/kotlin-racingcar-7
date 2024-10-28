@@ -3,13 +3,15 @@ package racingcar
 import camp.nextstep.edu.missionutils.Console.readLine
 import camp.nextstep.edu.missionutils.Randoms.pickNumberInRange
 
+val isCarNameValidLength = { carName: String -> carName.length <= 5 }
+
 fun main() {
     val carMap = mutableMapOf<String, Int>()
 
     promptForCarNames()
 
     for (carName in processCarNames(readLine())) {
-        require(carName.length <= 5) { "자동차 이름은 5자 이하만 가능하다." }  // TODO: 조건식 변수화
+        validateCarName(carName)
         carMap.put(carName, 0)
     }
 
@@ -41,3 +43,7 @@ fun promptForCarNames() = println("경주할 자동차 이름을 입력하세요
 
 fun processCarNames(input: String) = input.split(",")
     .map { it.trim() }
+
+fun validateCarName(carName: String) {
+    require(isCarNameValidLength(carName)) { "자동차 이름은 5자 이하만 가능하다." }
+}
