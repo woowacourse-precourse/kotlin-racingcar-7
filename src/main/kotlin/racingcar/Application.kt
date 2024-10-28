@@ -21,4 +21,15 @@ fun main() {
    */
 
   val inputCar = Console.readLine()
+  val cars = inputCar.split(",")
+  isOver5Letters(cars)
+}
+
+fun isOver5Letters(cars : List<String>){
+  val carIter = cars.listIterator()
+  carIter.forEach {
+    if(5 < it.length){
+      throw IllegalArgumentException("이름이 5자를 넘습니다")
+    }
+  }
 }
