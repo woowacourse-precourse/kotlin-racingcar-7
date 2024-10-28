@@ -11,5 +11,6 @@ class Round(
 
     companion object {
         private const val MINIMUM_ROUND_COUNT = 1
+        fun Round.toInt() = count.toInt()
     }
 }
