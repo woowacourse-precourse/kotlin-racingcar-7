@@ -10,5 +10,8 @@ class RaceController {
         val trialCount = inputView.readTrialCount()
 
         val cars = Cars(carNames)
+        repeat(trialCount) {
+            cars.move()
+        }
     }
 }
