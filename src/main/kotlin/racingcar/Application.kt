@@ -11,6 +11,11 @@ fun main() {
         println(carNames)
         var carList = carNames.split(",").map { Car(it.trim()) }
         checkNumberOfCarName(carList.map { it.name })
+
+        println("시도할 횟수는 몇 회인가요?")
+        val count = readLine().toInt()
+
+        startGame(count, carList)
     } catch (e: Exception) {
         throw IllegalArgumentException(e.message)
     }
@@ -28,4 +33,11 @@ fun checkNumberOfCarName(list: List<String>): Boolean {
         if (name.length > 5) throw IllegalArgumentException("자동차 이름은 5글자 이하만 가능합니다.")
     }
     return true
+}
+
+fun startGame(count: Int, carList: List<Car>) {
+    println("실행 결과")
+    repeat(count) {
+
+    }
 }
