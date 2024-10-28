@@ -78,7 +78,10 @@ class FunctionalRequirements {
 
     @Test
     fun `우승자는 한 명 이상일 수 있다`() {
-
+        setInput("pobi,crong\n5")
+        application.run()
+        val output = output()
+        assert(output.contains("최종 우승자 : pobi, crong"))
     }
 
     @Test
