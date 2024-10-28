@@ -3,6 +3,7 @@ package racingcar
 import camp.nextstep.edu.missionutils.Randoms
 import racingcar.domain.Car
 import racingcar.domain.tryMove
+import racingcar.domain.winners
 import racingcar.ui.Ui
 import racingcar.util.repeat
 
@@ -20,4 +21,6 @@ fun main() {
         cars.tryMove()
         ui.displayTryResult(cars)
     }
+
+    ui.displayWinners(cars.winners)
 }

@@ -42,6 +42,11 @@ class Ui {
         println(stringBuilder.toString())
     }
 
+    fun displayWinners(winners: List<Car>) {
+        val formattedWinners = winners.joinToString(separator = WINNER_SEPARATOR) { it.carName.toString() }
+        println("최종 우승자 : $formattedWinners")
+    }
+
     private fun StringBuilder.repeat(char: Char, times: Int): Unit = repeat(times) {
         append(char)
     }
@@ -50,5 +55,6 @@ class Ui {
     companion object {
         private const val CAR_NAME_DELIMITER = ','
         private const val DISTANCE_MARKER = '-'
+        private const val WINNER_SEPARATOR = ", "
     }
 }
