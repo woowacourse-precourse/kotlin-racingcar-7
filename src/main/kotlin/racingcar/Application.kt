@@ -6,6 +6,7 @@ import kotlin.collections.set
 
 val isCarNameValidLength = { carName: String -> carName.length <= 5 }
 val isMoveForwardValid = { pickNumberInRange(0, 9) >= 4 }
+val isWinnerValid = { carMap: MutableMap<String, Int>, count: Int -> count == carMap.values.maxOrNull() }
 
 fun main() {
 
@@ -18,12 +19,7 @@ fun main() {
 
     printAllRaceResults(carMap, attemptNumber)
 
-    // TODO: 함수 분리할 것
-    println(
-        "최종 우승자 : " + carMap.filterValues { it == carMap.values.maxOrNull() }
-            .keys
-            .joinToString(", ")
-    )
+    printWinners(carMap)
 }
 
 fun promptForCarNames() = println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)")
@@ -67,6 +63,12 @@ fun moveForwardIfVaild(carMap: MutableMap<String, Int>, key: String, value: Int)
         carMap[key] = value + 1
     }
 }
+
+fun printWinners(carMap: MutableMap<String, Int>) = println(
+    "최종 우승자 : " + filterWinners(carMap).joinToString(", ")
+)
+
+fun filterWinners(carMap: MutableMap<String, Int>) = carMap.filterValues { isWinnerValid(carMap, it) }.keys
 
 fun validateCarName(carName: String) {
     require(isCarNameValidLength(carName)) { "자동차 이름은 5자 이하만 가능하다." }
