@@ -19,7 +19,7 @@ private fun readCarNames(): List<String> {
     val input = Console.readLine()
     val names = input.split(",").map { it.trim() }
 
-    require(names.all { it.length <= 5 }) {
+    require(names.all { it.isNotBlank() && it.length <= 5 }) {
         throw IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.")
     }
     return names
