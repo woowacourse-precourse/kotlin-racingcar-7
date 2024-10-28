@@ -13,7 +13,6 @@ class RaceController {
         val trialCount = inputView.readTrialCount()
 
         outputView.announceResultStart()
-
         val cars = Cars(carNames)
         repeat(trialCount) {
             cars.move()
