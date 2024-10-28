@@ -17,7 +17,7 @@ class RacingCarController {
             val carNames = getCarNames()
             val numberOfAttempts = getNumberOfAttempts()
 
-            initializeCars(carNames)
+            initializeCars(carNames.toList())
             playRace(numberOfAttempts)
 
             val winners = findWinners()
@@ -29,7 +29,7 @@ class RacingCarController {
         }
     }
 
-    private fun getCarNames(): List<String> {
+    private fun getCarNames(): Collection<String> {
         val input = inputView.askForCarNames()
 
         val carNames = input.split(",").map { it.trim() }
@@ -39,7 +39,8 @@ class RacingCarController {
         } else if (carNames.any { it.length > 5 }) {
             throw IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.")
         } else if (carNames.size != carNames.toSet().size){
-            throw IllegalArgumentException("중복된 이름이 있습니다.")
+            outputView.displayDup()
+            return carNames.toSet()
         }
 
         return carNames
