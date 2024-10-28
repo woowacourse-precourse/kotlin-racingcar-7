@@ -25,17 +25,9 @@ class CreateCarsUseCaseTest {
     }
 
     @Test
-    fun `익명 자동차 1000명 생성 테스트`() {
+    fun `익명 자동차가 1000개일 경우 (익명1000) 5자 이상이라 예외 처리 테스트`() {
         assertThrows<IllegalArgumentException> {
             createCarsUseCase.execute(",".repeat(999))
-        }
-    }
-
-    @Test
-    fun `자동차를 생성할때 이름이 5자 초과일 경우 예외 처리 테스트`() {
-        val input = "red,blue,white,yellow"
-        assertThrows<IllegalArgumentException> {
-            createCarsUseCase.execute(input)
         }
     }
 

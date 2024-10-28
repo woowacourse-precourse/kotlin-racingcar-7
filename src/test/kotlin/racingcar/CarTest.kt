@@ -38,4 +38,12 @@ class CarTest {
             car.tryMove(tryNumber)
         }
     }
+
+    @ParameterizedTest
+    @ValueSource(strings = ["red car", "blue car", "white car", "yellow"])
+    fun `자동차를 생성할때 이름이 5자 초과일 경우 예외 처리 테스트`(name: String) {
+        assertThrows<IllegalArgumentException> {
+            Car(name)
+        }
+    }
 }
