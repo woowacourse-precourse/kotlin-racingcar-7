@@ -41,6 +41,7 @@ fun startGame(count: Int, carList: List<Car>) {
         increaseDistance(carList)
         printCurrentDistance(carList)
     }
+    printWinnerCarName(carList)
 }
 
 fun getRandomNumber(min: Int, max: Int): Int =
@@ -63,4 +64,13 @@ fun printCurrentDistance(list: List<Car>) {
 fun getWinner(list: List<Car>): List<Car> {
     val maxDistance = list.maxOf { it.distance }
     return list.filter { it.distance == maxDistance }
+}
+
+fun printWinnerCarName(list: List<Car>) {
+    val winner = getWinner(list)
+    print("최종 우승자 : ")
+    for ((index, car) in winner.withIndex()) {
+        print(car.name)
+        if (index != winner.lastIndex) print(", ")
+    }
 }
