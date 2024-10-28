@@ -1,5 +1,7 @@
 package racingcar
 
+import camp.nextstep.edu.missionutils.Console
+
 fun main() {
     // TODO: 프로그램 구현
 
@@ -17,4 +19,6 @@ fun main() {
   6-4. 6-1~3은 4에서 입력받은 n회 반복
   7. 경주 결과 출력(1등이 겹친다면 여러명 출력)
    */
+
+  val inputCar = Console.readLine()
 }
