@@ -11,8 +11,8 @@ class DataFormatter {
     }
 
     fun getTimes(times: String): Int {
-        val parsedTimes = times.toIntOrNull() ?: throw IllegalArgumentException()
-        require(parsedTimes > 0)
+        val parsedTimes = times.toIntOrNull() ?: throw IllegalArgumentException(TIMES_PARSE_ERROR)
+        require(parsedTimes > 0) { TIMES_NON_POSITIVE_ERROR }
         return parsedTimes
     }
 
@@ -37,8 +37,16 @@ class DataFormatter {
     private fun isUniqueCarNames(carNames: List<String>) = carNames.distinct().size == carNames.size
 
     private fun validateCarNames(carNames: List<String>) {
-        require(isNotEmptyList(carNames))
-        require(isCarNamesLengthValid(carNames))
-        require(isUniqueCarNames(carNames))
+        require(isNotEmptyList(carNames)) { CAR_NAME_BLANK_ERROR }
+        require(isCarNamesLengthValid(carNames)) { CAR_NAME_LENGTH_ERROR }
+        require(isUniqueCarNames(carNames)) { CAR_NAME_DUPLICATE_ERROR }
+    }
+
+    companion object ErrorMessage {
+        const val CAR_NAME_LENGTH_ERROR = "자동차 이름은 5자 이하로 입력해 주세요."
+        const val CAR_NAME_BLANK_ERROR = "자동차 이름을 입력해 주세요."
+        const val CAR_NAME_DUPLICATE_ERROR = "자동차 이름이 중복되었습니다."
+        const val TIMES_PARSE_ERROR = "횟수는 숫자로 입력해 주세요."
+        const val TIMES_NON_POSITIVE_ERROR = "횟수는 1 이상의 숫자로 입력해 주세요."
     }
 }
