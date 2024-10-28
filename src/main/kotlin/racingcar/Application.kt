@@ -22,8 +22,7 @@ fun isValidCarName(cars: List<String>){
 }
 
 fun isOver5Letters(cars: List<String>) {
-    val carIter = cars.listIterator()
-    carIter.forEach {
+    cars.forEach{
         if (5 < it.length) {
             throw IllegalArgumentException("이름이 5자를 넘습니다")
         }
@@ -65,45 +64,34 @@ fun isMovementValid(inputMove: String): UInt {
 }
 
 fun race(cars: List<String>, move: UInt) {
-    val m = mutableMapOf<String, UInt>()
-    for (car in cars) {
-        m[car] = 0u
+    val carPositions = cars.associateWith{0u}.toMutableMap()
+    repeat(move.toInt()){ turn ->
+        turnAction(cars, carPositions)
+        turnDisplay(cars, carPositions, turn.toUInt()+1u)
     }
-
-    var turn = 1u
-    while (turn <= move) {
-        turnAction(cars, m)
-        turnDisplay(cars, m, turn)
-        turn++
-    }
-
-    winnerDisplay(m)
+    winnerDisplay(carPositions)
 }
 
-fun turnAction(cars: List<String>, m: MutableMap<String, UInt>) {
-    for (car in cars) {
+fun turnAction(cars: List<String>, carPosition: MutableMap<String, UInt>) {
+    cars.forEach { car ->
         if (4 <= Randoms.pickNumberInRange(0, 9)) {
-            m[car] = m[car]!!.plus(1u)
+            carPosition[car] = carPosition[car]!!.plus(1u)
         }
     }
 }
 
-fun turnDisplay(cars: List<String>, m: MutableMap<String, UInt>, turn: UInt) {
+fun turnDisplay(cars: List<String>, carPosition: MutableMap<String, UInt>, turn: UInt) {
     if (turn == 1u) {
         println("실행 결과")
     }
-    for (car in cars) {
-        print("$car : ")
-        for (move in 1..m[car]!!.toInt()) {
-            print("-")
-        }
-        println()
+    cars.forEach { car ->
+        println("$car : ${"-".repeat(carPosition[car]!!.toInt())}")
     }
     println()
 }
 
-fun winnerDisplay(m: MutableMap<String, UInt>) {
-    val maxMove = m.maxBy { it.value }.value
-    val winners = m.filterValues { it == maxMove }.keys
+fun winnerDisplay(carPosition: MutableMap<String, UInt>) {
+    val maxMove = carPosition.values.maxOrNull() ?: 0u
+    val winners = carPosition.filterValues { it == maxMove }.keys
     println("최종 우승자 : ${winners.joinToString()}")
 }
