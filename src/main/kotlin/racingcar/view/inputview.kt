@@ -15,3 +15,17 @@ fun carnameinputview(): List<String> {
     }
     return carname
 }
+
+fun racenuminputview():Int{
+    val racenum_print = "시도할 횟수는 몇 회인가요?"
+    val racenum:Int
+
+    println(racenum_print)
+
+    try{
+        racenum = readLine()?.toInt() ?: throw IllegalArgumentException()
+    }catch(e: NumberFormatException){
+        throw IllegalArgumentException()
+    }
+    return racenum
+}
