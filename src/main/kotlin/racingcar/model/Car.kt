@@ -6,6 +6,7 @@ class Car (val name:String){
         return status
     }
     fun go(){
-        status++
+        if (Random().randomGenerator())
+            status++
     }
 }

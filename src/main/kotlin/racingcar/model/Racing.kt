@@ -15,8 +15,7 @@ class Racing {
 
     private fun eachRace(cars:List<Car>):List<Car>{
         for (car in cars){
-            if (Random().randomGenerator())
-                car.go()
+            car.go()
             Output().printEachRacingResult(car)
         }
         println()
