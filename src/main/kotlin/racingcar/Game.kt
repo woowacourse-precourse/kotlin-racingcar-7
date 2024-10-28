@@ -16,12 +16,10 @@ class Game {
         return carList.map { Car(it) }
     }
 
-
     private fun getCarList(): List<Car> {
         monitor.displayInputCar()
         return createCars()
     }
-
 
     private fun startRace(carList: List<Car>, tryCount: Int): Int {
         return CarFactory().displayCarRace(carList, tryCount)

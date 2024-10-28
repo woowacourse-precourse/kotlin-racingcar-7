@@ -1,12 +1,14 @@
 package racingcar
 
-import camp.nextstep.edu.missionutils.Console
-
 class Driver {
+    val reader = Reader()
 
-    fun inputCarName(): List<String> {
-        val carName = Console.readLine().split(",")
-        return checkCarNameException(carName)
+    fun getValidDriver(): List<String> {
+        return checkCarNameException(inputCarName())
+    }
+
+    private fun inputCarName(): List<String> {
+        return reader.inputNum().split(",")
     }
 
     private fun checkCarNameException(carName: List<String>): List<String> {

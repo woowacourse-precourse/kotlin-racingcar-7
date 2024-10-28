@@ -2,5 +2,5 @@ package racingcar
 
 
 fun main() {
-    Game().playGame()
+    Game().startGame()
 }
