@@ -58,6 +58,13 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
+    fun `예외 테스트-자동차 이름이 중복일 때`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,pobi", "1") }
+        }
+    }
+
+    @Test
     fun `예외 테스트-실시횟수가 1보다 작을 때`() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("pobi,woni", "0") }

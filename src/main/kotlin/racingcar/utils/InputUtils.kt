@@ -27,6 +27,8 @@ object InputUtils {
             name
         }.filter {
             it.isNotEmpty()
+        }.also {
+            ValidCheckUtils.checkCarNameOverlap(it)
         }
     }
 

@@ -18,6 +18,18 @@ object ValidCheckUtils {
     }
 
     /**
+     * 자동차 이름이 중복되었는지 확인한다. 이 때, 문자열 앞 또는 뒤에 포함된 공백 문자는 고려하지 않는다.
+     * 예를 들어, " sandy", "sandy ", " sandy ", "sandy"는 모두 중복된 이름으로 처리한다.
+     * @throws IllegalArgumentException
+     */
+    fun checkCarNameOverlap(list: List<String>) {
+        val validSet = list.toSet()
+        if(list.size != validSet.size) {
+            throw IllegalArgumentException("자동차 이름은 중복될 수 없습니다.")
+        }
+    }
+
+    /**
      * 입력받은 실시횟수가 유효한지 확인한다.
      * @throws IllegalArgumentException
      */
