@@ -1,4 +1,4 @@
-package racingcar.viewModel
+package racingcar.vm
 
 import racingcar.constans.Constants.SEPARATOR
 import racingcar.delegate.ValidationDelegator

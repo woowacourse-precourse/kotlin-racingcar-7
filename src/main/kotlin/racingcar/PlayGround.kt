@@ -14,7 +14,6 @@ class PlayGround(
     fun play(players: List<PlayerState>, playCount: Int): PlayResultState {
         var state = players
         println(MESSAGE_RESULT)
-
         repeat(playCount) {
             state = reduceState(state)
             printExecutionByPhase(state)

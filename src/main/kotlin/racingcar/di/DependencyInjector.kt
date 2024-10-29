@@ -8,7 +8,7 @@ import racingcar.reducer.PlayerStateReducer
 import racingcar.delegate.ValidationDelegator
 import racingcar.delegate.ValidationDelegatorImpl
 import racingcar.delegate.playCount.PlayCountErrorDelegator
-import racingcar.viewModel.RacingViewModel
+import racingcar.vm.RacingViewModel
 import racingcar.delegate.playCount.PlayCountErrorDelegatorImpl
 import racingcar.delegate.name.NameErrorDelegator
 import racingcar.delegate.name.NameErrorDelegatorImpl

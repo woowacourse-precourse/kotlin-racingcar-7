@@ -6,7 +6,7 @@ import racingcar.constans.Constants.MESSAGE_GUIDE_FOR_INPUT_COUNT
 import racingcar.constans.Constants.MESSAGE_GUIDE_FOR_USER_NAME
 import racingcar.event.RacingViewEvent
 import racingcar.model.CarRacingState.PlayResultState
-import racingcar.viewModel.RacingViewModel
+import racingcar.vm.RacingViewModel
 
 class RacingView(private val viewModel: RacingViewModel) {
 
