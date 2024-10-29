@@ -23,7 +23,7 @@ class RacingGame(
     }
 
     private fun playRound() {
-        _scoreMap.forEach { (car, _) ->
+        scoreMap.forEach { (car, _) ->
             val roundResult = getPlayResult()
             updateScore(
                 carName = car,
@@ -34,7 +34,7 @@ class RacingGame(
 
     private fun updateScore(carName: String, result: PlayResult) {
         if(result == PlayResult.GO) {
-            _scoreMap[carName] = _scoreMap[carName]!! + 1
+            _scoreMap[carName] = _scoreMap.getOrDefault(carName, 0).plus(1)
         }
     }
 

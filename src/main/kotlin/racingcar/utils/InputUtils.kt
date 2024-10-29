@@ -39,10 +39,10 @@ object InputUtils {
         println(INPUT_GAME_ROUND_STR )
         val input = Console.readLine()
         Console.close()
-        return input.toGameCount()
+        return input.toTotalRound()
     }
 
-    private fun String.toGameCount(): Int {
+    private fun String.toTotalRound(): Int {
         ValidCheckUtils.checkValidGameRound(this)
         return trim().toInt()
     }
