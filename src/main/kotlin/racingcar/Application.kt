@@ -1,5 +1,9 @@
 package racingcar
 
+import racingcar.controller.RacingController
+import racingcar.domain.numbergenerator.RandomNumberGenerator
+
 fun main() {
-    // TODO: 프로그램 구현
+    val racingGame = RacingController(RandomNumberGenerator())
+    racingGame.play()
 }
