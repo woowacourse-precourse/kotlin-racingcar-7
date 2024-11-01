@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
 class ApplicationTest : NsTest() {
+
     @Test
     fun `기능 테스트`() {
         assertRandomNumberInRangeTest(
@@ -23,6 +24,41 @@ class ApplicationTest : NsTest() {
     fun `예외 테스트`() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
+        }
+    }
+
+    @Test
+    fun testValidInput() {
+        assertSimpleTest {
+            run("pobi,woni", "1")
+        }
+    }
+
+    @Test //예외 테스트와 같음
+    fun testNotValidNames() {
+        assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
+    }
+
+    @Test
+    fun testNotValidTryCount() {
+        assertThrows<IllegalArgumentException> { runException("pobi,java", "a") }
+    }
+
+    @Test
+    fun testJointWinner() {
+        assertRandomNumberInRangeTest(
+            {
+                run("pobi,woni", "2")
+                assertThat(output()).contains("pobi : --", "woni : --", "최종 우승자 : pobi, woni")
+            },
+            MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD
+        )
+    }
+
+    @Test
+    fun testDuplicateCarName() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,pobi", "1") }
         }
     }
 
