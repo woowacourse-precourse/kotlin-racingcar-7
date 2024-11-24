@@ -1,9 +1,9 @@
-package racingcar
+package racingcar.service
 
 import camp.nextstep.edu.missionutils.Randoms
 import racingcar.model.Car
 
-class Model {
+object CarService {
     private fun getRandomNumber(): Int {
         return Randoms.pickNumberInRange(0, 9)
     }

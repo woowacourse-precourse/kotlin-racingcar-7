@@ -1,11 +1,16 @@
 package racingcar.controller
 
-import racingcar.Model
+import racingcar.model.Car
+import racingcar.service.CarService
 import racingcar.view.InputView
+import racingcar.view.OutputView
 
-class CarController(private val model: Model, private val view: InputView) {
+class CarController(
+    private val inputView: InputView,
+    private val outputView: OutputView,
+) {
     fun run() {
-        val inputCarNames = view.getCars()
+        val inputCarNames = inputView.getCars()
         val carNames = try {
             inputCarNames.split(',')
         } catch (_: Exception) {
@@ -15,7 +20,7 @@ class CarController(private val model: Model, private val view: InputView) {
             throw IllegalArgumentException(EXCEPTION_MSG_NAME_LENGTH_OVER)
         }
 
-        val inputTryNum = view.getTryNumber()
+        val inputTryNum = inputView.getTryNumber()
         val tryNum = try {
             inputTryNum.toInt()
         } catch (_: Exception) {
@@ -25,13 +30,13 @@ class CarController(private val model: Model, private val view: InputView) {
             throw IllegalArgumentException(EXCEPTION_MSG_TRY_NUM_UNDER)
         }
 
-        val cars = model.createCars(carNames)
+        val cars = CarService.createCars(carNames)
 
-        repeat (tryNum) {
-            model.moveAll(cars)
-            view.showStatus(cars)
+        repeat(tryNum) {
+            CarService.moveAll(cars)
+            outputView.showStatus(cars)
         }
-        view.showWinners(cars)
+        outputView.showWinners(cars)
     }
 
     companion object {
