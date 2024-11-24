@@ -1,7 +1,8 @@
 package racingcar.controller
 
-import racingcar.model.Car
 import racingcar.service.CarService
+import racingcar.validator.InputCarsValidator
+import racingcar.validator.InputTryNumberValidator
 import racingcar.view.InputView
 import racingcar.view.OutputView
 
@@ -11,26 +12,12 @@ class CarController(
 ) {
     fun run() {
         val inputCarNames = inputView.getCars()
-        val carNames = try {
-            inputCarNames.split(',')
-        } catch (_: Exception) {
-            throw IllegalArgumentException(EXCEPTION_MSG_INVALID_CAR_NAME)
-        }
-        if (carNames.any { it.length > NAME_LENGTH_LIMIT }) {
-            throw IllegalArgumentException(EXCEPTION_MSG_NAME_LENGTH_OVER)
-        }
+        InputCarsValidator.validate(inputCarNames)
 
         val inputTryNum = inputView.getTryNumber()
-        val tryNum = try {
-            inputTryNum.toInt()
-        } catch (_: Exception) {
-            throw IllegalArgumentException(EXCEPTION_MSG_INVALID_TRY_NUM)
-        }
-        if (tryNum <= TRY_NUM_LOWER_LIMIT) {
-            throw IllegalArgumentException(EXCEPTION_MSG_TRY_NUM_UNDER)
-        }
+        InputTryNumberValidator.validate(inputTryNum)
 
-        val cars = CarService.createCars(carNames)
+        val cars = CarService.createCars(inputCarNames)
 
         repeat(tryNum) {
             CarService.moveAll(cars)
