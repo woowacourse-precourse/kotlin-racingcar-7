@@ -1,6 +1,7 @@
 package racingcar
 
 import camp.nextstep.edu.missionutils.Console
+import racingcar.model.Car
 
 class View {
     fun getCars(): String {
