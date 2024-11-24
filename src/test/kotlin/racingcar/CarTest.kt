@@ -10,7 +10,7 @@ class CarTest {
         val testCar = Car("pobi", 0)
         for (r in 0..3)
             testCar.move(r)
-        assertThat(testCar.getPos()).isEqualTo(0)
+        assertThat(testCar.getPosition()).isEqualTo(0)
     }
 
     @Test
@@ -18,6 +18,6 @@ class CarTest {
         val testCar = Car("pobi", 0)
         for (r in 4..9)
             testCar.move(r)
-        assertThat(testCar.getPos()).isEqualTo(6)
+        assertThat(testCar.getPosition()).isEqualTo(6)
     }
 }
