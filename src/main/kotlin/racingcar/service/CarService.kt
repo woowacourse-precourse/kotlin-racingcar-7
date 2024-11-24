@@ -25,6 +25,8 @@ object CarService {
         val maxPos = cars.maxOf { it.getPosition() }
         val winners = cars.filter { it.getPosition() == maxPos }
         val result = winners.joinToString(", ")
-        return result
+        return WINNER_RESULT + result
     }
+
+    private const val WINNER_RESULT = "최종 우승자 : "
 }
