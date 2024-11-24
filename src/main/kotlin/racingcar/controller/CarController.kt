@@ -1,9 +1,9 @@
 package racingcar.controller
 
 import racingcar.Model
-import racingcar.View
+import racingcar.view.InputView
 
-class CarController(private val model: Model, private val view: View) {
+class CarController(private val model: Model, private val view: InputView) {
     fun run() {
         val inputCarNames = view.getCars()
         val carNames = try {

@@ -4,9 +4,10 @@ import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import racingcar.model.Car
+import racingcar.view.InputView
 
-class ViewTest : NsTest() {
-    private val view = View()
+class InputViewTest : NsTest() {
+    private val view = InputView()
 
     @Test
     fun `경주 상황 출력`() {
