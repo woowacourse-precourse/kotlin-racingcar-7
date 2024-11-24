@@ -1,13 +1,13 @@
 package racingcar.model
 
-class Car(val name: String, private var position: Int) {
+class Car(private val name: String, private var position: Int) {
     override fun toString(): String = name
 
     fun move(randomNum: Int) {
         if (randomNum in MOVE_CONDITION_START..MOVE_CONDITION_END) position++
     }
 
-    fun getPos() = position
+    fun getPosition() = position
 
     companion object {
         const val MOVE_CONDITION_START = 4
